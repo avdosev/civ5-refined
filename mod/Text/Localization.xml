@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='utf-8'?>
+<GameData>
+  <Language_en_US>
+    <Row Tag="TXT_KEY_REFINED_NETWORKS">
+      <Text>Computer Networks</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_NETWORKS_HELP">
+      <Text>+10% [ICON_GOLD] Gold in each city with a Stock Exchange. Required for the Internet.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_NETWORKS_PEDIA">
+      <Text>Computer networks let institutions exchange data and coordinate economic activity. They connect individual computing centers into shared infrastructure.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_NETWORKS_QUOTE">
+      <Text>Information becomes more useful when it can be shared.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AI">
+      <Text>Applied Artificial Intelligence</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AI_HELP">
+      <Text>Data Centers provide an additional +15% [ICON_RESEARCH] Science (40% total). Cities with a Factory gain +10% [ICON_PRODUCTION] Production; cities with a Research Lab gain +3 [ICON_RESEARCH] Science.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AI_PEDIA">
+      <Text>This technology represents widespread practical deployment of artificial intelligence, rather than the origin of the discipline. Computing infrastructure supports scientific analysis and industrial optimization.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AI_QUOTE">
+      <Text>Computing power becomes useful through its applications.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_DATA_CENTER">
+      <Text>Data Center</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_DATA_CENTER_HELP">
+      <Text>+25% [ICON_RESEARCH] Science in this city. Applied Artificial Intelligence increases this contribution to +40%. Maintenance: 4 [ICON_GOLD] Gold per turn. Microelectronics adds +4 Science.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_DATA_CENTER_PEDIA">
+      <Text>A dedicated computing center provides infrastructure for scientific calculations, data storage and analysis. Later advances in artificial intelligence improve its scientific contribution.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_DATA_CENTER_STRATEGY">
+      <Text>Build in cities with strong Science output. Its percentage bonus grows with the city, while maintenance is fixed. Uses an existing building portrait in this prototype.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_HIDDEN">
+      <Text>Refined technology effect</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_MICRO">
+      <Text>Microelectronics</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_MICRO_HELP">
+      <Text>+4 [ICON_RESEARCH] Science in each city with a Data Center. Required for Robotics.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_MICRO_PEDIA">
+      <Text>Integrated circuits and miniaturization develop after the first electronic computers, increasing computing density and the scientific capacity of dedicated data centers.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_MICRO_QUOTE">
+      <Text>More computing in less space.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AUTOMATION">
+      <Text>Industrial Automation</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AUTOMATION_HELP">
+      <Text>+10% [ICON_PRODUCTION] Production in each city with a Factory. Stacks with the additional +10% from Applied AI. Required for Robotics.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AUTOMATION_PEDIA">
+      <Text>Computer-controlled industrial equipment, process regulation and numerical control improve factory output before general-purpose industrial robots become widespread.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AUTOMATION_QUOTE">
+      <Text>Precision becomes repeatable.</Text>
+    </Row>
+  </Language_en_US>
+  <Language_RU_RU>
+    <Row Tag="TXT_KEY_REFINED_NETWORKS">
+      <Text>Компьютерные сети</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_NETWORKS_HELP">
+      <Text>+10% [ICON_GOLD] золота в каждом городе с фондовой биржей. Необходимы для изучения интернета.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_NETWORKS_PEDIA">
+      <Text>Компьютерные сети позволяют учреждениям обмениваться данными и координировать экономическую деятельность. Отдельные вычислительные центры становятся частью общей информационной инфраструктуры.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_NETWORKS_QUOTE">
+      <Text>Информация становится полезнее, когда ею можно поделиться.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AI">
+      <Text>Прикладной искусственный интеллект</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AI_HELP">
+      <Text>Дата-центры дают дополнительно +15% [ICON_RESEARCH] науки (всего +40%). Города с фабрикой получают +10% [ICON_PRODUCTION] производства, с исследовательской лабораторией — +3 [ICON_RESEARCH] науки.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AI_PEDIA">
+      <Text>Технология представляет массовое практическое применение искусственного интеллекта, а не зарождение научной дисциплины. Вычислительная инфраструктура используется для научного анализа и оптимизации промышленного производства.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AI_QUOTE">
+      <Text>Вычислительная мощность обретает смысл в её применении.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_DATA_CENTER">
+      <Text>Дата-центр</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_DATA_CENTER_HELP">
+      <Text>+25% [ICON_RESEARCH] науки в этом городе. Прикладной искусственный интеллект увеличивает вклад до +40%. Содержание: 4 [ICON_GOLD] золота за ход. Микроэлектроника дополнительно даёт +4 науки.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_DATA_CENTER_PEDIA">
+      <Text>Вычислительный центр обеспечивает научные расчёты, хранение и обработку данных. Развитие прикладного искусственного интеллекта повышает его вклад в научную работу.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_DATA_CENTER_STRATEGY">
+      <Text>Стройте в городах с высокой наукой: процентный бонус растёт вместе с городом, а содержание остаётся фиксированным. В прототипе используется стандартный портрет здания.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_HIDDEN">
+      <Text>Технологический эффект Refined</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_MICRO">
+      <Text>Микроэлектроника</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_MICRO_HELP">
+      <Text>+4 [ICON_RESEARCH] науки в каждом городе с дата-центром. Необходима для робототехники.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_MICRO_PEDIA">
+      <Text>Интегральные схемы и миниатюризация развиваются после первых электронных компьютеров, увеличивая плотность вычислений и научные возможности вычислительных центров.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_MICRO_QUOTE">
+      <Text>Больше вычислений в меньшем пространстве.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AUTOMATION">
+      <Text>Промышленная автоматизация</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AUTOMATION_HELP">
+      <Text>+10% [ICON_PRODUCTION] производства в каждом городе с фабрикой. Складывается с дополнительными +10% от прикладного ИИ. Необходима для робототехники.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AUTOMATION_PEDIA">
+      <Text>Оборудование с числовым программным управлением и автоматическое регулирование производственных процессов повышают выпуск фабрик до широкого внедрения промышленных роботов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AUTOMATION_QUOTE">
+      <Text>Точность становится воспроизводимой.</Text>
+    </Row>
+  </Language_RU_RU>
+</GameData>
