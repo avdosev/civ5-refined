@@ -64,6 +64,147 @@
     <Row Tag="TXT_KEY_REFINED_AUTOMATION_QUOTE">
       <Text>Precision becomes repeatable.</Text>
     </Row>
+    <Row Tag="TXT_KEY_REFINED_AGRICULTURE">
+      <Text>Agricultural Mechanization</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AGRICULTURE_HELP">
+      <Text>Each Farm gains max(0, adjacent friendly unpillaged Farms - 1) Food. Existing farm bonuses remain.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AGRICULTURE_PEDIA">
+      <Text>Mechanical reapers, threshers and powered equipment allow compact agricultural areas to feed growing industrial cities. This technology includes early mechanical traction, before mass adoption of tractors.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AGRICULTURE_QUOTE">
+      <Text>Machines change the scale of cultivation.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_STEEL_MILL">
+      <Text>Steel Mill</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_STEEL_MILL_HELP">
+      <Text>+3 Production. +15% Production of armored units, Giant Death Robots and metal warships, including submarines and carriers. Reserves 1 Iron; maintenance 3 Gold.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_STEEL_MILL_PEDIA">
+      <Text>Steelmaking connects strategic iron reserves to industrial capacity and the construction of heavy military equipment.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_STEEL_MILL_STRATEGY">
+      <Text>Choose between reserving Iron for industry or for the army. The +3 Production always applies; the +15% affects only the listed units. Does not require a Factory or local Iron.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_TEXTILE">
+      <Text>Textile Manufactory</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_TEXTILE_HELP">
+      <Text>+1 Production and +1 Gold on worked Cotton, Silk and Sheep tiles. Requires a locally improved source of at least one of these resources. No maintenance.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_TEXTILE_PEDIA">
+      <Text>Textile production turns local fibers and wool into valuable goods, supporting specialist manufacturing towns.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_TEXTILE_STRATEGY">
+      <Text>A low-cost manufacturing investment for cities working Cotton, Silk or Sheep. Resources are not reserved.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ACADEMY">
+      <Text>Scholarly Academy</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ACADEMY_HELP">
+      <Text>+2 Science and +10% city Science. Mutually exclusive with the Salon. Maintenance 1 Gold. This is a city building, not the Great Scientist improvement.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ACADEMY_PEDIA">
+      <Text>A scholarly academy brings researchers and learned societies together to exchange knowledge.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ACADEMY_STRATEGY">
+      <Text>Choose scientific specialization. Sell the Academy under normal game rules before building a Salon.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_SALON">
+      <Text>Salon</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_SALON_HELP">
+      <Text>+2 Culture and +10% city Culture. Mutually exclusive with the Scholarly Academy. Maintenance 1 Gold.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_SALON_PEDIA">
+      <Text>Salons bring writers, artists and thinkers together for conversation and cultural exchange.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_SALON_STRATEGY">
+      <Text>Choose cultural specialization. Sell the Salon under normal game rules before building a Scholarly Academy.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKAS">
+      <Text>Eurekas</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_OPEN">
+      <Text>Eurekas: practical achievements grant 25% of a technology cost, once per team.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_LOCKED">
+      <Text>Not achieved</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_PENDING">
+      <Text>Achieved; waiting for prerequisites</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_AWARDED">
+      <Text>Eureka awarded</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_RESEARCHED">
+      <Text>Technology researched</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_NOTICE">
+      <Text>Eureka: {1_Text}. Research gained: {2_Num}.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_READY">
+      <Text>Achievement: {1_Text}. The eureka will be awarded when the technology becomes available.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_HORSEBACK_RIDING">
+      <Text>An unpillaged Pasture on Horses</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_CONSTRUCTION">
+      <Text>An unpillaged Quarry</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_IRON_WORKING">
+      <Text>An unpillaged Mine on Iron</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_EDUCATION">
+      <Text>Own 2 Libraries</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_MACHINERY">
+      <Text>Own 3 unpillaged Mines</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_BANKING">
+      <Text>Trade with 3 different foreign cities simultaneously</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_PRINTING_PRESS">
+      <Text>Obtain a Great Writer</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_NAVIGATION">
+      <Text>Own 2 Harbors</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_RIFLING">
+      <Text>Own 3 Musketmen simultaneously, including unique replacements</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_SCIENTIFIC_THEORY">
+      <Text>Obtain a Great Scientist</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_INDUSTRIALIZATION">
+      <Text>Own 2 Workshops</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_ECONOMICS">
+      <Text>Own a Textile Manufactory</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_STEAM_POWER">
+      <Text>An unpillaged Mine on Coal</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_ELECTRICITY">
+      <Text>Own a Factory</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_PLASTIC">
+      <Text>Own 2 Public Schools</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_NUCLEAR_FISSION">
+      <Text>An unpillaged Mine on Uranium</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_COMPUTERS">
+      <Text>Own 2 Research Labs</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_REFINED_NETWORKS">
+      <Text>Own 2 Data Centers</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_REFINED_AUTOMATION">
+      <Text>Own a Steel Mill</Text>
+    </Row>
   </Language_en_US>
   <Language_RU_RU>
     <Row Tag="TXT_KEY_REFINED_NETWORKS">
@@ -128,6 +269,147 @@
     </Row>
     <Row Tag="TXT_KEY_REFINED_AUTOMATION_QUOTE">
       <Text>Точность становится воспроизводимой.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AGRICULTURE">
+      <Text>Механизация сельского хозяйства</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AGRICULTURE_HELP">
+      <Text>Каждая ферма получает max(0, число соседних собственных неразграбленных ферм − 1) пищи. Обычные бонусы ферм сохраняются.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AGRICULTURE_PEDIA">
+      <Text>Жатки, молотилки и механическая тяга повышают продуктивность компактных сельскохозяйственных районов. Технология включает раннюю механизацию до массового распространения тракторов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_AGRICULTURE_QUOTE">
+      <Text>Машины меняют масштаб земледелия.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_STEEL_MILL">
+      <Text>Сталелитейный завод</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_STEEL_MILL_HELP">
+      <Text>+3 производства. +15% к производству бронетехники, гигантских боевых роботов и металлических военных кораблей, включая подлодки и авианосцы. Резервирует 1 железо; содержание 3 золота.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_STEEL_MILL_PEDIA">
+      <Text>Сталелитейная промышленность связывает запасы железа с производством тяжёлой военной техники и кораблей.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_STEEL_MILL_STRATEGY">
+      <Text>Выбирайте между железом для промышленности и армии. +3 производства действуют постоянно, +15% — только для перечисленных юнитов. Фабрика и местное железо не требуются.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_TEXTILE">
+      <Text>Текстильная мануфактура</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_TEXTILE_HELP">
+      <Text>+1 производства и +1 золота с обрабатываемых клеток хлопка, шёлка и овец. Требуется хотя бы один из этих улучшенных местных ресурсов. Без содержания.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_TEXTILE_PEDIA">
+      <Text>Текстильное производство превращает местное волокно и шерсть в ценные товары, развивая специализацию городов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_TEXTILE_STRATEGY">
+      <Text>Недорогое производство для городов с хлопком, шёлком или овцами. Ресурсы не резервируются.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ACADEMY">
+      <Text>Учёная академия</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ACADEMY_HELP">
+      <Text>+2 науки и +10% науки города. Несовместима с салоном. Содержание 1 золото. Это городское здание, а не улучшение великого учёного.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ACADEMY_PEDIA">
+      <Text>Учёная академия объединяет исследователей и научные общества для обмена знаниями.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ACADEMY_STRATEGY">
+      <Text>Выбирайте научную специализацию. Для постройки салона сначала продайте академию по обычным правилам игры.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_SALON">
+      <Text>Салон</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_SALON_HELP">
+      <Text>+2 культуры и +10% культуры города. Несовместим с учёной академией. Содержание 1 золото.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_SALON_PEDIA">
+      <Text>Салоны объединяют писателей, художников и мыслителей для бесед и культурного обмена.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_SALON_STRATEGY">
+      <Text>Выбирайте культурную специализацию. Для постройки учёной академии сначала продайте салон по обычным правилам игры.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKAS">
+      <Text>Эврики</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_OPEN">
+      <Text>Эврики: практические достижения однократно дают команде 25% стоимости технологии.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_LOCKED">
+      <Text>Не выполнено</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_PENDING">
+      <Text>Выполнено; ожидает предпосылок</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_AWARDED">
+      <Text>Эврика начислена</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_RESEARCHED">
+      <Text>Технология изучена</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_NOTICE">
+      <Text>Эврика: {1_Text}. Получено науки: {2_Num}.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_READY">
+      <Text>Достижение: {1_Text}. Эврика будет начислена, когда технология станет доступна.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_HORSEBACK_RIDING">
+      <Text>Неразграбленное пастбище на лошадях</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_CONSTRUCTION">
+      <Text>Неразграбленная каменоломня</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_IRON_WORKING">
+      <Text>Неразграбленная шахта на железе</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_EDUCATION">
+      <Text>Иметь 2 библиотеки</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_MACHINERY">
+      <Text>Иметь 3 неразграбленные шахты</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_BANKING">
+      <Text>Одновременно торговать с 3 разными зарубежными городами</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_PRINTING_PRESS">
+      <Text>Получить великого писателя</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_NAVIGATION">
+      <Text>Иметь 2 гавани</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_RIFLING">
+      <Text>Одновременно иметь 3 мушкетёров, включая уникальные замены</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_SCIENTIFIC_THEORY">
+      <Text>Получить великого учёного</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_INDUSTRIALIZATION">
+      <Text>Иметь 2 мастерские</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_ECONOMICS">
+      <Text>Иметь текстильную мануфактуру</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_STEAM_POWER">
+      <Text>Неразграбленная шахта на угле</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_ELECTRICITY">
+      <Text>Иметь фабрику</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_PLASTIC">
+      <Text>Иметь 2 государственные школы</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_NUCLEAR_FISSION">
+      <Text>Неразграбленная шахта на уране</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_COMPUTERS">
+      <Text>Иметь 2 исследовательские лаборатории</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_REFINED_NETWORKS">
+      <Text>Иметь 2 дата-центра</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_REFINED_AUTOMATION">
+      <Text>Иметь сталелитейный завод</Text>
     </Row>
   </Language_RU_RU>
 </GameData>

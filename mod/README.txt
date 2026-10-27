@@ -1,4 +1,4 @@
-civ5-refined — Prototype v5
+civ5-refined — Prototype v6
 
 Установка: скопируйте эту папку целиком в пользовательский каталог MODS
 Civilization V. Включите мод в меню «Моды», нажмите «Далее» и начните новую
@@ -31,3 +31,11 @@ and production effects, and a resource overhaul for 25 military unit classes.
 Modern Armor requires aluminum and oil, without iron. Infantry and basic
 anti-tank/anti-air units remain resource-free. Zero keeps its oil exemption.
 Russian and English supported; existing game portraits are reused.
+
+Новое в v6: сталелитейный завод, текстильная мануфактура, учёная академия/салон,
+бонус культуры библиотек, ранние каменоломни/лесопилки и рыба после охлаждения.
+Механизация сельского хозяйства после удобрений и парового двигателя даёт
+фермам max(0, соседние собственные неразграбленные фермы - 1) пищи.
+Кнопка «Эврики» справа показывает 19 однократных бонусов исследования.
+Эврика нарезного оружия: одновременно иметь 3 мушкетёров, включая уникальные замены.
+Все проверки выполнены вне игры. Новая партия и только одна версия мода.

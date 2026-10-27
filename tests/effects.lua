@@ -20,7 +20,7 @@ local function register(name)
     GameInfoTypes[name] = nextID
     return nextID
 end
-for _, name in ipairs({'TECH_COMPUTERS', 'TECH_REFINED_NETWORKS', 'TECH_REFINED_AI',
+for _, name in ipairs({'TECH_PRINTING_PRESS', 'BUILDING_REFINED_PRINTING_CULTURE', 'TECH_COMPUTERS', 'TECH_REFINED_NETWORKS', 'TECH_REFINED_AI',
     'TECH_REFINED_MICROELECTRONICS', 'TECH_REFINED_AUTOMATION',
     'BUILDING_REFINED_MICRO_DATA_CENTER', 'BUILDING_REFINED_AUTOMATION_FACTORY',
     'BUILDING_REFINED_DATA_CENTER', 'BUILDING_REFINED_COMPUTER_UNIVERSITY',
@@ -30,6 +30,8 @@ for _, name in ipairs({'TECH_COMPUTERS', 'TECH_REFINED_NETWORKS', 'TECH_REFINED_
 end
 local buildings = {}
 for _, row in ipairs({
+    {'BUILDING_LIBRARY', 'BUILDINGCLASS_LIBRARY'},
+    {'BUILDING_PAPER_MAKER', 'BUILDINGCLASS_LIBRARY'},
     {'BUILDING_UNIVERSITY', 'BUILDINGCLASS_UNIVERSITY'},
     {'BUILDING_WAT', 'BUILDINGCLASS_UNIVERSITY'},
     {'BUILDING_LABORATORY', 'BUILDINGCLASS_LABORATORY'},
@@ -146,3 +148,16 @@ Teams[1].techs[GameInfoTypes.TECH_COMPUTERS] = false
 GameEvents.TeamSetHasTech.Fire(1, GameInfoTypes.TECH_COMPUTERS, false)
 expect(aiCity, 'BUILDING_REFINED_COMPUTER_UNIVERSITY', 0)
 print('PASS: Lua lifecycle, shared teams, AI, replacements, free buildings and idempotence')
+
+-- Printing Press applies to library replacements, survives reload and is removed
+-- on sale/capture. The hidden building's exact +4 culture is checked in SQL.
+aiCity.real[GameInfoTypes.BUILDING_PAPER_MAKER] = 1
+acquire(1, 'TECH_PRINTING_PRESS')
+expect(aiCity, 'BUILDING_REFINED_PRINTING_CULTURE', 1)
+local beforePrinting = writes
+GameEvents.PlayerDoTurn.Fire(1)
+assert(writes == beforePrinting)
+aiCity.real[GameInfoTypes.BUILDING_PAPER_MAKER] = 0
+Events.SerialEventCityInfoDirty.Fire()
+expect(aiCity, 'BUILDING_REFINED_PRINTING_CULTURE', 0)
+print('PASS: Printing Press culture follows library classes and removal')

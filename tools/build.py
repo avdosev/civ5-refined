@@ -9,7 +9,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'mod'
 OUTPUT = ROOT / 'dist'
-NAME = 'civ5-refined (v 5)'
+NAME = 'civ5-refined (v 6)'
 MOD_ID = '72f741c2-cbb3-4b31-aebc-f88915b615ad'
 
 
@@ -20,11 +20,12 @@ def build():
     shutil.copytree(SOURCE, target)
     shutil.copyfile(ROOT / 'docs/unit-resources.md', target / 'ResourceRules.md')
     shutil.copyfile(ROOT / 'docs/technology-tree.md', target / 'TechnologyTree.md')
-    root = ET.Element('Mod', id=MOD_ID, version='5')
+    shutil.copyfile(ROOT / 'docs/eurekas.md', target / 'Eurekas.md')
+    root = ET.Element('Mod', id=MOD_ID, version='6')
     props = ET.SubElement(root, 'Properties')
     for key, value in {
         'Name': 'civ5-refined — Prototype',
-        'Teaser': 'Computers, networks, AI, data centers and strategic iron.',
+        'Teaser': 'Technology, agriculture, specialized industry and 19 research eurekas.',
         'Description': 'Prototype for unmodified Brave New World. New game recommended. Russian and English text. No DLL required.',
         'Authors': 'civ5-refined contributors',
         'AffectsSavedGames': '1', 'MinCompatibleSaveVersion': '1',
@@ -46,12 +47,15 @@ def build():
         ET.SubElement(files, 'File', md5=hashlib.md5(path.read_bytes()).hexdigest(),
                       attrib={'import': '0'}).text = path.relative_to(target).as_posix()
     actions = ET.SubElement(ET.SubElement(root, 'Actions'), 'OnModActivated')
-    for path in ['Text/Localization.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql']:
+    for path in ['Text/Localization.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql', 'SQL/Development.sql']:
         ET.SubElement(actions, 'UpdateDatabase').text = path
     entry = ET.SubElement(ET.SubElement(root, 'EntryPoints'), 'EntryPoint',
                           type='InGameUIAddin', file='Lua/Refined.lua')
     ET.SubElement(entry, 'Name').text = 'Refined city effects'
     ET.SubElement(entry, 'Description').text = 'Synchronizes technology bonuses in all cities.'
+    entry = ET.SubElement(root.find('EntryPoints'), 'EntryPoint', type='InGameUIAddin', file='Lua/Development.xml')
+    ET.SubElement(entry, 'Name').text = 'Refined development and eurekas'
+    ET.SubElement(entry, 'Description').text = 'Agricultural adjacency, fishing and eureka progress.'
     ET.indent(root)
     ET.ElementTree(root).write(target / (NAME + '.modinfo'), encoding='utf-8', xml_declaration=True)
     archive = OUTPUT / (NAME + '.zip')

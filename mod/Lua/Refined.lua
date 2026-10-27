@@ -11,6 +11,9 @@ local techNetworks = id('TECH_REFINED_NETWORKS')
 local techAI = id('TECH_REFINED_AI')
 local techMicro = id('TECH_REFINED_MICROELECTRONICS')
 local techAutomation = id('TECH_REFINED_AUTOMATION')
+local techPrinting = id('TECH_PRINTING_PRESS')
+local libraries = nil
+local printingCulture = id('BUILDING_REFINED_PRINTING_CULTURE')
 local dataCenter = id('BUILDING_REFINED_DATA_CENTER')
 
 local function buildingsInClass(name)
@@ -21,6 +24,7 @@ local function buildingsInClass(name)
     return result
 end
 
+libraries = buildingsInClass('BUILDINGCLASS_LIBRARY')
 local universities = buildingsInClass('BUILDINGCLASS_UNIVERSITY')
 local laboratories = buildingsInClass('BUILDINGCLASS_LABORATORY')
 local exchanges = buildingsInClass('BUILDINGCLASS_STOCK_EXCHANGE')
@@ -54,6 +58,7 @@ local function syncPlayer(playerID)
     local player = Players[playerID]
     if not player or not player:IsAlive() then return end
     local team = Teams[player:GetTeam()]
+    local printing = team:IsHasTech(techPrinting)
     local computers = team:IsHasTech(techComputers)
     local networks = team:IsHasTech(techNetworks)
     local ai = team:IsHasTech(techAI)
@@ -61,6 +66,7 @@ local function syncPlayer(playerID)
     local automation = team:IsHasTech(techAutomation)
     for city in player:Cities() do
         local lab = hasAny(city, laboratories)
+        setEffect(city, printingCulture, printing and hasAny(city, libraries))
         setEffect(city, effects.computerUniversity, computers and hasAny(city, universities))
         setEffect(city, effects.computerLab, computers and lab)
         setEffect(city, effects.networkGold, networks and hasAny(city, exchanges))
@@ -92,4 +98,4 @@ GameEvents.CityCaptureComplete.Add(syncAll)
 Events.SerialEventCityInfoDirty.Add(syncAll)
 Events.SequenceGameInitComplete.Add(syncAll)
 syncAll()
-print('civ5-refined v5: technology and city effects loaded')
+print('civ5-refined v6: technology and city effects loaded')

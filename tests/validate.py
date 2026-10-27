@@ -31,7 +31,8 @@ def fixture(db):
       Cost INTEGER, GoldMaintenance INTEGER DEFAULT 0, PrereqTech TEXT REFERENCES Technologies(Type),
       Description TEXT, Civilopedia TEXT, Help TEXT, Strategy TEXT, ArtDefineTag TEXT, MinAreaSize INTEGER,
       HurryCostModifier INTEGER, ConquestProb INTEGER, PortraitIndex INTEGER, IconAtlas TEXT,
-      FaithCost INTEGER, GreatWorkCount INTEGER, NeverCapture INTEGER, NukeImmune INTEGER);
+      FaithCost INTEGER, GreatWorkCount INTEGER, NeverCapture INTEGER, NukeImmune INTEGER,
+      MutuallyExclusiveGroup INTEGER DEFAULT 0, CultureRateModifier INTEGER DEFAULT 0);
     CREATE TABLE Building_YieldModifiers (BuildingType TEXT REFERENCES Buildings(Type), YieldType TEXT, Yield INTEGER);
     CREATE TABLE Building_YieldChanges (BuildingType TEXT REFERENCES Buildings(Type), YieldType TEXT, Yield INTEGER);
     CREATE TABLE Building_Flavors (BuildingType TEXT REFERENCES Buildings(Type), FlavorType TEXT, Flavor INTEGER);
@@ -40,6 +41,11 @@ def fixture(db):
     CREATE TABLE Building_TechAndPrereqs (BuildingType TEXT REFERENCES Buildings(Type), TechType TEXT REFERENCES Technologies(Type), UNIQUE(BuildingType, TechType));
     CREATE TABLE Unit_ResourceQuantityRequirements (UnitType TEXT REFERENCES Units(Type), ResourceType TEXT,
       Cost INTEGER DEFAULT 1, UNIQUE(UnitType, ResourceType));
+    CREATE TABLE Improvement_TechYieldChanges (ImprovementType TEXT, TechType TEXT REFERENCES Technologies(Type), YieldType TEXT, Yield INTEGER);
+    CREATE TABLE Building_ResourceQuantityRequirements (BuildingType TEXT REFERENCES Buildings(Type), ResourceType TEXT, Cost INTEGER);
+    CREATE TABLE Building_LocalResourceOrs (BuildingType TEXT REFERENCES Buildings(Type), ResourceType TEXT);
+    CREATE TABLE Building_ResourceYieldChanges (BuildingType TEXT REFERENCES Buildings(Type), ResourceType TEXT, YieldType TEXT, Yield INTEGER);
+    CREATE TABLE Unit_ProductionModifierBuildings (UnitType TEXT REFERENCES Units(Type), BuildingType TEXT REFERENCES Buildings(Type), ProductionModifier INTEGER);
     CREATE TABLE Language_en_US (Tag TEXT PRIMARY KEY, Text TEXT);
     CREATE TABLE Language_RU_RU (Tag TEXT PRIMARY KEY, Text TEXT);
     ''')
@@ -55,10 +61,25 @@ def fixture(db):
              'ADVANCED_BALLISTICS': (15, 4), 'PARTICLE_PHYSICS': (16, 2),
              'ATOMIC_THEORY': (13, 3), 'PLASTIC': (12, 2), 'PENICILIN': (13, 1),
              'LASERS': (15, 7), 'GLOBALIZATION': (16, 1), 'NUCLEAR_FUSION': (16, 5),
-             'NANOTECHNOLOGY': (16, 6), 'STEALTH': (16, 7)}
+             'NANOTECHNOLOGY': (16, 6), 'STEALTH': (16, 7),
+             'FERTILIZER': (9, 9), 'STEAM_POWER': (10, 5), 'DYNAMITE': (10, 8),
+             'RAILROAD': (11, 7), 'FLIGHT': (11, 5), 'REPLACEABLE_PARTS': (11, 3),
+             'BALLISTICS': (12, 5), 'COMBUSTION': (12, 7), 'CHEMISTRY': (8, 7),
+             'MILITARY_SCIENCE': (9, 8), 'SCIENTIFIC_THEORY': (9, 1), 'RIFLING': (9, 7),
+             'HORSEBACK_RIDING': (2, 4), 'CONSTRUCTION': (3, 5), 'IRON_WORKING': (3, 7),
+             'EDUCATION': (6, 2), 'MACHINERY': (6, 4), 'BANKING': (7, 3),
+             'PRINTING_PRESS': (7, 5), 'NAVIGATION': (8, 0), 'ECONOMICS': (8, 3),
+             'GUILDS': (5, 3), 'REFRIGERATION': (11, 0)}
+    techs['ELECTRICITY'] = (10, 2)
     for name, (x, y) in techs.items():
         db.execute('INSERT INTO Technologies (Type, Help, GridX, GridY, IconAtlas, PortraitIndex) VALUES (?, ?, ?, ?, ?, ?)',
                    ('TECH_' + name, 'HELP_' + name, x, y, 'STOCK_ATLAS', 5))
+    db.execute("UPDATE Technologies SET Description='TXT_KEY_' || Type")
+    # Preserve era bands when v6 adds an Industrial-era column.
+    for name, (x, _) in techs.items():
+        era = ('ERA_FUTURE' if x >= 15 else 'ERA_POSTMODERN' if x >= 13 else
+               'ERA_MODERN' if x >= 11 else 'ERA_INDUSTRIAL' if x >= 9 else 'ERA_RENAISSANCE')
+        db.execute('UPDATE Technologies SET Era=? WHERE Type=?', (era, 'TECH_' + name))
     db.executemany('INSERT INTO Technology_PrereqTechs VALUES (?, ?)', [
         ('TECH_COMPUTERS', 'TECH_RADAR'), ('TECH_COMPUTERS', 'TECH_COMBINED_ARMS'),
         ('TECH_ROBOTICS', 'TECH_COMPUTERS'), ('TECH_ROBOTICS', 'TECH_ROCKETRY'),
@@ -81,11 +102,30 @@ def fixture(db):
         ('TECH_FUTURE_TECH', 'TECH_GLOBALIZATION'), ('TECH_FUTURE_TECH', 'TECH_PARTICLE_PHYSICS'),
         ('TECH_FUTURE_TECH', 'TECH_NUCLEAR_FUSION'), ('TECH_FUTURE_TECH', 'TECH_NANOTECHNOLOGY'),
         ('TECH_FUTURE_TECH', 'TECH_STEALTH')])
+    db.executemany('INSERT INTO Technology_PrereqTechs VALUES (?, ?)', [
+        ('TECH_FERTILIZER', 'TECH_CHEMISTRY'), ('TECH_MILITARY_SCIENCE', 'TECH_CHEMISTRY'),
+        ('TECH_DYNAMITE', 'TECH_FERTILIZER'), ('TECH_DYNAMITE', 'TECH_MILITARY_SCIENCE'),
+        ('TECH_STEAM_POWER', 'TECH_SCIENTIFIC_THEORY'), ('TECH_STEAM_POWER', 'TECH_INDUSTRIALIZATION'),
+        ('TECH_STEAM_POWER', 'TECH_RIFLING'), ('TECH_FLIGHT', 'TECH_STEAM_POWER'),
+        ('TECH_REPLACEABLE_PARTS', 'TECH_STEAM_POWER'), ('TECH_RAILROAD', 'TECH_STEAM_POWER'),
+        ('TECH_RAILROAD', 'TECH_DYNAMITE'), ('TECH_BALLISTICS', 'TECH_RAILROAD'),
+        ('TECH_COMBUSTION', 'TECH_RAILROAD')])
+    db.executemany('INSERT INTO Improvement_TechYieldChanges VALUES (?, ?, ?, ?)', [
+        ('IMPROVEMENT_QUARRY', 'TECH_CHEMISTRY', 'YIELD_PRODUCTION', 1),
+        ('IMPROVEMENT_LUMBERMILL', 'TECH_SCIENTIFIC_THEORY', 'YIELD_PRODUCTION', 1)])
+    for name, tech in [('FACTORY', 'INDUSTRIALIZATION'), ('MINT', 'BANKING'),
+                       ('UNIVERSITY', 'EDUCATION'), ('OPERA_HOUSE', 'SCIENTIFIC_THEORY'),
+                       ('HARBOR', 'CONSTRUCTION'), ('PUBLIC_SCHOOL', 'SCIENTIFIC_THEORY')]:
+        db.execute('INSERT INTO BuildingClasses (Type, DefaultBuilding) VALUES (?, ?)',
+                   ('BUILDINGCLASS_' + name, 'BUILDING_' + name))
+        db.execute('INSERT INTO Buildings (Type, BuildingClass, PrereqTech, IconAtlas, PortraitIndex, ArtDefineTag) VALUES (?, ?, ?, ?, ?, ?)',
+                   ('BUILDING_' + name, 'BUILDINGCLASS_' + name, 'TECH_' + tech, 'STOCK_BUILDING', 1, name))
     db.execute("INSERT INTO Buildings (Type, IconAtlas, PortraitIndex, ArtDefineTag) VALUES ('BUILDING_LABORATORY', 'LAB_ATLAS', 27, 'LAB_ART')")
     db.execute("INSERT INTO BuildingClasses (Type, DefaultBuilding) VALUES ('BUILDINGCLASS_SPACESHIP_FACTORY', 'BUILDING_SPACESHIP_FACTORY')")
     db.execute("INSERT INTO Buildings (Type, BuildingClass, PrereqTech) VALUES ('BUILDING_SPACESHIP_FACTORY', 'BUILDINGCLASS_SPACESHIP_FACTORY', 'TECH_ROBOTICS')")
     for lang in ['Language_en_US', 'Language_RU_RU']:
-        db.execute(f"INSERT INTO {lang} VALUES ('HELP_COMPUTERS', 'Original help')")
+        for name in techs:
+            db.execute(f'INSERT INTO {lang} VALUES (?, ?)', ('HELP_' + name, 'Original help'))
     classes = [
         'KNIGHT', 'CANNON', 'ARTILLERY', 'ROCKET_ARTILLERY', 'WWI_TANK', 'TANK',
         'MODERN_ARMOR', 'MECHANIZED_INFANTRY', 'MOBILE_SAM', 'HELICOPTER_GUNSHIP',
@@ -154,17 +194,25 @@ def validate_database(db):
     db.executescript((ROOT / 'mod/SQL/TechTreePresentation.sql').read_text())
     assert db.execute("SELECT * FROM Technologies WHERE Type = 'TECH_PARTICLE_PHYSICS'").fetchone() == original_particle, 'Particle Physics metadata changed in UI migration'
     db.executescript((ROOT / 'mod/SQL/UnitResources.sql').read_text())
+    # v6 extends Industrial-era layout AFTER checking v5's regression contracts.
+    v5_position = db.execute("SELECT GridX, GridY FROM Technologies WHERE Type='TECH_ROBOTICS'").fetchone()
+    assert v5_position == (16, 6)
+    db.executescript((ROOT / 'mod/SQL/Development.sql').read_text())
     new_reference_errors = set(db.execute('PRAGMA foreign_key_check')) - baseline_reference_errors
     assert not new_reference_errors, ('new foreign key violations', new_reference_errors)
     rows = list(db.execute('SELECT Type, GridX, GridY FROM Technologies'))
     assert {row[0] for row in rows} == original_tech_types | {
         'TECH_REFINED_NETWORKS', 'TECH_REFINED_AI',
-        'TECH_REFINED_MICROELECTRONICS', 'TECH_REFINED_AUTOMATION'}, 'missing or unexpected technologies'
+        'TECH_REFINED_MICROELECTRONICS', 'TECH_REFINED_AUTOMATION',
+        'TECH_REFINED_AGRICULTURAL_MECHANIZATION'}, 'missing or unexpected technologies'
     assert len({(x, y) for _, x, y in rows}) == len(rows), 'technology positions collide'
-    assert not layout_issues(db), layout_issues(db)
-    assert db.execute("SELECT GridX, GridY FROM Technologies WHERE Type = 'TECH_ROBOTICS'").fetchone() == (16, 6)
-    assert db.execute("SELECT GridX, GridY FROM Technologies WHERE Type = 'TECH_FUTURE_TECH'").fetchone() == (18, 4)
-    print('PASS: reproduced v4 layout bug; v5 has no unsupported spans, card-crossing runs or mixed adapters')
+    bands = list(db.execute("SELECT Era, min(GridX), max(GridX) FROM Technologies WHERE Era IS NOT NULL GROUP BY Era ORDER BY min(GridX)"))
+    for left, right in zip(bands, bands[1:]):
+        assert left[2] < right[1], ('era headers would overlap', left, right)
+    assert not layout_issues(db, include_industrial=True), layout_issues(db, include_industrial=True)
+    assert db.execute("SELECT GridX, GridY FROM Technologies WHERE Type = 'TECH_ROBOTICS'").fetchone() == (17, 6)
+    assert db.execute("SELECT GridX, GridY FROM Technologies WHERE Type = 'TECH_FUTURE_TECH'").fetchone() == (19, 4)
+    print('PASS: v4 regression and v6 industrial/late connectors: spans, card crossing and adapter positions')
     prereqs = {}
     for tech, parent in db.execute('SELECT TechType, PrereqTech FROM Technology_PrereqTechs'):
         prereqs.setdefault(tech, set()).add(parent)
@@ -264,8 +312,35 @@ def validate_database(db):
         for lang in ['Language_en_US', 'Language_RU_RU']:
             actual = db.execute(f'SELECT Text FROM {lang} WHERE Tag = ?', ('TXT_KEY_SCENARIO_TECH_BUTTON_' + str(marker),)).fetchone()[0]
             expected_text = db.execute(f'SELECT Text FROM {lang} WHERE Tag = ?', (marker_texts[marker - 1],)).fetchone()[0]
-            assert actual == expected_text
-    print('PASS: all four native ability markers have exact localized bonus tooltips')
+            if marker == 1:
+                assert 'Stock Exchange' in actual or 'фондовой биржей' in actual
+                assert 'Farm' in actual or 'ферма' in actual
+            else:
+                assert actual == expected_text
+    print('PASS: native ability tooltips, including the shared named network/agriculture slot')
+    assert prereqs['TECH_REFINED_AGRICULTURAL_MECHANIZATION'] == {'TECH_FERTILIZER', 'TECH_STEAM_POWER'}
+    assert 'TECH_FERTILIZER' not in prereqs['TECH_DYNAMITE']
+    assert db.execute("SELECT Cost, Era, GridX, GridY FROM Technologies WHERE Type='TECH_REFINED_AGRICULTURAL_MECHANIZATION'").fetchone() == (2350, 'ERA_INDUSTRIAL', 11, 9)
+    assert not db.execute("SELECT 1 FROM Technology_PrereqTechs WHERE PrereqTech='TECH_REFINED_AGRICULTURAL_MECHANIZATION'").fetchone()
+    assert db.execute("SELECT TechType, Yield FROM Improvement_TechYieldChanges WHERE ImprovementType='IMPROVEMENT_LUMBERMILL'").fetchall() == [('TECH_MACHINERY', 1)]
+    assert set(db.execute("SELECT TechType, Yield FROM Improvement_TechYieldChanges WHERE ImprovementType='IMPROVEMENT_QUARRY'")) == {('TECH_CONSTRUCTION', 1), ('TECH_CHEMISTRY', 1)}
+    assert db.execute("SELECT ResourceType, Cost FROM Building_ResourceQuantityRequirements WHERE BuildingType='BUILDING_REFINED_STEEL_MILL'").fetchall() == [('RESOURCE_IRON', 1)]
+    bonuses = {r[0] for r in db.execute("SELECT UnitType FROM Unit_ProductionModifierBuildings WHERE BuildingType='BUILDING_REFINED_STEEL_MILL' AND ProductionModifier=15")}
+    expected_units = {r[0] for r in db.execute('SELECT u.Type FROM Units u JOIN Refined_SteelClasses c ON u.Class=c.UnitClass')}
+    assert bonuses == expected_units and 'UNIT_GERMAN_PANZER' in bonuses and 'UNIT_FRIGATE' not in bonuses and 'UNIT_ARTILLERY' not in bonuses
+    groups = db.execute("SELECT MutuallyExclusiveGroup FROM Buildings WHERE Type IN ('BUILDING_REFINED_ACADEMY','BUILDING_REFINED_SALON')").fetchall()
+    assert len(groups)==2 and groups[0]==groups[1] and groups[0][0]>0
+    assert db.execute("SELECT CultureRateModifier FROM Buildings WHERE Type='BUILDING_REFINED_SALON'").fetchone() == (10,)
+    assert db.execute("SELECT Yield FROM Building_YieldChanges WHERE BuildingType='BUILDING_REFINED_PRINTING_CULTURE' AND YieldType='YIELD_CULTURE'").fetchone() == (4,)
+    assert db.execute('SELECT count(*) FROM Refined_Eurekas').fetchone()[0] == 19
+    for lang in ['Language_en_US', 'Language_RU_RU']:
+        for tech, key in db.execute('SELECT TechType, Help FROM Refined_Eurekas'):
+            condition = db.execute(f'SELECT Text FROM {lang} WHERE Tag=?', (key,)).fetchone()
+            assert condition and condition[0]
+            help_text = db.execute(f'SELECT l.Text FROM {lang} l JOIN Technologies t ON l.Tag=t.Help WHERE t.Type=?', (tech,)).fetchone()
+            assert help_text and condition[0] in help_text[0], ('missing eureka help', lang, tech)
+    assert not db.execute('SELECT e.TechType FROM Refined_Eurekas e LEFT JOIN Technologies t ON e.TechType=t.Type WHERE t.Type IS NULL').fetchall()
+    print('PASS: v6 agriculture layout, improvements, exact steel unit list, exclusion and 19 eureka rules')
     print('PASS: SQL, dependencies, positions, text references, hidden effects and resource preservation')
 
 
@@ -280,10 +355,16 @@ def validate_package():
     for action in manifest.findall('./Actions/OnModActivated/UpdateDatabase'):
         assert action.text in declared
     assert [action.text for action in manifest.findall('./Actions/OnModActivated/UpdateDatabase')] == [
-        'Text/Localization.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql']
+        'Text/Localization.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql', 'SQL/Development.sql']
     for entry in manifest.findall('./EntryPoints/EntryPoint'):
         assert entry.attrib['file'] in declared
-    assert {'Text/Localization.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql', 'Lua/Refined.lua'} <= set(declared)
+        if entry.attrib['file'].endswith('.xml'):
+            context = ET.parse(declared[entry.attrib['file']]).getroot()
+            assert context.tag == 'Context'
+            assert declared[entry.attrib['file']].with_suffix('.lua').is_file()
+            ids = {node.attrib['ID'] for node in context.iter() if 'ID' in node.attrib}
+            assert {'Toggle', 'Panel', 'Status', 'Title', 'Close', 'Previous', 'Next', 'Page'} <= ids
+    assert {'Text/Localization.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql', 'Lua/Refined.lua', 'Lua/Development.lua', 'Lua/Development.xml'} <= set(declared)
     print('PASS: package manifest, checksums, database actions and Lua entry point')
 
 
