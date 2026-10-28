@@ -20,7 +20,6 @@ def build():
     shutil.copytree(SOURCE, target)
     shutil.copyfile(ROOT / 'docs/unit-resources.md', target / 'ResourceRules.md')
     shutil.copyfile(ROOT / 'docs/technology-tree.md', target / 'TechnologyTree.md')
-    shutil.copyfile(ROOT / 'docs/eurekas.md', target / 'Eurekas.md')
     root = ET.Element('Mod', id=MOD_ID, version='6')
     props = ET.SubElement(root, 'Properties')
     for key, value in {

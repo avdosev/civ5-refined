@@ -1,0 +1,1845 @@
+{
+  "source": "https://github.com/Eyefyre/civvapi/blob/master/Civ5DebugDatabase.db",
+  "localization_source": "https://github.com/Eyefyre/civvapi/blob/master/v1/ru/tech/tech.json",
+  "note": "Factual projection of BNW technology tables; no Civilopedia or quote text copied. Not a local game test.",
+  "technologies": [
+    {
+      "Type": "TECH_AGRICULTURE",
+      "Cost": 20,
+      "Description": "TXT_KEY_TECH_AGRICULTURE_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_AGRICULTURE_DESC",
+      "Help": "TXT_KEY_TECH_AGRICULTURE_HELP",
+      "Quote": "TXT_KEY_TECH_AGRICULTURE_QUOTE",
+      "Era": "ERA_ANCIENT",
+      "GridX": 0,
+      "GridY": 5,
+      "PortraitIndex": 0,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Земледелие"
+    },
+    {
+      "Type": "TECH_POTTERY",
+      "Cost": 35,
+      "Description": "TXT_KEY_TECH_POTTERY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_POTTERY_DESC",
+      "Help": "TXT_KEY_TECH_POTTERY_HELP",
+      "Quote": "TXT_KEY_TECH_POTTERY_QUOTE",
+      "Era": "ERA_ANCIENT",
+      "GridX": 1,
+      "GridY": 1,
+      "PortraitIndex": 4,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Гончарное дело"
+    },
+    {
+      "Type": "TECH_ANIMAL_HUSBANDRY",
+      "Cost": 35,
+      "Description": "TXT_KEY_TECH_ANIMAL_HUSBANDRY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ANIMAL_HUSBANDRY_DESC",
+      "Help": "TXT_KEY_TECH_ANIMAL_HUSBANDRY_HELP",
+      "Quote": "TXT_KEY_TECH_ANIMAL_HUSBANDRY_QUOTE",
+      "Era": "ERA_ANCIENT",
+      "GridX": 1,
+      "GridY": 4,
+      "PortraitIndex": 2,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Животноводство"
+    },
+    {
+      "Type": "TECH_ARCHERY",
+      "Cost": 35,
+      "Description": "TXT_KEY_TECH_ARCHERY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ARCHERY_DESC",
+      "Help": "TXT_KEY_TECH_ARCHERY_HELP",
+      "Quote": "TXT_KEY_TECH_ARCHERY_QUOTE",
+      "Era": "ERA_ANCIENT",
+      "GridX": 1,
+      "GridY": 6,
+      "PortraitIndex": 7,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Стрельба из лука"
+    },
+    {
+      "Type": "TECH_MINING",
+      "Cost": 35,
+      "Description": "TXT_KEY_TECH_MINING_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_MINING_DESC",
+      "Help": "TXT_KEY_TECH_MINING_HELP",
+      "Quote": "TXT_KEY_TECH_MINING_QUOTE",
+      "Era": "ERA_ANCIENT",
+      "GridX": 1,
+      "GridY": 8,
+      "PortraitIndex": 1,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Добыча руды"
+    },
+    {
+      "Type": "TECH_SAILING",
+      "Cost": 55,
+      "Description": "TXT_KEY_TECH_SAILING_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_SAILING_DESC",
+      "Help": "TXT_KEY_TECH_SAILING_HELP",
+      "Quote": "TXT_KEY_TECH_SAILING_QUOTE",
+      "Era": "ERA_ANCIENT",
+      "GridX": 2,
+      "GridY": 0,
+      "PortraitIndex": 13,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Мореходство"
+    },
+    {
+      "Type": "TECH_CALENDAR",
+      "Cost": 55,
+      "Description": "TXT_KEY_TECH_CALENDAR_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_CALENDAR_DESC",
+      "Help": "TXT_KEY_TECH_CALENDAR_HELP",
+      "Quote": "TXT_KEY_TECH_CALENDAR_QUOTE",
+      "Era": "ERA_ANCIENT",
+      "GridX": 2,
+      "GridY": 1,
+      "PortraitIndex": 9,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Календарь"
+    },
+    {
+      "Type": "TECH_WRITING",
+      "Cost": 55,
+      "Description": "TXT_KEY_TECH_WRITING_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_WRITING_DESC",
+      "Help": "TXT_KEY_TECH_WRITING_HELP",
+      "Quote": "TXT_KEY_TECH_WRITING_QUOTE",
+      "Era": "ERA_ANCIENT",
+      "GridX": 2,
+      "GridY": 2,
+      "PortraitIndex": 8,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Письменность"
+    },
+    {
+      "Type": "TECH_TRAPPING",
+      "Cost": 55,
+      "Description": "TXT_KEY_TECH_TRAPPING_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_TRAPPING_DESC",
+      "Help": "TXT_KEY_TECH_TRAPPING_HELP",
+      "Quote": "TXT_KEY_TECH_TRAPPING_QUOTE",
+      "Era": "ERA_ANCIENT",
+      "GridX": 2,
+      "GridY": 4,
+      "PortraitIndex": 13,
+      "IconAtlas": "TECH_ATLAS_2",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Охота"
+    },
+    {
+      "Type": "TECH_THE_WHEEL",
+      "Cost": 55,
+      "Description": "TXT_KEY_TECH_THE_WHEEL_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_THE_WHEEL_DESC",
+      "Help": "TXT_KEY_TECH_THE_WHEEL_HELP",
+      "Quote": "TXT_KEY_TECH_THE_WHEEL_QUOTE",
+      "Era": "ERA_ANCIENT",
+      "GridX": 2,
+      "GridY": 6,
+      "PortraitIndex": 3,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Колесо"
+    },
+    {
+      "Type": "TECH_MASONRY",
+      "Cost": 55,
+      "Description": "TXT_KEY_TECH_MASONRY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_MASONRY_DESC",
+      "Help": "TXT_KEY_TECH_MASONRY_HELP",
+      "Quote": "TXT_KEY_TECH_MASONRY_QUOTE",
+      "Era": "ERA_ANCIENT",
+      "GridX": 2,
+      "GridY": 8,
+      "PortraitIndex": 6,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Каменная кладка"
+    },
+    {
+      "Type": "TECH_BRONZE_WORKING",
+      "Cost": 55,
+      "Description": "TXT_KEY_TECH_BRONZE_WORKING_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_BRONZE_WORKING_DESC",
+      "Help": "TXT_KEY_TECH_BRONZE_WORKING_HELP",
+      "Quote": "TXT_KEY_TECH_BRONZE_WORKING_QUOTE",
+      "Era": "ERA_ANCIENT",
+      "GridX": 2,
+      "GridY": 9,
+      "PortraitIndex": 5,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Обработка бронзы"
+    },
+    {
+      "Type": "TECH_OPTICS",
+      "Cost": 85,
+      "Description": "TXT_KEY_TECH_OPTICS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_OPTICS_DESC",
+      "Help": "TXT_KEY_TECH_OPTICS_HELP",
+      "Quote": "TXT_KEY_TECH_OPTICS_QUOTE",
+      "Era": "ERA_CLASSICAL",
+      "GridX": 3,
+      "GridY": 0,
+      "PortraitIndex": 18,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Оптика"
+    },
+    {
+      "Type": "TECH_HORSEBACK_RIDING",
+      "Cost": 105,
+      "Description": "TXT_KEY_TECH_HORSEBACK_RIDING_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_HORSEBACK_RIDING_DESC",
+      "Help": "TXT_KEY_TECH_HORSEBACK_RIDING_HELP",
+      "Quote": "TXT_KEY_TECH_HORSEBACK_RIDING_QUOTE",
+      "Era": "ERA_CLASSICAL",
+      "GridX": 3,
+      "GridY": 4,
+      "PortraitIndex": 11,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Верховая езда"
+    },
+    {
+      "Type": "TECH_MATHEMATICS",
+      "Cost": 105,
+      "Description": "TXT_KEY_TECH_MATHEMATICS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_MATHEMATICS_DESC",
+      "Help": "TXT_KEY_TECH_MATHEMATICS_HELP",
+      "Quote": "TXT_KEY_TECH_MATHEMATICS_QUOTE",
+      "Era": "ERA_CLASSICAL",
+      "GridX": 3,
+      "GridY": 6,
+      "PortraitIndex": 12,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Математика"
+    },
+    {
+      "Type": "TECH_CONSTRUCTION",
+      "Cost": 105,
+      "Description": "TXT_KEY_TECH_CONSTRUCTION_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_CONSTRUCTION_DESC",
+      "Help": "TXT_KEY_TECH_CONSTRUCTION_HELP",
+      "Quote": "TXT_KEY_TECH_CONSTRUCTION_QUOTE",
+      "Era": "ERA_CLASSICAL",
+      "GridX": 3,
+      "GridY": 8,
+      "PortraitIndex": 15,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Металлоконструкции"
+    },
+    {
+      "Type": "TECH_PHILOSOPHY",
+      "Cost": 175,
+      "Description": "TXT_KEY_TECH_PHILOSOPHY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_PHILOSOPHY_DESC",
+      "Help": "TXT_KEY_TECH_PHILOSOPHY_HELP",
+      "Quote": "TXT_KEY_TECH_PHILOSOPHY_QUOTE",
+      "Era": "ERA_CLASSICAL",
+      "GridX": 4,
+      "GridY": 1,
+      "PortraitIndex": 16,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Философия"
+    },
+    {
+      "Type": "TECH_DRAMA",
+      "Cost": 175,
+      "Description": "TXT_KEY_TECH_DRAMA_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_DRAMA_DESC",
+      "Help": "TXT_KEY_TECH_DRAMA_HELP",
+      "Quote": "TXT_KEY_TECH_DRAMA_QUOTE",
+      "Era": "ERA_CLASSICAL",
+      "GridX": 4,
+      "GridY": 2,
+      "PortraitIndex": 4,
+      "IconAtlas": "EXPANSION_TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Драма и поэзия"
+    },
+    {
+      "Type": "TECH_CURRENCY",
+      "Cost": 175,
+      "Description": "TXT_KEY_TECH_CURRENCY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_CURRENCY_DESC",
+      "Help": "TXT_KEY_TECH_CURRENCY_HELP",
+      "Quote": "TXT_KEY_TECH_CURRENCY_QUOTE",
+      "Era": "ERA_CLASSICAL",
+      "GridX": 4,
+      "GridY": 6,
+      "PortraitIndex": 17,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Деньги"
+    },
+    {
+      "Type": "TECH_ENGINEERING",
+      "Cost": 175,
+      "Description": "TXT_KEY_TECH_ENGINEERING_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ENGINEERING_DESC",
+      "Help": "TXT_KEY_TECH_ENGINEERING_HELP",
+      "Quote": "TXT_KEY_TECH_ENGINEERING_QUOTE",
+      "Era": "ERA_CLASSICAL",
+      "GridX": 4,
+      "GridY": 7,
+      "PortraitIndex": 0,
+      "IconAtlas": "SHARED_TECH_ATLAS",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Инженерное дело"
+    },
+    {
+      "Type": "TECH_IRON_WORKING",
+      "Cost": 175,
+      "Description": "TXT_KEY_TECH_IRON_WORKING_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_IRON_WORKING_DESC",
+      "Help": "TXT_KEY_TECH_IRON_WORKING_HELP",
+      "Quote": "TXT_KEY_TECH_IRON_WORKING_QUOTE",
+      "Era": "ERA_CLASSICAL",
+      "GridX": 4,
+      "GridY": 9,
+      "PortraitIndex": 10,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Обработка железа"
+    },
+    {
+      "Type": "TECH_THEOLOGY",
+      "Cost": 275,
+      "Description": "TXT_KEY_TECH_THEOLOGY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_THEOLOGY_DESC",
+      "Help": "TXT_KEY_TECH_THEOLOGY_HELP",
+      "Quote": "TXT_KEY_TECH_THEOLOGY_QUOTE",
+      "Era": "ERA_MEDIEVAL",
+      "GridX": 5,
+      "GridY": 1,
+      "PortraitIndex": 21,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Богословие"
+    },
+    {
+      "Type": "TECH_CIVIL_SERVICE",
+      "Cost": 275,
+      "Description": "TXT_KEY_TECH_CIVIL_SERVICE_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_CIVIL_SERVICE_DESC",
+      "Help": "TXT_KEY_TECH_CIVIL_SERVICE_HELP",
+      "Quote": "TXT_KEY_TECH_CIVIL_SERVICE_QUOTE",
+      "Era": "ERA_MEDIEVAL",
+      "GridX": 5,
+      "GridY": 4,
+      "PortraitIndex": 22,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Госслужба"
+    },
+    {
+      "Type": "TECH_GUILDS",
+      "Cost": 275,
+      "Description": "TXT_KEY_TECH_GUILDS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_GUILDS_DESC",
+      "Help": "TXT_KEY_TECH_GUILDS_HELP",
+      "Quote": "TXT_KEY_TECH_GUILDS_QUOTE",
+      "Era": "ERA_MEDIEVAL",
+      "GridX": 5,
+      "GridY": 6,
+      "PortraitIndex": 2,
+      "IconAtlas": "EXPANSION_TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Гильдии"
+    },
+    {
+      "Type": "TECH_METAL_CASTING",
+      "Cost": 275,
+      "Description": "TXT_KEY_TECH_METAL_CASTING_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_METAL_CASTING_DESC",
+      "Help": "TXT_KEY_TECH_METAL_CASTING_HELP",
+      "Quote": "TXT_KEY_TECH_METAL_CASTING_QUOTE",
+      "Era": "ERA_MEDIEVAL",
+      "GridX": 5,
+      "GridY": 8,
+      "PortraitIndex": 14,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Литье"
+    },
+    {
+      "Type": "TECH_COMPASS",
+      "Cost": 375,
+      "Description": "TXT_KEY_TECH_COMPASS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_COMPASS_DESC",
+      "Help": "TXT_KEY_TECH_COMPASS_HELP",
+      "Quote": "TXT_KEY_TECH_COMPASS_QUOTE",
+      "Era": "ERA_MEDIEVAL",
+      "GridX": 6,
+      "GridY": 0,
+      "PortraitIndex": 23,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Компас"
+    },
+    {
+      "Type": "TECH_EDUCATION",
+      "Cost": 485,
+      "Description": "TXT_KEY_TECH_EDUCATION_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_EDUCATION_DESC",
+      "Help": "TXT_KEY_TECH_EDUCATION_HELP",
+      "Quote": "TXT_KEY_TECH_EDUCATION_QUOTE",
+      "Era": "ERA_MEDIEVAL",
+      "GridX": 6,
+      "GridY": 2,
+      "PortraitIndex": 25,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Образование"
+    },
+    {
+      "Type": "TECH_CHIVALRY",
+      "Cost": 485,
+      "Description": "TXT_KEY_TECH_CHIVALRY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_CHIVALRY_DESC",
+      "Help": "TXT_KEY_TECH_CHIVALRY_HELP",
+      "Quote": "TXT_KEY_TECH_CHIVALRY_QUOTE",
+      "Era": "ERA_MEDIEVAL",
+      "GridX": 6,
+      "GridY": 5,
+      "PortraitIndex": 27,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Рыцарство"
+    },
+    {
+      "Type": "TECH_MACHINERY",
+      "Cost": 485,
+      "Description": "TXT_KEY_TECH_MACHINERY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_MACHINERY_DESC",
+      "Help": "TXT_KEY_TECH_MACHINERY_HELP",
+      "Quote": "TXT_KEY_TECH_MACHINERY_QUOTE",
+      "Era": "ERA_MEDIEVAL",
+      "GridX": 6,
+      "GridY": 7,
+      "PortraitIndex": 19,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Машиностроение"
+    },
+    {
+      "Type": "TECH_PHYSICS",
+      "Cost": 485,
+      "Description": "TXT_KEY_TECH_PHYSICS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_PHYSICS_DESC",
+      "Help": "TXT_KEY_TECH_PHYSICS_HELP",
+      "Quote": "TXT_KEY_TECH_PHYSICS_QUOTE",
+      "Era": "ERA_MEDIEVAL",
+      "GridX": 6,
+      "GridY": 8,
+      "PortraitIndex": 24,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Физика"
+    },
+    {
+      "Type": "TECH_STEEL",
+      "Cost": 485,
+      "Description": "TXT_KEY_TECH_STEEL_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_STEEL_DESC",
+      "Help": "TXT_KEY_TECH_STEEL_HELP",
+      "Quote": "TXT_KEY_TECH_STEEL_QUOTE",
+      "Era": "ERA_MEDIEVAL",
+      "GridX": 6,
+      "GridY": 9,
+      "PortraitIndex": 28,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Сталеварение"
+    },
+    {
+      "Type": "TECH_ASTRONOMY",
+      "Cost": 780,
+      "Description": "TXT_KEY_TECH_ASTRONOMY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ASTRONOMY_DESC",
+      "Help": "TXT_KEY_TECH_ASTRONOMY_HELP",
+      "Quote": "TXT_KEY_TECH_ASTRONOMY_QUOTE",
+      "Era": "ERA_RENAISSANCE",
+      "GridX": 7,
+      "GridY": 1,
+      "PortraitIndex": 34,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Астрономия"
+    },
+    {
+      "Type": "TECH_ACOUSTICS",
+      "Cost": 780,
+      "Description": "TXT_KEY_TECH_ACOUSTICS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ACOUSTICS_DESC",
+      "Help": "TXT_KEY_TECH_ACOUSTICS_HELP",
+      "Quote": "TXT_KEY_TECH_ACOUSTICS_QUOTE",
+      "Era": "ERA_RENAISSANCE",
+      "GridX": 7,
+      "GridY": 3,
+      "PortraitIndex": 14,
+      "IconAtlas": "TECH_ATLAS_2",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Акустика"
+    },
+    {
+      "Type": "TECH_BANKING",
+      "Cost": 780,
+      "Description": "TXT_KEY_TECH_BANKING_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_BANKING_DESC",
+      "Help": "TXT_KEY_TECH_BANKING_HELP",
+      "Quote": "TXT_KEY_TECH_BANKING_QUOTE",
+      "Era": "ERA_RENAISSANCE",
+      "GridX": 7,
+      "GridY": 5,
+      "PortraitIndex": 31,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Банковское дело"
+    },
+    {
+      "Type": "TECH_PRINTING_PRESS",
+      "Cost": 780,
+      "Description": "TXT_KEY_TECH_PRINTING_PRESS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_PRINTING_PRESS_DESC",
+      "Help": "TXT_KEY_TECH_PRINTING_PRESS_HELP",
+      "Quote": "TXT_KEY_TECH_PRINTING_PRESS_QUOTE",
+      "Era": "ERA_RENAISSANCE",
+      "GridX": 7,
+      "GridY": 7,
+      "PortraitIndex": 30,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Печатный пресс"
+    },
+    {
+      "Type": "TECH_GUNPOWDER",
+      "Cost": 780,
+      "Description": "TXT_KEY_TECH_GUNPOWDER_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_GUNPOWDER_DESC",
+      "Help": "TXT_KEY_TECH_GUNPOWDER_HELP",
+      "Quote": "TXT_KEY_TECH_GUNPOWDER_QUOTE",
+      "Era": "ERA_RENAISSANCE",
+      "GridX": 7,
+      "GridY": 9,
+      "PortraitIndex": 32,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Порох"
+    },
+    {
+      "Type": "TECH_NAVIGATION",
+      "Cost": 1150,
+      "Description": "TXT_KEY_TECH_NAVIGATION_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_NAVIGATION_DESC",
+      "Help": "TXT_KEY_TECH_NAVIGATION_HELP",
+      "Quote": "TXT_KEY_TECH_NAVIGATION_QUOTE",
+      "Era": "ERA_RENAISSANCE",
+      "GridX": 8,
+      "GridY": 1,
+      "PortraitIndex": 29,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Навигация"
+    },
+    {
+      "Type": "TECH_ARCHITECTURE",
+      "Cost": 1150,
+      "Description": "TXT_KEY_TECH_ARCHITECTURE_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ARCHITECTURE_DESC",
+      "Help": "TXT_KEY_TECH_ARCHITECTURE_HELP",
+      "Quote": "TXT_KEY_TECH_ARCHITECTURE_QUOTE",
+      "Era": "ERA_RENAISSANCE",
+      "GridX": 8,
+      "GridY": 3,
+      "PortraitIndex": 0,
+      "IconAtlas": "EXPANSION_TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Архитектура"
+    },
+    {
+      "Type": "TECH_ECONOMICS",
+      "Cost": 1150,
+      "Description": "TXT_KEY_TECH_ECONOMICS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ECONOMICS_DESC",
+      "Help": "TXT_KEY_TECH_ECONOMICS_HELP",
+      "Quote": "TXT_KEY_TECH_ECONOMICS_QUOTE",
+      "Era": "ERA_RENAISSANCE",
+      "GridX": 8,
+      "GridY": 5,
+      "PortraitIndex": 35,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Экономика"
+    },
+    {
+      "Type": "TECH_METALLURGY",
+      "Cost": 1150,
+      "Description": "TXT_KEY_TECH_METALLURGY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_METALLURGY_DESC",
+      "Help": "TXT_KEY_TECH_METALLURGY_HELP",
+      "Quote": "TXT_KEY_TECH_METALLURGY_QUOTE",
+      "Era": "ERA_RENAISSANCE",
+      "GridX": 8,
+      "GridY": 8,
+      "PortraitIndex": 33,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Металлургия"
+    },
+    {
+      "Type": "TECH_CHEMISTRY",
+      "Cost": 1150,
+      "Description": "TXT_KEY_TECH_CHEMISTRY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_CHEMISTRY_DESC",
+      "Help": "TXT_KEY_TECH_CHEMISTRY_HELP",
+      "Quote": "TXT_KEY_TECH_CHEMISTRY_QUOTE",
+      "Era": "ERA_RENAISSANCE",
+      "GridX": 8,
+      "GridY": 9,
+      "PortraitIndex": 37,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Химия"
+    },
+    {
+      "Type": "TECH_ARCHAEOLOGY",
+      "Cost": 1600,
+      "Description": "TXT_KEY_TECH_ARCHAEOLOGY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ARCHAEOLOGY_DESC",
+      "Help": "TXT_KEY_TECH_ARCHAEOLOGY_HELP",
+      "Quote": "TXT_KEY_TECH_ARCHAEOLOGY_QUOTE",
+      "Era": "ERA_INDUSTRIAL",
+      "GridX": 9,
+      "GridY": 1,
+      "PortraitIndex": 43,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Археология"
+    },
+    {
+      "Type": "TECH_SCIENTIFIC_THEORY",
+      "Cost": 1600,
+      "Description": "TXT_KEY_TECH_SCIENTIFIC_THEORY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_SCIENTIFIC_THEORY_DESC",
+      "Help": "TXT_KEY_TECH_SCIENTIFIC_THEORY_HELP",
+      "Quote": "TXT_KEY_TECH_SCIENTIFIC_THEORY_QUOTE",
+      "Era": "ERA_INDUSTRIAL",
+      "GridX": 9,
+      "GridY": 3,
+      "PortraitIndex": 39,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Научная теория"
+    },
+    {
+      "Type": "TECH_INDUSTRIALIZATION",
+      "Cost": 1600,
+      "Description": "TXT_KEY_TECH_INDUSTRIALIZATION_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_INDUSTRIALIZATION_DESC",
+      "Help": "TXT_KEY_TECH_INDUSTRIALIZATION_HELP",
+      "Quote": "TXT_KEY_TECH_INDUSTRIALIZATION_QUOTE",
+      "Era": "ERA_INDUSTRIAL",
+      "GridX": 9,
+      "GridY": 5,
+      "PortraitIndex": 5,
+      "IconAtlas": "EXPANSION_TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Индустриализация"
+    },
+    {
+      "Type": "TECH_RIFLING",
+      "Cost": 1600,
+      "Description": "TXT_KEY_TECH_RIFLING_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_RIFLING_DESC",
+      "Help": "TXT_KEY_TECH_RIFLING_HELP",
+      "Quote": "TXT_KEY_TECH_RIFLING_QUOTE",
+      "Era": "ERA_INDUSTRIAL",
+      "GridX": 9,
+      "GridY": 6,
+      "PortraitIndex": 40,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Нарезные стволы"
+    },
+    {
+      "Type": "TECH_MILITARY_SCIENCE",
+      "Cost": 1600,
+      "Description": "TXT_KEY_TECH_MILITARY_SCIENCE_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_MILITARY_SCIENCE_DESC",
+      "Help": "TXT_KEY_TECH_MILITARY_SCIENCE_HELP",
+      "Quote": "TXT_KEY_TECH_MILITARY_SCIENCE_QUOTE",
+      "Era": "ERA_INDUSTRIAL",
+      "GridX": 9,
+      "GridY": 8,
+      "PortraitIndex": 36,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Военная наука"
+    },
+    {
+      "Type": "TECH_FERTILIZER",
+      "Cost": 1600,
+      "Description": "TXT_KEY_TECH_FERTILIZER_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_FERTILIZER_DESC",
+      "Help": "TXT_KEY_TECH_FERTILIZER_HELP",
+      "Quote": "TXT_KEY_TECH_FERTILIZER_QUOTE",
+      "Era": "ERA_INDUSTRIAL",
+      "GridX": 9,
+      "GridY": 9,
+      "PortraitIndex": 41,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Удобрения"
+    },
+    {
+      "Type": "TECH_BIOLOGY",
+      "Cost": 2350,
+      "Description": "TXT_KEY_TECH_BIOLOGY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_BIOLOGY_DESC",
+      "Help": "TXT_KEY_TECH_BIOLOGY_HELP",
+      "Quote": "TXT_KEY_TECH_BIOLOGY_QUOTE",
+      "Era": "ERA_INDUSTRIAL",
+      "GridX": 10,
+      "GridY": 1,
+      "PortraitIndex": 38,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Биология"
+    },
+    {
+      "Type": "TECH_ELECTRICITY",
+      "Cost": 2350,
+      "Description": "TXT_KEY_TECH_ELECTRICITY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ELECTRICITY_DESC",
+      "Help": "TXT_KEY_TECH_ELECTRICITY_HELP",
+      "Quote": "TXT_KEY_TECH_ELECTRICITY_QUOTE",
+      "Era": "ERA_INDUSTRIAL",
+      "GridX": 10,
+      "GridY": 2,
+      "PortraitIndex": 46,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Электричество"
+    },
+    {
+      "Type": "TECH_STEAM_POWER",
+      "Cost": 2350,
+      "Description": "TXT_KEY_TECH_STEAM_POWER_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_STEAM_POWER_DESC",
+      "Help": "TXT_KEY_TECH_STEAM_POWER_HELP",
+      "Quote": "TXT_KEY_TECH_STEAM_POWER_QUOTE",
+      "Era": "ERA_INDUSTRIAL",
+      "GridX": 10,
+      "GridY": 5,
+      "PortraitIndex": 42,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Паровой двигатель"
+    },
+    {
+      "Type": "TECH_DYNAMITE",
+      "Cost": 2350,
+      "Description": "TXT_KEY_TECH_DYNAMITE_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_DYNAMITE_DESC",
+      "Help": "TXT_KEY_TECH_DYNAMITE_HELP",
+      "Quote": "TXT_KEY_TECH_DYNAMITE_QUOTE",
+      "Era": "ERA_INDUSTRIAL",
+      "GridX": 10,
+      "GridY": 8,
+      "PortraitIndex": 44,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Динамит"
+    },
+    {
+      "Type": "TECH_REFRIGERATION",
+      "Cost": 3100,
+      "Description": "TXT_KEY_TECH_REFRIGERATION_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_REFRIGERATION_DESC",
+      "Help": "TXT_KEY_TECH_REFRIGERATION_HELP",
+      "Quote": "TXT_KEY_TECH_REFRIGERATION_QUOTE",
+      "Era": "ERA_MODERN",
+      "GridX": 11,
+      "GridY": 1,
+      "PortraitIndex": 50,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Криогеника"
+    },
+    {
+      "Type": "TECH_RADIO",
+      "Cost": 3100,
+      "Description": "TXT_KEY_TECH_RADIO_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_RADIO_DESC",
+      "Help": "TXT_KEY_TECH_RADIO_HELP",
+      "Quote": "TXT_KEY_TECH_RADIO_QUOTE",
+      "Era": "ERA_MODERN",
+      "GridX": 11,
+      "GridY": 2,
+      "PortraitIndex": 55,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Радио"
+    },
+    {
+      "Type": "TECH_REPLACEABLE_PARTS",
+      "Cost": 3100,
+      "Description": "TXT_KEY_TECH_REPLACEABLE_PARTS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_REPLACEABLE_PARTS_DESC",
+      "Help": "TXT_KEY_TECH_REPLACEABLE_PARTS_HELP",
+      "Quote": "TXT_KEY_TECH_REPLACEABLE_PARTS_QUOTE",
+      "Era": "ERA_MODERN",
+      "GridX": 11,
+      "GridY": 3,
+      "PortraitIndex": 49,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Стандартизация"
+    },
+    {
+      "Type": "TECH_FLIGHT",
+      "Cost": 3100,
+      "Description": "TXT_KEY_TECH_FLIGHT_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_FLIGHT_DESC",
+      "Help": "TXT_KEY_TECH_FLIGHT_HELP",
+      "Quote": "TXT_KEY_TECH_FLIGHT_QUOTE",
+      "Era": "ERA_MODERN",
+      "GridX": 11,
+      "GridY": 5,
+      "PortraitIndex": 53,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Авиация"
+    },
+    {
+      "Type": "TECH_RAILROAD",
+      "Cost": 3100,
+      "Description": "TXT_KEY_TECH_RAILROAD_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_RAILROAD_DESC",
+      "Help": "TXT_KEY_TECH_RAILROAD_HELP",
+      "Quote": "TXT_KEY_TECH_RAILROAD_QUOTE",
+      "Era": "ERA_MODERN",
+      "GridX": 11,
+      "GridY": 7,
+      "PortraitIndex": 45,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Железная дорога"
+    },
+    {
+      "Type": "TECH_PLASTIC",
+      "Cost": 4100,
+      "Description": "TXT_KEY_TECH_PLASTICS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_PLASTICS_DESC",
+      "Help": "TXT_KEY_TECH_PLASTICS_HELP",
+      "Quote": "TXT_KEY_TECH_PLASTICS_QUOTE",
+      "Era": "ERA_MODERN",
+      "GridX": 12,
+      "GridY": 2,
+      "PortraitIndex": 58,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Пластмассы"
+    },
+    {
+      "Type": "TECH_ELECTRONICS",
+      "Cost": 4100,
+      "Description": "TXT_KEY_TECH_ELECTRONICS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ELECTRONICS_DESC",
+      "Help": "TXT_KEY_TECH_ELECTRONICS_HELP",
+      "Quote": "TXT_KEY_TECH_ELECTRONICS_QUOTE",
+      "Era": "ERA_MODERN",
+      "GridX": 12,
+      "GridY": 4,
+      "PortraitIndex": 60,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Электроника"
+    },
+    {
+      "Type": "TECH_BALLISTICS",
+      "Cost": 4100,
+      "Description": "TXT_KEY_TECH_BALLISTICS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_BALLISTICS_DESC",
+      "Help": "TXT_KEY_TECH_BALLISTICS_HELP",
+      "Quote": "TXT_KEY_TECH_BALLISTICS_QUOTE",
+      "Era": "ERA_MODERN",
+      "GridX": 12,
+      "GridY": 5,
+      "PortraitIndex": 1,
+      "IconAtlas": "EXPANSION_TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Баллистические ракеты"
+    },
+    {
+      "Type": "TECH_COMBUSTION",
+      "Cost": 4100,
+      "Description": "TXT_KEY_TECH_COMBUSTION_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_COMBUSTION_DESC",
+      "Help": "TXT_KEY_TECH_COMBUSTION_HELP",
+      "Quote": "TXT_KEY_TECH_COMBUSTION_QUOTE",
+      "Era": "ERA_MODERN",
+      "GridX": 12,
+      "GridY": 7,
+      "PortraitIndex": 48,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Двигатель ВС"
+    },
+    {
+      "Type": "TECH_PENICILIN",
+      "Cost": 5100,
+      "Description": "TXT_KEY_TECH_PENICILIN_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_PENICILIN_DESC",
+      "Help": "TXT_KEY_TECH_PENICILIN_HELP",
+      "Quote": "TXT_KEY_TECH_PENICILIN_QUOTE",
+      "Era": "ERA_POSTMODERN",
+      "GridX": 13,
+      "GridY": 1,
+      "PortraitIndex": 12,
+      "IconAtlas": "TECH_ATLAS_2",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Пенициллин"
+    },
+    {
+      "Type": "TECH_ATOMIC_THEORY",
+      "Cost": 5100,
+      "Description": "TXT_KEY_TECH_ATOMIC_THEORY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ATOMIC_THEORY_DESC",
+      "Help": "TXT_KEY_TECH_ATOMIC_THEORY_HELP",
+      "Quote": "TXT_KEY_TECH_ATOMIC_THEORY_QUOTE",
+      "Era": "ERA_POSTMODERN",
+      "GridX": 13,
+      "GridY": 3,
+      "PortraitIndex": 52,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Ядерная физика"
+    },
+    {
+      "Type": "TECH_RADAR",
+      "Cost": 5100,
+      "Description": "TXT_KEY_TECH_RADAR_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_RADAR_DESC",
+      "Help": "TXT_KEY_TECH_RADAR_HELP",
+      "Quote": "TXT_KEY_TECH_RADAR_QUOTE",
+      "Era": "ERA_POSTMODERN",
+      "GridX": 13,
+      "GridY": 5,
+      "PortraitIndex": 57,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Радар"
+    },
+    {
+      "Type": "TECH_COMBINED_ARMS",
+      "Cost": 5100,
+      "Description": "TXT_KEY_TECH_COMBINED_ARMS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_COMBINED_ARMS_DESC",
+      "Help": "TXT_KEY_TECH_COMBINED_ARMS_HELP",
+      "Quote": "TXT_KEY_TECH_COMBINED_ARMS_QUOTE",
+      "Era": "ERA_POSTMODERN",
+      "GridX": 13,
+      "GridY": 7,
+      "PortraitIndex": 3,
+      "IconAtlas": "EXPANSION_TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Общевойсковая бригада"
+    },
+    {
+      "Type": "TECH_ECOLOGY",
+      "Cost": 6400,
+      "Description": "TXT_KEY_TECH_ECOLOGY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ECOLOGY_DESC",
+      "Help": "TXT_KEY_TECH_ECOLOGY_HELP",
+      "Quote": "TXT_KEY_TECH_ECOLOGY_QUOTE",
+      "Era": "ERA_POSTMODERN",
+      "GridX": 14,
+      "GridY": 1,
+      "PortraitIndex": 0,
+      "IconAtlas": "TECH_ATLAS_2",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Экология"
+    },
+    {
+      "Type": "TECH_NUCLEAR_FISSION",
+      "Cost": 6400,
+      "Description": "TXT_KEY_TECH_NUCLEAR_FISSION_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_NUCLEAR_FISSION_DESC",
+      "Help": "TXT_KEY_TECH_NUCLEAR_FISSION_HELP",
+      "Quote": "TXT_KEY_TECH_NUCLEAR_FISSION_QUOTE",
+      "Era": "ERA_POSTMODERN",
+      "GridX": 14,
+      "GridY": 3,
+      "PortraitIndex": 56,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Расщепление ядра"
+    },
+    {
+      "Type": "TECH_ROCKETRY",
+      "Cost": 6400,
+      "Description": "TXT_KEY_TECH_ROCKETRY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ROCKETRY_DESC",
+      "Help": "TXT_KEY_TECH_ROCKETRY_HELP",
+      "Quote": "TXT_KEY_TECH_ROCKETRY_QUOTE",
+      "Era": "ERA_POSTMODERN",
+      "GridX": 14,
+      "GridY": 5,
+      "PortraitIndex": 61,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Ракетостроение"
+    },
+    {
+      "Type": "TECH_COMPUTERS",
+      "Cost": 6400,
+      "Description": "TXT_KEY_TECH_COMPUTERS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_COMPUTERS_DESC",
+      "Help": "TXT_KEY_TECH_COMPUTERS_HELP",
+      "Quote": "TXT_KEY_TECH_COMPUTERS_QUOTE",
+      "Era": "ERA_POSTMODERN",
+      "GridX": 14,
+      "GridY": 7,
+      "PortraitIndex": 1,
+      "IconAtlas": "TECH_ATLAS_2",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Компьютеры"
+    },
+    {
+      "Type": "TECH_TELECOM",
+      "Cost": 7700,
+      "Description": "TXT_KEY_TECH_TELECOM_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_TELECOM_DESC",
+      "Help": "TXT_KEY_TECH_TELECOM_HELP",
+      "Quote": "TXT_KEY_TECH_TELECOM_QUOTE",
+      "Era": "ERA_FUTURE",
+      "GridX": 15,
+      "GridY": 1,
+      "PortraitIndex": 7,
+      "IconAtlas": "EXPANSION_TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Дальняя связь"
+    },
+    {
+      "Type": "TECH_MOBILE_TACTICS",
+      "Cost": 7700,
+      "Description": "TXT_KEY_TECH_MOBILE_TACTICS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_MOBILE_TACTICS_DESC",
+      "Help": "TXT_KEY_TECH_MOBILE_TACTICS_HELP",
+      "Quote": "TXT_KEY_TECH_MOBILE_TACTICS_QUOTE",
+      "Era": "ERA_FUTURE",
+      "GridX": 15,
+      "GridY": 2,
+      "PortraitIndex": 6,
+      "IconAtlas": "EXPANSION_TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Тактика мобильной войны"
+    },
+    {
+      "Type": "TECH_ADVANCED_BALLISTICS",
+      "Cost": 7700,
+      "Description": "TXT_KEY_TECH_ADVANCED_BALLISTICS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ADVANCED_BALLISTICS_DESC",
+      "Help": "TXT_KEY_TECH_ADVANCED_BALLISTICS_HELP",
+      "Quote": "TXT_KEY_TECH_ADVANCED_BALLISTICS_QUOTE",
+      "Era": "ERA_FUTURE",
+      "GridX": 15,
+      "GridY": 4,
+      "PortraitIndex": 11,
+      "IconAtlas": "TECH_ATLAS_2",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Совр. баллистика"
+    },
+    {
+      "Type": "TECH_SATELLITES",
+      "Cost": 7700,
+      "Description": "TXT_KEY_TECH_SATELLITES_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_SATELLITES_DESC",
+      "Help": "TXT_KEY_TECH_SATELLITES_HELP",
+      "Quote": "TXT_KEY_TECH_SATELLITES_QUOTE",
+      "Era": "ERA_FUTURE",
+      "GridX": 15,
+      "GridY": 5,
+      "PortraitIndex": 2,
+      "IconAtlas": "TECH_ATLAS_2",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Спутники"
+    },
+    {
+      "Type": "TECH_ROBOTICS",
+      "Cost": 7700,
+      "Description": "TXT_KEY_TECH_ROBOTICS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_ROBOTICS_DESC",
+      "Help": "TXT_KEY_TECH_ROBOTICS_HELP",
+      "Quote": "TXT_KEY_TECH_ROBOTICS_QUOTE",
+      "Era": "ERA_FUTURE",
+      "GridX": 15,
+      "GridY": 6,
+      "PortraitIndex": 5,
+      "IconAtlas": "TECH_ATLAS_2",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Роботехника"
+    },
+    {
+      "Type": "TECH_LASERS",
+      "Cost": 7700,
+      "Description": "TXT_KEY_TECH_LASERS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_LASERS_DESC",
+      "Help": "TXT_KEY_TECH_LASERS_HELP",
+      "Quote": "TXT_KEY_TECH_LASERS_QUOTE",
+      "Era": "ERA_FUTURE",
+      "GridX": 15,
+      "GridY": 7,
+      "PortraitIndex": 62,
+      "IconAtlas": "TECH_ATLAS_1",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Лазер"
+    },
+    {
+      "Type": "TECH_INTERNET",
+      "Cost": 8800,
+      "Description": "TXT_KEY_TECH_INTERNET_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_INTERNET_DESC",
+      "Help": "TXT_KEY_TECH_INTERNET_HELP",
+      "Quote": "TXT_KEY_TECH_INTERNET_QUOTE",
+      "Era": "ERA_FUTURE",
+      "GridX": 16,
+      "GridY": 0,
+      "PortraitIndex": 0,
+      "IconAtlas": "EXPANSION2_TECH_ATLAS",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Интернет"
+    },
+    {
+      "Type": "TECH_GLOBALIZATION",
+      "Cost": 8800,
+      "Description": "TXT_KEY_TECH_GLOBALIZATION_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_GLOBALIZATION_DESC",
+      "Help": "TXT_KEY_TECH_GLOBALIZATION_HELP",
+      "Quote": "TXT_KEY_TECH_GLOBALIZATION_QUOTE",
+      "Era": "ERA_FUTURE",
+      "GridX": 16,
+      "GridY": 1,
+      "PortraitIndex": 4,
+      "IconAtlas": "TECH_ATLAS_2",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Глобализация"
+    },
+    {
+      "Type": "TECH_PARTICLE_PHYSICS",
+      "Cost": 8800,
+      "Description": "TXT_KEY_TECH_PARTICLE_PHYSICS_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_PARTICLE_PHYSICS_DESC",
+      "Help": "TXT_KEY_TECH_PARTICLE_PHYSICS_HELP",
+      "Quote": "TXT_KEY_TECH_PARTICLE_PHYSICS_QUOTE",
+      "Era": "ERA_FUTURE",
+      "GridX": 16,
+      "GridY": 2,
+      "PortraitIndex": 7,
+      "IconAtlas": "TECH_ATLAS_2",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Физика элемент. частиц"
+    },
+    {
+      "Type": "TECH_NUCLEAR_FUSION",
+      "Cost": 8800,
+      "Description": "TXT_KEY_TECH_NUCLEAR_FUSION_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_NUCLEAR_FUSION_DESC",
+      "Help": "TXT_KEY_TECH_NUCLEAR_FUSION_HELP",
+      "Quote": "TXT_KEY_TECH_NUCLEAR_FUSION_QUOTE",
+      "Era": "ERA_FUTURE",
+      "GridX": 16,
+      "GridY": 5,
+      "PortraitIndex": 9,
+      "IconAtlas": "TECH_ATLAS_2",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Ядерный синтез"
+    },
+    {
+      "Type": "TECH_NANOTECHNOLOGY",
+      "Cost": 8800,
+      "Description": "TXT_KEY_TECH_NANOTECHNOLOGY_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_NANOTECHNOLOGY_DESC",
+      "Help": "TXT_KEY_TECH_NANOTECHNOLOGY_HELP",
+      "Quote": "TXT_KEY_TECH_NANOTECHNOLOGY_QUOTE",
+      "Era": "ERA_FUTURE",
+      "GridX": 16,
+      "GridY": 6,
+      "PortraitIndex": 8,
+      "IconAtlas": "TECH_ATLAS_2",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Нанотехнология"
+    },
+    {
+      "Type": "TECH_STEALTH",
+      "Cost": 8800,
+      "Description": "TXT_KEY_TECH_STEALTH_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_STEALTH_DESC",
+      "Help": "TXT_KEY_TECH_STEALTH_HELP",
+      "Quote": "TXT_KEY_TECH_STEALTH_QUOTE",
+      "Era": "ERA_FUTURE",
+      "GridX": 16,
+      "GridY": 7,
+      "PortraitIndex": 3,
+      "IconAtlas": "TECH_ATLAS_2",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Скрыт. перемещ."
+    },
+    {
+      "Type": "TECH_FUTURE_TECH",
+      "Cost": 9500,
+      "Description": "TXT_KEY_TECH_FUTURE_TECH_TITLE",
+      "Civilopedia": "TXT_KEY_TECH_FUTURE_TECH_DESC",
+      "Help": "TXT_KEY_TECH_FUTURE_TECH_HELP",
+      "Quote": "TXT_KEY_TECH_FUTURE_TECH_QUOTE",
+      "Era": "ERA_FUTURE",
+      "GridX": 17,
+      "GridY": 4,
+      "PortraitIndex": 10,
+      "IconAtlas": "TECH_ATLAS_2",
+      "Trade": 1,
+      "ScenarioTechButton": -1,
+      "name": "Технология будущего"
+    }
+  ],
+  "edges": [
+    [
+      "TECH_ACOUSTICS",
+      "TECH_ARCHITECTURE"
+    ],
+    [
+      "TECH_ADVANCED_BALLISTICS",
+      "TECH_NUCLEAR_FUSION"
+    ],
+    [
+      "TECH_ADVANCED_BALLISTICS",
+      "TECH_PARTICLE_PHYSICS"
+    ],
+    [
+      "TECH_AGRICULTURE",
+      "TECH_ANIMAL_HUSBANDRY"
+    ],
+    [
+      "TECH_AGRICULTURE",
+      "TECH_ARCHERY"
+    ],
+    [
+      "TECH_AGRICULTURE",
+      "TECH_MINING"
+    ],
+    [
+      "TECH_AGRICULTURE",
+      "TECH_POTTERY"
+    ],
+    [
+      "TECH_ANIMAL_HUSBANDRY",
+      "TECH_THE_WHEEL"
+    ],
+    [
+      "TECH_ANIMAL_HUSBANDRY",
+      "TECH_TRAPPING"
+    ],
+    [
+      "TECH_ARCHAEOLOGY",
+      "TECH_BIOLOGY"
+    ],
+    [
+      "TECH_ARCHERY",
+      "TECH_THE_WHEEL"
+    ],
+    [
+      "TECH_ARCHITECTURE",
+      "TECH_ARCHAEOLOGY"
+    ],
+    [
+      "TECH_ARCHITECTURE",
+      "TECH_SCIENTIFIC_THEORY"
+    ],
+    [
+      "TECH_ASTRONOMY",
+      "TECH_NAVIGATION"
+    ],
+    [
+      "TECH_ATOMIC_THEORY",
+      "TECH_ECOLOGY"
+    ],
+    [
+      "TECH_ATOMIC_THEORY",
+      "TECH_NUCLEAR_FISSION"
+    ],
+    [
+      "TECH_BALLISTICS",
+      "TECH_COMBINED_ARMS"
+    ],
+    [
+      "TECH_BALLISTICS",
+      "TECH_RADAR"
+    ],
+    [
+      "TECH_BANKING",
+      "TECH_ARCHITECTURE"
+    ],
+    [
+      "TECH_BANKING",
+      "TECH_ECONOMICS"
+    ],
+    [
+      "TECH_BIOLOGY",
+      "TECH_REFRIGERATION"
+    ],
+    [
+      "TECH_BRONZE_WORKING",
+      "TECH_IRON_WORKING"
+    ],
+    [
+      "TECH_CALENDAR",
+      "TECH_PHILOSOPHY"
+    ],
+    [
+      "TECH_CHEMISTRY",
+      "TECH_FERTILIZER"
+    ],
+    [
+      "TECH_CHEMISTRY",
+      "TECH_MILITARY_SCIENCE"
+    ],
+    [
+      "TECH_CHIVALRY",
+      "TECH_BANKING"
+    ],
+    [
+      "TECH_CHIVALRY",
+      "TECH_PRINTING_PRESS"
+    ],
+    [
+      "TECH_CIVIL_SERVICE",
+      "TECH_CHIVALRY"
+    ],
+    [
+      "TECH_CIVIL_SERVICE",
+      "TECH_EDUCATION"
+    ],
+    [
+      "TECH_COMBINED_ARMS",
+      "TECH_COMPUTERS"
+    ],
+    [
+      "TECH_COMBUSTION",
+      "TECH_COMBINED_ARMS"
+    ],
+    [
+      "TECH_COMPASS",
+      "TECH_ASTRONOMY"
+    ],
+    [
+      "TECH_COMPUTERS",
+      "TECH_LASERS"
+    ],
+    [
+      "TECH_COMPUTERS",
+      "TECH_ROBOTICS"
+    ],
+    [
+      "TECH_CONSTRUCTION",
+      "TECH_ENGINEERING"
+    ],
+    [
+      "TECH_CURRENCY",
+      "TECH_CIVIL_SERVICE"
+    ],
+    [
+      "TECH_CURRENCY",
+      "TECH_GUILDS"
+    ],
+    [
+      "TECH_DRAMA",
+      "TECH_CIVIL_SERVICE"
+    ],
+    [
+      "TECH_DRAMA",
+      "TECH_THEOLOGY"
+    ],
+    [
+      "TECH_DYNAMITE",
+      "TECH_RAILROAD"
+    ],
+    [
+      "TECH_ECOLOGY",
+      "TECH_MOBILE_TACTICS"
+    ],
+    [
+      "TECH_ECOLOGY",
+      "TECH_TELECOM"
+    ],
+    [
+      "TECH_ECONOMICS",
+      "TECH_INDUSTRIALIZATION"
+    ],
+    [
+      "TECH_ECONOMICS",
+      "TECH_RIFLING"
+    ],
+    [
+      "TECH_ECONOMICS",
+      "TECH_SCIENTIFIC_THEORY"
+    ],
+    [
+      "TECH_EDUCATION",
+      "TECH_ACOUSTICS"
+    ],
+    [
+      "TECH_EDUCATION",
+      "TECH_ASTRONOMY"
+    ],
+    [
+      "TECH_EDUCATION",
+      "TECH_BANKING"
+    ],
+    [
+      "TECH_ELECTRICITY",
+      "TECH_RADIO"
+    ],
+    [
+      "TECH_ELECTRICITY",
+      "TECH_REFRIGERATION"
+    ],
+    [
+      "TECH_ELECTRICITY",
+      "TECH_REPLACEABLE_PARTS"
+    ],
+    [
+      "TECH_ELECTRONICS",
+      "TECH_ATOMIC_THEORY"
+    ],
+    [
+      "TECH_ELECTRONICS",
+      "TECH_RADAR"
+    ],
+    [
+      "TECH_ENGINEERING",
+      "TECH_MACHINERY"
+    ],
+    [
+      "TECH_ENGINEERING",
+      "TECH_METAL_CASTING"
+    ],
+    [
+      "TECH_FERTILIZER",
+      "TECH_DYNAMITE"
+    ],
+    [
+      "TECH_FLIGHT",
+      "TECH_BALLISTICS"
+    ],
+    [
+      "TECH_FLIGHT",
+      "TECH_ELECTRONICS"
+    ],
+    [
+      "TECH_GLOBALIZATION",
+      "TECH_FUTURE_TECH"
+    ],
+    [
+      "TECH_GUILDS",
+      "TECH_CHIVALRY"
+    ],
+    [
+      "TECH_GUILDS",
+      "TECH_MACHINERY"
+    ],
+    [
+      "TECH_GUNPOWDER",
+      "TECH_CHEMISTRY"
+    ],
+    [
+      "TECH_GUNPOWDER",
+      "TECH_METALLURGY"
+    ],
+    [
+      "TECH_HORSEBACK_RIDING",
+      "TECH_CIVIL_SERVICE"
+    ],
+    [
+      "TECH_INDUSTRIALIZATION",
+      "TECH_STEAM_POWER"
+    ],
+    [
+      "TECH_INTERNET",
+      "TECH_FUTURE_TECH"
+    ],
+    [
+      "TECH_IRON_WORKING",
+      "TECH_METAL_CASTING"
+    ],
+    [
+      "TECH_LASERS",
+      "TECH_STEALTH"
+    ],
+    [
+      "TECH_MACHINERY",
+      "TECH_PRINTING_PRESS"
+    ],
+    [
+      "TECH_MASONRY",
+      "TECH_CONSTRUCTION"
+    ],
+    [
+      "TECH_MATHEMATICS",
+      "TECH_CURRENCY"
+    ],
+    [
+      "TECH_MATHEMATICS",
+      "TECH_ENGINEERING"
+    ],
+    [
+      "TECH_METALLURGY",
+      "TECH_MILITARY_SCIENCE"
+    ],
+    [
+      "TECH_METALLURGY",
+      "TECH_RIFLING"
+    ],
+    [
+      "TECH_METAL_CASTING",
+      "TECH_PHYSICS"
+    ],
+    [
+      "TECH_METAL_CASTING",
+      "TECH_STEEL"
+    ],
+    [
+      "TECH_MILITARY_SCIENCE",
+      "TECH_DYNAMITE"
+    ],
+    [
+      "TECH_MINING",
+      "TECH_BRONZE_WORKING"
+    ],
+    [
+      "TECH_MINING",
+      "TECH_MASONRY"
+    ],
+    [
+      "TECH_MOBILE_TACTICS",
+      "TECH_PARTICLE_PHYSICS"
+    ],
+    [
+      "TECH_NANOTECHNOLOGY",
+      "TECH_FUTURE_TECH"
+    ],
+    [
+      "TECH_NAVIGATION",
+      "TECH_ARCHAEOLOGY"
+    ],
+    [
+      "TECH_NUCLEAR_FISSION",
+      "TECH_ADVANCED_BALLISTICS"
+    ],
+    [
+      "TECH_NUCLEAR_FISSION",
+      "TECH_MOBILE_TACTICS"
+    ],
+    [
+      "TECH_NUCLEAR_FUSION",
+      "TECH_FUTURE_TECH"
+    ],
+    [
+      "TECH_OPTICS",
+      "TECH_COMPASS"
+    ],
+    [
+      "TECH_PARTICLE_PHYSICS",
+      "TECH_FUTURE_TECH"
+    ],
+    [
+      "TECH_PENICILIN",
+      "TECH_ECOLOGY"
+    ],
+    [
+      "TECH_PHILOSOPHY",
+      "TECH_THEOLOGY"
+    ],
+    [
+      "TECH_PHYSICS",
+      "TECH_GUNPOWDER"
+    ],
+    [
+      "TECH_PHYSICS",
+      "TECH_PRINTING_PRESS"
+    ],
+    [
+      "TECH_PLASTIC",
+      "TECH_ATOMIC_THEORY"
+    ],
+    [
+      "TECH_PLASTIC",
+      "TECH_PENICILIN"
+    ],
+    [
+      "TECH_POTTERY",
+      "TECH_CALENDAR"
+    ],
+    [
+      "TECH_POTTERY",
+      "TECH_SAILING"
+    ],
+    [
+      "TECH_POTTERY",
+      "TECH_WRITING"
+    ],
+    [
+      "TECH_PRINTING_PRESS",
+      "TECH_ECONOMICS"
+    ],
+    [
+      "TECH_PRINTING_PRESS",
+      "TECH_METALLURGY"
+    ],
+    [
+      "TECH_RADAR",
+      "TECH_COMPUTERS"
+    ],
+    [
+      "TECH_RADAR",
+      "TECH_NUCLEAR_FISSION"
+    ],
+    [
+      "TECH_RADAR",
+      "TECH_ROCKETRY"
+    ],
+    [
+      "TECH_RADIO",
+      "TECH_PLASTIC"
+    ],
+    [
+      "TECH_RAILROAD",
+      "TECH_BALLISTICS"
+    ],
+    [
+      "TECH_RAILROAD",
+      "TECH_COMBUSTION"
+    ],
+    [
+      "TECH_REFRIGERATION",
+      "TECH_PENICILIN"
+    ],
+    [
+      "TECH_REPLACEABLE_PARTS",
+      "TECH_ELECTRONICS"
+    ],
+    [
+      "TECH_REPLACEABLE_PARTS",
+      "TECH_PLASTIC"
+    ],
+    [
+      "TECH_RIFLING",
+      "TECH_STEAM_POWER"
+    ],
+    [
+      "TECH_ROBOTICS",
+      "TECH_NANOTECHNOLOGY"
+    ],
+    [
+      "TECH_ROBOTICS",
+      "TECH_NUCLEAR_FUSION"
+    ],
+    [
+      "TECH_ROBOTICS",
+      "TECH_STEALTH"
+    ],
+    [
+      "TECH_ROCKETRY",
+      "TECH_ADVANCED_BALLISTICS"
+    ],
+    [
+      "TECH_ROCKETRY",
+      "TECH_ROBOTICS"
+    ],
+    [
+      "TECH_ROCKETRY",
+      "TECH_SATELLITES"
+    ],
+    [
+      "TECH_SAILING",
+      "TECH_OPTICS"
+    ],
+    [
+      "TECH_SATELLITES",
+      "TECH_NUCLEAR_FUSION"
+    ],
+    [
+      "TECH_SCIENTIFIC_THEORY",
+      "TECH_BIOLOGY"
+    ],
+    [
+      "TECH_SCIENTIFIC_THEORY",
+      "TECH_ELECTRICITY"
+    ],
+    [
+      "TECH_SCIENTIFIC_THEORY",
+      "TECH_STEAM_POWER"
+    ],
+    [
+      "TECH_STEALTH",
+      "TECH_FUTURE_TECH"
+    ],
+    [
+      "TECH_STEAM_POWER",
+      "TECH_FLIGHT"
+    ],
+    [
+      "TECH_STEAM_POWER",
+      "TECH_RAILROAD"
+    ],
+    [
+      "TECH_STEAM_POWER",
+      "TECH_REPLACEABLE_PARTS"
+    ],
+    [
+      "TECH_STEEL",
+      "TECH_GUNPOWDER"
+    ],
+    [
+      "TECH_TELECOM",
+      "TECH_GLOBALIZATION"
+    ],
+    [
+      "TECH_TELECOM",
+      "TECH_INTERNET"
+    ],
+    [
+      "TECH_TELECOM",
+      "TECH_PARTICLE_PHYSICS"
+    ],
+    [
+      "TECH_THEOLOGY",
+      "TECH_COMPASS"
+    ],
+    [
+      "TECH_THEOLOGY",
+      "TECH_EDUCATION"
+    ],
+    [
+      "TECH_THE_WHEEL",
+      "TECH_CONSTRUCTION"
+    ],
+    [
+      "TECH_THE_WHEEL",
+      "TECH_HORSEBACK_RIDING"
+    ],
+    [
+      "TECH_THE_WHEEL",
+      "TECH_MATHEMATICS"
+    ],
+    [
+      "TECH_TRAPPING",
+      "TECH_HORSEBACK_RIDING"
+    ],
+    [
+      "TECH_WRITING",
+      "TECH_DRAMA"
+    ],
+    [
+      "TECH_WRITING",
+      "TECH_PHILOSOPHY"
+    ]
+  ]
+}

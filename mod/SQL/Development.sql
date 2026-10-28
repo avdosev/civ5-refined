@@ -126,18 +126,10 @@ INSERT INTO Refined_Eurekas VALUES ('TECH_NUCLEAR_FISSION', 'mineUranium', 1, 'T
 INSERT INTO Refined_Eurekas VALUES ('TECH_COMPUTERS', 'BUILDINGCLASS_LABORATORY', 2, 'TXT_KEY_REFINED_EUREKA_COMPUTERS');
 INSERT INTO Refined_Eurekas VALUES ('TECH_REFINED_NETWORKS', 'BUILDINGCLASS_REFINED_DATA_CENTER', 2, 'TXT_KEY_REFINED_EUREKA_REFINED_NETWORKS');
 INSERT INTO Refined_Eurekas VALUES ('TECH_REFINED_AUTOMATION', 'BUILDINGCLASS_REFINED_STEEL_MILL', 1, 'TXT_KEY_REFINED_EUREKA_REFINED_AUTOMATION');
-UPDATE Language_en_US SET Text = Text || '[NEWLINE][NEWLINE]Eureka (25%): ' ||
- (SELECT l.Text FROM Refined_Eurekas e JOIN Technologies t ON t.Type=e.TechType
- JOIN Language_en_US l ON l.Tag=e.Help WHERE t.Help=Language_en_US.Tag)
-WHERE Tag IN (SELECT t.Help FROM Technologies t JOIN Refined_Eurekas e ON e.TechType=t.Type);
-UPDATE Language_RU_RU SET Text = Text || '[NEWLINE][NEWLINE]Эврика (25%): ' ||
- (SELECT l.Text FROM Refined_Eurekas e JOIN Technologies t ON t.Type=e.TechType
- JOIN Language_RU_RU l ON l.Tag=e.Help WHERE t.Help=Language_RU_RU.Tag)
-WHERE Tag IN (SELECT t.Help FROM Technologies t JOIN Refined_Eurekas e ON e.TechType=t.Type);
 UPDATE Language_en_US SET Text=Text || '[NEWLINE][NEWLINE]Refined: +1 Food on Fish tiles with unpillaged Fishing Boats.' WHERE Tag=(SELECT Help FROM Technologies WHERE Type='TECH_REFRIGERATION');
 UPDATE Language_RU_RU SET Text=Text || '[NEWLINE][NEWLINE]Refined: +1 пищи на клетках рыбы с неразграбленными рыбацкими лодками.' WHERE Tag=(SELECT Help FROM Technologies WHERE Type='TECH_REFRIGERATION');
 UPDATE Language_en_US SET Text=Text || '[NEWLINE][NEWLINE]Refined: Libraries and their unique replacements provide +4 Culture.' WHERE Tag=(SELECT Help FROM Technologies WHERE Type='TECH_PRINTING_PRESS');
 UPDATE Language_RU_RU SET Text=Text || '[NEWLINE][NEWLINE]Refined: библиотеки и их уникальные замены дают +4 культуры.' WHERE Tag=(SELECT Help FROM Technologies WHERE Type='TECH_PRINTING_PRESS');
--- Keep stock ability tooltips in sync after appending eureka help.
+-- Keep stock ability tooltips in sync with technology help.
 UPDATE Language_en_US SET Text=(SELECT Text FROM Language_en_US WHERE Tag='TXT_KEY_REFINED_AUTOMATION_HELP') WHERE Tag='TXT_KEY_SCENARIO_TECH_BUTTON_3';
 UPDATE Language_RU_RU SET Text=(SELECT Text FROM Language_RU_RU WHERE Tag='TXT_KEY_REFINED_AUTOMATION_HELP') WHERE Tag='TXT_KEY_SCENARIO_TECH_BUTTON_3';

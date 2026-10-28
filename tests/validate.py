@@ -338,7 +338,8 @@ def validate_database(db):
             condition = db.execute(f'SELECT Text FROM {lang} WHERE Tag=?', (key,)).fetchone()
             assert condition and condition[0]
             help_text = db.execute(f'SELECT l.Text FROM {lang} l JOIN Technologies t ON l.Tag=t.Help WHERE t.Type=?', (tech,)).fetchone()
-            assert help_text and condition[0] in help_text[0], ('missing eureka help', lang, tech)
+            assert help_text and condition[0] not in help_text[0], ('revealed eureka condition', lang, tech)
+            assert db.execute(f'SELECT Text FROM {lang} WHERE Tag=?', ('TXT_KEY_REFINED_EUREKA_FLAVOR_' + tech,)).fetchone(), ('missing eureka flavor', lang, tech)
     assert not db.execute('SELECT e.TechType FROM Refined_Eurekas e LEFT JOIN Technologies t ON e.TechType=t.Type WHERE t.Type IS NULL').fetchall()
     print('PASS: v6 agriculture layout, improvements, exact steel unit list, exclusion and 19 eureka rules')
     print('PASS: SQL, dependencies, positions, text references, hidden effects and resource preservation')
@@ -363,7 +364,7 @@ def validate_package():
             assert context.tag == 'Context'
             assert declared[entry.attrib['file']].with_suffix('.lua').is_file()
             ids = {node.attrib['ID'] for node in context.iter() if 'ID' in node.attrib}
-            assert {'Toggle', 'Panel', 'Status', 'Title', 'Close', 'Previous', 'Next', 'Page'} <= ids
+            assert not ids, 'gameplay addin must not expose eureka controls'
     assert {'Text/Localization.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql', 'Lua/Refined.lua', 'Lua/Development.lua', 'Lua/Development.xml'} <= set(declared)
     print('PASS: package manifest, checksums, database actions and Lua entry point')
 

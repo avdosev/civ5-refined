@@ -1,4 +1,4 @@
--- v6 single-player BNW: tile yields, persistent team eurekas and a small status panel.
+-- v6 single-player BNW: tile yields, persistent team eurekas and achievement messages.
 -- Save keys use stable Type strings, never database numeric IDs.
 local save = Modding.OpenSaveData()
 local saved = {}
@@ -30,9 +30,9 @@ local refrigeration = id('TECH_REFRIGERATION')
 local rules = {}
 for row in GameInfo.Refined_Eurekas() do
     rules[#rules + 1] = {TechType = row.TechType, Rule = row.Rule,
-        Threshold = row.Threshold, Help = row.Help, techID = id(row.TechType)}
+        Threshold = row.Threshold, techID = id(row.TechType)}
 end
--- Stable order for deterministic chain awards and panel pagination.
+-- Stable order for deterministic chain awards.
 table.sort(rules, function(a, b) return a.techID < b.techID end)
 local buildingClasses = {}
 for row in GameInfo.Buildings() do buildingClasses[row.ID] = row.BuildingClass end
@@ -153,7 +153,6 @@ local function costTimes100(player, techID, teamTechs)
 end
 
 local syncing, pending = false, false
-local refreshPanel
 local function syncAll()
     if syncing then return end
     syncing = true
@@ -170,8 +169,6 @@ local function syncAll()
                 if not team:IsHasTech(rule.techID) and not get(k .. '.achieved') and
                    (counts[rule.Rule] or 0) >= rule.Threshold then
                     put(k .. '.achieved', 1)
-                    notify(playerID, 'TXT_KEY_REFINED_EUREKA_READY',
-                           Locale.ConvertTextKey(GameInfo.Technologies[rule.techID].Description))
                 end
             end
         end
@@ -198,15 +195,33 @@ local function syncAll()
                         put(k .. '.awarded', 1)
                         tt:SetResearchProgressTimes100(rule.techID, old + amount, playerID)
                         notify(playerID, 'TXT_KEY_REFINED_EUREKA_NOTICE',
-                               Locale.ConvertTextKey(GameInfo.Technologies[rule.techID].Description), amount / 100)
+                               Locale.ConvertTextKey(GameInfo.Technologies[rule.techID].Description), amount / 100,
+                               Locale.ConvertTextKey('TXT_KEY_REFINED_EUREKA_FLAVOR_' .. rule.TechType))
                         changed = true
                     end
                 end
             end
         end
     end
+    -- Announce pending breakthroughs only after all immediately available grants.
+    -- This avoids two messages when the achievement and award happen together.
+    for playerID = 0, GameDefines.MAX_CIV_PLAYERS - 1 do
+        local player = Players[playerID]
+        if activePlayer(player) then
+            local teamID = player:GetTeam()
+            for _, rule in ipairs(rules) do
+                local k = key(teamID, rule.TechType)
+                if get(k .. '.achieved') and not get(k .. '.awarded') and
+                   not get(k .. '.notified') and not Teams[teamID]:IsHasTech(rule.techID) then
+                    put(k .. '.notified', 1)
+                    notify(playerID, 'TXT_KEY_REFINED_EUREKA_READY',
+                           Locale.ConvertTextKey(GameInfo.Technologies[rule.techID].Description),
+                           Locale.ConvertTextKey('TXT_KEY_REFINED_EUREKA_FLAVOR_' .. rule.TechType))
+                end
+            end
+        end
+    end
     syncing = false
-    if refreshPanel then refreshPanel() end
 end
 local function markDirty() if not syncing then pending = true end end
 
@@ -220,7 +235,12 @@ local function rememberGreatPerson(playerID, unitID)
     local class = GameInfo.Units[unit:GetUnitType()].Class
     local target = class == 'UNITCLASS_WRITER' and 'TECH_PRINTING_PRESS' or
                    class == 'UNITCLASS_SCIENTIST' and 'TECH_SCIENTIFIC_THEORY'
-    if target then put(key(player:GetTeam(), target) .. '.achieved', 1) end
+    if target then
+        local k = key(player:GetTeam(), target) .. '.achieved'
+        if not Teams[player:GetTeam()]:IsHasTech(id(target)) and not get(k) then
+            put(k, 1)
+        end
+    end
     markDirty()
 end
 GameEvents.UnitSetXY.Add(rememberGreatPerson)
@@ -235,46 +255,6 @@ Events.SerialEventImprovementDestroyed.Add(markDirty)
 Events.SerialEventHexCultureChanged.Add(markDirty)
 Events.SequenceGameInitComplete.Add(syncAll)
 
--- Native UI addin: four short pages, no replacement of the stock tech tree.
-local page, pageSize = 1, 5
-if Controls and Controls.Toggle then
-    refreshPanel = function()
-        local playerID = Game.GetActivePlayer()
-        local player = Players[playerID]
-        if not player then return end
-        local team = Teams[player:GetTeam()]
-        local lines = {}
-        for index = (page - 1) * pageSize + 1, math.min(page * pageSize, #rules) do
-            local rule = rules[index]
-            local k = key(player:GetTeam(), rule.TechType)
-            local status = 'LOCKED'
-            if get(k .. '.awarded') then status = 'AWARDED'
-            elseif team:IsHasTech(rule.techID) then status = 'RESEARCHED'
-            elseif get(k .. '.achieved') then status = 'PENDING' end
-            lines[#lines + 1] = '[COLOR_YELLOW]' ..
-                Locale.ConvertTextKey(GameInfo.Technologies[rule.techID].Description) .. '[ENDCOLOR][NEWLINE]' ..
-                Locale.ConvertTextKey(rule.Help) .. '[NEWLINE]' ..
-                Locale.ConvertTextKey('TXT_KEY_REFINED_EUREKA_' .. status)
-        end
-        Controls.Status:SetText(table.concat(lines, '[NEWLINE][NEWLINE]'))
-        Controls.Page:SetText(page .. ' / ' .. math.ceil(#rules / pageSize))
-    end
-    Controls.Toggle:SetText(Locale.ConvertTextKey('TXT_KEY_REFINED_EUREKAS'))
-    Controls.Toggle:SetToolTipString(Locale.ConvertTextKey('TXT_KEY_REFINED_EUREKA_OPEN'))
-    Controls.Title:SetText(Locale.ConvertTextKey('TXT_KEY_REFINED_EUREKAS') .. ' — 25%')
-    Controls.Toggle:RegisterCallback(Mouse.eLClick, function()
-        syncAll()
-        Controls.Panel:SetHide(not Controls.Panel:IsHidden())
-    end)
-    Controls.Close:RegisterCallback(Mouse.eLClick, function() Controls.Panel:SetHide(true) end)
-    Controls.Previous:RegisterCallback(Mouse.eLClick, function()
-        page = math.max(1, page - 1); refreshPanel()
-    end)
-    Controls.Next:RegisterCallback(Mouse.eLClick, function()
-        page = math.min(math.ceil(#rules / pageSize), page + 1); refreshPanel()
-    end)
-    Events.GameplaySetActivePlayer.Add(function() Controls.Panel:SetHide(true); refreshPanel() end)
-end
 -- Coalesce dirty UI events; never rescan the map once for every city carrier write.
 local elapsed = 0
 ContextPtr:SetUpdate(function(delta)

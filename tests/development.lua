@@ -168,7 +168,10 @@ GameInfo.Buildings=collection(data.Buildings)
 Players[0].cities={city(0,{'BUILDING_TEST_WORKSHOP'}),city(1,{'BUILDING_TEST_WORKSHOP'})}
 resetEvents();dofile('mod/Lua/Development.lua')
 assert(saved(0,'INDUSTRIALIZATION','achieved')==1 and not saved(0,'INDUSTRIALIZATION','awarded'),'early achievement pending')
+local afterPending = #messages
+assert(messages[afterPending]=='TXT_KEY_REFINED_EUREKA_READY')
 Players[0].cities={};tick();assert(saved(0,'INDUSTRIALIZATION','achieved')==1,'loss does not erase achievement')
+assert(#messages==afterPending, 'pending achievement must not repeat')
 local ind=GameInfoTypes.TECH_INDUSTRIALIZATION
 Players[0].ready[ind]=true;tick()
 assert(Teams[0].progress[ind]==math.floor(Players[0]:exactCost(ind)/4),'25% actual fractional cost')
@@ -181,8 +184,11 @@ Players[0].cities[2]=city(1,{'BUILDING_TEST_PAPER_MAKER'})
 local edu=GameInfoTypes.TECH_EDUCATION
 Players[0].ready[edu]=true;Players[2].ready[edu]=true
 Teams[0].progress[edu]=Players[0]:exactCost(edu)-37
+local beforeEducation = #messages
 tick();assert(Teams[0].known[edu] and Teams[0].overflow==0,'complete research with zero overflow')
 assert(Teams[0].writes==2,'shared team and unique library replacement counted once')
+assert(#messages==beforeEducation+1 and messages[#messages]=='TXT_KEY_REFINED_EUREKA_NOTICE',
+       'immediate award must produce one combined message')
 -- AI shares conditions and uses its own cost modifiers/speed-adjusted team cost.
 Players[1].modifier=97;Players[1].effectiveCities=7;Teams[1].base=307
 Players[1].cities={city(0,{'BUILDING_TEST_LAB'}),city(1,{'BUILDING_TEST_LAB'})}
@@ -240,22 +246,10 @@ Players[0].ready[GameInfoTypes.TECH_PRINTING_PRESS]=true;tick()
 assert(Teams[0].progress[GameInfoTypes.TECH_PRINTING_PRESS]==math.floor(Players[0]:exactCost(GameInfoTypes.TECH_PRINTING_PRESS)/4))
 print('PASS: all 19 shipped eureka conditions, zero city-cost modifier and persistent grants')
 
--- Run the actual addin UI branch: status pages, open/close and active-player switch.
-Controls={};Mouse={eLClick=1}
-for _,name in ipairs({'Toggle','Panel','Status','Title','Close','Previous','Next','Page'}) do
-    local c={hidden=name=='Panel'}
-    function c:SetText(text) self.text=text end
-    function c:SetToolTipString(text) self.tooltip=text end
-    function c:SetHide(hidden) self.hidden=hidden end
-    function c:IsHidden() return self.hidden end
-    function c:RegisterCallback(event,callback) self.click=callback end
-    Controls[name]=c
-end
+-- Reload without visible controls: the invisible addin must keep working.
+Controls={}
+local beforeReload = #messages
 resetEvents();dofile('mod/Lua/Development.lua')
-assert(Controls.Page.text=='1 / 4' and Controls.Status.text:find('TXT_KEY_REFINED_EUREKA_'))
-Controls.Toggle.click();assert(not Controls.Panel.hidden)
-Controls.Next.click();assert(Controls.Page.text=='2 / 4')
-Controls.Next.click();Controls.Next.click();Controls.Next.click();assert(Controls.Page.text=='4 / 4')
-Controls.Previous.click();assert(Controls.Page.text=='3 / 4')
-Events.GameplaySetActivePlayer.Fire();assert(Controls.Panel.hidden)
-print('PASS: eureka panel status rendering, pagination, toggle and active-player hiding (mock UI, not game rendering)')
+assert(next(Controls)==nil and type(update)=='function')
+assert(#messages==beforeReload, 'reload repeated an achievement notification')
+print('PASS: invisible eureka addin and no duplicate messages on reload')

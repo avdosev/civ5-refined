@@ -143,10 +143,10 @@
       <Text>Technology researched</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_EUREKA_NOTICE">
-      <Text>Eureka: {1_Text}. Research gained: {2_Num}.</Text>
+      <Text>[COLOR_YELLOW]Eureka![ENDCOLOR][NEWLINE]{3_Text}[NEWLINE][COLOR_YELLOW]{1_Text}[ENDCOLOR]: gained {2_Num} [ICON_RESEARCH] Science.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_EUREKA_READY">
-      <Text>Achievement: {1_Text}. The eureka will be awarded when the technology becomes available.</Text>
+      <Text>[COLOR_YELLOW]Eureka![ENDCOLOR][NEWLINE]{2_Text}[NEWLINE][COLOR_YELLOW]{1_Text}[ENDCOLOR]: breakthrough saved until the required technologies are researched.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_EUREKA_HORSEBACK_RIDING">
       <Text>An unpillaged Pasture on Horses</Text>
@@ -205,6 +205,25 @@
     <Row Tag="TXT_KEY_REFINED_EUREKA_REFINED_AUTOMATION">
       <Text>Own a Steel Mill</Text>
     </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_HORSEBACK_RIDING"><Text>Rider and horse learn to move as one.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_CONSTRUCTION"><Text>Stone takes shape, giving bold designs a firm foundation.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_IRON_WORKING"><Text>In skilled hands, metal reveals new possibilities.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_EDUCATION"><Text>New knowledge comes together in a coherent system.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_MACHINERY"><Text>Precision mechanisms can multiply human strength.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_BANKING"><Text>Trust becomes the foundation of growing prosperity.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_PRINTING_PRESS"><Text>Ideas are ready to travel far beyond a single voice.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_NAVIGATION"><Text>The horizon no longer seems the edge of the world.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_RIFLING"><Text>Military experience points the way to more advanced weapons.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_SCIENTIFIC_THEORY"><Text>Universal laws begin to emerge from individual observations.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_INDUSTRIALIZATION"><Text>Craftsmanship lays the foundation for production on a new scale.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_ECONOMICS"><Text>The movement of goods reveals the patterns of wealth.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_STEAM_POWER"><Text>The hidden power of nature is ready to set the world in motion.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_ELECTRICITY"><Text>Invisible forces promise to transform everyday life.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_PLASTIC"><Text>Matter opens the way to an unprecedented variety of forms.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_NUCLEAR_FISSION"><Text>Immense energy lies hidden within matter.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_COMPUTERS"><Text>Computation becomes the key to new scientific horizons.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_REFINED_NETWORKS"><Text>Connected knowledge gains new power.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_REFINED_AUTOMATION"><Text>The precision and rhythm of machines reshape the meaning of work.</Text></Row>
   </Language_en_US>
   <Language_RU_RU>
     <Row Tag="TXT_KEY_REFINED_NETWORKS">
@@ -349,10 +368,10 @@
       <Text>Технология изучена</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_EUREKA_NOTICE">
-      <Text>Эврика: {1_Text}. Получено науки: {2_Num}.</Text>
+      <Text>[COLOR_YELLOW]Эврика![ENDCOLOR][NEWLINE]{3_Text}[NEWLINE][COLOR_YELLOW]{1_Text}[ENDCOLOR]: получено {2_Num} [ICON_RESEARCH] науки.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_EUREKA_READY">
-      <Text>Достижение: {1_Text}. Эврика будет начислена, когда технология станет доступна.</Text>
+      <Text>[COLOR_YELLOW]Эврика![ENDCOLOR][NEWLINE]{2_Text}[NEWLINE][COLOR_YELLOW]{1_Text}[ENDCOLOR]: прорыв сохранён до открытия необходимых технологий.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_EUREKA_HORSEBACK_RIDING">
       <Text>Неразграбленное пастбище на лошадях</Text>
@@ -411,5 +430,24 @@
     <Row Tag="TXT_KEY_REFINED_EUREKA_REFINED_AUTOMATION">
       <Text>Иметь сталелитейный завод</Text>
     </Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_HORSEBACK_RIDING"><Text>Человек и конь учатся действовать как одно целое.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_CONSTRUCTION"><Text>Камень обретает форму, а замыслы — прочную основу.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_IRON_WORKING"><Text>В руках мастеров металл раскрывает новые возможности.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_EDUCATION"><Text>Новые знания складываются в единую систему.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_MACHINERY"><Text>Точный механизм способен умножить силу человека.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_BANKING"><Text>Доверие становится основой растущего благосостояния.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_PRINTING_PRESS"><Text>Идеи готовы выйти далеко за пределы одного голоса.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_NAVIGATION"><Text>Горизонт больше не кажется границей мира.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_RIFLING"><Text>Военный опыт открывает путь к более совершенному оружию.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_SCIENTIFIC_THEORY"><Text>За отдельными наблюдениями проступают общие законы.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_INDUSTRIALIZATION"><Text>Мастерство становится основой нового масштаба производства.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_ECONOMICS"><Text>За движением товаров открываются закономерности богатства.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_STEAM_POWER"><Text>Скрытая сила природы готова привести мир в движение.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_ELECTRICITY"><Text>Невидимые силы обещают преобразить повседневную жизнь.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_PLASTIC"><Text>Материя открывает путь к невиданному разнообразию форм.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_NUCLEAR_FISSION"><Text>В глубинах вещества скрыта колоссальная энергия.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_COMPUTERS"><Text>Вычисления становятся ключом к новым научным горизонтам.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_REFINED_NETWORKS"><Text>Связанные знания обретают новую силу.</Text></Row>
+    <Row Tag="TXT_KEY_REFINED_EUREKA_FLAVOR_TECH_REFINED_AUTOMATION"><Text>Точность и ритм машин меняют представление о труде.</Text></Row>
   </Language_RU_RU>
 </GameData>
