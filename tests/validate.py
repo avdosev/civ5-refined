@@ -14,7 +14,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
-from build import build
+from build import build, VERSION, NAME
 from tech_tree_layout import layout_issues
 
 
@@ -348,6 +348,8 @@ def validate_database(db):
 def validate_package():
     target = build()
     manifest = ET.parse(next(target.glob('*.modinfo'))).getroot()
+    assert manifest.attrib['version'] == VERSION
+    assert target.name == NAME
     declared = {}
     for entry in manifest.find('Files'):
         path = target / entry.text

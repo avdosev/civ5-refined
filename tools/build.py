@@ -9,7 +9,10 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'mod'
 OUTPUT = ROOT / 'dist'
-NAME = 'civ5-refined (v 6)'
+VERSION = (ROOT / 'VERSION').read_text(encoding='utf-8').strip()
+if not VERSION.isascii() or not VERSION.isdecimal() or int(VERSION) < 1 or str(int(VERSION)) != VERSION:
+    raise ValueError('VERSION must contain a positive integer without leading zeros')
+NAME = f'civ5-refined (v {VERSION})'
 MOD_ID = '72f741c2-cbb3-4b31-aebc-f88915b615ad'
 
 
@@ -20,7 +23,7 @@ def build():
     shutil.copytree(SOURCE, target)
     shutil.copyfile(ROOT / 'docs/unit-resources.md', target / 'ResourceRules.md')
     shutil.copyfile(ROOT / 'docs/technology-tree.md', target / 'TechnologyTree.md')
-    root = ET.Element('Mod', id=MOD_ID, version='6')
+    root = ET.Element('Mod', id=MOD_ID, version=VERSION)
     props = ET.SubElement(root, 'Properties')
     for key, value in {
         'Name': 'civ5-refined — Prototype',
