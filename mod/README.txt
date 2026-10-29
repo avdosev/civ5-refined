@@ -1,41 +1,23 @@
-civ5-refined — Prototype v6
+civ5-refined — Prototype v7 / Civilization V: Brave New World
 
-Установка: скопируйте эту папку целиком в пользовательский каталог MODS
-Civilization V. Включите мод в меню «Моды», нажмите «Далее» и начните новую
-одиночную игру с Brave New World. Другие моды и DLL не нужны.
+Скопируйте папку civ5-refined (v 7) целиком в пользовательский каталог MODS.
+Включите только эту версию и начните новую одиночную партию через меню модов.
+Другие моды и замена DLL не требуются. Новая партия обязательна.
 
-Рыцари требуют 1 железо и 1 лошади; исключения особых замен сохранены.
-Исправлена раскладка дерева, добавлены штатные значки бонусов новых технологий.
-Компьютеры открывают дата-центр и усиливают университеты/лаборатории.
-Компьютерные сети дают золото фондовым биржам и нужны для интернета.
-Микроэлектроника усиливает дата-центры, автоматизация — фабрики.
-Прикладной ИИ усиливает дата-центры, фабрики и лаборатории.
-Робототехника опирается на микроэлектронику и автоматизацию.
-Название «Физика элементарных частиц» сохранено.
-Подробности: TechnologyTree.md и ResourceRules.md внутри пакета.
-Переработаны ресурсы 25 классов артиллерии, бронетехники, флота и авиации.
-Современный танк: алюминий + нефть, без железа. Пехота, обычные ПТО и ПВО
-сохраняют доступность без ресурсов. Zero сохраняет освобождение от нефти.
-Числа и цены отражены в игровых подсказках. Графика временно стандартная.
+Новое: уникальные бонусы 58 существующих городов-государств и обновлённые
+общественные институты. Воля поддерживает поздние поселения; Честь даёт культуру
+за победы; Эстетика усиливает произведения и музеи; Коммерция открывает линию
+ландскнехты — швейцарская гвардия — наёмный иностранный легион — пехота.
+Полные правила: AlliedBenefits.md и Institutions.md внутри пакета.
 
-Прототип прошёл проверки SQL/Lua вне игры; игровая загрузка и баланс
-ещё не проверены. Полная инструкция и исходники: README.md в репозитории.
+Технологии, ресурсные требования, здания, фермы и 19 эврик v6 сохраняются.
+Условия эврик не раскрываются заранее в игровом интерфейсе.
+Подробности технологий и ресурсов: TechnologyTree.md и ResourceRules.md.
+Все новые числа — стартовый баланс. Проверки выполнены вне игры;
+интерфейс, реальные события и баланс требуют игровой пробы.
 
-Installation: copy this entire folder into Civilization V's user MODS
-directory. Enable the mod, click Next, and start a NEW single-player BNW
-game through the Mods menu. No DLL or other mod is required.
-
-The prototype adds Computer Networks, Microelectronics, Industrial Automation,
-Applied AI, a Data Center, science
-and production effects, and a resource overhaul for 25 military unit classes.
-Modern Armor requires aluminum and oil, without iron. Infantry and basic
-anti-tank/anti-air units remain resource-free. Zero keeps its oil exemption.
-Russian and English supported; existing game portraits are reused.
-
-Новое в v6: сталелитейный завод, текстильная мануфактура, учёная академия/салон,
-бонус культуры библиотек, ранние каменоломни/лесопилки и рыба после охлаждения.
-Механизация сельского хозяйства после удобрений и парового двигателя даёт
-фермам max(0, соседние собственные неразграбленные фермы - 1) пищи.
-Кнопка «Эврики» справа показывает 19 однократных бонусов исследования.
-Эврика нарезного оружия: одновременно иметь 3 мушкетёров, включая уникальные замены.
-Все проверки выполнены вне игры. Новая партия и только одна версия мода.
+Copy this entire folder to the user MODS directory. Enable only v7 and start
+an entirely NEW single-player BNW game through the Mods menu. No DLL required.
+58 unique allied benefits and renewed institutions join the existing technology,
+resource, building, agriculture and eureka systems. Stock art is reused.
+Automated checks are not an in-game test; gameplay balance remains provisional.

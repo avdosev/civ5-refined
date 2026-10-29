@@ -1,0 +1,553 @@
+<?xml version='1.0' encoding='utf-8'?>
+<GameData>
+  <Language_en_US>
+    <Row Tag="TXT_KEY_REFINED_SOCIETY_HIDDEN">
+      <Text>Refined society effect</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_GAIN">
+      <Text>{1_Name}: alliance benefit</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_LOST">
+      <Text>{1_Name}: alliance benefit lost</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_MERCHANT">
+      <Text>Trade diplomacy</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_MERCHANT_HELP">
+      <Text>+50% Influence from trade missions while Entrepreneurship is active.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_SWISS">
+      <Text>Swiss Guard</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_SWISS_HELP">
+      <Text>Purchase-only mercenary infantry. Strength 26, 2 Moves. Requires Mercenary Army and Gunpowder. Can move after purchase; upgrades to Mercenary Foreign Legion.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_SWISS_PEDIA">
+      <Text>Swiss mercenary infantry continued the tradition of professional troops serving foreign states. Uses stock Musketman art in this prototype.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_LEGION">
+      <Text>Mercenary Foreign Legion</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_LEGION_HELP">
+      <Text>Purchase-only infantry. Strength 42, 2 Moves. Requires Mercenary Army and Replaceable Parts. +20% strength outside friendly territory. Can move after purchase; upgrades to Infantry.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_LEGION_PEDIA">
+      <Text>Foreign recruitment supports a standing professional army. Uses stock Foreign Legion art; the original Volunteer Army unit remains separate.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_TRADITION_FINISHER">
+      <Text>From the Industrial Era, the Capital also provides +1 Culture per 5 Citizens.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_REPUBLIC">
+      <Text>+1 Production in every city. A free Worker and +25% Worker improvement speed.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_CITIZENSHIP">
+      <Text>+1 Happiness per city connected to the Capital; −5% Unhappiness from Citizens in non-occupied cities.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_MERITOCRACY">
+      <Text>Each specialist working in a building provides +1 Science and +1 Production. Unemployed Citizens do not count. Requires Representation.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_LIBERTY_FINISHER">
+      <Text>Cities founded after completing this branch receive a Monument (or its unique replacement) at no Production cost, with normal maintenance and sale rules. All cities gain +10% Production of ordinary buildings, with no Population limit. Wonders, units and projects are not accelerated.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_HONOR_FINISHER">
+      <Text>Additionally, killing another civilization's military unit grants Culture equal to 25% of the higher of its base melee and ranged strength, rounded down. Existing barbarian Culture and victory Gold remain.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_ORGANIZED_RELIGION">
+      <Text>From the Industrial Era, Temples and their unique replacements also provide +2 Culture and +2 Science.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_MANDATE_OF_HEAVEN">
+      <Text>Faith purchases of Missionaries, Inquisitors and buildings cost 25% less. This discount does not apply to Great People, including Prophets, or military units purchased with Faith.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_PIETY_FINISHER">
+      <Text>Additionally, Faith purchases of Missionaries, Inquisitors and buildings cost 10% less (35% total with Mandate of Heaven). Great People and military unit costs are unaffected.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_PATRONAGE_FINISHER">
+      <Text>Additionally, the Capital receives +2 Culture per allied City-State. Unique alliance benefits are available to any ally, even without this branch.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_AESTHETICS">
+      <Text>Additionally, each Great Work provides +1 Culture.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_CULTURAL_CENTERS">
+      <Text>+75% Production of Monuments, Amphitheaters, Opera Houses, Museums and Broadcast Towers, including unique replacements.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_FLOURISHING_OF_ARTS">
+      <Text>+20% Culture in cities with at least two Great Works. Starts a Golden Age. No World Wonder is required.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_ARTISTIC_GENIUS">
+      <Text>Additionally, Museums provide +2 Culture.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_TRADE_UNIONS">
+      <Text>Allows Gold purchases of mercenaries: Landsknechts (Civil Service), Swiss Guard (Gunpowder), Mercenary Foreign Legion (Replaceable Parts). Upgrade line: Landsknecht → Guard → Legion → Infantry. New mercenaries can move immediately after purchase.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_ENTREPRENEURSHIP">
+      <Text>Additionally, Great Merchant trade missions grant 50% more Influence. This increases the mission's normal Influence reward.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_COMMERCE_FINISHER">
+      <Text>Additionally, internal trade routes provide 25% more Food and Production; base Trade Route capacity increases by 1 under normal BNW rules. A trade unit must be trained or purchased.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_MARITIME_INFRASTRUCTURE">
+      <Text>Additionally, Seaports provide +2 Production.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_MERCHANT_NAVY">
+      <Text>Lighthouses provide +1 Gold; Harbors and Seaports each provide +3 Gold. The East India Company provides +4 Production and +4 Culture.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_NAVIGATION_SCHOOL">
+      <Text>Additionally, newly trained naval units receive +10 Experience.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_TREASURE_FLEETS">
+      <Text>+6 Gold per turn from each outgoing international sea trade route after the sea modifier, including routes to City-States. Internal Food and Production routes do not receive this bonus.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_EXPLORATION_FINISHER">
+      <Text>Additionally, +50% Production of Archaeologists and +1 Culture from Museums. Hidden Antiquity Sites and Faith purchases of Great Admirals remain.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BRATISLAVA">
+      <Text>+2 Culture from Amphitheaters and Opera Houses.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BUDAPEST">
+      <Text>+15% Production of mounted and armored units.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_GENEVA">
+      <Text>+10% Science in cities while the ally is not at war with any civilization or City-State.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_RIGA">
+      <Text>+2 Production from Lighthouses and Harbors.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_GENOA">
+      <Text>+2 Gold from Markets and Banks.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_FLORENCE">
+      <Text>+1 Culture per Great Work in a city.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_RAGUSA">
+      <Text>+10% Gold in coastal cities.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_SYDNEY">
+      <Text>+2 Food from Granaries and Hospitals.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_QUEBEC_CITY">
+      <Text>+2 Food from Lighthouses.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BUCHAREST">
+      <Text>+1 Culture from Monuments and Broadcast Towers.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BELGRADE">
+      <Text>+5 city Defense Strength and +25 city Hit Points.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BRUSSELS">
+      <Text>+10% Production of Wonders.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MONACO">
+      <Text>+2 Gold per Great Work in a city.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_KATHMANDU">
+      <Text>+2 Faith from Shrines and Temples.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_HANOI">
+      <Text>+10 starting Experience for units trained in cities with Barracks.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_LHASA">
+      <Text>+2 Food from Temples.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_ALMATY">
+      <Text>+1 Production on worked Horse and Cattle tiles.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_KUALA_LUMPUR">
+      <Text>+2 Culture from Gardens.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_SINGAPORE">
+      <Text>Each new technology grants 10 Gold on Standard speed, scaled for other game speeds. The reward does not increase with era.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_PANAMA_CITY">
+      <Text>+2 Gold from Lighthouses, Harbors and Seaports.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_CAPE_TOWN">
+      <Text>+1 Food and +1 Production in coastal cities.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_SIDON">
+      <Text>+20% Production of archery-class units.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_TYRE">
+      <Text>+10 starting Experience for naval units.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_ANTWERP">
+      <Text>+2 Gold on worked Gold, Silver and Gems tiles.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_CAHOKIA">
+      <Text>+1 Food on worked Deer and Bison tiles.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_COLOMBO">
+      <Text>+2 Gold from Shrines and Temples.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_HONG_KONG">
+      <Text>+10% Production in cities with a Factory.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_ORMUS">
+      <Text>+1 Gold and +1 Faith from Markets.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_JERUSALEM">
+      <Text>+3 Faith from Temples.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_LA_VENTA">
+      <Text>+2 Faith on worked Stone tiles.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_VANCOUVER">
+      <Text>+3 Production from Seaports.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MANILA">
+      <Text>+1 Gold on worked Fish tiles.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_ANTANANARIVO">
+      <Text>+2 Culture from Markets and Stock Exchanges.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MILAN">
+      <Text>+2 Culture from Workshops.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MOMBASA">
+      <Text>+2 Food from Harbors.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_PRAGUE">
+      <Text>+2 Culture from Universities.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_VALLETTA">
+      <Text>+15% military unit Production in cities with an Armory.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_VATICAN_CITY">
+      <Text>+4 Faith and +2 Culture in the Capital.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_WITTENBERG">
+      <Text>+2 Science from Temples.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_YEREVAN">
+      <Text>+2 Faith from Gardens.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_ZANZIBAR">
+      <Text>+2 Gold on worked Spices and Sugar tiles.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_ZURICH">
+      <Text>+10% Gold in cities with a Bank.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_SAMARKAND">
+      <Text>+3 Gold from Caravansaries.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MALACCA">
+      <Text>+4 Gold from international sea trade routes originating in the ally's cities after the sea modifier.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MOGADISHU">
+      <Text>+15% Production of naval melee units.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BYBLOS">
+      <Text>+2 Science from Libraries.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_KYZYL">
+      <Text>+1 Culture on worked Horse and Sheep tiles.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_IFE">
+      <Text>+1 Faith per Great Work in a city.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_KIEV">
+      <Text>+2 Food from Water Mills.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BUENOS_AIRES">
+      <Text>+3 Culture from Zoos and Stadiums.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MBANZA_KONGO">
+      <Text>+10% Production of melee and gunpowder infantry units.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_KABUL">
+      <Text>+5 starting Experience for each Armory and Military Academy in the training city.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_SOFIA">
+      <Text>+20% Production of siege units.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_UR">
+      <Text>+1 Production on worked Wheat tiles.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MELBOURNE">
+      <Text>+3 Gold from Factories.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BOGOTA">
+      <Text>+1 Culture per 5 Citizens in each city.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_VILNIUS">
+      <Text>+2 Culture from Temples.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_WELLINGTON">
+      <Text>+5% Science in coastal cities.</Text>
+    </Row>
+  </Language_en_US>
+  <Language_RU_RU>
+    <Row Tag="TXT_KEY_REFINED_SOCIETY_HIDDEN">
+      <Text>Эффект институтов и союзов Refined</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_GAIN">
+      <Text>{1_Name}: бонус союза</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_LOST">
+      <Text>{1_Name}: бонус союза утрачен</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_MERCHANT">
+      <Text>Торговая дипломатия</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_MERCHANT_HELP">
+      <Text>+50% влияния за торговые миссии при действующем Предпринимательстве.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_SWISS">
+      <Text>Швейцарская гвардия</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_SWISS_HELP">
+      <Text>Наёмная пехота, доступная только за золото. Сила 26, 2 хода. Требует Наёмной армии и пороха. Может двигаться после покупки; модернизируется в наёмный иностранный легион.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_SWISS_PEDIA">
+      <Text>Швейцарские наёмные пехотные части продолжили традицию профессиональной службы иностранным государствам. В прототипе используется штатная модель мушкетёра.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_LEGION">
+      <Text>Наёмный иностранный легион</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_LEGION_HELP">
+      <Text>Пехота, доступная только за золото. Сила 42, 2 хода. Требует Наёмной армии и взаимозаменяемых деталей. +20% силы вне дружественных земель. Может двигаться после покупки; модернизируется в пехоту.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_LEGION_PEDIA">
+      <Text>Иностранное комплектование позволяет содержать профессиональные военные части. Используется штатная модель иностранного легиона; исходный юнит Добровольческой армии остаётся отдельным.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_TRADITION_FINISHER">
+      <Text>С индустриальной эпохи столица дополнительно даёт +1 культуры за каждые 5 жителей.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_REPUBLIC">
+      <Text>+1 производства каждому городу. Бесплатный рабочий и +25% скорости работ рабочих.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_CITIZENSHIP">
+      <Text>+1 счастья за каждый город, соединённый со столицей; −5% несчастья от населения неоккупированных городов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_MERITOCRACY">
+      <Text>Каждый специалист, работающий в здании, дополнительно даёт +1 науки и +1 производства. Безработные жители не учитываются. Требует Представительства.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_LIBERTY_FINISHER">
+      <Text>Города, основанные после завершения ветки, получают монумент (или уникальную замену) без затрат производства. Содержание и продажа обычные. Все города получают +10% производства обычных зданий без ограничения населения. Чудеса, юниты и проекты не ускоряются.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_HONOR_FINISHER">
+      <Text>Дополнительно: уничтожение военного юнита другой цивилизации даёт культуру в размере 25% большей из его базовых сил ближнего и дальнего боя, с округлением вниз. Культура за варваров и золото за победы сохраняются.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_ORGANIZED_RELIGION">
+      <Text>С индустриальной эпохи храмы и их уникальные замены дополнительно дают +2 культуры и +2 науки.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_MANDATE_OF_HEAVEN">
+      <Text>Стоимость покупки миссионеров, инквизиторов и зданий за веру снижена на 25%. Скидка не действует на великих людей, включая пророков, и военные юниты за веру.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_PIETY_FINISHER">
+      <Text>Дополнительно: стоимость покупки миссионеров, инквизиторов и зданий за веру снижена на 10% (с Небесным мандатом суммарно на 35%). На великих людей и военные юниты скидка не действует.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_PATRONAGE_FINISHER">
+      <Text>Дополнительно: столица получает +2 культуры за каждый город-государство, с которым заключён союз. Их уникальные бонусы доступны любому союзнику, даже без этой ветки.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_AESTHETICS">
+      <Text>Дополнительно: каждое великое произведение даёт +1 культуры.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_CULTURAL_CENTERS">
+      <Text>+75% производства монументов, амфитеатров, оперных театров, музеев и вещательных башен, включая уникальные замены.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_FLOURISHING_OF_ARTS">
+      <Text>+20% культуры в городах хотя бы с двумя великими произведениями. Начинается золотой век. Чудо света не требуется.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_ARTISTIC_GENIUS">
+      <Text>Дополнительно: музеи дают +2 культуры.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_TRADE_UNIONS">
+      <Text>Позволяет покупать наёмников за золото: ландскнехты (гражданская служба), швейцарская гвардия (порох), наёмный иностранный легион (взаимозаменяемые детали). Линия модернизации: ландскнехты → гвардия → легион → пехота. Новые наёмники могут двигаться сразу после покупки.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_ENTREPRENEURSHIP">
+      <Text>Дополнительно: торговые миссии великих торговцев дают на 50% больше влияния. Это усиление обычного влияния миссии, а не новая награда.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_COMMERCE_FINISHER">
+      <Text>Дополнительно: внутренние торговые пути приносят на 25% больше пищи и производства; базовый лимит торговых путей увеличен на 1, по обычным правилам BNW. Торговый юнит нужно построить или купить.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_MARITIME_INFRASTRUCTURE">
+      <Text>Дополнительно: морские порты дают +2 производства.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_MERCHANT_NAVY">
+      <Text>Маяки дают +1 золота; гавани и морские порты дают по +3 золота. Ост-Индская компания даёт +4 производства и +4 культуры.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_NAVIGATION_SCHOOL">
+      <Text>Дополнительно: новые морские юниты получают +10 опыта.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_TREASURE_FLEETS">
+      <Text>+6 золота за ход от каждого своего международного морского торгового пути с учётом морского множителя: к другой державе или городу-государству. Внутренние перевозки пищи и производства этот бонус не получают.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_POLICY_EXPLORATION_FINISHER">
+      <Text>Дополнительно: +50% производства археологов, +1 культуры от музеев. Скрытые памятники древности и покупка великих адмиралов за веру сохраняются.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BRATISLAVA">
+      <Text>+2 культуры от амфитеатров и оперных театров.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BUDAPEST">
+      <Text>+15% производства конных и бронетанковых юнитов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_GENEVA">
+      <Text>+10% науки в городах, пока союзник не воюет ни с одной цивилизацией или городом-государством.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_RIGA">
+      <Text>+2 производства от маяков и гаваней.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_GENOA">
+      <Text>+2 золота от рынков и банков.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_FLORENCE">
+      <Text>+1 культуры за каждое великое произведение в городе.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_RAGUSA">
+      <Text>+10% золота в прибрежных городах.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_SYDNEY">
+      <Text>+2 пищи от амбаров и больниц.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_QUEBEC_CITY">
+      <Text>+2 пищи от маяков.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BUCHAREST">
+      <Text>+1 культуры от монументов и вещательных башен.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BELGRADE">
+      <Text>+5 силы обороны и +25 очков здоровья городов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BRUSSELS">
+      <Text>+10% производства мировых и национальных чудес.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MONACO">
+      <Text>+2 золота за каждое великое произведение в городе.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_KATHMANDU">
+      <Text>+2 веры от святилищ и храмов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_HANOI">
+      <Text>+10 опыта новым юнитам в городах с казармами.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_LHASA">
+      <Text>+2 пищи от храмов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_ALMATY">
+      <Text>+1 производства с обрабатываемых клеток лошадей и скота.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_KUALA_LUMPUR">
+      <Text>+2 культуры от садов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_SINGAPORE">
+      <Text>За каждую новую технологию: 10 золота на стандартной скорости, с пересчётом для других скоростей. Награда не растёт по эпохам.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_PANAMA_CITY">
+      <Text>+2 золота от маяков, гаваней и морских портов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_CAPE_TOWN">
+      <Text>+1 пищи и +1 производства в прибрежных городах.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_SIDON">
+      <Text>+20% производства стрелковых юнитов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_TYRE">
+      <Text>+10 опыта новым морским юнитам.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_ANTWERP">
+      <Text>+2 золота с обрабатываемых клеток золота, серебра и самоцветов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_CAHOKIA">
+      <Text>+1 пищи с обрабатываемых клеток оленей и бизонов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_COLOMBO">
+      <Text>+2 золота от святилищ и храмов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_HONG_KONG">
+      <Text>+10% производства в городах с фабрикой.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_ORMUS">
+      <Text>+1 золота и +1 веры от рынков.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_JERUSALEM">
+      <Text>+3 веры от храмов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_LA_VENTA">
+      <Text>+2 веры с обрабатываемых клеток камня.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_VANCOUVER">
+      <Text>+3 производства от морских портов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MANILA">
+      <Text>+1 золота с обрабатываемых клеток рыбы.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_ANTANANARIVO">
+      <Text>+2 культуры от рынков и фондовых бирж.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MILAN">
+      <Text>+2 культуры от мастерских.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MOMBASA">
+      <Text>+2 пищи от гаваней.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_PRAGUE">
+      <Text>+2 культуры от университетов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_VALLETTA">
+      <Text>+15% производства военных юнитов в городах с оружейной (Armory).</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_VATICAN_CITY">
+      <Text>+4 веры и +2 культуры в столице.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_WITTENBERG">
+      <Text>+2 науки от храмов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_YEREVAN">
+      <Text>+2 веры от садов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_ZANZIBAR">
+      <Text>+2 золота с обрабатываемых клеток пряностей и сахара.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_ZURICH">
+      <Text>+10% золота в городах с банком.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_SAMARKAND">
+      <Text>+3 золота от караван-сараев.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MALACCA">
+      <Text>+4 золота от международных морских торговых путей из городов союзника с учётом морского множителя.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MOGADISHU">
+      <Text>+15% производства морских юнитов ближнего боя.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BYBLOS">
+      <Text>+2 науки от библиотек.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_KYZYL">
+      <Text>+1 культуры с обрабатываемых клеток лошадей и овец.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_IFE">
+      <Text>+1 веры за каждое великое произведение в городе.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_KIEV">
+      <Text>+2 пищи от водяных мельниц.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BUENOS_AIRES">
+      <Text>+3 культуры от зоопарков и стадионов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MBANZA_KONGO">
+      <Text>+10% производства юнитов ближнего боя и огнестрельной пехоты.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_KABUL">
+      <Text>+5 опыта новым юнитам за каждую оружейную (Armory) и военную академию в городе.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_SOFIA">
+      <Text>+20% производства осадных юнитов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_UR">
+      <Text>+1 производства с обрабатываемых клеток пшеницы.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_MELBOURNE">
+      <Text>+3 золота от фабрик.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_BOGOTA">
+      <Text>+1 культуры за каждые 5 жителей каждого города.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_VILNIUS">
+      <Text>+2 культуры от храмов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_ALLY_WELLINGTON">
+      <Text>+5% науки в прибрежных городах.</Text>
+    </Row>
+  </Language_RU_RU>
+</GameData>

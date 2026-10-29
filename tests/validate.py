@@ -349,6 +349,7 @@ def validate_package():
     target = build()
     manifest = ET.parse(next(target.glob('*.modinfo'))).getroot()
     assert manifest.attrib['version'] == VERSION
+    assert manifest.findtext('./Properties/MinCompatibleSaveVersion') == '7'
     assert target.name == NAME
     declared = {}
     for entry in manifest.find('Files'):
@@ -358,7 +359,7 @@ def validate_package():
     for action in manifest.findall('./Actions/OnModActivated/UpdateDatabase'):
         assert action.text in declared
     assert [action.text for action in manifest.findall('./Actions/OnModActivated/UpdateDatabase')] == [
-        'Text/Localization.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql', 'SQL/Development.sql']
+        'Text/Localization.xml', 'Text/Society.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql', 'SQL/Development.sql', 'SQL/Institutions.sql', 'SQL/Allies.sql']
     for entry in manifest.findall('./EntryPoints/EntryPoint'):
         assert entry.attrib['file'] in declared
         if entry.attrib['file'].endswith('.xml'):
@@ -367,7 +368,7 @@ def validate_package():
             assert declared[entry.attrib['file']].with_suffix('.lua').is_file()
             ids = {node.attrib['ID'] for node in context.iter() if 'ID' in node.attrib}
             assert not ids, 'gameplay addin must not expose eureka controls'
-    assert {'Text/Localization.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql', 'Lua/Refined.lua', 'Lua/Development.lua', 'Lua/Development.xml'} <= set(declared)
+    assert {'Text/Localization.xml', 'Text/Society.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql', 'SQL/Institutions.sql', 'SQL/Allies.sql', 'Lua/Refined.lua', 'Lua/Development.lua', 'Lua/Development.xml', 'Lua/Society.lua', 'Lua/Society.xml'} <= set(declared)
     print('PASS: package manifest, checksums, database actions and Lua entry point')
 
 
