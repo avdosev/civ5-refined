@@ -46,4 +46,15 @@ for count in (6, 7, 8):
 slow = model.singularity(1000, [60, 45, 35, 24, 19, 14, 10], city_count=7)
 fast = model.singularity(1000, [160, 120, 90, 64, 51, 38, 26], city_count=7)
 assert slow['training_rate'] == fast['training_rate']
+
+# A requested building strategy is not evidence that a part received its bonus.
+profile = {'reference': model.normalized_profiles(7)['s1000_pnormal']}
+base = model.compare(tuned=True, profiles=profile, city_count=7)['reference']['alpha']
+unused = model.schedule(base['queue'] + ['ORBITAL'], 1000, profile['reference'][1],
+                        advanced=True, factory=base['factory'], yard=True, city_count=7)
+assert unused['yard'] and not unused['yard_used']
+experiment = model.compare(tuned=True, profiles=profile, city_count=7,
+                           yard_bonus=.5, require_yard=True)['reference']['alpha']
+assert experiment['yard_used'] and experiment['turn'] == 121
+assert base['turn'] == 115
 print('Victory timing v2: city-cost regression, 27 scenarios, prerequisite and schedule checks passed.')

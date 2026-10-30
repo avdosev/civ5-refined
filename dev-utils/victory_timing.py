@@ -126,7 +126,7 @@ def research(queue, science, center_production=None, city_count=7):
 
 
 def schedule(queue, science, production, mars=False, advanced=False,
-             factory=False, yard=False, transfer=2, city_count=7):
+             factory=False, yard=False, transfer=2, city_count=7, yard_bonus=.2):
     dates = research(queue, science, city_count=city_count)
     done, busy, log = {}, [None] * len(production), []
     structures = [set() for _ in production]
@@ -153,9 +153,13 @@ def schedule(queue, science, production, mars=False, advanced=False,
             # Capital parts need one assembly turn; other cities travel + assembly.
             victory = max(end + (0 if mars or k == 'apollo' else (1 if c == 0 else transfer + 1))
                           for k, c, _, end in log if k in {t[0] for t in tasks})
+            yards = {c: finish for key, c, _, finish in log if key.startswith('yard')}
+            part_names = {'engine', 'stasis', 'booster1', 'booster2', 'booster3', 'cockpit'}
+            yard_used = any(key in part_names and c in yards and start > yards[c]
+                            for key, c, start, _ in log)
             return dict(turn=victory, research_end=max(dates.values()),
                         queue=list(queue), dates=dates, builds=log,
-                        factory=factory, yard=yard)
+                        factory=factory, yard=yard, yard_used=yard_used, yard_bonus=yard_bonus)
         for city, base in enumerate(production):
             if busy[city]:
                 continue
@@ -183,7 +187,7 @@ def schedule(queue, science, production, mars=False, advanced=False,
             if dates.get('REFINED_AI', 10000) < turn:
                 modifier += .1
             if part:
-                modifier += .5 * ('factory' in structures[city]) + .2 * ('yard' in structures[city])
+                modifier += .5 * ('factory' in structures[city]) + yard_bonus * ('yard' in structures[city])
             finish = turn + math.ceil(cost / (base * modifier)) - 1
             # Rate frozen during each order; no production overflow in this model.
             busy[city] = key, finish
@@ -221,7 +225,7 @@ def singularity(science, production, training_goal=TRAINING_GOAL, city_count=7):
     return min(candidates, key=lambda x: x['turn'])
 
 
-def compare(tuned=False, profiles=None, city_count=7):
+def compare(tuned=False, profiles=None, city_count=7, yard_bonus=.2, require_yard=False):
     global MARS_COSTS
     for key, (cost, parents) in PROPOSED.items():
         COST[key], PARENTS[key] = cost, parents
@@ -240,6 +244,8 @@ def compare(tuned=False, profiles=None, city_count=7):
             best = None
             for ai in ([False, True] if route != 'mars' else [True]):
                 for yard in ([False, True] if route == 'alpha' else [False]):
+                    if route == 'alpha' and require_yard and not yard:
+                        continue
                     targets = (['AUTONOMOUS', 'ORBITAL', 'BIOSYSTEMS', 'REFINED_AI'] if route == 'mars' else
                                ['ADVANCED_BALLISTICS', 'SATELLITES', 'NANOTECHNOLOGY',
                                 'ENGINES' if route == 'alpha' else 'PARTICLE_PHYSICS'])
@@ -251,7 +257,9 @@ def compare(tuned=False, profiles=None, city_count=7):
                         for factory in ([False, True] if route != 'mars' else [False]):
                             attempt = schedule(queue, science, production, mars=route == 'mars',
                                                advanced=route == 'alpha', factory=factory, yard=yard,
-                                               city_count=city_count)
+                                               city_count=city_count, yard_bonus=yard_bonus)
+                            if route == 'alpha' and require_yard and not attempt['yard_used']:
+                                continue
                             if best is None or attempt['turn'] < best['turn']:
                                 best = attempt
             outcomes[route] = best
@@ -266,15 +274,21 @@ if __name__ == '__main__':
                         help='Current default; 800/1000/1200 science with three industry levels')
     parser.add_argument('--cities', type=int, default=7, choices=(6, 7, 8),
                         help='Empire city count, default 7')
+    parser.add_argument('--yard-bonus', type=int, choices=(20, 50), default=20,
+                        help='Compare proposed local ship-part bonus, default 20 percent')
+    parser.add_argument('--require-yard', action='store_true',
+                        help='Alpha must actually build a part in a city with a completed yard')
     args = parser.parse_args()
     profiles = normalized_profiles(args.cities)
-    outcomes = compare(tuned=True, profiles=profiles, city_count=args.cities)
+    outcomes = compare(tuned=True, profiles=profiles, city_count=args.cities,
+                       yard_bonus=args.yard_bonus / 100, require_yard=args.require_yard)
     result = dict(parameters=dict(model_version=2, city_count=args.cities,
                                   research_factor=research_factor(args.cities),
                                   effective_cities_assumed_equal_current_cities=True,
                                   science_is_total_empire_income=True,
                                   participating_training_cities=args.cities,
                                   historical=False,
+                                  yard_bonus_percent=args.yard_bonus, require_actual_yard=args.require_yard,
                                   training_goal=TRAINING_GOAL,
                                   data_centres=args.cities, laboratories=args.cities,
                                   local_science_multiplier=2.25,
