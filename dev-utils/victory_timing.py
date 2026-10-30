@@ -59,6 +59,16 @@ def orders(targets):
     return sorted(found)
 
 
+def center_science_bonus(science):
+    # Equal initial science shares across four cities; +4 centre and +3 lab from techs.
+    return .25 * (science / 2.25 / 4 + 7) + 10 * 2.65
+
+
+def learning_city_science(science):
+    ordinary = science + 36 + (science / 2.25 + 16) * .15 + 12 * 2.4
+    return [ordinary / 4 + center_science_bonus(science)] + [ordinary / 4] * 3
+
+
 def research(queue, science, center_production=None):
     dates, overflow, turn = {k: 0 for k in KNOWN}, 0., 0
     for key in queue:
@@ -76,7 +86,7 @@ def research(queue, science, center_production=None):
                 center_end = dates['ADVANCED_COMPUTING'] + math.ceil(1200 / (center_production * 1.6))
                 if turn >= center_end:
                     # Equal science shares across four cities. Local +25pp and +10 base.
-                    rate += .25 * (science / 2.25 / 4 + 7) + 10 * 2.65
+                    rate += center_science_bonus(science)
             overflow += rate
             turn += 1
         overflow -= need
@@ -151,11 +161,13 @@ def schedule(queue, science, production, mars=False, advanced=False,
     raise RuntimeError('Unfinished schedule')
 
 
-def singularity(science, production):
+def singularity(science, production, training_goal=12000):
     """One national centre, one national project, then empire-wide process.
 
     Numbers are a proposal; all participating cities already have data centres.
-    Ordinary production continues to use +40%, automation +10pp and AI +10pp.
+    Production builds the centre/project, with +40%, automation +10pp and AI +10pp.
+    Training uses ordinary local science from four participating cities. The 12000
+    goal is a fresh hypothesis, not a conversion of the old 3000 production goal.
     """
     candidates = []
     for queue in orders(['ROBOTICS', 'TELECOM', 'RECURSIVE']):
@@ -164,10 +176,13 @@ def singularity(science, production):
         project_start = max(dates['GENERAL_AI'], center_end) + 1
         project_end = project_start + math.ceil(1000 / (production[0] * 1.6)) - 1
         start = max(dates['RECURSIVE'], project_end) + 1
-        rate = sum(production) * 1.6
-        duration = math.ceil(3000 / rate)
+        city_science = learning_city_science(science)
+        rate = sum(city_science)
+        duration = math.ceil(training_goal / rate)
         candidates.append(dict(turn=start + duration - 1, research_end=max(dates.values()),
                                queue=list(queue), dates=dates, training_rate=rate,
+                               training_goal=training_goal, training_basis='city_science',
+                               participating_city_science=city_science,
                                training_turns=duration,
                                builds=[('supercomputer', 0, dates['ADVANCED_COMPUTING'] + 1, center_end),
                                        ('universal_ai', 0, project_start, project_end)],
