@@ -4,6 +4,7 @@
 Run from anywhere; uses current SQL technology graph via tech_tree.generate().
 New nodes, costs and assumptions are proposals, not changes to mod/.
 """
+import argparse
 import itertools
 import json
 import math
@@ -36,6 +37,19 @@ PROFILES = {
     'science': (1800, [60, 45, 35]),
     'industry': (850, [160, 120, 90]),
 }
+
+
+# Around the user's late-game norm of ~1000 science/turn. Production before +40%.
+NORMALIZED_PROFILES = {
+    f's{s}_p{label}': (s, prod)
+    for s in (800, 1000, 1200)
+    for label, prod in [('low', [60, 45, 35]), ('normal', [100, 75, 55]),
+                        ('high', [160, 120, 90])]
+}
+NORMALIZED_PROFILES.update({
+    's1000_concentrated': (1000, [200, 20, 10]),
+    's1000_distributed': (1000, [80, 75, 75]),
+})
 
 
 def orders(targets):
@@ -190,7 +204,7 @@ def singularity(science, production, training_goal=12000):
     return min(candidates, key=lambda x: x['turn'])
 
 
-def compare(tuned=False):
+def compare(tuned=False, profiles=None):
     global MARS_COSTS
     for key, (cost, parents) in PROPOSED.items():
         COST[key], PARENTS[key] = cost, parents
@@ -203,7 +217,7 @@ def compare(tuned=False):
                        ORBITAL=['SATELLITES'], BIOSYSTEMS=['ECOLOGY'])
         MARS_COSTS = (400, 600, 800, 1000)
     result = {}
-    for profile, (science, production) in PROFILES.items():
+    for profile, (science, production) in (PROFILES if profiles is None else profiles).items():
         outcomes = {}
         for route in ['v7', 'alpha', 'mars']:
             best = None
@@ -229,5 +243,12 @@ def compare(tuned=False):
 
 
 if __name__ == '__main__':
-    print(json.dumps({'initial': compare(), 'mars_faster_candidate': compare(tuned=True)},
-                     ensure_ascii=False, indent=2))
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--normalized', action='store_true',
+                        help='800/1000/1200 science; three industry levels and two distributions')
+    args = parser.parse_args()
+    result = (dict(profiles=NORMALIZED_PROFILES,
+                   mars_faster_candidate=compare(tuned=True, profiles=NORMALIZED_PROFILES))
+              if args.normalized else
+              dict(initial=compare(), mars_faster_candidate=compare(tuned=True)))
+    print(json.dumps(result, ensure_ascii=False, indent=2))
