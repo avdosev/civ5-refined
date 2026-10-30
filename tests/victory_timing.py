@@ -12,10 +12,10 @@ assert model.research_cost('REFINED_MICROELECTRONICS', 1) == 8085
 assert model.research_cost('REFINED_MICROELECTRONICS', 7) == 10395
 assert model.research_cost('REFINED_AGRICULTURAL_MECHANIZATION', 7) == 3490
 assert model.research_factor(7) == 1.485
-assert model.TRAINING_GOAL == 13800
+assert model.TRAINING_GOAL == 13666
 assert [model.COST[k] for k in ('ADVANCED_COMPUTING', 'GENERAL_AI', 'RECURSIVE')] == [7700, 8800, 9500]
 
-# V2 reference: seven cities, science=1000, final learning +15%; tech prices unchanged.
+# V2 reference: seven cities, science=1000, symbolic final goal 13666; tech prices unchanged.
 reference = {'s1000_plow': (120, 117, 112),
              's1000_pnormal': (115, 111, 110),
              's1000_phigh': (112, 107, 110)}
@@ -37,7 +37,7 @@ for count in (6, 7, 8):
             if route == 'singularity':
                 assert len(result['participating_city_science']) == count
                 assert result['training_start'] > max(dates['RECURSIVE'], result['builds'][-1][3])
-                assert result['training_turns'] == math.ceil(13800 / result['training_rate'])
+                assert result['training_turns'] == math.ceil(13666 / result['training_rate'])
                 assert math.isclose(result['training_rate'], sum(result['participating_city_science']))
         if count == 7 and profile in reference:
             assert tuple(routes[r]['turn'] for r in ('alpha', 'mars', 'singularity')) == reference[profile]

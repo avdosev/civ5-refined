@@ -44,7 +44,7 @@ def research_cost(tech, city_count):
 
 
 MARS_COSTS = (900, 1400, 1800, 2400)
-TRAINING_GOAL = 13800  # Selected +15% on final learning; technology prices unchanged.
+TRAINING_GOAL = 13666  # User-selected symbolic goal; technology prices unchanged.
 
 
 def orders(targets):
@@ -197,8 +197,8 @@ def singularity(science, production, training_goal=TRAINING_GOAL, city_count=7):
 
     Numbers are a proposal; all participating cities already have data centres.
     Production builds the centre/project, with +40%, automation +10pp and AI +10pp.
-    Training uses ordinary local science from all city_count participating cities. The 13800
-    goal is +15% on the previous 12000 learning goal; research prices are unchanged.
+    Training uses ordinary local science from all city_count participating cities. The 13666
+    goal replaces the proposed 13800; research prices are unchanged.
     """
     candidates = []
     for queue in orders(['ROBOTICS', 'TELECOM', 'RECURSIVE']):
