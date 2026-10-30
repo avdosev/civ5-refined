@@ -3,6 +3,7 @@
 
 Run from anywhere; uses current SQL technology graph via tech_tree.generate().
 New nodes, costs and assumptions are proposals, not changes to mod/.
+Version 2: explicit 6-8 cities, city penalty includes the first city.
 """
 import argparse
 import itertools
@@ -28,28 +29,21 @@ PROPOSED = {
 for key, (cost, parents) in PROPOSED.items():
     COST[key], PARENTS[key] = cost, parents
 
-# Standard world ResearchPercent=110; 4 cities, +5% per extra city.
-RESEARCH_FACTOR = 1.10 * 1.15
-# P is production before ordinary +40% city modifiers; specialised modifiers add.
+# Standard snapshot: ResearchPercent=110; +5% per effective city INCLUDING the first.
+# City count is explicit in each calculation; never inferred from science income.
+def research_factor(city_count):
+    if city_count < 1:
+        raise ValueError('city_count must be positive')
+    return round(1.10 * (1 + .05 * city_count), 3)
+
+
+def research_cost(tech, city_count):
+    # BNW: integer world scaling, then city scaling and ceiling player cost.
+    world_cost = COST[tech] * 110 // 100
+    return (world_cost * (100 + 5 * city_count) + 99) // 100
+
+
 MARS_COSTS = (900, 1400, 1800, 2400)
-PROFILES = {
-    'balanced': (1100, [100, 75, 55]),
-    'science': (1800, [60, 45, 35]),
-    'industry': (850, [160, 120, 90]),
-}
-
-
-# Around the user's late-game norm of ~1000 science/turn. Production before +40%.
-NORMALIZED_PROFILES = {
-    f's{s}_p{label}': (s, prod)
-    for s in (800, 1000, 1200)
-    for label, prod in [('low', [60, 45, 35]), ('normal', [100, 75, 55]),
-                        ('high', [160, 120, 90])]
-}
-NORMALIZED_PROFILES.update({
-    's1000_concentrated': (1000, [200, 20, 10]),
-    's1000_distributed': (1000, [80, 75, 75]),
-})
 
 
 def orders(targets):
@@ -73,34 +67,56 @@ def orders(targets):
     return sorted(found)
 
 
-def center_science_bonus(science):
-    # Equal initial science shares across four cities; +4 centre and +3 lab from techs.
-    return .25 * (science / 2.25 / 4 + 7) + 10 * 2.65
+def normalized_profiles(city_count):
+    """Same top-three cities as history; other cities now have explicit production.
+
+    All cities may build. Science is equally distributed as a controlled assumption.
+    Secondary-city production is a scenario, not a measured BNW baseline.
+    """
+    if not 6 <= city_count <= 8:
+        raise ValueError('Current baseline covers 6 to 8 cities')
+    secondary = [.40, .32, .24, .16, .12][:city_count - 3]
+    return {
+        f's{science}_p{label}': (science, top + [round(top[0] * x) for x in secondary])
+        for science in (800, 1000, 1200)
+        for label, top in [('low', [60, 45, 35]), ('normal', [100, 75, 55]),
+                           ('high', [160, 120, 90])]
+    }
 
 
-def learning_city_science(science):
-    ordinary = science + 36 + (science / 2.25 + 16) * .15 + 12 * 2.4
-    return [ordinary / 4 + center_science_bonus(science)] + [ordinary / 4] * 3
+def center_science_bonus(science, city_count=7):
+    # Equal initial science shares; +4 centre and +3 lab from technology bonuses.
+    return .25 * (science / 2.25 / city_count + 7) + 10 * 2.65
 
 
-def research(queue, science, center_production=None):
-    dates, overflow, turn = {k: 0 for k in KNOWN}, 0., 0
+def ordinary_science(science, city_count=7):
+    return (science + city_count * 4 * 2.25
+            + (science / 2.25 + city_count * 4) * .15 + city_count * 3 * 2.4)
+
+
+def learning_city_science(science, city_count=7):
+    per_city = ordinary_science(science, city_count) / city_count
+    return [per_city + center_science_bonus(science, city_count)] + [per_city] * (city_count - 1)
+
+
+def research(queue, science, center_production=None, city_count=7):
+    dates, overflow, turn = {k: 0 for k in sorted(KNOWN)}, 0., 0
     for key in queue:
-        need = math.ceil(COST[key] * RESEARCH_FACTOR)
+        need = research_cost(key, city_count)
         first_turn = True
         while first_turn or overflow < need:
             first_turn = False
             rate = science
             if 'REFINED_MICROELECTRONICS' in dates:
-                rate += 4 * 4 * 2.25  # four centres, +4 base science, +125% mods
+                rate += city_count * 4 * 2.25  # +4 per centre, +125% city modifiers
             if 'REFINED_AI' in dates:
                 # +15 percentage points on city base and +3 base per lab.
-                rate += (science / 2.25 + 16) * .15 + 4 * 3 * 2.4
+                rate += (science / 2.25 + city_count * 4) * .15 + city_count * 3 * 2.4
             if center_production and 'ADVANCED_COMPUTING' in dates:
                 center_end = dates['ADVANCED_COMPUTING'] + math.ceil(1200 / (center_production * 1.6))
                 if turn >= center_end:
-                    # Equal science shares across four cities. Local +25pp and +10 base.
-                    rate += center_science_bonus(science)
+                    # Equal science shares. Local +25pp and +10 base.
+                    rate += center_science_bonus(science, city_count)
             overflow += rate
             turn += 1
         overflow -= need
@@ -109,8 +125,8 @@ def research(queue, science, center_production=None):
 
 
 def schedule(queue, science, production, mars=False, advanced=False,
-             factory=False, yard=False, transfer=2):
-    dates = research(queue, science)
+             factory=False, yard=False, transfer=2, city_count=7):
+    dates = research(queue, science, city_count=city_count)
     done, busy, log = {}, [None] * len(production), []
     structures = [set() for _ in production]
     tasks = ([('recon', MARS_COSTS[0], 'AUTONOMOUS'), ('transport', MARS_COSTS[1], 'ORBITAL'),
@@ -175,22 +191,22 @@ def schedule(queue, science, production, mars=False, advanced=False,
     raise RuntimeError('Unfinished schedule')
 
 
-def singularity(science, production, training_goal=12000):
+def singularity(science, production, training_goal=12000, city_count=7):
     """One national centre, one national project, then empire-wide process.
 
     Numbers are a proposal; all participating cities already have data centres.
     Production builds the centre/project, with +40%, automation +10pp and AI +10pp.
-    Training uses ordinary local science from four participating cities. The 12000
+    Training uses ordinary local science from all city_count participating cities. The 12000
     goal is a fresh hypothesis, not a conversion of the old 3000 production goal.
     """
     candidates = []
     for queue in orders(['ROBOTICS', 'TELECOM', 'RECURSIVE']):
-        dates = research(queue, science, center_production=production[0])
+        dates = research(queue, science, center_production=production[0], city_count=city_count)
         center_end = dates['ADVANCED_COMPUTING'] + math.ceil(1200 / (production[0] * 1.6))
         project_start = max(dates['GENERAL_AI'], center_end) + 1
         project_end = project_start + math.ceil(1000 / (production[0] * 1.6)) - 1
         start = max(dates['RECURSIVE'], project_end) + 1
-        city_science = learning_city_science(science)
+        city_science = learning_city_science(science, city_count)
         rate = sum(city_science)
         duration = math.ceil(training_goal / rate)
         candidates.append(dict(turn=start + duration - 1, research_end=max(dates.values()),
@@ -204,7 +220,7 @@ def singularity(science, production, training_goal=12000):
     return min(candidates, key=lambda x: x['turn'])
 
 
-def compare(tuned=False, profiles=None):
+def compare(tuned=False, profiles=None, city_count=7):
     global MARS_COSTS
     for key, (cost, parents) in PROPOSED.items():
         COST[key], PARENTS[key] = cost, parents
@@ -217,7 +233,7 @@ def compare(tuned=False, profiles=None):
                        ORBITAL=['SATELLITES'], BIOSYSTEMS=['ECOLOGY'])
         MARS_COSTS = (400, 600, 800, 1000)
     result = {}
-    for profile, (science, production) in (PROFILES if profiles is None else profiles).items():
+    for profile, (science, production) in (normalized_profiles(city_count) if profiles is None else profiles).items():
         outcomes = {}
         for route in ['v7', 'alpha', 'mars']:
             best = None
@@ -233,11 +249,12 @@ def compare(tuned=False, profiles=None):
                     for queue in orders(targets):
                         for factory in ([False, True] if route != 'mars' else [False]):
                             attempt = schedule(queue, science, production, mars=route == 'mars',
-                                               advanced=route == 'alpha', factory=factory, yard=yard)
+                                               advanced=route == 'alpha', factory=factory, yard=yard,
+                                               city_count=city_count)
                             if best is None or attempt['turn'] < best['turn']:
                                 best = attempt
             outcomes[route] = best
-        outcomes['singularity'] = singularity(science, production)
+        outcomes['singularity'] = singularity(science, production, city_count=city_count)
         result[profile] = outcomes
     return result
 
@@ -245,10 +262,25 @@ def compare(tuned=False, profiles=None):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--normalized', action='store_true',
-                        help='800/1000/1200 science; three industry levels and two distributions')
+                        help='Current default; 800/1000/1200 science with three industry levels')
+    parser.add_argument('--cities', type=int, default=7, choices=(6, 7, 8),
+                        help='Empire city count, default 7')
     args = parser.parse_args()
-    result = (dict(profiles=NORMALIZED_PROFILES,
-                   mars_faster_candidate=compare(tuned=True, profiles=NORMALIZED_PROFILES))
-              if args.normalized else
-              dict(initial=compare(), mars_faster_candidate=compare(tuned=True)))
+    profiles = normalized_profiles(args.cities)
+    outcomes = compare(tuned=True, profiles=profiles, city_count=args.cities)
+    result = dict(parameters=dict(model_version=2, city_count=args.cities,
+                                  research_factor=research_factor(args.cities),
+                                  effective_cities_assumed_equal_current_cities=True,
+                                  science_is_total_empire_income=True,
+                                  participating_training_cities=args.cities,
+                                  historical=False,
+                                  training_goal=12000,
+                                  data_centres=args.cities, laboratories=args.cities,
+                                  local_science_multiplier=2.25,
+                                  science_distribution='equal shares before national centre',
+                                  population_growth=False,
+                                  technology_costs={key: COST[key] for key in PROPOSED},
+                                  common_known_technologies=sorted(KNOWN)),
+                  profiles=profiles,
+                  mars_faster_candidate=outcomes)
     print(json.dumps(result, ensure_ascii=False, indent=2))
