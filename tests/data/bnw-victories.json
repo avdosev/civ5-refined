@@ -1,0 +1,797 @@
+{
+  "source": "https://github.com/Eyefyre/civvapi/blob/master/Civ5DebugDatabase.db",
+  "note": "Schema and mechanical parameters only; extend bnw-society.json for v8. Not an installed game test.",
+  "tables": {
+    "Projects": {
+      "schema": "CREATE TABLE Projects ('ID' integer primary key autoincrement , 'Type' text  not null unique , 'Description' text , 'Civilopedia' text , 'Strategy' text , 'Help' text , 'Requirements' text , 'MaxGlobalInstances' integer default 0 , 'MaxTeamInstances' integer default 0 , 'Cost' integer default 0 , 'NukeInterception' integer default 0 , 'CultureBranchesRequired' integer default 0 , 'TechShare' integer default 0 , 'VictoryDelayPercent' integer default 0 , 'Spaceship' boolean default 0 , 'Religious' boolean default 0 , 'AllowsNukes' boolean default 0 , 'MovieDefineTag' text default NULL , 'VictoryPrereq' text default NULL , 'TechPrereq' text default NULL , 'EveryoneSpecialUnit' text default NULL , 'CreateSound' text default NULL , 'AnyonePrereqProject' text default NULL , 'PortraitIndex' integer default '-1' , 'IconAtlas' text default NULL , foreign key (IconAtlas) references IconTextureAtlases(Atlas))",
+      "rows": [
+        {
+          "ID": 0,
+          "Type": "PROJECT_MANHATTAN_PROJECT",
+          "Description": "TXT_KEY_PROJECT_MANHATTAN_PROJECT",
+          "Civilopedia": "TXT_KEY_PROJECT_MANHATTAN_PROJECT_PEDIA",
+          "Strategy": "TXT_KEY_PROJECT_MANHATTAN_PROJECT_STRATEGY",
+          "Help": "TXT_KEY_PROJECT_MANHATTAN_PROJECT_HELP",
+          "Requirements": null,
+          "MaxGlobalInstances": -1,
+          "MaxTeamInstances": 1,
+          "Cost": 750,
+          "NukeInterception": 0,
+          "CultureBranchesRequired": 0,
+          "TechShare": 0,
+          "VictoryDelayPercent": 0,
+          "Spaceship": 0,
+          "Religious": 0,
+          "AllowsNukes": 1,
+          "MovieDefineTag": null,
+          "VictoryPrereq": null,
+          "TechPrereq": "TECH_ATOMIC_THEORY",
+          "EveryoneSpecialUnit": null,
+          "CreateSound": null,
+          "AnyonePrereqProject": null,
+          "PortraitIndex": 41,
+          "IconAtlas": "BW_ATLAS_2"
+        },
+        {
+          "ID": 1,
+          "Type": "PROJECT_APOLLO_PROGRAM",
+          "Description": "TXT_KEY_PROJECT_APOLLO_PROGRAM",
+          "Civilopedia": "TXT_KEY_PROJECT_APOLLO_PROGRAM_PEDIA",
+          "Strategy": "TXT_KEY_PROJECT_APOLLO_PROGRAM_STRATEGY",
+          "Help": "TXT_KEY_PROJECT_APOLLO_PROGRAM_HELP",
+          "Requirements": null,
+          "MaxGlobalInstances": -1,
+          "MaxTeamInstances": 1,
+          "Cost": 750,
+          "NukeInterception": 0,
+          "CultureBranchesRequired": 0,
+          "TechShare": 0,
+          "VictoryDelayPercent": 0,
+          "Spaceship": 0,
+          "Religious": 0,
+          "AllowsNukes": 0,
+          "MovieDefineTag": null,
+          "VictoryPrereq": "VICTORY_SPACE_RACE",
+          "TechPrereq": "TECH_ROCKETRY",
+          "EveryoneSpecialUnit": null,
+          "CreateSound": null,
+          "AnyonePrereqProject": null,
+          "PortraitIndex": 33,
+          "IconAtlas": "BW_ATLAS_2"
+        },
+        {
+          "ID": 2,
+          "Type": "PROJECT_SS_COCKPIT",
+          "Description": "TXT_KEY_SS_COCKPIT",
+          "Civilopedia": "TXT_KEY_PROJECT_SS_COCKPIT_PEDIA",
+          "Strategy": "TXT_KEY_PROJECT_SS_COCKPIT_STRATEGY",
+          "Help": "TXT_KEY_UNIT_HELP_SS_PART",
+          "Requirements": null,
+          "MaxGlobalInstances": -1,
+          "MaxTeamInstances": 1,
+          "Cost": -1,
+          "NukeInterception": 0,
+          "CultureBranchesRequired": 0,
+          "TechShare": 0,
+          "VictoryDelayPercent": 0,
+          "Spaceship": 1,
+          "Religious": 0,
+          "AllowsNukes": 0,
+          "MovieDefineTag": null,
+          "VictoryPrereq": "VICTORY_SPACE_RACE",
+          "TechPrereq": null,
+          "EveryoneSpecialUnit": null,
+          "CreateSound": null,
+          "AnyonePrereqProject": null,
+          "PortraitIndex": 36,
+          "IconAtlas": "BW_ATLAS_2"
+        },
+        {
+          "ID": 3,
+          "Type": "PROJECT_SS_STASIS_CHAMBER",
+          "Description": "TXT_KEY_SS_STASIS_CHAMBER",
+          "Civilopedia": "TXT_KEY_PROJECT_SS_STASIS_CHAMBER_PEDIA",
+          "Strategy": "TXT_KEY_PROJECT_SS_STASIS_CHAMBER_STRATEGY",
+          "Help": "TXT_KEY_UNIT_HELP_SS_PART",
+          "Requirements": null,
+          "MaxGlobalInstances": -1,
+          "MaxTeamInstances": 1,
+          "Cost": -1,
+          "NukeInterception": 0,
+          "CultureBranchesRequired": 0,
+          "TechShare": 0,
+          "VictoryDelayPercent": 0,
+          "Spaceship": 1,
+          "Religious": 0,
+          "AllowsNukes": 0,
+          "MovieDefineTag": null,
+          "VictoryPrereq": "VICTORY_SPACE_RACE",
+          "TechPrereq": null,
+          "EveryoneSpecialUnit": null,
+          "CreateSound": null,
+          "AnyonePrereqProject": null,
+          "PortraitIndex": 38,
+          "IconAtlas": "BW_ATLAS_2"
+        },
+        {
+          "ID": 4,
+          "Type": "PROJECT_SS_ENGINE",
+          "Description": "TXT_KEY_SS_ENGINE",
+          "Civilopedia": "TXT_KEY_PROJECT_SS_ENGINE_PEDIA",
+          "Strategy": "TXT_KEY_PROJECT_SS_ENGINE_STRATEGY",
+          "Help": "TXT_KEY_UNIT_HELP_SS_PART",
+          "Requirements": null,
+          "MaxGlobalInstances": -1,
+          "MaxTeamInstances": 1,
+          "Cost": -1,
+          "NukeInterception": 0,
+          "CultureBranchesRequired": 0,
+          "TechShare": 0,
+          "VictoryDelayPercent": 0,
+          "Spaceship": 1,
+          "Religious": 0,
+          "AllowsNukes": 0,
+          "MovieDefineTag": null,
+          "VictoryPrereq": "VICTORY_SPACE_RACE",
+          "TechPrereq": null,
+          "EveryoneSpecialUnit": null,
+          "CreateSound": null,
+          "AnyonePrereqProject": null,
+          "PortraitIndex": 39,
+          "IconAtlas": "BW_ATLAS_2"
+        },
+        {
+          "ID": 5,
+          "Type": "PROJECT_SS_BOOSTER",
+          "Description": "TXT_KEY_SS_BOOSTER",
+          "Civilopedia": "TXT_KEY_PROJECT_SS_BOOSTER_PEDIA",
+          "Strategy": "TXT_KEY_PROJECT_SS_BOOSTER_STRATEGY",
+          "Help": "TXT_KEY_UNIT_HELP_SS_BOOSTER",
+          "Requirements": null,
+          "MaxGlobalInstances": -1,
+          "MaxTeamInstances": 3,
+          "Cost": -1,
+          "NukeInterception": 0,
+          "CultureBranchesRequired": 0,
+          "TechShare": 0,
+          "VictoryDelayPercent": 0,
+          "Spaceship": 1,
+          "Religious": 0,
+          "AllowsNukes": 0,
+          "MovieDefineTag": null,
+          "VictoryPrereq": "VICTORY_SPACE_RACE",
+          "TechPrereq": null,
+          "EveryoneSpecialUnit": null,
+          "CreateSound": null,
+          "AnyonePrereqProject": null,
+          "PortraitIndex": 35,
+          "IconAtlas": "BW_ATLAS_2"
+        }
+      ]
+    },
+    "Project_Prereqs": {
+      "schema": "CREATE TABLE Project_Prereqs ('ProjectType' text , 'PrereqProjectType' text , 'AmountNeeded' integer default 1 , foreign key (ProjectType) references Projects(Type), foreign key (PrereqProjectType) references Projects(Type))",
+      "rows": [
+        {
+          "ProjectType": "PROJECT_SS_COCKPIT",
+          "PrereqProjectType": "PROJECT_APOLLO_PROGRAM",
+          "AmountNeeded": 1
+        },
+        {
+          "ProjectType": "PROJECT_SS_STASIS_CHAMBER",
+          "PrereqProjectType": "PROJECT_APOLLO_PROGRAM",
+          "AmountNeeded": 1
+        },
+        {
+          "ProjectType": "PROJECT_SS_ENGINE",
+          "PrereqProjectType": "PROJECT_APOLLO_PROGRAM",
+          "AmountNeeded": 1
+        },
+        {
+          "ProjectType": "PROJECT_SS_BOOSTER",
+          "PrereqProjectType": "PROJECT_APOLLO_PROGRAM",
+          "AmountNeeded": 1
+        }
+      ]
+    },
+    "Project_Flavors": {
+      "schema": "CREATE TABLE Project_Flavors ('ProjectType' text , 'FlavorType' text , 'Flavor' integer  not null , foreign key (ProjectType) references Projects(Type), foreign key (FlavorType) references Flavors(Type))",
+      "rows": [
+        {
+          "ProjectType": "PROJECT_APOLLO_PROGRAM",
+          "FlavorType": "FLAVOR_SPACESHIP",
+          "Flavor": 250
+        },
+        {
+          "ProjectType": "PROJECT_APOLLO_PROGRAM",
+          "FlavorType": "FLAVOR_WONDER",
+          "Flavor": 10
+        },
+        {
+          "ProjectType": "PROJECT_APOLLO_PROGRAM",
+          "FlavorType": "FLAVOR_SCIENCE",
+          "Flavor": 25
+        },
+        {
+          "ProjectType": "PROJECT_MANHATTAN_PROJECT",
+          "FlavorType": "FLAVOR_NUKE",
+          "Flavor": 250
+        },
+        {
+          "ProjectType": "PROJECT_MANHATTAN_PROJECT",
+          "FlavorType": "FLAVOR_OFFENSE",
+          "Flavor": 20
+        },
+        {
+          "ProjectType": "PROJECT_MANHATTAN_PROJECT",
+          "FlavorType": "FLAVOR_DEFENSE",
+          "Flavor": 20
+        }
+      ]
+    },
+    "Processes": {
+      "schema": "CREATE TABLE Processes ('ID' integer primary key autoincrement , 'Type' text  not null unique , 'Description' text , 'Help' text , 'Strategy' text , 'TechPrereq' text , 'PortraitIndex' integer default '-1' , 'IconAtlas' text default NULL , foreign key (TechPrereq) references Technologies(Type), foreign key (IconAtlas) references IconTextureAtlases(Atlas))",
+      "rows": [
+        {
+          "ID": 0,
+          "Type": "PROCESS_WEALTH",
+          "Description": "TXT_KEY_PROCESS_WEALTH",
+          "Help": "TXT_KEY_PROCESS_WEALTH_HELP",
+          "Strategy": "TXT_KEY_PROCESS_WEALTH_STRATEGY",
+          "TechPrereq": "TECH_GUILDS",
+          "PortraitIndex": 8,
+          "IconAtlas": "CITIZEN_ATLAS"
+        },
+        {
+          "ID": 1,
+          "Type": "PROCESS_RESEARCH",
+          "Description": "TXT_KEY_PROCESS_RESEARCH",
+          "Help": "TXT_KEY_PROCESS_RESEARCH_HELP",
+          "Strategy": "TXT_KEY_PROCESS_RESEARCH_STRATEGY",
+          "TechPrereq": "TECH_EDUCATION",
+          "PortraitIndex": 7,
+          "IconAtlas": "CITIZEN_ATLAS"
+        },
+        {
+          "ID": 2,
+          "Type": "PROCESS_WORLD_FAIR",
+          "Description": "TXT_KEY_PROCESS_WORLD_FAIR",
+          "Help": "TXT_KEY_PROCESS_WORLD_FAIR_HELP",
+          "Strategy": "TXT_KEY_PROCESS_WORLD_FAIR_HELP",
+          "TechPrereq": null,
+          "PortraitIndex": 0,
+          "IconAtlas": "INTL_PROJECT_ATLAS_EXP2"
+        },
+        {
+          "ID": 3,
+          "Type": "PROCESS_WORLD_GAMES",
+          "Description": "TXT_KEY_PROCESS_WORLD_GAMES",
+          "Help": "TXT_KEY_PROCESS_WORLD_GAMES_HELP",
+          "Strategy": "TXT_KEY_PROCESS_WORLD_GAMES_HELP",
+          "TechPrereq": null,
+          "PortraitIndex": 0,
+          "IconAtlas": "INTL_PROJECT_ATLAS_EXP2"
+        },
+        {
+          "ID": 4,
+          "Type": "PROCESS_INTERNATIONAL_SPACE_STATION",
+          "Description": "TXT_KEY_PROCESS_INTERNATIONAL_SPACE_STATION",
+          "Help": "TXT_KEY_PROCESS_INTERNATIONAL_SPACE_STATION_HELP",
+          "Strategy": "TXT_KEY_PROCESS_INTERNATIONAL_SPACE_STATION_HELP",
+          "TechPrereq": null,
+          "PortraitIndex": 0,
+          "IconAtlas": "INTL_PROJECT_ATLAS_EXP2"
+        }
+      ]
+    },
+    "Process_ProductionYields": {
+      "schema": "CREATE TABLE Process_ProductionYields ('ProcessType' text , 'YieldType' text , 'Yield' integer  not null , foreign key (ProcessType) references Processes(Type), foreign key (YieldType) references Yields(Type))",
+      "rows": [
+        {
+          "ProcessType": "PROCESS_WEALTH",
+          "YieldType": "YIELD_GOLD",
+          "Yield": 25
+        },
+        {
+          "ProcessType": "PROCESS_RESEARCH",
+          "YieldType": "YIELD_SCIENCE",
+          "Yield": 25
+        }
+      ]
+    },
+    "Building_ClassesNeededInCity": {
+      "schema": "CREATE TABLE Building_ClassesNeededInCity ('BuildingType' text , 'BuildingClassType' text , foreign key (BuildingType) references Buildings(Type), foreign key (BuildingClassType) references BuildingClasses(Type))",
+      "rows": [
+        {
+          "BuildingType": "BUILDING_ARMORY",
+          "BuildingClassType": "BUILDINGCLASS_BARRACKS"
+        },
+        {
+          "BuildingType": "BUILDING_MILITARY_ACADEMY",
+          "BuildingClassType": "BUILDINGCLASS_ARMORY"
+        },
+        {
+          "BuildingType": "BUILDING_ARSENAL",
+          "BuildingClassType": "BUILDINGCLASS_CASTLE"
+        },
+        {
+          "BuildingType": "BUILDING_CASTLE",
+          "BuildingClassType": "BUILDINGCLASS_WALLS"
+        },
+        {
+          "BuildingType": "BUILDING_MUGHAL_FORT",
+          "BuildingClassType": "BUILDINGCLASS_WALLS"
+        },
+        {
+          "BuildingType": "BUILDING_MILITARY_BASE",
+          "BuildingClassType": "BUILDINGCLASS_ARSENAL"
+        },
+        {
+          "BuildingType": "BUILDING_THEATRE",
+          "BuildingClassType": "BUILDINGCLASS_COLOSSEUM"
+        },
+        {
+          "BuildingType": "BUILDING_STADIUM",
+          "BuildingClassType": "BUILDINGCLASS_THEATRE"
+        },
+        {
+          "BuildingType": "BUILDING_MEDICAL_LAB",
+          "BuildingClassType": "BUILDINGCLASS_HOSPITAL"
+        },
+        {
+          "BuildingType": "BUILDING_FACTORY",
+          "BuildingClassType": "BUILDINGCLASS_WORKSHOP"
+        },
+        {
+          "BuildingType": "BUILDING_SOLAR_PLANT",
+          "BuildingClassType": "BUILDINGCLASS_FACTORY"
+        },
+        {
+          "BuildingType": "BUILDING_NUCLEAR_PLANT",
+          "BuildingClassType": "BUILDINGCLASS_FACTORY"
+        },
+        {
+          "BuildingType": "BUILDING_SPACESHIP_FACTORY",
+          "BuildingClassType": "BUILDINGCLASS_FACTORY"
+        },
+        {
+          "BuildingType": "BUILDING_BANK",
+          "BuildingClassType": "BUILDINGCLASS_MARKET"
+        },
+        {
+          "BuildingType": "BUILDING_STOCK_EXCHANGE",
+          "BuildingClassType": "BUILDINGCLASS_BANK"
+        },
+        {
+          "BuildingType": "BUILDING_SATRAPS_COURT",
+          "BuildingClassType": "BUILDINGCLASS_MARKET"
+        },
+        {
+          "BuildingType": "BUILDING_UNIVERSITY",
+          "BuildingClassType": "BUILDINGCLASS_LIBRARY"
+        },
+        {
+          "BuildingType": "BUILDING_WAT",
+          "BuildingClassType": "BUILDINGCLASS_LIBRARY"
+        },
+        {
+          "BuildingType": "BUILDING_PUBLIC_SCHOOL",
+          "BuildingClassType": "BUILDINGCLASS_UNIVERSITY"
+        },
+        {
+          "BuildingType": "BUILDING_LABORATORY",
+          "BuildingClassType": "BUILDINGCLASS_PUBLIC_SCHOOL"
+        },
+        {
+          "BuildingType": "BUILDING_TEMPLE",
+          "BuildingClassType": "BUILDINGCLASS_SHRINE"
+        },
+        {
+          "BuildingType": "BUILDING_MUD_PYRAMID_MOSQUE",
+          "BuildingClassType": "BUILDINGCLASS_SHRINE"
+        },
+        {
+          "BuildingType": "BUILDING_BURIAL_TOMB",
+          "BuildingClassType": "BUILDINGCLASS_SHRINE"
+        },
+        {
+          "BuildingType": "BUILDING_OPERA_HOUSE",
+          "BuildingClassType": "BUILDINGCLASS_AMPHITHEATER"
+        },
+        {
+          "BuildingType": "BUILDING_MUSEUM",
+          "BuildingClassType": "BUILDINGCLASS_OPERA_HOUSE"
+        },
+        {
+          "BuildingType": "BUILDING_BROADCAST_TOWER",
+          "BuildingClassType": "BUILDINGCLASS_MUSEUM"
+        },
+        {
+          "BuildingType": "BUILDING_HERMITAGE",
+          "BuildingClassType": "BUILDINGCLASS_OPERA_HOUSE"
+        },
+        {
+          "BuildingType": "BUILDING_HEROIC_EPIC",
+          "BuildingClassType": "BUILDINGCLASS_BARRACKS"
+        },
+        {
+          "BuildingType": "BUILDING_IRONWORKS",
+          "BuildingClassType": "BUILDINGCLASS_WORKSHOP"
+        },
+        {
+          "BuildingType": "BUILDING_NATIONAL_EPIC",
+          "BuildingClassType": "BUILDINGCLASS_MONUMENT"
+        },
+        {
+          "BuildingType": "BUILDING_CIRCUS_MAXIMUS",
+          "BuildingClassType": "BUILDINGCLASS_COLOSSEUM"
+        },
+        {
+          "BuildingType": "BUILDING_NATIONAL_TREASURY",
+          "BuildingClassType": "BUILDINGCLASS_MARKET"
+        },
+        {
+          "BuildingType": "BUILDING_NATIONAL_COLLEGE",
+          "BuildingClassType": "BUILDINGCLASS_LIBRARY"
+        },
+        {
+          "BuildingType": "BUILDING_OXFORD_UNIVERSITY",
+          "BuildingClassType": "BUILDINGCLASS_UNIVERSITY"
+        },
+        {
+          "BuildingType": "BUILDING_HOSPITAL",
+          "BuildingClassType": "BUILDINGCLASS_AQUEDUCT"
+        },
+        {
+          "BuildingType": "BUILDING_SEAPORT",
+          "BuildingClassType": "BUILDINGCLASS_HARBOR"
+        },
+        {
+          "BuildingType": "BUILDING_CEILIDH_HALL",
+          "BuildingClassType": "BUILDINGCLASS_AMPHITHEATER"
+        },
+        {
+          "BuildingType": "BUILDING_AMPHITHEATER",
+          "BuildingClassType": "BUILDINGCLASS_MONUMENT"
+        },
+        {
+          "BuildingType": "BUILDING_POLICE_STATION",
+          "BuildingClassType": "BUILDINGCLASS_CONSTABLE"
+        },
+        {
+          "BuildingType": "BUILDING_INTELLIGENCE_AGENCY",
+          "BuildingClassType": "BUILDINGCLASS_POLICE_STATION"
+        },
+        {
+          "BuildingType": "BUILDING_GRAND_TEMPLE",
+          "BuildingClassType": "BUILDINGCLASS_TEMPLE"
+        },
+        {
+          "BuildingType": "BUILDING_HANSE",
+          "BuildingClassType": "BUILDINGCLASS_MARKET"
+        }
+      ]
+    },
+    "Flavors": {
+      "schema": "CREATE TABLE Flavors ('ID' integer primary key autoincrement , 'Type' text  not null unique )",
+      "rows": [
+        {
+          "ID": 0,
+          "Type": "FLAVOR_OFFENSE"
+        },
+        {
+          "ID": 1,
+          "Type": "FLAVOR_DEFENSE"
+        },
+        {
+          "ID": 2,
+          "Type": "FLAVOR_CITY_DEFENSE"
+        },
+        {
+          "ID": 3,
+          "Type": "FLAVOR_MILITARY_TRAINING"
+        },
+        {
+          "ID": 4,
+          "Type": "FLAVOR_RECON"
+        },
+        {
+          "ID": 5,
+          "Type": "FLAVOR_RANGED"
+        },
+        {
+          "ID": 6,
+          "Type": "FLAVOR_MOBILE"
+        },
+        {
+          "ID": 7,
+          "Type": "FLAVOR_NAVAL"
+        },
+        {
+          "ID": 8,
+          "Type": "FLAVOR_NAVAL_RECON"
+        },
+        {
+          "ID": 9,
+          "Type": "FLAVOR_NAVAL_GROWTH"
+        },
+        {
+          "ID": 10,
+          "Type": "FLAVOR_NAVAL_TILE_IMPROVEMENT"
+        },
+        {
+          "ID": 11,
+          "Type": "FLAVOR_AIR"
+        },
+        {
+          "ID": 12,
+          "Type": "FLAVOR_EXPANSION"
+        },
+        {
+          "ID": 13,
+          "Type": "FLAVOR_GROWTH"
+        },
+        {
+          "ID": 14,
+          "Type": "FLAVOR_TILE_IMPROVEMENT"
+        },
+        {
+          "ID": 15,
+          "Type": "FLAVOR_INFRASTRUCTURE"
+        },
+        {
+          "ID": 16,
+          "Type": "FLAVOR_PRODUCTION"
+        },
+        {
+          "ID": 17,
+          "Type": "FLAVOR_GOLD"
+        },
+        {
+          "ID": 18,
+          "Type": "FLAVOR_SCIENCE"
+        },
+        {
+          "ID": 19,
+          "Type": "FLAVOR_CULTURE"
+        },
+        {
+          "ID": 20,
+          "Type": "FLAVOR_HAPPINESS"
+        },
+        {
+          "ID": 21,
+          "Type": "FLAVOR_GREAT_PEOPLE"
+        },
+        {
+          "ID": 22,
+          "Type": "FLAVOR_WONDER"
+        },
+        {
+          "ID": 23,
+          "Type": "FLAVOR_RELIGION"
+        },
+        {
+          "ID": 24,
+          "Type": "FLAVOR_DIPLOMACY"
+        },
+        {
+          "ID": 25,
+          "Type": "FLAVOR_SPACESHIP"
+        },
+        {
+          "ID": 26,
+          "Type": "FLAVOR_WATER_CONNECTION"
+        },
+        {
+          "ID": 27,
+          "Type": "FLAVOR_NUKE"
+        },
+        {
+          "ID": 28,
+          "Type": "FLAVOR_ANTIAIR"
+        },
+        {
+          "ID": 29,
+          "Type": "FLAVOR_USE_NUKE"
+        },
+        {
+          "ID": 30,
+          "Type": "FLAVOR_ESPIONAGE"
+        },
+        {
+          "ID": 31,
+          "Type": "FLAVOR_AIR_CARRIER"
+        },
+        {
+          "ID": 32,
+          "Type": "FLAVOR_I_LAND_TRADE_ROUTE"
+        },
+        {
+          "ID": 33,
+          "Type": "FLAVOR_I_SEA_TRADE_ROUTE"
+        },
+        {
+          "ID": 34,
+          "Type": "FLAVOR_ARCHAEOLOGY"
+        },
+        {
+          "ID": 35,
+          "Type": "FLAVOR_I_TRADE_ORIGIN"
+        },
+        {
+          "ID": 36,
+          "Type": "FLAVOR_I_TRADE_DESTINATION"
+        },
+        {
+          "ID": 37,
+          "Type": "FLAVOR_AIRLIFT"
+        }
+      ]
+    },
+    "Victories": {
+      "schema": "CREATE TABLE Victories ('ID' integer primary key autoincrement , 'Type' text  not null unique , 'Description' text , 'VictoryStatement' text , 'VictoryBackground' text , 'Civilopedia' text , 'WinsGame' boolean default 0 , 'TargetScore' boolean default 0 , 'EndScore' boolean default 0 , 'Conquest' boolean default 0 , 'Influential' boolean default 0 , 'DiploVote' boolean default 0 , 'Permanent' boolean default 0 , 'ReligionInAllCities' boolean default 0 , 'FindAllNaturalWonders' boolean default 0 , 'PopulationPercentLead' integer default 0 , 'LandPercent' integer default 0 , 'MinLandPercent' integer default 0 , 'NumCultureCities' integer default 0 , 'TotalCultureRatio' integer default 0 , 'VictoryDelayTurns' integer default 0 , 'VictoryMovie' text , 'CityCulture' text default NULL , 'Audio' text default NULL )",
+      "rows": [
+        {
+          "ID": 0,
+          "Type": "VICTORY_TIME",
+          "Description": "TXT_KEY_VICTORY_TIME",
+          "VictoryStatement": "TXT_KEY_VICTORY_TIME_BANG",
+          "VictoryBackground": "Victory_Score.dds",
+          "Civilopedia": "TXT_KEY_VICTORY_TIME_PEDIA",
+          "WinsGame": 1,
+          "TargetScore": 0,
+          "EndScore": 1,
+          "Conquest": 0,
+          "Influential": 0,
+          "DiploVote": 0,
+          "Permanent": 1,
+          "ReligionInAllCities": 0,
+          "FindAllNaturalWonders": 0,
+          "PopulationPercentLead": 0,
+          "LandPercent": 0,
+          "MinLandPercent": 0,
+          "NumCultureCities": 0,
+          "TotalCultureRatio": 0,
+          "VictoryDelayTurns": 0,
+          "VictoryMovie": null,
+          "CityCulture": null,
+          "Audio": "AS2D_VICTORY_SPEECH_ALTERNATE_CONQUEST_VICTORY"
+        },
+        {
+          "ID": 1,
+          "Type": "VICTORY_SPACE_RACE",
+          "Description": "TXT_KEY_VICTORY_SPACE_RACE",
+          "VictoryStatement": "TXT_KEY_VICTORY_TECHNOLOGY_BANG",
+          "VictoryBackground": "Victory_Scientific.dds",
+          "Civilopedia": "TXT_KEY_VICTORY_SPACE_RACE_READY",
+          "WinsGame": 1,
+          "TargetScore": 0,
+          "EndScore": 0,
+          "Conquest": 0,
+          "Influential": 0,
+          "DiploVote": 0,
+          "Permanent": 0,
+          "ReligionInAllCities": 0,
+          "FindAllNaturalWonders": 0,
+          "PopulationPercentLead": 0,
+          "LandPercent": 0,
+          "MinLandPercent": 0,
+          "NumCultureCities": 0,
+          "TotalCultureRatio": 0,
+          "VictoryDelayTurns": 0,
+          "VictoryMovie": null,
+          "CityCulture": null,
+          "Audio": "AS2D_VICTORY_SPEECH_SCIENCE_VICTORY"
+        },
+        {
+          "ID": 2,
+          "Type": "VICTORY_DOMINATION",
+          "Description": "TXT_KEY_VICTORY_DOMINATION",
+          "VictoryStatement": "TXT_KEY_VICTORY_DOMINATION_BANG",
+          "VictoryBackground": "Victory_Military.dds",
+          "Civilopedia": "TXT_KEY_VICTORY_DOMINATION_PEDIA",
+          "WinsGame": 1,
+          "TargetScore": 0,
+          "EndScore": 0,
+          "Conquest": 1,
+          "Influential": 0,
+          "DiploVote": 0,
+          "Permanent": 0,
+          "ReligionInAllCities": 0,
+          "FindAllNaturalWonders": 0,
+          "PopulationPercentLead": 0,
+          "LandPercent": 0,
+          "MinLandPercent": 0,
+          "NumCultureCities": 0,
+          "TotalCultureRatio": 0,
+          "VictoryDelayTurns": 0,
+          "VictoryMovie": null,
+          "CityCulture": null,
+          "Audio": "AS2D_VICTORY_SPEECH_CONQUEST_VICTORY"
+        },
+        {
+          "ID": 3,
+          "Type": "VICTORY_CULTURAL",
+          "Description": "TXT_KEY_VICTORY_CULTURAL",
+          "VictoryStatement": "TXT_KEY_VICTORY_CULTURE_BANG",
+          "VictoryBackground": "Victory_Cultural.dds",
+          "Civilopedia": "TXT_KEY_VICTORY_CULTURAL_PEDIA",
+          "WinsGame": 1,
+          "TargetScore": 0,
+          "EndScore": 0,
+          "Conquest": 0,
+          "Influential": 1,
+          "DiploVote": 0,
+          "Permanent": 0,
+          "ReligionInAllCities": 0,
+          "FindAllNaturalWonders": 0,
+          "PopulationPercentLead": 0,
+          "LandPercent": 0,
+          "MinLandPercent": 0,
+          "NumCultureCities": 0,
+          "TotalCultureRatio": 0,
+          "VictoryDelayTurns": 0,
+          "VictoryMovie": null,
+          "CityCulture": null,
+          "Audio": "AS2D_VICTORY_SPEECH_CULTURE_VICTORY"
+        },
+        {
+          "ID": 4,
+          "Type": "VICTORY_DIPLOMATIC",
+          "Description": "TXT_KEY_VICTORY_DIPLOMATIC",
+          "VictoryStatement": "TXT_KEY_VICTORY_ECONOMIC_BANG",
+          "VictoryBackground": "Victory_Diplomatic.dds",
+          "Civilopedia": "TXT_KEY_VICTORY_DIPLOMATIC_PEDIA",
+          "WinsGame": 1,
+          "TargetScore": 0,
+          "EndScore": 0,
+          "Conquest": 0,
+          "Influential": 0,
+          "DiploVote": 1,
+          "Permanent": 0,
+          "ReligionInAllCities": 0,
+          "FindAllNaturalWonders": 0,
+          "PopulationPercentLead": 0,
+          "LandPercent": 0,
+          "MinLandPercent": 0,
+          "NumCultureCities": 0,
+          "TotalCultureRatio": 0,
+          "VictoryDelayTurns": 0,
+          "VictoryMovie": null,
+          "CityCulture": null,
+          "Audio": "AS2D_VICTORY_SPEECH_DIPLOMATIC_VICTORY"
+        }
+      ]
+    },
+    "Project_VictoryThresholds": {
+      "schema": "CREATE TABLE Project_VictoryThresholds ('ProjectType' text , 'VictoryType' text , 'Threshold' integer  not null , 'MinThreshold' integer default 0 , foreign key (ProjectType) references Projects(Type), foreign key (VictoryType) references Victories(Type))",
+      "rows": [
+        {
+          "ProjectType": "PROJECT_SS_COCKPIT",
+          "VictoryType": "VICTORY_SPACE_RACE",
+          "Threshold": 1,
+          "MinThreshold": 1
+        },
+        {
+          "ProjectType": "PROJECT_SS_STASIS_CHAMBER",
+          "VictoryType": "VICTORY_SPACE_RACE",
+          "Threshold": 1,
+          "MinThreshold": 1
+        },
+        {
+          "ProjectType": "PROJECT_SS_ENGINE",
+          "VictoryType": "VICTORY_SPACE_RACE",
+          "Threshold": 1,
+          "MinThreshold": 1
+        },
+        {
+          "ProjectType": "PROJECT_SS_BOOSTER",
+          "VictoryType": "VICTORY_SPACE_RACE",
+          "Threshold": 3,
+          "MinThreshold": 3
+        }
+      ]
+    }
+  }
+}

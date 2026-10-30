@@ -46,6 +46,10 @@ jobs:
         run: python tests/run_lua.py --lua lua5.1
       - name: Validate allies and institutions
         run: python tests/society.py --lua lua5.1
+      - name: Validate science routes, command and timing contracts
+        run: |
+          python tests/victories.py --lua lua5.1
+          python tests/victory_timing.py
       - uses: actions/upload-artifact@v4
         with:
           name: mod-package

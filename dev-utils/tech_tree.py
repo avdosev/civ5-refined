@@ -49,8 +49,9 @@ def generate(database=None):
         'TECH_COMBUSTION': 'Двигатель внутреннего сгорания',
         'TECH_STEALTH': 'Стелс',
     })
-    text = {r.attrib['Tag']: r.findtext('Text', '') for r in
-            ET.parse(ROOT / 'mod/Text/Localization.xml').getroot().findall('Language_RU_RU/Row')}
+    text = {r.attrib['Tag']: r.findtext('Text', '')
+            for path in sorted((ROOT / 'mod/Text').glob('*.xml'))
+            for r in ET.parse(path).getroot().findall('Language_RU_RU/Row')}
     # Only project writes to technology tables. Other gameplay statements cannot
     # affect this graph. Derive their order from the package builder itself.
     paths = re.findall(r"'SQL/[^']+\.sql'", (ROOT / 'tools/build.py').read_text())
@@ -65,7 +66,9 @@ def generate(database=None):
             if not sqlite3.complete_statement(pending):
                 continue
             clean = re.sub(r'--[^\n]*', '', pending).strip()
-            if re.match(r'(?:INSERT\s+(?:OR\s+\w+\s+)?INTO|UPDATE|DELETE\s+FROM)\s+(?:Technologies|Technology_PrereqTechs)\b', clean, re.I):
+            if re.match(r'CREATE\s+TABLE\s+Refined_VictoryTechs\b', clean, re.I):
+                db.executescript(pending)
+            elif re.match(r'(?:INSERT\s+(?:OR\s+\w+\s+)?INTO|UPDATE|DELETE\s+FROM)\s+(?:Technologies|Technology_PrereqTechs|Refined_VictoryTechs)\b', clean, re.I):
                 db.executescript(pending)
             pending = ''
     rows = [dict(r) for r in db.execute('SELECT * FROM Technologies ORDER BY GridX,GridY')]

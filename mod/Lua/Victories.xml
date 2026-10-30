@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Context Name="RefinedVictories">
+  <Container ID="VictoryPanel" Anchor="R,T" Offset="12,76" Size="365,92" Hidden="1" ConsumeMouse="0">
+    <Grid Anchor="C,C" Size="365,92" Style="Grid9DetailFive140" ConsumeMouse="0" />
+    <Label ID="ProgramTitle" Anchor="L,T" Offset="12,7" Font="TwCenMT18" ColorSet="Beige_Black" />
+    <Label ID="ProgramProgress" Anchor="L,T" Offset="12,32" Font="TwCenMT16" ColorSet="Beige_Black" />
+    <Label ID="ProgramRate" Anchor="L,T" Offset="12,57" Font="TwCenMT16" ColorSet="Beige_Black" />
+  </Container>
+</Context>

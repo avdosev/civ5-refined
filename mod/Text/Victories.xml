@@ -1,0 +1,433 @@
+<?xml version='1.0' encoding='utf-8'?>
+<GameData>
+  <Language_RU_RU>
+    <Row Tag="TXT_KEY_TECH_REFINED_ORBITAL">
+      <Text>Орбитальная инфраструктура</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ORBITAL_HELP">
+      <Text>Открывает орбитальную верфь (+20% производства частей корабля) и проект орбитальной транспортной системы для колонизации Марса.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ORBITAL_PEDIA">
+      <Text>Открывает орбитальную верфь (+20% производства частей корабля) и проект орбитальной транспортной системы для колонизации Марса.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AUTONOMOUS">
+      <Text>Автономные космические системы</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AUTONOMOUS_HELP">
+      <Text>Открывает проект автоматической разведки Марса — первый этап марсианского пути к научной победе.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AUTONOMOUS_PEDIA">
+      <Text>Зонды и автономные аппараты исследуют опасную среду без постоянного управления с Земли. Такая ограниченная автономность не требует общего искусственного интеллекта.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_BIOSYSTEMS">
+      <Text>Замкнутые биосистемы</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_BIOSYSTEMS_HELP">
+      <Text>Открывает проект марсианского жилого комплекса.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_BIOSYSTEMS_PEDIA">
+      <Text>Прикладная биотехнология позволяет повторно использовать воду, поддерживать состав атмосферы и выращивать пищу в ограниченном объёме обитаемой среды.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENGINES">
+      <Text>Перспективные двигатели</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENGINES_HELP">
+      <Text>Открывает двигатель межзвёздного корабля. Требует физику элементарных частиц и ядерный синтез.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENGINES_PEDIA">
+      <Text>Открывает двигатель межзвёздного корабля. Требует физику элементарных частиц и ядерный синтез.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ADVANCED_COMPUTING">
+      <Text>Передовые вычислительные системы</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ADVANCED_COMPUTING_HELP">
+      <Text>Открывает национальный суперкомпьютерный центр. Для строительства нужен дата-центр в этом городе.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ADVANCED_COMPUTING_PEDIA">
+      <Text>Открывает национальный суперкомпьютерный центр. Для строительства нужен дата-центр в этом городе.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_GENERAL_AI">
+      <Text>Общий искусственный интеллект</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_GENERAL_AI_HELP">
+      <Text>Открывает национальный проект «Универсальный ИИ». Для его выполнения нужен действующий суперкомпьютерный центр.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_GENERAL_AI_PEDIA">
+      <Text>Гипотетическая система широких интеллектуальных возможностей выходит за пределы отдельных прикладных задач. Общий ИИ сам по себе ещё не означает технологическую сингулярность.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_RECURSIVE">
+      <Text>Рекурсивное самоусовершенствование</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_RECURSIVE_HELP">
+      <Text>После завершения «Универсального ИИ» позволяет выбрать «Рекурсивное обучение» в городах с дата-центрами. Наука этих городов создаёт общий прогресс к научной победе.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_RECURSIVE_PEDIA">
+      <Text>Это гипотетический рубеж: система способна самостоятельно совершенствовать собственные интеллектуальные способности. Его достижение не предполагается неизбежным следствием развития современного ИИ.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR">
+      <Text>Сетецентрическая война</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR_HELP">
+      <Text>Открывает чудо «Центр боевого управления», дающее боевым частям +1 обзора и +10% боевой силы.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR_PEDIA">
+      <Text>Открывает чудо «Центр боевого управления», дающее боевым частям +1 обзора и +10% боевой силы.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ORBITAL_QUOTE">
+      <Text>Новые знания открывают новые возможности.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AUTONOMOUS_QUOTE">
+      <Text>Новые знания открывают новые возможности.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_BIOSYSTEMS_QUOTE">
+      <Text>Новые знания открывают новые возможности.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENGINES_QUOTE">
+      <Text>Новые знания открывают новые возможности.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ADVANCED_COMPUTING_QUOTE">
+      <Text>Новые знания открывают новые возможности.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_GENERAL_AI_QUOTE">
+      <Text>Новые знания открывают новые возможности.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_RECURSIVE_QUOTE">
+      <Text>Новые знания открывают новые возможности.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR_QUOTE">
+      <Text>Новые знания открывают новые возможности.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_ORBITAL_YARD">
+      <Text>Орбитальная верфь</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_ORBITAL_YARD_HELP">
+      <Text>+20% [ICON_PRODUCTION] производства частей корабля в этом городе. Складывается с космическим заводом. Содержание: 4 [ICON_GOLD].</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_ORBITAL_YARD_PEDIA">
+      <Text>+20% [ICON_PRODUCTION] производства частей корабля в этом городе. Складывается с космическим заводом. Содержание: 4 [ICON_GOLD].</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_SUPERCOMPUTER">
+      <Text>Суперкомпьютерный центр</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_SUPERCOMPUTER_HELP">
+      <Text>Национальный объект: один на державу. +10 [ICON_RESEARCH] науки и +25% науки города. Содержание: 20 [ICON_GOLD]. Требует местный дата-центр. Обеспечивает работу «Универсального ИИ» и «Рекурсивного обучения»; при потере центра обучение останавливается до восстановления.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_SUPERCOMPUTER_PEDIA">
+      <Text>Национальный объект: один на державу. +10 [ICON_RESEARCH] науки и +25% науки города. Содержание: 20 [ICON_GOLD]. Требует местный дата-центр. Обеспечивает работу «Универсального ИИ» и «Рекурсивного обучения»; при потере центра обучение останавливается до восстановления.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_BATTLE_COMMAND">
+      <Text>Центр боевого управления</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_BATTLE_COMMAND_HELP">
+      <Text>Мировое чудо. Требует дата-центр в этом городе. Все существующие и новые обычные боевые части получают «Единую систему управления»: +1 обзора и +10% боевой силы. При потере чуда повышение снимается у прежнего владельца и действует у нового. Содержание отсутствует.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_BATTLE_COMMAND_PEDIA">
+      <Text>Мировое чудо. Требует дата-центр в этом городе. Все существующие и новые обычные боевые части получают «Единую систему управления»: +1 обзора и +10% боевой силы. При потере чуда повышение снимается у прежнего владельца и действует у нового. Содержание отсутствует.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_RECON">
+      <Text>Автоматическая разведка Марса</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_RECON_HELP">
+      <Text>Первый из четырёх последовательных проектов колонизации Марса. Программа «Аполлон» не требуется.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_RECON_PEDIA">
+      <Text>Первый из четырёх последовательных проектов колонизации Марса. Программа «Аполлон» не требуется.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_TRANSPORT">
+      <Text>Орбитальная транспортная система</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_TRANSPORT_HELP">
+      <Text>Второй этап колонизации Марса. Требует завершённую автоматическую разведку Марса.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_TRANSPORT_PEDIA">
+      <Text>Второй этап колонизации Марса. Требует завершённую автоматическую разведку Марса.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_HABITAT">
+      <Text>Марсианский жилой комплекс</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_HABITAT_HELP">
+      <Text>Третий этап колонизации Марса. Требует завершённую орбитальную транспортную систему.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_HABITAT_PEDIA">
+      <Text>Третий этап колонизации Марса. Требует завершённую орбитальную транспортную систему.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_COLONY">
+      <Text>Самодостаточная колония</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_COLONY_HELP">
+      <Text>Завершает научную победу через колонизацию Марса. Требует предыдущие три проекта, прикладной ИИ и дата-центр в строящем городе.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_COLONY_PEDIA">
+      <Text>Завершает научную победу через колонизацию Марса. Требует предыдущие три проекта, прикладной ИИ и дата-центр в строящем городе.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_UNIVERSAL_AI">
+      <Text>Универсальный ИИ</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_UNIVERSAL_AI_HELP">
+      <Text>Национальный проект. Требует общий ИИ и действующий суперкомпьютерный центр. Вместе с рекурсивным самоусовершенствованием открывает обучение; сам по себе победы не даёт.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_UNIVERSAL_AI_PEDIA">
+      <Text>Национальный проект. Требует общий ИИ и действующий суперкомпьютерный центр. Вместе с рекурсивным самоусовершенствованием открывает обучение; сам по себе победы не даёт.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROCESS_REFINED_LEARNING">
+      <Text>Рекурсивное обучение</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROCESS_REFINED_LEARNING_HELP">
+      <Text>Очередь производства занята обучением; здания и части не строятся. Обычная наука города одновременно идёт в исследования и создаёт прогресс обучения 1:1. Требуются местный дата-центр, суперкомпьютерный центр державы, «Универсальный ИИ» и рекурсивное самоусовершенствование. Цель — 13 666 прогресса на стандартной скорости; скорость игры изменяет порог. Переключение заказа сохраняет накопленное.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROCESS_REFINED_LEARNING_PEDIA">
+      <Text>Очередь производства занята обучением; здания и части не строятся. Обычная наука города одновременно идёт в исследования и создаёт прогресс обучения 1:1. Требуются местный дата-центр, суперкомпьютерный центр державы, «Универсальный ИИ» и рекурсивное самоусовершенствование. Цель — 13 666 прогресса на стандартной скорости; скорость игры изменяет порог. Переключение заказа сохраняет накопленное.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_NETWORK_COMMAND">
+      <Text>Единая система управления</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_NETWORK_COMMAND_HELP">
+      <Text>+1 обзора и +10% боевой силы в ближнем и дальнем бою против городов и юнитов, при атаке и защите. Дальность огня не увеличивается. Действует, пока держава владеет Центром боевого управления.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_NETWORK_COMMAND_PEDIA">
+      <Text>+1 обзора и +10% боевой силы в ближнем и дальнем бою против городов и юнитов, при атаке и защите. Дальность огня не увеличивается. Действует, пока держава владеет Центром боевого управления.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_PANEL">
+      <Text>Научные программы</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_LINE">
+      <Text>Марс: {1_Num}/4   •   Сингулярность: {2_Num}%</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_RATE">
+      <Text>[ICON_RESEARCH] +{1_Num}/ход   •   {2_Num}/{3_Num}</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_TOOLTIP">
+      <Text>Три пути дают одну научную победу: межзвёздный корабль, Марс или технологическая сингулярность.[NEWLINE][NEWLINE]Марсианские проекты: {1_Num}/4.[NEWLINE]Обучение: {2_Num}/{3_Num}.[NEWLINE]Текущий вклад городов: {4_Num}/ход.[NEWLINE]{5_Text}</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_CITY_RATE">
+      <Text>{1_Name}: {2_Num}</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_BLOCKED">
+      <Text>Для обучения нужны рекурсивное самоусовершенствование, завершённый «Универсальный ИИ» и действующий суперкомпьютерный центр. Выберите процесс в городах с дата-центрами.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_MARS_WON">
+      <Text>Основана самодостаточная колония на Марсе. Достигнута научная победа.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_SINGULARITY_WON">
+      <Text>Достигнута технологическая сингулярность. Достигнута научная победа.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_TITLE">
+      <Text>Научная победа</Text>
+    </Row>
+  </Language_RU_RU>
+  <Language_en_US>
+    <Row Tag="TXT_KEY_TECH_REFINED_ORBITAL">
+      <Text>Orbital Infrastructure</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ORBITAL_HELP">
+      <Text>Unlocks the Orbital Shipyard (+20% spaceship part Production) and the Orbital Transport System project for Mars colonization.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ORBITAL_PEDIA">
+      <Text>Unlocks the Orbital Shipyard (+20% spaceship part Production) and the Orbital Transport System project for Mars colonization.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AUTONOMOUS">
+      <Text>Autonomous Space Systems</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AUTONOMOUS_HELP">
+      <Text>Unlocks Automated Mars Reconnaissance, the first project of the Mars science victory route.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AUTONOMOUS_PEDIA">
+      <Text>Probes and autonomous vehicles explore hazardous environments without continuous control from Earth. Such limited autonomy does not require general artificial intelligence.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_BIOSYSTEMS">
+      <Text>Closed Biosystems</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_BIOSYSTEMS_HELP">
+      <Text>Unlocks the Mars Habitat project.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_BIOSYSTEMS_PEDIA">
+      <Text>Applied biotechnology recycles water, maintains atmospheric composition and grows food within a limited inhabited environment.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENGINES">
+      <Text>Advanced Propulsion</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENGINES_HELP">
+      <Text>Unlocks the interstellar spaceship engine. Requires Particle Physics and Nuclear Fusion.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENGINES_PEDIA">
+      <Text>Unlocks the interstellar spaceship engine. Requires Particle Physics and Nuclear Fusion.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ADVANCED_COMPUTING">
+      <Text>Advanced Computing Systems</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ADVANCED_COMPUTING_HELP">
+      <Text>Unlocks the national Supercomputer Center. Requires a Data Center in its city.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ADVANCED_COMPUTING_PEDIA">
+      <Text>Unlocks the national Supercomputer Center. Requires a Data Center in its city.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_GENERAL_AI">
+      <Text>Artificial General Intelligence</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_GENERAL_AI_HELP">
+      <Text>Unlocks the national Universal AI project. Requires an operational Supercomputer Center.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_GENERAL_AI_PEDIA">
+      <Text>A hypothetical system with broad intellectual capabilities goes beyond individual applied tasks. General AI alone does not constitute a technological singularity.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_RECURSIVE">
+      <Text>Recursive Self-improvement</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_RECURSIVE_HELP">
+      <Text>After Universal AI is completed, cities with Data Centers may run Recursive Learning. Their Science contributes to shared progress toward a science victory.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_RECURSIVE_PEDIA">
+      <Text>This is a hypothetical threshold: a system can improve its own intellectual capabilities. It is not assumed to be an inevitable consequence of developing contemporary AI.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR">
+      <Text>Network-centric Warfare</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR_HELP">
+      <Text>Unlocks the Battle Command Center wonder, granting combat units +1 Sight and +10% combat strength.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR_PEDIA">
+      <Text>Unlocks the Battle Command Center wonder, granting combat units +1 Sight and +10% combat strength.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ORBITAL_QUOTE">
+      <Text>New knowledge opens new possibilities.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AUTONOMOUS_QUOTE">
+      <Text>New knowledge opens new possibilities.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_BIOSYSTEMS_QUOTE">
+      <Text>New knowledge opens new possibilities.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENGINES_QUOTE">
+      <Text>New knowledge opens new possibilities.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ADVANCED_COMPUTING_QUOTE">
+      <Text>New knowledge opens new possibilities.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_GENERAL_AI_QUOTE">
+      <Text>New knowledge opens new possibilities.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_RECURSIVE_QUOTE">
+      <Text>New knowledge opens new possibilities.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR_QUOTE">
+      <Text>New knowledge opens new possibilities.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_ORBITAL_YARD">
+      <Text>Orbital Shipyard</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_ORBITAL_YARD_HELP">
+      <Text>+20% [ICON_PRODUCTION] spaceship part Production in this city. Adds to the Spaceship Factory bonus. Maintenance: 4 [ICON_GOLD].</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_ORBITAL_YARD_PEDIA">
+      <Text>+20% [ICON_PRODUCTION] spaceship part Production in this city. Adds to the Spaceship Factory bonus. Maintenance: 4 [ICON_GOLD].</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_SUPERCOMPUTER">
+      <Text>Supercomputer Center</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_SUPERCOMPUTER_HELP">
+      <Text>National facility: one per civilization. +10 [ICON_RESEARCH] Science and +25% city Science. Maintenance: 20 [ICON_GOLD]. Requires a local Data Center. Enables Universal AI and Recursive Learning; losing the center pauses learning until it is restored.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_SUPERCOMPUTER_PEDIA">
+      <Text>National facility: one per civilization. +10 [ICON_RESEARCH] Science and +25% city Science. Maintenance: 20 [ICON_GOLD]. Requires a local Data Center. Enables Universal AI and Recursive Learning; losing the center pauses learning until it is restored.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_BATTLE_COMMAND">
+      <Text>Battle Command Center</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_BATTLE_COMMAND_HELP">
+      <Text>World Wonder. Requires a Data Center in this city. All existing and new conventional combat units gain Integrated Command: +1 Sight and +10% combat strength. Losing the wonder removes the promotion from its former owner and grants it to the new owner. No maintenance.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_BATTLE_COMMAND_PEDIA">
+      <Text>World Wonder. Requires a Data Center in this city. All existing and new conventional combat units gain Integrated Command: +1 Sight and +10% combat strength. Losing the wonder removes the promotion from its former owner and grants it to the new owner. No maintenance.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_RECON">
+      <Text>Automated Mars Reconnaissance</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_RECON_HELP">
+      <Text>The first of four sequential Mars colonization projects. Does not require the Apollo Program.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_RECON_PEDIA">
+      <Text>The first of four sequential Mars colonization projects. Does not require the Apollo Program.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_TRANSPORT">
+      <Text>Orbital Transport System</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_TRANSPORT_HELP">
+      <Text>The second Mars colonization stage. Requires completed Automated Mars Reconnaissance.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_TRANSPORT_PEDIA">
+      <Text>The second Mars colonization stage. Requires completed Automated Mars Reconnaissance.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_HABITAT">
+      <Text>Mars Habitat</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_HABITAT_HELP">
+      <Text>The third Mars colonization stage. Requires a completed Orbital Transport System.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_HABITAT_PEDIA">
+      <Text>The third Mars colonization stage. Requires a completed Orbital Transport System.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_COLONY">
+      <Text>Self-sufficient Colony</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_COLONY_HELP">
+      <Text>Completes a science victory through Mars colonization. Requires the preceding three projects, Applied AI and a Data Center in the producing city.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_COLONY_PEDIA">
+      <Text>Completes a science victory through Mars colonization. Requires the preceding three projects, Applied AI and a Data Center in the producing city.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_UNIVERSAL_AI">
+      <Text>Universal AI</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_UNIVERSAL_AI_HELP">
+      <Text>National project. Requires General AI and an operational Supercomputer Center. Together with Recursive Self-improvement, unlocks learning; does not itself grant victory.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_UNIVERSAL_AI_PEDIA">
+      <Text>National project. Requires General AI and an operational Supercomputer Center. Together with Recursive Self-improvement, unlocks learning; does not itself grant victory.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROCESS_REFINED_LEARNING">
+      <Text>Recursive Learning</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROCESS_REFINED_LEARNING_HELP">
+      <Text>The production queue is occupied by learning; no buildings or units are produced. Normal city Science both continues research and contributes learning progress at 1:1. Requires a local Data Center, an operational national Supercomputer Center, Universal AI and Recursive Self-improvement. Goal: 13,666 progress on Standard speed, scaled by game speed. Switching orders preserves accumulated progress.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROCESS_REFINED_LEARNING_PEDIA">
+      <Text>The production queue is occupied by learning; no buildings or units are produced. Normal city Science both continues research and contributes learning progress at 1:1. Requires a local Data Center, an operational national Supercomputer Center, Universal AI and Recursive Self-improvement. Goal: 13,666 progress on Standard speed, scaled by game speed. Switching orders preserves accumulated progress.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_NETWORK_COMMAND">
+      <Text>Integrated Command</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_NETWORK_COMMAND_HELP">
+      <Text>+1 Sight and +10% combat strength in melee and ranged combat against cities and units, when attacking or defending. Does not increase attack range. Active while the civilization owns the Battle Command Center.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_NETWORK_COMMAND_PEDIA">
+      <Text>+1 Sight and +10% combat strength in melee and ranged combat against cities and units, when attacking or defending. Does not increase attack range. Active while the civilization owns the Battle Command Center.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_PANEL">
+      <Text>Science programs</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_LINE">
+      <Text>Mars: {1_Num}/4   •   Singularity: {2_Num}%</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_RATE">
+      <Text>[ICON_RESEARCH] +{1_Num}/turn   •   {2_Num}/{3_Num}</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_TOOLTIP">
+      <Text>Three routes grant the same science victory: interstellar spaceship, Mars, or technological singularity.[NEWLINE][NEWLINE]Mars projects: {1_Num}/4.[NEWLINE]Learning: {2_Num}/{3_Num}.[NEWLINE]Current city contribution: {4_Num}/turn.[NEWLINE]{5_Text}</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_CITY_RATE">
+      <Text>{1_Name}: {2_Num}</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_BLOCKED">
+      <Text>Learning requires Recursive Self-improvement, completed Universal AI and an operational Supercomputer Center. Select the process in cities with Data Centers.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_MARS_WON">
+      <Text>A self-sufficient colony has been established on Mars. Science victory achieved.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_SINGULARITY_WON">
+      <Text>Technological singularity has been achieved. Science victory achieved.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_REFINED_VICTORY_TITLE">
+      <Text>Science victory</Text>
+    </Row>
+  </Language_en_US>
+</GameData>
