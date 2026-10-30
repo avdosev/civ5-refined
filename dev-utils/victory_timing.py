@@ -22,9 +22,9 @@ PROPOSED = {
     'AUTONOMOUS': (9500, ['ROBOTICS', 'SATELLITES']),
     'BIOTECH': (8800, ['ECOLOGY', 'PENICILIN']),
     'BIOSYSTEMS': (11000, ['BIOTECH']),
-    'ADVANCED_COMPUTING': (7700, ['REFINED_AI']),
-    'GENERAL_AI': (8800, ['ADVANCED_COMPUTING']),
-    'RECURSIVE': (9500, ['GENERAL_AI']),
+    'ADVANCED_COMPUTING': (8400, ['REFINED_AI']),
+    'GENERAL_AI': (9500, ['ADVANCED_COMPUTING']),
+    'RECURSIVE': (10000, ['GENERAL_AI']),
 }
 for key, (cost, parents) in PROPOSED.items():
     COST[key], PARENTS[key] = cost, parents
@@ -44,7 +44,7 @@ def research_cost(tech, city_count):
 
 
 MARS_COSTS = (900, 1400, 1800, 2400)
-TRAINING_GOAL = 13666  # User-selected symbolic goal; technology prices unchanged.
+TRAINING_GOAL = 13666  # User-selected symbolic final-learning goal.
 
 
 def orders(targets):
@@ -202,7 +202,7 @@ def singularity(science, production, training_goal=TRAINING_GOAL, city_count=7):
     Numbers are a proposal; all participating cities already have data centres.
     Production builds the centre/project, with +40%, automation +10pp and AI +10pp.
     Training uses ordinary local science from all city_count participating cities. The 13666
-    goal replaces the proposed 13800; research prices are unchanged.
+    goal replaces the proposed 13800; technology prices are separate parameters.
     """
     candidates = []
     for queue in orders(['ROBOTICS', 'TELECOM', 'RECURSIVE']):
@@ -236,7 +236,7 @@ def compare(tuned=False, profiles=None, city_count=7, yard_bonus=.2, require_yar
         COST.update(AUTONOMOUS=6000, ORBITAL=6000, BIOSYSTEMS=7000)
         PARENTS.update(AUTONOMOUS=['SATELLITES', 'COMPUTERS'],
                        ORBITAL=['SATELLITES'], BIOSYSTEMS=['ECOLOGY'])
-        MARS_COSTS = (400, 600, 800, 1000)
+        MARS_COSTS = (500, 600, 800, 1000)
     result = {}
     for profile, (science, production) in (normalized_profiles(city_count) if profiles is None else profiles).items():
         outcomes = {}

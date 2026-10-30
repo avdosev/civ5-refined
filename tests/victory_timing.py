@@ -13,12 +13,14 @@ assert model.research_cost('REFINED_MICROELECTRONICS', 7) == 10395
 assert model.research_cost('REFINED_AGRICULTURAL_MECHANIZATION', 7) == 3490
 assert model.research_factor(7) == 1.485
 assert model.TRAINING_GOAL == 13666
-assert [model.COST[k] for k in ('ADVANCED_COMPUTING', 'GENERAL_AI', 'RECURSIVE')] == [7700, 8800, 9500]
+assert [model.COST[k] for k in ('ADVANCED_COMPUTING', 'GENERAL_AI', 'RECURSIVE')] == [8400, 9500, 10000]
+for before, after in zip((7700, 8800, 9500), (8400, 9500, 10000)):
+    assert 1.05 <= after / before <= 1.10 and after % 100 == 0
 
-# V2 reference: seven cities, science=1000, symbolic final goal 13666; tech prices unchanged.
-reference = {'s1000_plow': (120, 117, 112),
-             's1000_pnormal': (115, 111, 110),
-             's1000_phigh': (112, 107, 110)}
+# V2 reference: seven cities, science=1000, symbolic final goal 13666; rounded research increases within 5-10%.
+reference = {'s1000_plow': (120, 117, 113),
+             's1000_pnormal': (115, 111, 112),
+             's1000_phigh': (112, 107, 112)}
 for count in (6, 7, 8):
     profiles = model.normalized_profiles(count)
     outcomes = model.compare(tuned=True, profiles=profiles, city_count=count)
@@ -41,6 +43,8 @@ for count in (6, 7, 8):
                 assert math.isclose(result['training_rate'], sum(result['participating_city_science']))
         if count == 7 and profile in reference:
             assert tuple(routes[r]['turn'] for r in ('alpha', 'mars', 'singularity')) == reference[profile]
+
+assert model.MARS_COSTS == (500, 600, 800, 1000)
 
 # More factories can change preparation, but cannot directly change training speed.
 slow = model.singularity(1000, [60, 45, 35, 24, 19, 14, 10], city_count=7)
