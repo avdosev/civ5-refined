@@ -44,6 +44,7 @@ def research_cost(tech, city_count):
 
 
 MARS_COSTS = (900, 1400, 1800, 2400)
+TRAINING_GOAL = 13800  # Selected +15% on final learning; technology prices unchanged.
 
 
 def orders(targets):
@@ -191,13 +192,13 @@ def schedule(queue, science, production, mars=False, advanced=False,
     raise RuntimeError('Unfinished schedule')
 
 
-def singularity(science, production, training_goal=12000, city_count=7):
+def singularity(science, production, training_goal=TRAINING_GOAL, city_count=7):
     """One national centre, one national project, then empire-wide process.
 
     Numbers are a proposal; all participating cities already have data centres.
     Production builds the centre/project, with +40%, automation +10pp and AI +10pp.
-    Training uses ordinary local science from all city_count participating cities. The 12000
-    goal is a fresh hypothesis, not a conversion of the old 3000 production goal.
+    Training uses ordinary local science from all city_count participating cities. The 13800
+    goal is +15% on the previous 12000 learning goal; research prices are unchanged.
     """
     candidates = []
     for queue in orders(['ROBOTICS', 'TELECOM', 'RECURSIVE']):
@@ -274,7 +275,7 @@ if __name__ == '__main__':
                                   science_is_total_empire_income=True,
                                   participating_training_cities=args.cities,
                                   historical=False,
-                                  training_goal=12000,
+                                  training_goal=TRAINING_GOAL,
                                   data_centres=args.cities, laboratories=args.cities,
                                   local_science_multiplier=2.25,
                                   science_distribution='equal shares before national centre',
