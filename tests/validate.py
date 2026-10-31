@@ -331,7 +331,7 @@ def validate_database(db):
     groups = db.execute("SELECT MutuallyExclusiveGroup FROM Buildings WHERE Type IN ('BUILDING_REFINED_ACADEMY','BUILDING_REFINED_SALON')").fetchall()
     assert len(groups)==2 and groups[0]==groups[1] and groups[0][0]>0
     assert db.execute("SELECT CultureRateModifier FROM Buildings WHERE Type='BUILDING_REFINED_SALON'").fetchone() == (10,)
-    assert db.execute("SELECT Yield FROM Building_YieldChanges WHERE BuildingType='BUILDING_REFINED_PRINTING_CULTURE' AND YieldType='YIELD_CULTURE'").fetchone() == (4,)
+    assert db.execute("SELECT Yield FROM Building_YieldChanges WHERE BuildingType='BUILDING_REFINED_PRINTING_CULTURE' AND YieldType='YIELD_CULTURE'").fetchone() == (2,)
     assert db.execute('SELECT count(*) FROM Refined_Eurekas').fetchone()[0] == 19
     for lang in ['Language_en_US', 'Language_RU_RU']:
         for tech, key in db.execute('SELECT TechType, Help FROM Refined_Eurekas'):

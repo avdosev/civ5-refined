@@ -94,7 +94,7 @@ VALUES ('BUILDING_REFINED_PRINTING_CULTURE', 'BUILDINGCLASS_REFINED_PRINTING_CUL
  'TXT_KEY_REFINED_HIDDEN', -1, -1, -1, 1, 1, 0, -1, -1, 'NONE', 0, 'BW_ATLAS_1');
 -- Flat culture uses the BNW culture yield; its percentage uses the dedicated field.
 INSERT INTO Building_YieldChanges (BuildingType, YieldType, Yield)
-VALUES ('BUILDING_REFINED_PRINTING_CULTURE', 'YIELD_CULTURE', 4);
+VALUES ('BUILDING_REFINED_PRINTING_CULTURE', 'YIELD_CULTURE', 2);
 UPDATE Buildings SET CultureRateModifier = 10 WHERE Type = 'BUILDING_REFINED_SALON';
 
 -- Four stock ability slots exist. Slot 1 is shared by these two named abilities;
@@ -128,8 +128,8 @@ INSERT INTO Refined_Eurekas VALUES ('TECH_REFINED_NETWORKS', 'BUILDINGCLASS_REFI
 INSERT INTO Refined_Eurekas VALUES ('TECH_REFINED_AUTOMATION', 'BUILDINGCLASS_REFINED_STEEL_MILL', 1, 'TXT_KEY_REFINED_EUREKA_REFINED_AUTOMATION');
 UPDATE Language_en_US SET Text=Text || '[NEWLINE][NEWLINE]Refined: +1 Food on Fish tiles with unpillaged Fishing Boats.' WHERE Tag=(SELECT Help FROM Technologies WHERE Type='TECH_REFRIGERATION');
 UPDATE Language_RU_RU SET Text=Text || '[NEWLINE][NEWLINE]Refined: +1 пищи на клетках рыбы с неразграбленными рыбацкими лодками.' WHERE Tag=(SELECT Help FROM Technologies WHERE Type='TECH_REFRIGERATION');
-UPDATE Language_en_US SET Text=Text || '[NEWLINE][NEWLINE]Refined: Libraries and their unique replacements provide +4 Culture.' WHERE Tag=(SELECT Help FROM Technologies WHERE Type='TECH_PRINTING_PRESS');
-UPDATE Language_RU_RU SET Text=Text || '[NEWLINE][NEWLINE]Refined: библиотеки и их уникальные замены дают +4 культуры.' WHERE Tag=(SELECT Help FROM Technologies WHERE Type='TECH_PRINTING_PRESS');
+UPDATE Language_en_US SET Text=Text || '[NEWLINE][NEWLINE]Refined: Libraries and their unique replacements provide +2 Culture.' WHERE Tag=(SELECT Help FROM Technologies WHERE Type='TECH_PRINTING_PRESS');
+UPDATE Language_RU_RU SET Text=Text || '[NEWLINE][NEWLINE]Refined: библиотеки и их уникальные замены дают +2 культуры.' WHERE Tag=(SELECT Help FROM Technologies WHERE Type='TECH_PRINTING_PRESS');
 -- Keep stock ability tooltips in sync with technology help.
 UPDATE Language_en_US SET Text=(SELECT Text FROM Language_en_US WHERE Tag='TXT_KEY_REFINED_AUTOMATION_HELP') WHERE Tag='TXT_KEY_SCENARIO_TECH_BUTTON_3';
 UPDATE Language_RU_RU SET Text=(SELECT Text FROM Language_RU_RU WHERE Tag='TXT_KEY_REFINED_AUTOMATION_HELP') WHERE Tag='TXT_KEY_SCENARIO_TECH_BUTTON_3';

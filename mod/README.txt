@@ -1,6 +1,6 @@
-civ5-refined — Prototype v8 / Civilization V: Brave New World
+civ5-refined — Prototype v9 / Civilization V: Brave New World
 
-Скопируйте папку civ5-refined (v 8) целиком в пользовательский каталог MODS.
+Скопируйте папку civ5-refined (v 9) целиком в пользовательский каталог MODS.
 Включите только эту версию и начните новую одиночную партию через меню модов.
 Другие моды и замена DLL не требуются. Новая партия обязательна.
 
@@ -21,7 +21,7 @@ civ5-refined — Prototype v8 / Civilization V: Brave New World
 Все новые числа — стартовый баланс. Проверки выполнены вне игры;
 интерфейс, реальные события и баланс требуют игровой пробы.
 
-Copy this entire folder to the user MODS directory. Enable only v8 and start
+Copy this entire folder to the user MODS directory. Enable only v9 and start
 an entirely NEW single-player BNW game through the Mods menu. No DLL required.
 Science victory: spaceship, Mars colony or singularity. Recursive Learning uses
 normal city Science while occupying the production queue. Standard goal: 13,666.
