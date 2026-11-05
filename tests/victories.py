@@ -79,7 +79,7 @@ def database():
     assert tuple(db.execute("SELECT Cost,GoldMaintenance,SpaceProductionModifier FROM Buildings WHERE Type='BUILDING_REFINED_ORBITAL_YARD'").fetchone()) == (500,4,20)
     assert tuple(db.execute("SELECT Cost,GoldMaintenance,NeverCapture,ConquestProb FROM Buildings WHERE Type='BUILDING_REFINED_SUPERCOMPUTER'").fetchone()) == (1200,20,1,0)
     assert db.execute("SELECT MaxPlayerInstances FROM BuildingClasses WHERE Type='BUILDINGCLASS_REFINED_SUPERCOMPUTER'").fetchone()[0] == 1
-    assert db.execute("SELECT MaxGlobalInstances FROM BuildingClasses WHERE Type='BUILDINGCLASS_REFINED_BATTLE_COMMAND'").fetchone()[0] == 1
+    assert tuple(db.execute("SELECT MaxGlobalInstances,MaxPlayerInstances FROM BuildingClasses WHERE Type='BUILDINGCLASS_REFINED_BATTLE_COMMAND'").fetchone()) == (-1,1)
     assert tuple(db.execute("SELECT VisibilityChange,CombatPercent,LostWithUpgrade,CannotBeChosen FROM UnitPromotions WHERE Type='PROMOTION_REFINED_NETWORK_COMMAND'").fetchone()) == (1,10,0,1)
     assert not db.execute("SELECT * FROM Process_ProductionYields WHERE ProcessType='PROCESS_REFINED_LEARNING'").fetchall()
     assert db.execute("SELECT Value FROM Refined_VictorySettings WHERE Name='LearningGoal'").fetchone()[0] == 13666
@@ -103,7 +103,7 @@ def database():
     assert {tuple(r) for r in db.execute("SELECT BuildingType,BuildingClassType FROM Building_ClassesNeededInCity WHERE BuildingType LIKE 'BUILDING_REFINED_%'")} == {
         ('BUILDING_REFINED_SUPERCOMPUTER','BUILDINGCLASS_REFINED_DATA_CENTER'),
         ('BUILDING_REFINED_BATTLE_COMMAND','BUILDINGCLASS_REFINED_DATA_CENTER')}
-    assert tuple(db.execute("SELECT Cost,GoldMaintenance,ConquestProb FROM Buildings WHERE Type='BUILDING_REFINED_BATTLE_COMMAND'").fetchone()) == (1250,0,100)
+    assert tuple(db.execute("SELECT Cost,GoldMaintenance,NeverCapture,ConquestProb FROM Buildings WHERE Type='BUILDING_REFINED_BATTLE_COMMAND'").fetchone()) == (1250,0,1,0)
     assert db.execute("SELECT Yield FROM Building_YieldChanges WHERE BuildingType='BUILDING_REFINED_SUPERCOMPUTER' AND YieldType='YIELD_SCIENCE'").fetchone()[0] == 10
     assert db.execute("SELECT Yield FROM Building_YieldModifiers WHERE BuildingType='BUILDING_REFINED_SUPERCOMPUTER' AND YieldType='YIELD_SCIENCE'").fetchone()[0] == 25
     # The planning model must not silently drift away from shipped prices/rules.

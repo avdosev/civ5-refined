@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Author-owned RU/EN text for the three BNW science routes. No copied prose."""
+"""RU/EN text for the three BNW science routes and attributed quotations."""
 from pathlib import Path
 import xml.etree.ElementTree as ET
+from technology_quotes import QUOTES
 
 ROOT = Path(__file__).resolve().parents[1]
 TEXT = {}
@@ -42,11 +43,11 @@ entry('TECH_REFINED_RECURSIVE', 'Рекурсивное самоусоверше
       'Это гипотетический рубеж: система способна самостоятельно совершенствовать собственные интеллектуальные способности. Его достижение не предполагается неизбежным следствием развития современного ИИ.',
       'This is a hypothetical threshold: a system can improve its own intellectual capabilities. It is not assumed to be an inevitable consequence of developing contemporary AI.')
 entry('TECH_REFINED_NETWORK_WAR', 'Сетецентрическая война', 'Network-centric Warfare',
-      'Открывает чудо «Центр боевого управления», дающее боевым частям +1 обзора и +10% боевой силы.',
-      'Unlocks the Battle Command Center wonder, granting combat units +1 Sight and +10% combat strength.')
+      'Открывает национальное чудо «Центр боевого управления», дающее боевым частям +1 обзора и +10% боевой силы.',
+      'Unlocks the national Battle Command Center wonder, granting combat units +1 Sight and +10% combat strength.')
 for key in list(TEXT):
     if key.startswith('TECH_') and not key.endswith(('_HELP', '_PEDIA')):
-        TEXT[key + '_QUOTE'] = ('Новые знания открывают новые возможности.', 'New knowledge opens new possibilities.')
+        TEXT[key + '_QUOTE'] = QUOTES[key]
 
 entry('BUILDING_REFINED_ORBITAL_YARD', 'Орбитальная верфь', 'Orbital Shipyard',
       '+20% [ICON_PRODUCTION] производства частей корабля в этом городе. Складывается с космическим заводом. Содержание: 4 [ICON_GOLD].',
@@ -55,8 +56,8 @@ entry('BUILDING_REFINED_SUPERCOMPUTER', 'Суперкомпьютерный це
       'Национальный объект: один на державу. +10 [ICON_RESEARCH] науки и +25% науки города. Содержание: 20 [ICON_GOLD]. Требует местный дата-центр. Обеспечивает работу «Универсального ИИ» и «Рекурсивного обучения»; при потере центра обучение останавливается до восстановления.',
       'National facility: one per civilization. +10 [ICON_RESEARCH] Science and +25% city Science. Maintenance: 20 [ICON_GOLD]. Requires a local Data Center. Enables Universal AI and Recursive Learning; losing the center pauses learning until it is restored.')
 entry('BUILDING_REFINED_BATTLE_COMMAND', 'Центр боевого управления', 'Battle Command Center',
-      'Мировое чудо. Требует дата-центр в этом городе. Все существующие и новые обычные боевые части получают «Единую систему управления»: +1 обзора и +10% боевой силы. При потере чуда повышение снимается у прежнего владельца и действует у нового. Содержание отсутствует.',
-      'World Wonder. Requires a Data Center in this city. All existing and new conventional combat units gain Integrated Command: +1 Sight and +10% combat strength. Losing the wonder removes the promotion from its former owner and grants it to the new owner. No maintenance.')
+      'Национальное чудо: одно на державу. Требует дата-центр в этом городе. Все существующие и новые обычные боевые части получают «Единую систему управления»: +1 обзора и +10% боевой силы. При захвате города чудо уничтожается, а его владелец теряет повышение. Содержание отсутствует.',
+      'National Wonder: one per civilization. Requires a Data Center in this city. All existing and new conventional combat units gain Integrated Command: +1 Sight and +10% combat strength. The wonder is destroyed when its city is captured, and its owner loses the promotion. No maintenance.')
 entry('PROJECT_REFINED_MARS_RECON', 'Автоматическая разведка Марса', 'Automated Mars Reconnaissance',
       'Первый из четырёх последовательных проектов колонизации Марса. Программа «Аполлон» не требуется.',
       'The first of four sequential Mars colonization projects. Does not require the Apollo Program.')

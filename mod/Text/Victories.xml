@@ -68,34 +68,34 @@
       <Text>Сетецентрическая война</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR_HELP">
-      <Text>Открывает чудо «Центр боевого управления», дающее боевым частям +1 обзора и +10% боевой силы.</Text>
+      <Text>Открывает национальное чудо «Центр боевого управления», дающее боевым частям +1 обзора и +10% боевой силы.</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR_PEDIA">
-      <Text>Открывает чудо «Центр боевого управления», дающее боевым частям +1 обзора и +10% боевой силы.</Text>
+      <Text>Открывает национальное чудо «Центр боевого управления», дающее боевым частям +1 обзора и +10% боевой силы.</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_ORBITAL_QUOTE">
-      <Text>Новые знания открывают новые возможности.</Text>
+      <Text>«Земля — колыбель человечества, но нельзя вечно жить в колыбели.»[NEWLINE]— Константин Циолковский, письмо, 1911</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_AUTONOMOUS_QUOTE">
-      <Text>Новые знания открывают новые возможности.</Text>
+      <Text>«Стремление исследовать заложено в нашей природе. Мы были странниками и остаёмся ими.»[NEWLINE]— Карл Саган, «Космос», 1980</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_BIOSYSTEMS_QUOTE">
-      <Text>Новые знания открывают новые возможности.</Text>
+      <Text>«Жизнь найдёт выход.»[NEWLINE]— Доктор Иэн Малкольм, «Парк юрского периода», 1993</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_ENGINES_QUOTE">
-      <Text>Новые знания открывают новые возможности.</Text>
+      <Text>«Единственный способ обнаружить границы возможного — немного выйти за них, в невозможное.»[NEWLINE]— Артур Кларк, «Черты будущего», 1962</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_ADVANCED_COMPUTING_QUOTE">
-      <Text>Новые знания открывают новые возможности.</Text>
+      <Text>«Цель вычислений — понимание, а не числа.»[NEWLINE]— Ричард Хэмминг, Numerical Methods for Scientists and Engineers</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_GENERAL_AI_QUOTE">
-      <Text>Новые знания открывают новые возможности.</Text>
+      <Text>«Могут ли машины мыслить?»[NEWLINE]— Алан Тьюринг, «Вычислительные машины и разум», 1950</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_RECURSIVE_QUOTE">
-      <Text>Новые знания открывают новые возможности.</Text>
+      <Text>«Первая сверхразумная машина станет последним изобретением, которое потребуется сделать человеку…»[NEWLINE]— Ирвинг Джон Гуд, Speculations Concerning the First Ultraintelligent Machine, 1965</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR_QUOTE">
-      <Text>Новые знания открывают новые возможности.</Text>
+      <Text>«Мудрому правителю и искусному полководцу побеждать помогает знание наперёд.»[NEWLINE]— Сунь-цзы, «Искусство войны», глава XIII</Text>
     </Row>
     <Row Tag="TXT_KEY_BUILDING_REFINED_ORBITAL_YARD">
       <Text>Орбитальная верфь</Text>
@@ -119,10 +119,10 @@
       <Text>Центр боевого управления</Text>
     </Row>
     <Row Tag="TXT_KEY_BUILDING_REFINED_BATTLE_COMMAND_HELP">
-      <Text>Мировое чудо. Требует дата-центр в этом городе. Все существующие и новые обычные боевые части получают «Единую систему управления»: +1 обзора и +10% боевой силы. При потере чуда повышение снимается у прежнего владельца и действует у нового. Содержание отсутствует.</Text>
+      <Text>Национальное чудо: одно на державу. Требует дата-центр в этом городе. Все существующие и новые обычные боевые части получают «Единую систему управления»: +1 обзора и +10% боевой силы. При захвате города чудо уничтожается, а его владелец теряет повышение. Содержание отсутствует.</Text>
     </Row>
     <Row Tag="TXT_KEY_BUILDING_REFINED_BATTLE_COMMAND_PEDIA">
-      <Text>Мировое чудо. Требует дата-центр в этом городе. Все существующие и новые обычные боевые части получают «Единую систему управления»: +1 обзора и +10% боевой силы. При потере чуда повышение снимается у прежнего владельца и действует у нового. Содержание отсутствует.</Text>
+      <Text>Национальное чудо: одно на державу. Требует дата-центр в этом городе. Все существующие и новые обычные боевые части получают «Единую систему управления»: +1 обзора и +10% боевой силы. При захвате города чудо уничтожается, а его владелец теряет повышение. Содержание отсутствует.</Text>
     </Row>
     <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_RECON">
       <Text>Автоматическая разведка Марса</Text>
@@ -283,34 +283,34 @@
       <Text>Network-centric Warfare</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR_HELP">
-      <Text>Unlocks the Battle Command Center wonder, granting combat units +1 Sight and +10% combat strength.</Text>
+      <Text>Unlocks the national Battle Command Center wonder, granting combat units +1 Sight and +10% combat strength.</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR_PEDIA">
-      <Text>Unlocks the Battle Command Center wonder, granting combat units +1 Sight and +10% combat strength.</Text>
+      <Text>Unlocks the national Battle Command Center wonder, granting combat units +1 Sight and +10% combat strength.</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_ORBITAL_QUOTE">
-      <Text>New knowledge opens new possibilities.</Text>
+      <Text>“Earth is the cradle of humanity, but one cannot live in a cradle forever.”[NEWLINE]— Konstantin Tsiolkovsky, letter, 1911</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_AUTONOMOUS_QUOTE">
-      <Text>New knowledge opens new possibilities.</Text>
+      <Text>“Exploration is in our nature. We began as wanderers, and we are wanderers still.”[NEWLINE]— Carl Sagan, Cosmos, 1980</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_BIOSYSTEMS_QUOTE">
-      <Text>New knowledge opens new possibilities.</Text>
+      <Text>“Life finds a way.”[NEWLINE]— Dr. Ian Malcolm, Jurassic Park, 1993</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_ENGINES_QUOTE">
-      <Text>New knowledge opens new possibilities.</Text>
+      <Text>“The only way of discovering the limits of the possible is to venture a little way past them into the impossible.”[NEWLINE]— Arthur C. Clarke, Profiles of the Future, 1962</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_ADVANCED_COMPUTING_QUOTE">
-      <Text>New knowledge opens new possibilities.</Text>
+      <Text>“The purpose of computing is insight, not numbers.”[NEWLINE]— Richard Hamming, Numerical Methods for Scientists and Engineers</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_GENERAL_AI_QUOTE">
-      <Text>New knowledge opens new possibilities.</Text>
+      <Text>“Can machines think?”[NEWLINE]— Alan Turing, Computing Machinery and Intelligence, 1950</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_RECURSIVE_QUOTE">
-      <Text>New knowledge opens new possibilities.</Text>
+      <Text>“The first ultraintelligent machine is the last invention that man need ever make…”[NEWLINE]— I. J. Good, Speculations Concerning the First Ultraintelligent Machine, 1965</Text>
     </Row>
     <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR_QUOTE">
-      <Text>New knowledge opens new possibilities.</Text>
+      <Text>“What enables the wise sovereign and the good general to strike and conquer is foreknowledge.”[NEWLINE]— Sun Tzu, The Art of War, chapter XIII (abridged)</Text>
     </Row>
     <Row Tag="TXT_KEY_BUILDING_REFINED_ORBITAL_YARD">
       <Text>Orbital Shipyard</Text>
@@ -334,10 +334,10 @@
       <Text>Battle Command Center</Text>
     </Row>
     <Row Tag="TXT_KEY_BUILDING_REFINED_BATTLE_COMMAND_HELP">
-      <Text>World Wonder. Requires a Data Center in this city. All existing and new conventional combat units gain Integrated Command: +1 Sight and +10% combat strength. Losing the wonder removes the promotion from its former owner and grants it to the new owner. No maintenance.</Text>
+      <Text>National Wonder: one per civilization. Requires a Data Center in this city. All existing and new conventional combat units gain Integrated Command: +1 Sight and +10% combat strength. The wonder is destroyed when its city is captured, and its owner loses the promotion. No maintenance.</Text>
     </Row>
     <Row Tag="TXT_KEY_BUILDING_REFINED_BATTLE_COMMAND_PEDIA">
-      <Text>World Wonder. Requires a Data Center in this city. All existing and new conventional combat units gain Integrated Command: +1 Sight and +10% combat strength. Losing the wonder removes the promotion from its former owner and grants it to the new owner. No maintenance.</Text>
+      <Text>National Wonder: one per civilization. Requires a Data Center in this city. All existing and new conventional combat units gain Integrated Command: +1 Sight and +10% combat strength. The wonder is destroyed when its city is captured, and its owner loses the promotion. No maintenance.</Text>
     </Row>
     <Row Tag="TXT_KEY_PROJECT_REFINED_MARS_RECON">
       <Text>Automated Mars Reconnaissance</Text>

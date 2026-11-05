@@ -190,10 +190,16 @@ Players[0].units[1].type=id('UNIT_MECHANIZED_INFANTRY')
 GameEvents.UnitSetXY.Fire(0,1);assert(Players[0].units[1]:IsHasPromotion(promo))
 Players[0].units[7]=unit('UNIT_TANK');GameEvents.UnitSetXY.Fire(0,7)
 assert(Players[0].units[7]:IsHasPromotion(promo))
-a.buildings[cc]=nil;c.buildings[cc]=1;Players[1].units={unit('UNIT_INFANTRY')}
+-- Each civilization can own its national command center simultaneously.
+c.buildings[cc]=1;Players[1].units={unit('UNIT_INFANTRY')}
+Events.SequenceGameInitComplete.Fire()
+assert(Players[0].units[1]:IsHasPromotion(promo))
+assert(Players[1].units[1]:IsHasPromotion(promo))
+-- The engine destroys the national wonder on capture; no transfer to the conqueror.
+a.buildings[cc]=nil;c.buildings[cc]=nil
 GameEvents.CityCaptureComplete.Fire(0,0,0,1)
 for _,u in ipairs(Players[0].units) do assert(not u:IsHasPromotion(promo)) end
-assert(Players[1].units[1]:IsHasPromotion(promo))
+assert(not Players[1].units[1]:IsHasPromotion(promo))
 -- A city founded after the late technologies participates without reloading.
 local newborn=city(4,25000);newborn.buildings[dc]=1;newborn.process=learning
 Players[0].cities[#Players[0].cities+1]=newborn

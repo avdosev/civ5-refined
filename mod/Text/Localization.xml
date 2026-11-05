@@ -11,7 +11,7 @@
       <Text>Computer networks let institutions exchange data and coordinate economic activity. They connect individual computing centers into shared infrastructure.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_NETWORKS_QUOTE">
-      <Text>Information becomes more useful when it can be shared.</Text>
+      <Text>“The network is the computer.”[NEWLINE]— John Gage, Sun Microsystems motto</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AI">
       <Text>Applied Artificial Intelligence</Text>
@@ -23,7 +23,7 @@
       <Text>This technology represents widespread practical deployment of artificial intelligence, rather than the origin of the discipline. Computing infrastructure supports scientific analysis and industrial optimization.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AI_QUOTE">
-      <Text>Computing power becomes useful through its applications.</Text>
+      <Text>“It is not enough to have a good mind; the main thing is to apply it well.”[NEWLINE]— René Descartes, Discourse on the Method, 1637</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_DATA_CENTER">
       <Text>Data Center</Text>
@@ -50,7 +50,7 @@
       <Text>Integrated circuits and miniaturization develop after the first electronic computers, increasing computing density and the scientific capacity of dedicated data centers.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_MICRO_QUOTE">
-      <Text>More computing in less space.</Text>
+      <Text>“There’s plenty of room at the bottom.”[NEWLINE]— Richard Feynman, lecture, 1959</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AUTOMATION">
       <Text>Industrial Automation</Text>
@@ -62,7 +62,7 @@
       <Text>Computer-controlled industrial equipment, process regulation and numerical control improve factory output before general-purpose industrial robots become widespread.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AUTOMATION_QUOTE">
-      <Text>Precision becomes repeatable.</Text>
+      <Text>“All work will be done by living machines. Everybody will be free from worry and liberated from the degradation of labor.”[NEWLINE]— Karel Čapek, R.U.R., Domin, 1920</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AGRICULTURE">
       <Text>Agricultural Mechanization</Text>
@@ -74,7 +74,7 @@
       <Text>Mechanical reapers, threshers and powered equipment allow compact agricultural areas to feed growing industrial cities. This technology includes early mechanical traction, before mass adoption of tractors.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AGRICULTURE_QUOTE">
-      <Text>Machines change the scale of cultivation.</Text>
+      <Text>“Farming looks mighty easy when your plow is a pencil, and you’re a thousand miles from the corn field.”[NEWLINE]— Dwight D. Eisenhower, speech, 1956</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_STEEL_MILL">
       <Text>Steel Mill</Text>
@@ -236,7 +236,7 @@
       <Text>Компьютерные сети позволяют учреждениям обмениваться данными и координировать экономическую деятельность. Отдельные вычислительные центры становятся частью общей информационной инфраструктуры.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_NETWORKS_QUOTE">
-      <Text>Информация становится полезнее, когда ею можно поделиться.</Text>
+      <Text>«Сеть и есть компьютер.»[NEWLINE]— Джон Гейдж, девиз Sun Microsystems</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AI">
       <Text>Прикладной искусственный интеллект</Text>
@@ -248,7 +248,7 @@
       <Text>Технология представляет массовое практическое применение искусственного интеллекта, а не зарождение научной дисциплины. Вычислительная инфраструктура используется для научного анализа и оптимизации промышленного производства.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AI_QUOTE">
-      <Text>Вычислительная мощность обретает смысл в её применении.</Text>
+      <Text>«Мало иметь хороший ум. Главное — уметь им пользоваться.»[NEWLINE]— Рене Декарт, «Рассуждение о методе», 1637</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_DATA_CENTER">
       <Text>Дата-центр</Text>
@@ -275,7 +275,7 @@
       <Text>Интегральные схемы и миниатюризация развиваются после первых электронных компьютеров, увеличивая плотность вычислений и научные возможности вычислительных центров.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_MICRO_QUOTE">
-      <Text>Больше вычислений в меньшем пространстве.</Text>
+      <Text>«Внизу ещё полно места.»[NEWLINE]— Ричард Фейнман, лекция, 1959</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AUTOMATION">
       <Text>Промышленная автоматизация</Text>
@@ -287,7 +287,7 @@
       <Text>Оборудование с числовым программным управлением и автоматическое регулирование производственных процессов повышают выпуск фабрик до широкого внедрения промышленных роботов.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AUTOMATION_QUOTE">
-      <Text>Точность становится воспроизводимой.</Text>
+      <Text>«Всю работу будут выполнять живые машины. Каждый будет свободен от забот и унизительного труда.»[NEWLINE]— Карел Чапек, «R.U.R.», Домин, 1920</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AGRICULTURE">
       <Text>Механизация сельского хозяйства</Text>
@@ -299,7 +299,7 @@
       <Text>Жатки, молотилки и механическая тяга повышают продуктивность компактных сельскохозяйственных районов. Технология включает раннюю механизацию до массового распространения тракторов.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AGRICULTURE_QUOTE">
-      <Text>Машины меняют масштаб земледелия.</Text>
+      <Text>«Земледелие кажется лёгким делом, когда твой плуг — карандаш, а до кукурузного поля тысяча миль.»[NEWLINE]— Дуайт Эйзенхауэр, речь, 1956</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_STEEL_MILL">
       <Text>Сталелитейный завод</Text>
