@@ -56,7 +56,7 @@
       <Text>Industrial Automation</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AUTOMATION_HELP">
-      <Text>+10% [ICON_PRODUCTION] Production in each city with a Factory. Stacks with the additional +10% from Applied AI. Required for Robotics.</Text>
+      <Text>+10% [ICON_PRODUCTION] Production in each city with a Factory. Stacks with the additional +10% from Applied AI. Required for Robotics. Steel Mills gain 10 more percentage points to their unit production bonus.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AUTOMATION_PEDIA">
       <Text>Computer-controlled industrial equipment, process regulation and numerical control improve factory output before general-purpose industrial robots become widespread.</Text>
@@ -80,7 +80,7 @@
       <Text>Steel Mill</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_STEEL_MILL_HELP">
-      <Text>+3 Production. +15% Production of armored units, Giant Death Robots and metal warships, including submarines and carriers. Reserves 1 Iron; maintenance 3 Gold.</Text>
+      <Text>+3 Production. +15% Production of armored units, Giant Death Robots and metal warships, including submarines and carriers. Reserves 1 Iron; maintenance 3 Gold. Industrial Automation raises its unit production bonus to +25%.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_STEEL_MILL_PEDIA">
       <Text>Steelmaking connects strategic iron reserves to industrial capacity and the construction of heavy military equipment.</Text>
@@ -281,7 +281,7 @@
       <Text>Промышленная автоматизация</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AUTOMATION_HELP">
-      <Text>+10% [ICON_PRODUCTION] производства в каждом городе с фабрикой. Складывается с дополнительными +10% от прикладного ИИ. Необходима для робототехники.</Text>
+      <Text>+10% [ICON_PRODUCTION] производства в каждом городе с фабрикой. Складывается с дополнительными +10% от прикладного ИИ. Необходима для робототехники. Сталелитейные заводы получают ещё +10 п. п. к профильному производству техники.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_AUTOMATION_PEDIA">
       <Text>Оборудование с числовым программным управлением и автоматическое регулирование производственных процессов повышают выпуск фабрик до широкого внедрения промышленных роботов.</Text>
@@ -305,7 +305,7 @@
       <Text>Сталелитейный завод</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_STEEL_MILL_HELP">
-      <Text>+3 производства. +15% к производству бронетехники, гигантских боевых роботов и металлических военных кораблей, включая подлодки и авианосцы. Резервирует 1 железо; содержание 3 золота.</Text>
+      <Text>+3 производства. +15% к производству бронетехники, гигантских боевых роботов и металлических военных кораблей, включая подлодки и авианосцы. Резервирует 1 железо; содержание 3 золота. Промышленная автоматизация повышает профильный бонус до +25%.</Text>
     </Row>
     <Row Tag="TXT_KEY_REFINED_STEEL_MILL_PEDIA">
       <Text>Сталелитейная промышленность связывает запасы железа с производством тяжёлой военной техники и кораблей.</Text>

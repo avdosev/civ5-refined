@@ -66,9 +66,9 @@ def generate(database=None):
             if not sqlite3.complete_statement(pending):
                 continue
             clean = re.sub(r'--[^\n]*', '', pending).strip()
-            if re.match(r'CREATE\s+TABLE\s+Refined_VictoryTechs\b', clean, re.I):
+            if re.match(r'CREATE\s+TABLE\s+Refined_(?:Victory|Modernization)Techs\b', clean, re.I):
                 db.executescript(pending)
-            elif re.match(r'(?:INSERT\s+(?:OR\s+\w+\s+)?INTO|UPDATE|DELETE\s+FROM)\s+(?:Technologies|Technology_PrereqTechs|Refined_VictoryTechs)\b', clean, re.I):
+            elif re.match(r'(?:INSERT\s+(?:OR\s+\w+\s+)?INTO|UPDATE|DELETE\s+FROM)\s+(?:Technologies|Technology_PrereqTechs|Refined_(?:Victory|Modernization)Techs)\b', clean, re.I):
                 db.executescript(pending)
             pending = ''
     rows = [dict(r) for r in db.execute('SELECT * FROM Technologies ORDER BY GridX,GridY')]

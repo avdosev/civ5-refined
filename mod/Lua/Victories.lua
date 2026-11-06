@@ -44,7 +44,7 @@ local function major(player)
 end
 local function gameOpen()
     return Game.IsVictoryValid(scienceVictory) and Game.GetWinner() < 0
-        and Game.GetGameState() == GameStateTypes.GAMESTATE_ON
+        and Game.GetGameState() == GameplayGameStateTypes.GAMESTATE_ON
 end
 local function hasBuilding(player, building)
     for city in player:Cities() do

@@ -15,7 +15,7 @@ python3 tests/victories.py --lua lua5.1
 python3 tests/victory_timing.py
 ```
 
-Команды run_lua.py, society.py и victories.py требуют Lua 5.1 (можно передать путь через --lua). victories.py применяет полный стек SQL v8 к фактической проекции BNW, проверяет 94 технологии и геометрию штатных соединений, затем запускает реальный Victories.lua с моделью API. Дополнение tests/data/bnw-victories.json содержит схему и механические параметры проектов/процессов из того же публичного снимка, что bnw-society.json; это не установленная игра. victory_timing.py проверяет отдельно условную модель темпа. SQLite-проверка validate.py сохраняет проверки прежних механик на представительном наборе. Если доступна чистая игровая база:
+Команды run_lua.py, society.py и victories.py требуют Lua 5.1 (можно передать путь через --lua). victories.py применяет полный стек SQL v10 к фактической проекции BNW, проверяет 97 технологий и геометрию штатных соединений, затем запускает реальные Victories.lua и Modernization.lua с моделью API. Дополнение tests/data/bnw-victories.json содержит схему и механические параметры проектов/процессов из того же публичного снимка, что bnw-society.json; это не установленная игра. victory_timing.py проверяет отдельно условную модель темпа. SQLite-проверка validate.py сохраняет проверки прежних механик на представительном наборе. Если доступна чистая игровая база:
 
 ```sh
 python3 tests/validate.py --database /path/to/Civ5DebugDatabase.db

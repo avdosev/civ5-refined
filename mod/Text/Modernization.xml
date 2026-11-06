@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='utf-8'?>
+<GameData>
+  <Language_en_US>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENTERTAINMENT">
+      <Text>Entertainment Industry</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENTERTAINMENT_HELP">
+      <Text>Unlocks the Cinema.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENTERTAINMENT_PEDIA">
+      <Text>Recorded sound and broadcasting helped turn entertainment into a mass industry.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENTERTAINMENT_QUOTE">
+      <Text>There is only one thing in the world worse than being talked about, and that is not being talked about.[NEWLINE]— Oscar Wilde, The Picture of Dorian Gray (1890), Chapter I</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_DRONES">
+      <Text>Unmanned Systems</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_DRONES_HELP">
+      <Text>+5% combat strength for land units. Unlocks Mass Drone Deployment.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_DRONES_PEDIA">
+      <Text>Miniaturized electronics and radar make remotely operated and unmanned systems practical for battlefield reconnaissance and targeting.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_DRONES_QUOTE">
+      <Text>War must ultimately become a mere contest of machines without men and without loss of life.[NEWLINE]— Adapted from Nikola Tesla, The Problem of Increasing Human Energy (1900)</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_TACTICAL_AI">
+      <Text>Autonomous Tactical Control</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_TACTICAL_AI_HELP">
+      <Text>Unlocks the Autonomous Command project.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_TACTICAL_AI_PEDIA">
+      <Text>Autonomous tactical systems apply general artificial intelligence to battlefield decisions and coordination across land, sea and air.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_TACTICAL_AI_QUOTE">
+      <Text>We must be sure that the goal we give the machine is the one we actually want, and not merely a colorful imitation of it.[NEWLINE]— Adapted from Norbert Wiener, Some Moral and Technical Consequences of Automation (1960)</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_CINEMA">
+      <Text>Cinema</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_CINEMA_HELP">
+      <Text>+2 [ICON_CULTURE] Culture. One Musician slot and one Great Work of Music slot. +20% Great Person generation in this city.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_CINEMA_PEDIA">
+      <Text>Cinemas bring recorded music and moving pictures to a mass audience, providing a venue for cultural works and supporting local artists.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_DRONE_DEPLOYMENT">
+      <Text>Mass Drone Deployment</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_DRONE_DEPLOYMENT_HELP">
+      <Text>Permanent +15% combat strength for land units. May be completed once per civilization.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_DRONE_DEPLOYMENT_PEDIA">
+      <Text>Large-scale deployment of unmanned aircraft provides reconnaissance and targeting support to land formations.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_AUTONOMOUS_COMMAND">
+      <Text>Autonomous Command</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_AUTONOMOUS_COMMAND_HELP">
+      <Text>Permanent +15% combat strength for land, naval and air combat units. May be completed once per civilization.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_AUTONOMOUS_COMMAND_PEDIA">
+      <Text>Autonomous command systems coordinate land, naval and air operations, improving the response to changing battlefield conditions.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_DIGITAL_HERITAGE">
+      <Text>Cultural Heritage Digitization</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_DIGITAL_HERITAGE_HELP">
+      <Text>+1 base [ICON_TOURISM] Tourism for each housed Great Work or Artifact. May be completed once per civilization.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_DIGITAL_HERITAGE_PEDIA">
+      <Text>Digital collections make literature, art, music and archaeological finds accessible across borders.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_CULTURAL_EXPANSION">
+      <Text>Algorithmic Cultural Expansion</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_CULTURAL_EXPANSION_HELP">
+      <Text>Adds 15% of the civilization’s Culture per turn as base [ICON_TOURISM] Tourism in its capital (or another active city if the capital cannot generate Tourism). Requires a Data Center in the city that completes the project. May be completed once per civilization.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_CULTURAL_EXPANSION_PEDIA">
+      <Text>Recommendation and translation systems help cultural productions find an international audience.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MACHINE_CREATIVITY">
+      <Text>Machine Creativity</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MACHINE_CREATIVITY_HELP">
+      <Text>+20% to the civilization’s regular [ICON_CULTURE] Culture per turn. Requires a Data Center in the city that completes the project. May be completed once per civilization.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MACHINE_CREATIVITY_PEDIA">
+      <Text>Generative systems become part of creative work throughout the civilization.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_DRONES">
+      <Text>Unmanned Systems</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_DRONES_HELP">
+      <Text>+5% combat strength from Unmanned Systems.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_DRONE_DEPLOYMENT">
+      <Text>Mass Drone Deployment</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_DRONE_DEPLOYMENT_HELP">
+      <Text>+15% combat strength from Mass Drone Deployment.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_AUTONOMOUS_COMMAND">
+      <Text>Autonomous Command</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_AUTONOMOUS_COMMAND_HELP">
+      <Text>+15% combat strength from Autonomous Command.</Text>
+    </Row>
+  </Language_en_US>
+  <Language_RU_RU>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENTERTAINMENT">
+      <Text>Индустрия развлечений</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENTERTAINMENT_HELP">
+      <Text>Открывает Кинотеатр.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENTERTAINMENT_PEDIA">
+      <Text>Звукозапись и вещание помогли превратить развлечения в массовую индустрию.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENTERTAINMENT_QUOTE">
+      <Text>Есть только одна вещь хуже, чем когда о тебе говорят, и это когда о тебе не говорят.[NEWLINE]— Оскар Уайльд, «Портрет Дориана Грея» (1890), глава I</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_DRONES">
+      <Text>Беспилотные системы</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_DRONES_HELP">
+      <Text>+5% боевой силы сухопутных частей. Открывает «Массовое внедрение БПЛА».</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_DRONES_PEDIA">
+      <Text>Миниатюрная электроника и радары позволяют применять беспилотные системы для разведки и целеуказания.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_DRONES_QUOTE">
+      <Text>Война в конечном счёте должна превратиться в состязание машин, без людей и без человеческих жертв.[NEWLINE]— Никола Тесла, «Проблема увеличения человеческой энергии» (1900)</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_TACTICAL_AI">
+      <Text>Автономное тактическое управление</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_TACTICAL_AI_HELP">
+      <Text>Открывает проект «Автономное командование».</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_TACTICAL_AI_PEDIA">
+      <Text>Автономные тактические системы применяют общий ИИ для принятия решений и координации сухопутных, морских и воздушных сил.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_TACTICAL_AI_QUOTE">
+      <Text>Мы должны быть уверены, что цель, заданная машине, действительно та, к которой мы стремимся, а не лишь её красочная имитация.[NEWLINE]— Норберт Винер, «Некоторые моральные и технические последствия автоматизации» (1960)</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_CINEMA">
+      <Text>Кинотеатр</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_CINEMA_HELP">
+      <Text>+2 [ICON_CULTURE] культуры. Одно место музыканта и одна ячейка для музыкального шедевра. +20% к накоплению очков великих людей в городе.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_CINEMA_PEDIA">
+      <Text>Кинотеатры знакомят массовую аудиторию с музыкой и движущимися изображениями, дают площадку для произведений и поддерживают местных творцов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_DRONE_DEPLOYMENT">
+      <Text>Массовое внедрение БПЛА</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_DRONE_DEPLOYMENT_HELP">
+      <Text>Постоянные +15% боевой силы сухопутных частей. Выполняется один раз на цивилизацию.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_DRONE_DEPLOYMENT_PEDIA">
+      <Text>Массовое применение беспилотников обеспечивает разведку и целеуказание для сухопутных частей.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_AUTONOMOUS_COMMAND">
+      <Text>Автономное командование</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_AUTONOMOUS_COMMAND_HELP">
+      <Text>Постоянные +15% боевой силы сухопутных, морских и воздушных боевых частей. Выполняется один раз на цивилизацию.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_AUTONOMOUS_COMMAND_PEDIA">
+      <Text>Автономные системы командования координируют действия на суше, море и в воздухе и помогают быстрее реагировать на изменение обстановки.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_DIGITAL_HERITAGE">
+      <Text>Цифровизация культурного наследия</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_DIGITAL_HERITAGE_HELP">
+      <Text>+1 базового [ICON_TOURISM] туризма за каждый размещённый шедевр или артефакт. Выполняется один раз на цивилизацию.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_DIGITAL_HERITAGE_PEDIA">
+      <Text>Цифровые коллекции делают литературу, искусство, музыку и археологические находки доступными за пределами страны.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_CULTURAL_EXPANSION">
+      <Text>Алгоритмическая культурная экспансия</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_CULTURAL_EXPANSION_HELP">
+      <Text>Добавляет в столице базовый [ICON_TOURISM] туризм в размере 15% культуры державы за ход. Если столица не производит туризм из-за сопротивления или разрушения, вклад получает другой действующий город. Для выполнения в городе нужен Дата-центр. Выполняется один раз на цивилизацию.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_CULTURAL_EXPANSION_PEDIA">
+      <Text>Системы рекомендаций и перевода помогают культурным произведениям находить международную аудиторию.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MACHINE_CREATIVITY">
+      <Text>Машинное творчество</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MACHINE_CREATIVITY_HELP">
+      <Text>+20% к регулярной [ICON_CULTURE] культуре державы за ход. Для выполнения в городе нужен Дата-центр. Выполняется один раз на цивилизацию.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROJECT_REFINED_MACHINE_CREATIVITY_PEDIA">
+      <Text>Генеративные системы становятся частью творческой работы по всей стране.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_DRONES">
+      <Text>Беспилотные системы</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_DRONES_HELP">
+      <Text>+5% боевой силы за изучение «Беспилотных систем».</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_DRONE_DEPLOYMENT">
+      <Text>Массовое внедрение БПЛА</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_DRONE_DEPLOYMENT_HELP">
+      <Text>+15% боевой силы от проекта «Массовое внедрение БПЛА».</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_AUTONOMOUS_COMMAND">
+      <Text>Автономное командование</Text>
+    </Row>
+    <Row Tag="TXT_KEY_PROMOTION_REFINED_AUTONOMOUS_COMMAND_HELP">
+      <Text>+15% боевой силы от проекта «Автономное командование».</Text>
+    </Row>
+  </Language_RU_RU>
+</GameData>

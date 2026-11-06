@@ -1,6 +1,7 @@
 -- Execute the shipped script, using schema/rules exported from the real SQL.
 local data = dofile(assert(arg[1]))
-local storage, turn, winner, state, enabled, speedType, wins = {}, 1, -1, 1, true, 'GAMESPEED_STANDARD', 0
+GameplayGameStateTypes={GAMESTATE_ON=0,GAMESTATE_OVER=1,GAMESTATE_EXTENDED=2}
+local storage, turn, winner, state, enabled, speedType, wins = {}, 1, -1, GameplayGameStateTypes.GAMESTATE_ON, true, 'GAMESPEED_STANDARD', 0
 local nextID = 0
 GameInfoTypes = {}
 local function id(name)
@@ -39,12 +40,11 @@ local function control()
 end
 Controls={VictoryPanel=control(),ProgramTitle=control(),ProgramProgress=control(),ProgramRate=control()}
 GameDefines={MAX_CIV_PLAYERS=4}
-GameStateTypes={GAMESTATE_ON=1,GAMESTATE_OVER=2,GAMESTATE_EXTENDED=3}
 Game={GetGameTurn=function() return turn end,GetActivePlayer=function() return 0 end,
     GetWinner=function() return winner end,GetGameState=function() return state end,
     IsVictoryValid=function(v) assert(v==id('VICTORY_SPACE_RACE'));return enabled end,
     GetGameSpeedType=function() return id(speedType) end,
-    SetWinner=function(team,victory) assert(enabled and winner<0 and state==1);winner=team;state=2;wins=wins+1 end}
+    SetWinner=function(team,victory) assert(enabled and winner<0 and state==GameplayGameStateTypes.GAMESTATE_ON);winner=team;state=GameplayGameStateTypes.GAMESTATE_OVER;wins=wins+1 end}
 Modding={OpenSaveData=function() return {GetValue=function(k) return storage[k] end,SetValue=function(k,v) storage[k]=v end} end}
 Locale={ConvertTextKey=function(key,...) local t={key};for _,v in ipairs({...}) do t[#t+1]=tostring(v) end;return table.concat(t,'|') end}
 NotificationTypes={NOTIFICATION_GENERIC=0}
@@ -212,15 +212,16 @@ Events.SerialEventCityInfoDirty.Fire();ContextPtr.update(.5);assert(wins==0) -- 
 -- Disabled victories / ended games cannot be overwritten by either route.
 for _,m in ipairs(mars) do Teams[0].projects[m]=1 end
 enabled=false;Events.SequenceGameInitComplete.Fire();assert(wins==0)
-enabled=true;winner=1;state=3;Events.SequenceGameInitComplete.Fire();assert(wins==0)
-winner=-1;state=2;Events.SequenceGameInitComplete.Fire();assert(wins==0)
-state=1;Events.SequenceGameInitComplete.Fire()
+enabled=true;winner=1;Events.SequenceGameInitComplete.Fire();assert(wins==0)
+winner=-1;state=GameplayGameStateTypes.GAMESTATE_EXTENDED;Events.SequenceGameInitComplete.Fire();assert(wins==0)
+state=GameplayGameStateTypes.GAMESTATE_OVER;Events.SequenceGameInitComplete.Fire();assert(wins==0)
+state=GameplayGameStateTypes.GAMESTATE_ON;Events.SequenceGameInitComplete.Fire()
 assert(wins==1 and winner==0 and storage['refined.v8.victory.team.0.route']=='mars')
 Events.SequenceGameInitComplete.Fire();assert(wins==1)
 
 -- Speed-scaled singularity victory, exactly once, via native science victory.
 for _,speed in ipairs({'GAMESPEED_STANDARD','GAMESPEED_QUICK','GAMESPEED_MARATHON'}) do
-    storage={};winner=-1;state=1;wins=0;speedType=speed
+    storage={};winner=-1;state=GameplayGameStateTypes.GAMESTATE_ON;wins=0;speedType=speed
     for _,t in pairs(Teams) do for _,m in ipairs(mars) do t.projects[m]=nil end end
     local target=math.ceil(13666*GameInfo.GameSpeeds[id(speed)].ResearchPercent/100)*100
     a.process=learning;b.process=-1;d.process=-1
@@ -232,3 +233,123 @@ for _,speed in ipairs({'GAMESPEED_STANDARD','GAMESPEED_QUICK','GAMESPEED_MARATHO
     GameEvents.PlayerDoTurn.Fire(0);load();assert(wins==1)
 end
 print('PASS: shipped v8 Lua: project gates, native work snapshots, exact science, no duplicate credit, reload, AI/teams, sale/capture/anarchy, command promotions, speed and both victories')
+
+-- Execute the modernization addin using the same stock API model.
+local function project(name) return id('PROJECT_REFINED_' .. name) end
+local function promotion(name) return id('PROMOTION_REFINED_' .. name) end
+local drones = id('TECH_REFINED_DRONES')
+local automation = id('TECH_REFINED_AUTOMATION')
+local deployment, command = project('DRONE_DEPLOYMENT'), project('AUTONOMOUS_COMMAND')
+local heritage, expansion, creativity = project('DIGITAL_HERITAGE'), project('CULTURAL_EXPANSION'), project('MACHINE_CREATIVITY')
+local steel = id('BUILDING_REFINED_STEEL_MILL')
+local steelEffect = id('BUILDING_REFINED_AUTOMATION_STEEL')
+local infantry, ship, fighter = unit('UNIT_INFANTRY'), unit('UNIT_DESTROYER'), unit('UNIT_FIGHTER')
+local settler, nuke = unit('UNIT_SETTLER'), unit('UNIT_ATOMIC_BOMB')
+
+Players[0], Players[1], Players[2] = player(0,{a,b},true), player(1,{c},false), nil
+Teams[0], Teams[1] = team(), team()
+Teams[0].techs[drones], Teams[0].techs[automation] = false, false
+Teams[1].techs[drones] = false
+Players[0].units = {infantry,ship,fighter,settler,nuke}
+Players[1].units = {unit('UNIT_INFANTRY')}
+for _,city in ipairs({a,b,c}) do
+    city.works = 0
+    city.GetNumRealBuilding = city.GetNumBuilding
+    function city:SetNumRealBuilding(building,count) self.buildings[building]=count end
+    function city:GetNumGreatWorks() return self.works end
+end
+for index = 0, 1 do
+    local p = Players[index]
+    p.freeCulture, p.cityCulture, p.minorCulture = 5, 70, 25
+    function p:GetCapitalCity() return self.cities[1] end
+    function p:GetJONSCulturePerTurnFromCities() return self.cityCulture end
+    function p:GetJONSCulturePerTurnFromExcessHappiness() return 0 end
+    function p:GetJONSCulturePerTurnFromTraits() return 0 end
+    function p:GetJONSCulturePerTurnForFree() return self.freeCulture end
+    function p:GetCulturePerTurnFromMinorCivs() return self.minorCulture end
+    function p:GetCulturePerTurnFromReligion() return 0 end
+    function p:ChangeJONSCulturePerTurnForFree(delta) self.freeCulture=self.freeCulture+delta end
+    function p:GetTotalJONSCulturePerTurn() return self.cityCulture+self.minorCulture+self.freeCulture end
+end
+local function tourism(city)
+    local total = 0
+    for _,carrier in ipairs(data.Refined_TourismCarriers) do
+        total = total + carrier.Weight * city:GetNumRealBuilding(id(carrier.Type))
+    end
+    return total
+end
+local function loadModernization()
+    resetEvents()
+    dofile('mod/Lua/Modernization.lua')
+end
+
+storage={}
+a.buildings[steel]=1
+a.buildings[dc]=1
+b.buildings[dc]=0
+a.works,b.works=2,3
+enabled=false -- No science victory required.
+loadModernization()
+assert(not GameEvents.CityCanCreate.Test(0,a.id,deployment))
+assert(GameEvents.CityCanCreate.Test(0,a.id,expansion))
+assert(not GameEvents.CityCanCreate.Test(0,b.id,expansion))
+assert(not GameEvents.CityCanCreate.Test(0,b.id,creativity))
+assert(a:GetNumBuilding(steelEffect)==0 and tourism(a)==0)
+
+Teams[0].techs[drones], Teams[0].techs[automation] = true, true
+GameEvents.TeamSetHasTech.Fire(0,drones,true)
+assert(GameEvents.CityCanCreate.Test(0,a.id,deployment))
+assert(infantry:IsHasPromotion(promotion('DRONES')) and not ship:IsHasPromotion(promotion('DRONES')))
+assert(a:GetNumBuilding(steelEffect)==1 and b:GetNumBuilding(steelEffect)==0)
+Teams[0].projects[deployment],Teams[0].projects[command]=1,1
+Teams[0].projects[heritage],Teams[0].projects[expansion],Teams[0].projects[creativity]=1,1,1
+GameEvents.PlayerDoTurn.Fire(0)
+assert(not GameEvents.CityCanCreate.Test(0,b.id,deployment))
+assert(GameEvents.CityCanCreate.Test(1,c.id,command))
+assert(Players[0].freeCulture==25 and Players[1].freeCulture==5)
+assert(tourism(a)==20 and tourism(b)==3 and tourism(c)==0)
+assert(infantry:IsHasPromotion(promotion('DRONE_DEPLOYMENT')))
+assert(infantry:IsHasPromotion(promotion('AUTONOMOUS_COMMAND')))
+for _,u in ipairs({ship,fighter}) do
+    assert(u:IsHasPromotion(promotion('AUTONOMOUS_COMMAND')))
+    assert(not u:IsHasPromotion(promotion('DRONE_DEPLOYMENT')))
+end
+for _,u in ipairs({settler,nuke,Players[1].units[1]}) do
+    assert(not u:IsHasPromotion(promotion('AUTONOMOUS_COMMAND')))
+end
+
+local upgraded = unit('UNIT_MECHANIZED_INFANTRY')
+Players[0].units[1]=upgraded
+GameEvents.UnitSetXY.Fire(0,1)
+assert(upgraded:IsHasPromotion(promotion('DRONES')))
+assert(upgraded:IsHasPromotion(promotion('DRONE_DEPLOYMENT')))
+assert(upgraded:IsHasPromotion(promotion('AUTONOMOUS_COMMAND')))
+local writes = upgraded.writes
+loadModernization()
+assert(Players[0].freeCulture==25 and upgraded.writes==writes)
+
+a.resistance=true
+Events.SerialEventCityInfoDirty.Fire()
+ContextPtr.update(.5)
+assert(tourism(a)==2 and tourism(b)==21)
+a.resistance=false
+
+a.works,b.works=1,4
+a.buildings[dc],a.buildings[steel]=0,0
+Players[0].minorCulture=15
+Events.SerialEventCityInfoDirty.Fire()
+ContextPtr.update(.5)
+assert(Players[0].freeCulture==23 and tourism(a)==17 and tourism(b)==4)
+assert(a:GetNumBuilding(steelEffect)==0)
+Players[0].cities,Players[1].cities={b},{c,a}
+Players[0].units[1]=unit('UNIT_INFANTRY')
+Players[1].units[2]=upgraded
+GameEvents.CityCaptureComplete.Fire()
+assert(tourism(a)==0 and tourism(b)==20 and Players[0].freeCulture==23)
+assert(not upgraded:IsHasPromotion(promotion('AUTONOMOUS_COMMAND')))
+assert(Players[0].units[1]:IsHasPromotion(promotion('AUTONOMOUS_COMMAND')))
+Players[3].units[1]=Players[0].units[1]
+Players[0].units[1]=nil
+GameEvents.UnitSetXY.Fire(3,1)
+assert(not Players[3].units[1]:IsHasPromotion(promotion('AUTONOMOUS_COMMAND')))
+print('PASS: modernization Lua: project gates, military scope, upgrades, independent civilizations, tourism, culture, reload and capture')

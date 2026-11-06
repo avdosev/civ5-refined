@@ -122,13 +122,57 @@ def database():
     return db
 
 
+def apply_modernization(db):
+    root = ET.parse(ROOT / 'mod/Text/Modernization.xml').getroot()
+    for lang in root:
+        db.executemany(f'INSERT INTO {lang.tag} VALUES (?,?)',
+                       [(row.attrib['Tag'], row.findtext('Text')) for row in lang])
+    db.executescript((ROOT / 'mod/SQL/Modernization.sql').read_text())
+    assert not layout_issues(db, include_industrial=True), layout_issues(db, True)
+    positions = [tuple(row) for row in db.execute('SELECT GridX,GridY FROM Technologies')]
+    assert len(positions) == len(set(positions)) == 97
+    expected = {
+        'ENTERTAINMENT': {'TECH_RADIO'},
+        'DRONES': {'TECH_RADAR', 'TECH_REFINED_MICROELECTRONICS'},
+        'TACTICAL_AI': {'TECH_REFINED_GENERAL_AI'},
+    }
+    for name, parents in expected.items():
+        tech = 'TECH_REFINED_' + name
+        assert {row[0] for row in db.execute(
+            'SELECT PrereqTech FROM Technology_PrereqTechs WHERE TechType=?', (tech,))} == parents
+        for lang in ('Language_en_US', 'Language_RU_RU'):
+            assert db.execute(f'SELECT Text FROM {lang} JOIN Technologies ON Tag=Quote WHERE Type=?',
+                              (tech,)).fetchone()[0]
+    assert tuple(db.execute("""SELECT GreatWorkSlotType,GreatWorkCount,SpecialistType,SpecialistCount,
+        GreatPeopleRateModifier FROM Buildings WHERE Type='BUILDING_REFINED_CINEMA'""").fetchone()) == (
+        'GREAT_WORK_SLOT_MUSIC', 1, 'SPECIALIST_MUSICIAN', 1, 20)
+    assert db.execute("""SELECT COUNT(*) FROM Projects p JOIN Refined_NationalProjects n USING (Type)
+        WHERE MaxGlobalInstances=-1 AND MaxTeamInstances=1 AND VictoryPrereq IS NULL
+        AND p.Cost=n.Cost AND TechPrereq=Tech""").fetchone()[0] == 5
+    for building, modifier in (('STEEL_MILL', 15), ('AUTOMATION_STEEL', 10)):
+        rows = [tuple(row) for row in db.execute("""SELECT UnitType,ProductionModifier
+            FROM Unit_ProductionModifierBuildings WHERE BuildingType=? ORDER BY UnitType""",
+            ('BUILDING_REFINED_' + building,))]
+        assert rows and all(value == modifier for _, value in rows)
+        if modifier == 15:
+            steel_units = [unit for unit, _ in rows]
+        else:
+            assert [unit for unit, _ in rows] == steel_units
+    carriers = db.execute("""SELECT Weight,TechEnhancedTourism,EnhancedYieldTech,NeverCapture
+        FROM Refined_TourismCarriers JOIN Buildings USING (Type) ORDER BY Weight""")
+    assert [tuple(row) for row in carriers] == [(2**n, 2**n, 'TECH_COMPUTERS', 1) for n in range(17)]
+    print('PASS: modernization SQL, 97-node layout, national projects, cinema and tourism carriers')
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--lua', default='lua5.1')
     args = parser.parse_args()
     db = database()
+    apply_modernization(db)
     tables = ['Technologies','Buildings','Units','Projects','Processes','GameSpeeds',
-              'Refined_VictoryProjects','Refined_VictorySettings']
+              'Refined_VictoryProjects','Refined_VictorySettings','Refined_NationalProjects',
+              'Refined_TourismCarriers','UnitPromotions']
     data = {name:[dict(r) for r in db.execute('SELECT * FROM '+name)] for name in tables}
     with tempfile.TemporaryDirectory(prefix='refined-victories-') as temp:
         path = Path(temp) / 'data.lua'

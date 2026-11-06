@@ -52,7 +52,7 @@ def build():
         ET.SubElement(files, 'File', md5=hashlib.md5(path.read_bytes()).hexdigest(),
                       attrib={'import': '0'}).text = path.relative_to(target).as_posix()
     actions = ET.SubElement(ET.SubElement(root, 'Actions'), 'OnModActivated')
-    for path in ['Text/Localization.xml', 'Text/Society.xml', 'Text/Victories.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql', 'SQL/Development.sql', 'SQL/Institutions.sql', 'SQL/Allies.sql', 'SQL/Victories.sql']:
+    for path in ['Text/Localization.xml', 'Text/Society.xml', 'Text/Victories.xml', 'Text/Modernization.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql', 'SQL/Development.sql', 'SQL/Institutions.sql', 'SQL/Allies.sql', 'SQL/Victories.sql', 'SQL/Modernization.sql']:
         ET.SubElement(actions, 'UpdateDatabase').text = path
     entry = ET.SubElement(ET.SubElement(root, 'EntryPoints'), 'EntryPoint',
                           type='InGameUIAddin', file='Lua/Refined.lua')
@@ -67,6 +67,9 @@ def build():
     entry = ET.SubElement(root.find('EntryPoints'), 'EntryPoint', type='InGameUIAddin', file='Lua/Victories.xml')
     ET.SubElement(entry, 'Name').text = 'Refined science programs'
     ET.SubElement(entry, 'Description').text = 'Mars, singularity, interstellar progression and integrated command.'
+    entry = ET.SubElement(root.find('EntryPoints'), 'EntryPoint', type='InGameUIAddin', file='Lua/Modernization.xml')
+    ET.SubElement(entry, 'Name').text = 'Refined modernization'
+    ET.SubElement(entry, 'Description').text = 'National projects, military upgrades and cultural programs.'
     ET.indent(root)
     ET.ElementTree(root).write(target / (NAME + '.modinfo'), encoding='utf-8', xml_declaration=True)
     archive = OUTPUT / (NAME + '.zip')
