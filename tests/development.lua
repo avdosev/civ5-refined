@@ -1,3 +1,7 @@
+function include(name)
+    if name == 'FLuaVector' then ToGridFromHex = function(x,y) return x,y end
+    else dofile('mod/Lua/' .. name .. '.lua') end
+end
 -- Run through tests/run_lua.py: rules are exported from the shipped SQL.
 local data = dofile(assert(arg[1]))
 local storage, messages, plots, units, nextID = {}, {}, {}, {}, 0
@@ -45,22 +49,24 @@ end
 local update
 local function resetEvents()
     GameEvents={};Events={}
-    for _, name in ipairs({'UnitSetXY','PlayerDoTurn','TeamSetHasTech','PlayerCityFounded','CityCaptureComplete'}) do GameEvents[name]=event() end
+    for _, name in ipairs({'BuildFinished','UnitSetXY','PlayerDoTurn','TeamSetHasTech','PlayerCityFounded','CityCaptureComplete'}) do GameEvents[name]=event() end
     for _,name in ipairs({'SerialEventCityInfoDirty','SerialEventUnitInfoDirty','SerialEventImprovementCreated',
         'SerialEventImprovementDestroyed','SerialEventHexCultureChanged','SequenceGameInitComplete','GameplaySetActivePlayer'}) do Events[name]=event() end
     Events.GameplayAlertMessage=function(text) messages[#messages+1]=text end
     ContextPtr={SetUpdate=function(self,fn) update=fn end}
 end
 resetEvents()
+local gameTurn = 0
+local work = {plots=0, cities=0, units=0}
 local cityMod = 5
 local yieldWrites = 0
-Game={GetActivePlayer=function() return 0 end, GetNumCitiesTechCostMod=function() return cityMod end,
+Game={GetGameTurn=function() return gameTurn end, GetActivePlayer=function() return 0 end, GetNumCitiesTechCostMod=function() return cityMod end,
     SetPlotExtraYield=function(x,y,yield,delta)
         local p=Map.GetPlot(x,y);p.extra=p.extra+delta;yieldWrites=yieldWrites+1
         Events.SerialEventCityInfoDirty.Fire()
     end}
 local directions={{1,0},{0,1},{-1,1},{-1,0},{0,-1},{1,-1}}
-Map={GetNumPlots=function() return #plots end, GetPlotByIndex=function(i) return plots[i+1] end,
+Map={GetNumPlots=function() return #plots end, GetPlotByIndex=function(i) work.plots=work.plots+1; return plots[i+1] end,
     GetPlot=function(x,y) for _,p in ipairs(plots) do if p.x==x and p.y==y then return p end end end,
     PlotDirection=function(x,y,d) local o=directions[d+1];return Map.GetPlot(x+o[1],y+o[2]) end}
 local function plot(x,y,owner,improvement,resource)
@@ -107,8 +113,8 @@ local function player(teamID)
     function p:IsMinorCiv() return self.minor or false end
     function p:IsBarbarian() return false end
     function p:GetTeam() return self.teamID end
-    function p:Cities() return iterator(self.cities) end
-    function p:Units() return iterator(self.units) end
+    function p:Cities() work.cities=work.cities+1; return iterator(self.cities) end
+    function p:Units() work.units=work.units+1; return iterator(self.units) end
     function p:GetUnitByID(uid) for _,u in ipairs(self.units) do if u.id==uid then return u end end end
     function p:GetTradeRoutes() return self.routes end
     function p:CanResearch(tech) return self.ready[tech] or false end
@@ -128,7 +134,10 @@ local function unit(owner,kind,level)
     units[#units+1]=u;table.insert(Players[owner].units,u);return u
 end
 local function saved(team,tech,field) return storage['refined.v6.team.'..team..'.TECH_'..tech..'.'..field] end
-local function tick() GameEvents.PlayerDoTurn.Fire(0) end
+local function tick()
+    gameTurn=gameTurn+1
+    for i=0,GameDefines.MAX_CIV_PLAYERS-1 do GameEvents.PlayerDoTurn.Fire(i) end
+end
 local center=plot(0,0,0,'IMPROVEMENT_FARM')
 local ring={}
 for _,o in ipairs(directions) do ring[#ring+1]=plot(o[1],o[2],0,'IMPROVEMENT_FARM') end
@@ -253,3 +262,32 @@ resetEvents();dofile('mod/Lua/Development.lua')
 assert(next(Controls)==nil and type(update)=='function')
 assert(#messages==beforeReload, 'reload repeated an achievement notification')
 print('PASS: invisible eureka addin and no duplicate messages on reload')
+
+-- Moving ordinary units and dirty unit UI never touch map/city/army sweeps.
+local worker=unit(0,'WORKER')
+update(1)
+local before={plots=work.plots,cities=work.cities,units=work.units}
+for i=1,30 do
+    GameEvents.UnitSetXY.Fire(0,worker.id,0,0)
+    Events.SerialEventUnitInfoDirty.Fire()
+    update(.3)
+end
+assert(work.plots==before.plots and work.cities==before.cities and work.units==before.units,
+    'ordinary movement must not rescan map, cities or units')
+Events.SerialEventCityInfoDirty.Fire();update(.3)
+assert(work.plots==before.plots and work.units==before.units, 'building checks do not scan plots/units')
+-- Targeted repair/pillage/replacement updates neighboring farms immediately.
+ring[1].pillaged=true
+GameEvents.BuildFinished.Fire(0,ring[1].x,ring[1].y,-1)
+assert(center.extra==6 and ring[1].extra==2)
+ring[1].pillaged=false
+GameEvents.BuildFinished.Fire(0,ring[1].x,ring[1].y,-1)
+assert(center.extra==7 and work.plots==before.plots, 'local plot event must not enumerate map')
+-- Player turns share a single map reconciliation, and scope other work.
+local visits=work.plots
+gameTurn=gameTurn+1
+GameEvents.PlayerDoTurn.Fire(0)
+assert(work.plots==visits+#plots)
+GameEvents.PlayerDoTurn.Fire(1)
+assert(work.plots==visits+#plots, 'one map reconciliation per game turn')
+print('PASS: no broad movement work, building-only checks, local plot repair and one reconciliation per turn')

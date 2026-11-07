@@ -1,3 +1,4 @@
+function include(name) dofile("mod/Lua/" .. name .. ".lua") end
 -- Execute the shipped script, using schema/rules exported from the real SQL.
 local data = dofile(assert(arg[1]))
 GameplayGameStateTypes={GAMESTATE_ON=0,GAMESTATE_OVER=1,GAMESTATE_EXTENDED=2}
@@ -74,6 +75,9 @@ local function iterator(rows)
 end
 local function player(team,cities,human)
     local p={team=team,cities=cities,units={},human=human,alive=true,notifications=0}
+    function p:GetID()
+        for i,other in pairs(Players) do if other==self then return i end end
+    end
     function p:IsAlive() return self.alive end
     function p:IsHuman() return self.human end
     function p:IsMinorCiv() return self.minor or false end
@@ -81,7 +85,7 @@ local function player(team,cities,human)
     function p:IsAnarchy() return self.anarchy or false end
     function p:GetTeam() return self.team end
     function p:Cities() return iterator(self.cities) end
-    function p:Units() return iterator(self.units) end
+    function p:Units() self.unitSweeps=(self.unitSweeps or 0)+1; return iterator(self.units) end
     function p:GetCityByID(index) for _,c in ipairs(self.cities) do if c.id==index then return c end end end
     function p:GetUnitByID(index) return self.units[index] end
     function p:AddNotification(...) self.notifications=self.notifications+1 end
@@ -118,6 +122,22 @@ local function tick(playerID)
     turn=turn+1;nativeValidate(playerID);GameEvents.PlayerDoTurn.Fire(playerID)
 end
 load()
+-- Movement/UI refresh cannot reconcile armies or award a Mars victory.
+local walker=unit('UNIT_WORKER');Players[0].units={walker}
+local sweeps={}
+for i,p in pairs(Players) do sweeps[i]=p.unitSweeps or 0 end
+for _,m in ipairs(mars) do Teams[0].projects[m]=1 end
+for i=1,30 do
+    GameEvents.UnitSetXY.Fire(0,1)
+    Events.SerialEventUnitInfoDirty.Fire()
+    Events.SerialEventGameDataDirty.Fire()
+    ContextPtr.update(.3)
+end
+for i,p in pairs(Players) do assert((p.unitSweeps or 0)==sweeps[i], 'movement must not scan any army') end
+assert(wins==0, 'movement/panel refresh must not check Mars victory')
+for _,m in ipairs(mars) do Teams[0].projects[m]=nil end
+Players[0].units={}
+print('PASS: command movement and panel refresh do not sweep armies or award Mars')
 Events.SerialEventEnterCityScreen.Fire();Events.SerialEventCityInfoDirty.Fire();ContextPtr.update(.5)
 assert(Controls.VictoryPanel.hidden)
 Events.SerialEventExitCityScreen.Fire();ContextPtr.update(.5);assert(not Controls.VictoryPanel.hidden)
@@ -182,7 +202,13 @@ Players[0].cities={a,b};Players[1].cities={c}
 for _,name in ipairs({'UNIT_INFANTRY','UNIT_ARCHER','UNIT_BATTLESHIP','UNIT_FIGHTER','UNIT_WORKER','UNIT_ATOMIC_BOMB'}) do
     Players[0].units[#Players[0].units+1]=unit(name)
 end
+local affectedBefore=Players[0].unitSweeps or 0
+local unrelatedBefore=Players[1].unitSweeps or 0
 a.buildings[cc]=1;Events.SerialEventCityInfoDirty.Fire();ContextPtr.update(.5)
+assert(Players[0].unitSweeps==affectedBefore+1 and (Players[1].unitSweeps or 0)==unrelatedBefore,
+    'command source change updates only the affected army')
+Events.SerialEventCityInfoDirty.Fire();ContextPtr.update(.5)
+assert(Players[0].unitSweeps==affectedBefore+1, 'unchanged cities must not rescan army')
 for i,u in ipairs(Players[0].units) do assert(u:IsHasPromotion(promo)==(i<=4)) end
 local writes=Players[0].units[1].writes
 load();assert(Players[0].units[1].writes==writes)
@@ -353,3 +379,17 @@ Players[0].units[1]=nil
 GameEvents.UnitSetXY.Fire(3,1)
 assert(not Players[3].units[1]:IsHasPromotion(promotion('AUTONOMOUS_COMMAND')))
 print('PASS: modernization Lua: project gates, military scope, upgrades, independent civilizations, tourism, culture, reload and capture')
+
+local beforeSweeps={}
+for i,p in pairs(Players) do beforeSweeps[i]=p.unitSweeps or 0 end
+for i=1,30 do
+    GameEvents.UnitSetXY.Fire(1,1)
+    Events.SerialEventUnitInfoDirty.Fire()
+    Events.SerialEventGameDataDirty.Fire()
+    ContextPtr.update(.3)
+end
+Events.SerialEventCityInfoDirty.Fire();ContextPtr.update(.3)
+for i,p in pairs(Players) do
+    assert((p.unitSweeps or 0)==beforeSweeps[i], 'modernization movement/unchanged cities must not scan armies')
+end
+print('PASS: modernization movement and unchanged city effects do not sweep armies')

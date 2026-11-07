@@ -1,0 +1,21 @@
+include("RefinedEventSources")
+
+RefinedVictoriesEvents = {}
+function RefinedVictoriesEvents.Connect(bus)
+    RefinedEventSources.Query(bus, GameEvents.CityCanConstruct, 'CanConstructBuilding')
+    RefinedEventSources.Query(bus, GameEvents.CityCanCreate, 'CanCreateProject')
+    RefinedEventSources.Query(bus, GameEvents.CityCanMaintain, 'CanMaintainProcess')
+    RefinedEventSources.Event(bus, GameEvents.PlayerDoTurn, 'PlayerTurn')
+    RefinedEventSources.Event(bus, GameEvents.TeamSetHasTech, 'TeamTechnologyChanged')
+    RefinedEventSources.Event(bus, GameEvents.PlayerCityFounded, 'CityFounded')
+    RefinedEventSources.Event(bus, GameEvents.CityCaptureComplete, 'CityCaptured')
+    RefinedEventSources.Event(bus, GameEvents.UnitSetXY, 'UnitPositionChanged')
+    RefinedEventSources.Event(bus, Events.SerialEventCityInfoDirty, 'CityInfoChanged')
+    RefinedEventSources.Event(bus, Events.SerialEventGameDataDirty, 'GameDataChanged')
+    RefinedEventSources.Event(bus, Events.SequenceGameInitComplete, 'GameInitialized')
+    RefinedEventSources.Event(bus, Events.SerialEventEnterCityScreen, 'CityScreenEntered')
+    RefinedEventSources.Event(bus, Events.SerialEventExitCityScreen, 'CityScreenExited')
+    RefinedEventSources.Event(bus, Events.GameplaySetActivePlayer, 'ActivePlayerChanged')
+    RefinedEventSources.Update(bus)
+    bus:Publish('Loaded')
+end

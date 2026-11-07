@@ -103,12 +103,24 @@ local function syncCity(city, automate, heritage, expansion)
     end
 end
 
+local armyStates = {}
+local function syncArmy(playerID, player, force)
+    local team = major(player) and Teams[player:GetTeam()]
+    local drones = team and team:IsHasTech(droneTech) or false
+    local deployment = team and team:GetProjectCount(droneProject) > 0 or false
+    local command = team and team:GetProjectCount(commandProject) > 0 or false
+    local previous = armyStates[playerID]
+    if force or not previous or previous[1] ~= drones or previous[2] ~= deployment or previous[3] ~= command then
+        armyStates[playerID] = {drones, deployment, command}
+        for unit in player:Units() do syncUnit(unit, drones, deployment, command) end
+    end
+end
 local syncing, pending = false, true
-local function syncPlayer(playerID)
+local function syncPlayer(playerID, forceArmy)
     local player = Players[playerID]
     if not player or not player:IsAlive() then return end
     if not major(player) then
-        for unit in player:Units() do syncUnit(unit, false, false, false) end
+        syncArmy(playerID, player, forceArmy)
         return
     end
     local team = Teams[player:GetTeam()]
@@ -133,10 +145,7 @@ local function syncPlayer(playerID)
         syncCity(city, automate, heritage, city:GetID() == tourismCity and expansion or 0)
     end
 
-    local drones = team:IsHasTech(droneTech)
-    local deployment = team:GetProjectCount(droneProject) > 0
-    local command = team:GetProjectCount(commandProject) > 0
-    for unit in player:Units() do syncUnit(unit, drones, deployment, command) end
+    syncArmy(playerID, player, forceArmy)
 end
 
 local function markDirty()
@@ -146,16 +155,34 @@ end
 local function syncAll()
     if syncing then return end
     syncing, pending = true, false
-    for playerID = 0, GameDefines.MAX_CIV_PLAYERS - 1 do syncPlayer(playerID) end
+    for playerID = 0, GameDefines.MAX_CIV_PLAYERS - 1 do syncPlayer(playerID, true) end
     syncing = false
 end
 
-GameEvents.CityCanCreate.Add(canCreate)
-GameEvents.PlayerDoTurn.Add(syncPlayer)
-GameEvents.TeamSetHasTech.Add(syncAll)
-GameEvents.PlayerCityFounded.Add(syncAll)
-GameEvents.CityCaptureComplete.Add(syncAll)
-GameEvents.UnitSetXY.Add(function(playerID, unitID)
+include("RefinedEventBus")
+include("RefinedModernizationEvents")
+local events = RefinedEventBus.Create()
+
+local function syncOne(playerID, forceArmy)
+    if syncing then return end
+    syncing = true
+    syncPlayer(playerID, forceArmy)
+    syncing = false
+end
+events:Answer('CanCreateProject', canCreate)
+events:Subscribe('PlayerTurn', function(playerID) syncOne(playerID, true) end)
+events:Subscribe('TeamTechnologyChanged', function(teamID, techID)
+    if syncing or (techID ~= droneTech and techID ~= automationTech) then return end
+    syncing = true
+    for playerID = 0, GameDefines.MAX_CIV_PLAYERS - 1 do
+        local player = Players[playerID]
+        if player and player:GetTeam() == teamID then syncPlayer(playerID, false) end
+    end
+    syncing = false
+end)
+events:Subscribe('CityFounded', function(playerID) syncOne(playerID, false) end)
+events:Subscribe('CityCaptured', syncAll)
+events:Subscribe('UnitPositionChanged', function(playerID, unitID)
     local player = Players[playerID]
     if not player or not player:IsAlive() then return end
     local unit = player:GetUnitByID(unitID)
@@ -167,17 +194,20 @@ GameEvents.UnitSetXY.Add(function(playerID, unitID)
     syncUnit(unit, team:IsHasTech(droneTech),
         team:GetProjectCount(droneProject) > 0, team:GetProjectCount(commandProject) > 0)
 end)
-Events.SerialEventUnitInfoDirty.Add(markDirty)
-Events.SerialEventCityInfoDirty.Add(markDirty)
-Events.SerialEventGameDataDirty.Add(markDirty)
-Events.SequenceGameInitComplete.Add(syncAll)
+events:Subscribe('CityInfoChanged', markDirty)
+events:Subscribe('GameInitialized', syncAll)
 local elapsed = 0
-ContextPtr:SetUpdate(function(delta)
+events:Subscribe('Update', function(delta)
     elapsed = elapsed + delta
     if pending and elapsed >= 0.25 then
         elapsed = 0
-        syncAll()
+        if not syncing then
+            syncing, pending = true, false
+            for playerID = 0, GameDefines.MAX_CIV_PLAYERS - 1 do syncPlayer(playerID, false) end
+            syncing = false
+        end
     end
 end)
-syncAll()
+events:Subscribe('Loaded', syncAll)
+RefinedModernizationEvents.Connect(events)
 print('civ5-refined: modernization projects loaded')

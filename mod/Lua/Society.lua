@@ -99,14 +99,15 @@ local function apply(city, desired)
         if city:GetNumRealBuilding(b) ~= n then city:SetNumRealBuilding(b, n) end
     end
 end
+local merchantStates = {}
 local syncing, pending = false, false
-local function syncAll()
+local function syncEffects(targetPlayer)
     if syncing then pending = true; return end
     syncing = true
     local allies = currentAllies(true)
     for i = 0, GameDefines.MAX_CIV_PLAYERS - 1 do
         local p = Players[i]
-        if p and p:IsAlive() then
+        if p and p:IsAlive() and (targetPlayer == nil or targetPlayer == i) then
             local active = major(p)
             local patrons = active and policy(p, 'PATRONAGE_FINISHER')
             local commercialRoutes = active and policy(p, 'COMMERCE_FINISHER')
@@ -148,15 +149,19 @@ local function syncAll()
             end
             -- The same trade mission promotion is synchronized for human and AI
             -- merchants, including Venice, without changing the mission itself.
-            for unit in p:Units() do
-                local row = GameInfo.Units[unit:GetUnitType()]
-                local enabled = commerce and row.Class == 'UNITCLASS_MERCHANT' or false
-                if unit:IsHasPromotion(merchantPromotion) ~= enabled then unit:SetHasPromotion(merchantPromotion, enabled) end
+            if merchantStates[i] ~= commerce then
+                merchantStates[i] = commerce
+                for unit in p:Units() do
+                    local row = GameInfo.Units[unit:GetUnitType()]
+                    local enabled = commerce and row.Class == 'UNITCLASS_MERCHANT' or false
+                    if unit:IsHasPromotion(merchantPromotion) ~= enabled then unit:SetHasPromotion(merchantPromotion, enabled) end
+                end
             end
         end
     end
     syncing = false
 end
+local function syncAll() syncEffects() end
 local function markDirty() if not syncing then pending = true end end
 local function movedUnit(playerID, unitID)
     local p = Players[playerID]
@@ -215,25 +220,39 @@ for i = 0, GameDefines.MAX_CIV_PLAYERS - 1 do
         end
     end
 end
-GameEvents.PlayerCityFounded.Add(founded)
-GameEvents.PlayerDoTurn.Add(syncAll)
-GameEvents.TeamSetHasTech.Add(researched)
-GameEvents.TeamTechResearched.Add(function(teamID, techID, change)
+include("RefinedEventBus")
+include("RefinedSocietyEvents")
+local events = RefinedEventBus.Create()
+
+events:Subscribe('CityFounded', founded)
+events:Subscribe('PlayerTurn', function(playerID)
+    syncEffects(playerID)
+    local p = Players[playerID]
+    if p and p:IsAlive() then
+        local enabled = major(p) and policy(p, 'ENTREPRENEURSHIP') or false
+        for unit in p:Units() do
+            local wanted = enabled and GameInfo.Units[unit:GetUnitType()].Class == 'UNITCLASS_MERCHANT' or false
+            if unit:IsHasPromotion(merchantPromotion) ~= wanted then unit:SetHasPromotion(merchantPromotion, wanted) end
+        end
+    end
+end)
+events:Subscribe('TeamTechnologyChanged', researched)
+events:Subscribe('TeamTechnologyResearched', function(teamID, techID, change)
     if change > 0 then researched(teamID, techID, true) end
     syncAll()
 end)
-GameEvents.CityCaptureComplete.Add(syncAll)
-GameEvents.PlayerAdoptPolicy.Add(syncAll)
-GameEvents.UnitSetXY.Add(movedUnit)
-GameEvents.SetAlly.Add(syncAll)
-Events.WarStateChanged.Add(syncAll)
-Events.SerialEventCityInfoDirty.Add(markDirty)
-Events.SerialEventUnitInfoDirty.Add(markDirty)
-Events.SequenceGameInitComplete.Add(syncAll)
+events:Subscribe('CityCaptured', syncAll)
+events:Subscribe('PolicyAdopted', syncAll)
+events:Subscribe('UnitPositionChanged', movedUnit)
+events:Subscribe('AllianceChanged', syncAll)
+events:Subscribe('WarStateChanged', syncAll)
+events:Subscribe('CityInfoChanged', markDirty)
+events:Subscribe('GameInitialized', syncAll)
 local elapsed = 0
-ContextPtr:SetUpdate(function(delta)
+events:Subscribe('Update', function(delta)
     elapsed = elapsed + delta
     if pending and elapsed >= 0.2 then pending = false; elapsed = 0; syncAll() end
 end)
-syncAll()
+events:Subscribe('Loaded', syncAll)
+RefinedSocietyEvents.Connect(events)
 print('civ5-refined v7: 58 allied benefits and nine institution branches loaded')

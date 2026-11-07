@@ -1,3 +1,4 @@
+function include(name) dofile("mod/Lua/" .. name .. ".lua") end
 -- Execute the actual v7 Lua against stateful, BNW-shaped API mocks.
 local data = dofile(assert(arg[1]))
 GameInfoTypes, GameInfo = {}, {}
@@ -57,7 +58,7 @@ local function player(i, minor, team, human)
     function p:GetUnitByID(index) return self.units[index+1] end
     function p:GetCivilizationType() return self.civ end
     function p:Cities() return iter(self.cities) end
-    function p:Units() return iter(self.units) end
+    function p:Units() self.unitSweeps=(self.unitSweeps or 0)+1; return iter(self.units) end
     function p:GetCapitalCity() return self.cities[1] end
     function p:GetMinorCivType() return self.type end
     function p:GetAlly() return self.ally or -1 end
@@ -114,7 +115,7 @@ function merchant:IsHasPromotion(b) return self.promotions[b] or false end
 function merchant:SetHasPromotion(b,v) self.promotions[b]=v end
 Players[0].units={merchant}
 local function reload() resetEvents();dofile('mod/Lua/Society.lua') end
-local function sync() GameEvents.PlayerDoTurn.Fire(0) end
+local function sync() for i=0,GameDefines.MAX_CIV_PLAYERS-1 do GameEvents.PlayerDoTurn.Fire(i) end end
 local function count(c,name) return c:GetNumRealBuilding(id('BUILDING_REFINED_SOCIETY_'..name)) end
 reload()
 -- Every shipped minor maps to a real effect; transferring its alliance removes
@@ -209,3 +210,19 @@ Teams[0].counts[future]=2;GameEvents.TeamTechResearched.Fire(0,future,1)
 assert(Players[0].gold==afterFuture,'Future Tech repeat was rewarded twice')
 reload();GameEvents.TeamTechResearched.Fire(0,future,1);assert(Players[0].gold==afterFuture)
 print('PASS: Singapore exact-once event awards, current ally, team isolation, AI, speed and reload')
+
+local beforeSweeps={}
+for i,p in pairs(Players) do beforeSweeps[i]=p.unitSweeps or 0 end
+for i=1,30 do
+    GameEvents.UnitSetXY.Fire(0,0)
+    Events.SerialEventUnitInfoDirty.Fire()
+    update(.3)
+end
+for i,p in pairs(Players) do
+    assert((p.unitSweeps or 0)==beforeSweeps[i], 'merchant movement must not sweep armies')
+end
+Events.SerialEventCityInfoDirty.Fire();update(.3)
+for i,p in pairs(Players) do
+    assert((p.unitSweeps or 0)==beforeSweeps[i], 'unchanged city effects must not sweep armies')
+end
+print('PASS: merchant movement and unchanged city effects do not sweep armies')

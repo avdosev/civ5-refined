@@ -147,26 +147,44 @@ local function syncUnit(player, unit, active)
     local wanted = active and combat or false
     if unit:IsHasPromotion(promotion) ~= wanted then unit:SetHasPromotion(promotion, wanted) end
 end
-local function syncArmy(player)
+local commandStates = {}
+local function syncArmy(player, force)
     if not major(player) then return end
     local active = hasBuilding(player, command)
-    for unit in player:Units() do syncUnit(player, unit, active) end
+    local playerID = player:GetID()
+    if force or commandStates[playerID] ~= active then
+        commandStates[playerID] = active
+        for unit in player:Units() do syncUnit(player, unit, active) end
+    end
 end
 local pending, syncing, cityScreen = true, false, false
-local function markDirty() if not syncing then pending = true end end
+local citiesPending = false
+local function markDirty()
+    if not syncing then pending, citiesPending = true, true end
+end
+local function panelDirty() pending = true end
+local function syncCommandStates()
+    if syncing then return end
+    syncing = true
+    for playerID = 0, GameDefines.MAX_CIV_PLAYERS - 1 do
+        local player = Players[playerID]
+        if major(player) then syncArmy(player, false) end
+    end
+    syncing, citiesPending = false, false
+end
 local function syncAll()
     if syncing then return end
     syncing, pending = true, false
     for playerID = 0, GameDefines.MAX_CIV_PLAYERS - 1 do
         local player = Players[playerID]
-        if major(player) then syncArmy(player); checkMars(player) end
+        if major(player) then syncArmy(player, true); checkMars(player) end
     end
     syncing = false
 end
 local function playerTurn(playerID)
     local player = Players[playerID]
     if not major(player) then return end
-    syncArmy(player)
+    syncArmy(player, true)
     checkMars(player)
     local turn = Game.GetGameTurn()
     local key = 'player.' .. playerID .. '.creditedTurn'
@@ -228,30 +246,40 @@ local function updatePanel()
         count, math.floor(progress / 100), goal / 100, string.format('%.1f', rate / 100), table.concat(lines, '[NEWLINE]')))
 end
 
-GameEvents.CityCanConstruct.Add(canConstruct)
-GameEvents.CityCanCreate.Add(canCreate)
-GameEvents.CityCanMaintain.Add(canMaintain)
-GameEvents.PlayerDoTurn.Add(playerTurn)
-GameEvents.TeamSetHasTech.Add(markDirty)
-GameEvents.PlayerCityFounded.Add(markDirty)
-GameEvents.CityCaptureComplete.Add(syncAll)
-GameEvents.UnitSetXY.Add(function(playerID, unitID)
+include("RefinedEventBus")
+include("RefinedVictoriesEvents")
+local events = RefinedEventBus.Create()
+
+events:Answer('CanConstructBuilding', canConstruct)
+events:Answer('CanCreateProject', canCreate)
+events:Answer('CanMaintainProcess', canMaintain)
+events:Subscribe('PlayerTurn', playerTurn)
+events:Subscribe('TeamTechnologyChanged', panelDirty)
+events:Subscribe('CityFounded', markDirty)
+events:Subscribe('CityCaptured', syncAll)
+events:Subscribe('UnitPositionChanged', function(playerID, unitID)
     local player = Players[playerID]
-    if major(player) then syncUnit(player, player:GetUnitByID(unitID), hasBuilding(player, command)) end
-    markDirty()
+    if major(player) then
+        local active = commandStates[playerID]
+        if active == nil then active = hasBuilding(player, command); commandStates[playerID] = active end
+        syncUnit(player, player:GetUnitByID(unitID), active)
+    end
 end)
-Events.SerialEventCityInfoDirty.Add(markDirty)
-Events.SerialEventUnitInfoDirty.Add(markDirty)
-Events.SerialEventGameDataDirty.Add(markDirty)
-Events.SequenceGameInitComplete.Add(function() syncAll(); updatePanel() end)
-Events.SerialEventEnterCityScreen.Add(function() cityScreen = true; Controls.VictoryPanel:SetHide(true) end)
-Events.SerialEventExitCityScreen.Add(function() cityScreen = false; markDirty() end)
-Events.GameplaySetActivePlayer.Add(markDirty)
+events:Subscribe('CityInfoChanged', markDirty)
+events:Subscribe('GameDataChanged', panelDirty)
+events:Subscribe('GameInitialized', function() syncAll(); updatePanel() end)
+events:Subscribe('CityScreenEntered', function() cityScreen = true; Controls.VictoryPanel:SetHide(true) end)
+events:Subscribe('CityScreenExited', function() cityScreen = false; markDirty() end)
+events:Subscribe('ActivePlayerChanged', markDirty)
 local elapsed = 0
-ContextPtr:SetUpdate(function(delta)
+events:Subscribe('Update', function(delta)
     elapsed = elapsed + delta
-    if pending and elapsed >= 0.25 then elapsed = 0; syncAll(); updatePanel() end
+    if pending and elapsed >= 0.25 then
+        elapsed, pending = 0, false
+        if citiesPending then syncCommandStates() end
+        updatePanel()
+    end
 end)
-syncAll()
-updatePanel()
+events:Subscribe('Loaded', function() syncAll(); updatePanel() end)
+RefinedVictoriesEvents.Connect(events)
 print('civ5-refined v8: interstellar, Mars, singularity and integrated command loaded')

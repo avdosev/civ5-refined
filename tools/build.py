@@ -29,7 +29,7 @@ def build():
     root = ET.Element('Mod', id=MOD_ID, version=VERSION)
     props = ET.SubElement(root, 'Properties')
     for key, value in {
-        'Name': 'civ5-refined — Prototype',
+        'Name': f'civ5-refined — Prototype v{VERSION}',
         'Teaser': 'Three science victory routes, integrated command, 58 allied benefits, institutions and 19 eurekas.',
         'Description': 'Prototype for unmodified Brave New World. New game recommended. Russian and English text. No DLL required.',
         'Authors': 'civ5-refined contributors',
@@ -49,8 +49,11 @@ def build():
     files = ET.SubElement(root, 'Files')
     paths = sorted(p for p in target.rglob('*') if p.is_file())
     for path in paths:
+        # Shared dispatch and source adapters are loaded through BNW include().
+        imported = path.parent.name == 'Lua' and (
+            path.stem in {'RefinedEventBus', 'RefinedEventSources'} or path.stem.endswith('Events'))
         ET.SubElement(files, 'File', md5=hashlib.md5(path.read_bytes()).hexdigest(),
-                      attrib={'import': '0'}).text = path.relative_to(target).as_posix()
+                      attrib={'import': '1' if imported else '0'}).text = path.relative_to(target).as_posix()
     actions = ET.SubElement(ET.SubElement(root, 'Actions'), 'OnModActivated')
     for path in ['Text/Localization.xml', 'Text/Society.xml', 'Text/Victories.xml', 'Text/Modernization.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql', 'SQL/Development.sql', 'SQL/Institutions.sql', 'SQL/Allies.sql', 'SQL/Victories.sql', 'SQL/Modernization.sql']:
         ET.SubElement(actions, 'UpdateDatabase').text = path

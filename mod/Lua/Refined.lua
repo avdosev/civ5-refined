@@ -91,11 +91,30 @@ end
 
 -- The turn sweep is also a fallback for gifts, unusual ownership changes and
 -- building removal. UI dirty events handle construction/sales during the turn.
-GameEvents.PlayerDoTurn.Add(syncAll)
-GameEvents.TeamSetHasTech.Add(syncAll)
-GameEvents.PlayerCityFounded.Add(syncAll)
-GameEvents.CityCaptureComplete.Add(syncAll)
-Events.SerialEventCityInfoDirty.Add(syncAll)
-Events.SequenceGameInitComplete.Add(syncAll)
-syncAll()
+include("RefinedEventBus")
+include("RefinedCityEvents")
+local events = RefinedEventBus.Create()
+
+local function syncOne(playerID)
+    if syncing then return end
+    syncing = true
+    syncPlayer(playerID)
+    syncing = false
+end
+events:Subscribe('PlayerTurn', syncOne)
+events:Subscribe('TeamTechnologyChanged', function(teamID)
+    if syncing then return end
+    syncing = true
+    for playerID = 0, GameDefines.MAX_CIV_PLAYERS - 1 do
+        local player = Players[playerID]
+        if player and player:GetTeam() == teamID then syncPlayer(playerID) end
+    end
+    syncing = false
+end)
+events:Subscribe('CityFounded', syncOne)
+events:Subscribe('CityCaptured', syncAll)
+events:Subscribe('CityInfoChanged', syncAll)
+events:Subscribe('GameInitialized', syncAll)
+events:Subscribe('Loaded', syncAll)
+RefinedCityEvents.Connect(events)
 print('civ5-refined v6: technology and city effects loaded')

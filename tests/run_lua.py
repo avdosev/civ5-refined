@@ -37,5 +37,5 @@ if __name__ == '__main__':
     with tempfile.TemporaryDirectory(prefix='refined-lua-') as temp:
         path = Path(temp) / 'rules.lua'
         path.write_text('return ' + lua(data), encoding='utf-8')
-        for script in ['tests/effects.lua', 'tests/development.lua']:
+        for script in ['tests/events.lua', 'tests/effects.lua', 'tests/development.lua']:
             subprocess.run([options.lua, script, str(path)], cwd=ROOT, check=True)

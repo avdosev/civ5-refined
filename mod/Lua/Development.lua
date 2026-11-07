@@ -35,7 +35,11 @@ end
 -- Stable order for deterministic chain awards.
 table.sort(rules, function(a, b) return a.techID < b.techID end)
 local buildingClasses = {}
-for row in GameInfo.Buildings() do buildingClasses[row.ID] = row.BuildingClass end
+local neededClasses = {}
+for _, rule in ipairs(rules) do neededClasses[rule.Rule] = true end
+for row in GameInfo.Buildings() do
+    if neededClasses[row.BuildingClass] then buildingClasses[row.ID] = row.BuildingClass end
+end
 local function key(teamID, tech) return 'team.' .. teamID .. '.' .. tech end
 local function activePlayer(player)
     return player and player:IsAlive() and not player:IsMinorCiv() and not player:IsBarbarian()
@@ -49,54 +53,79 @@ end
 
 -- SetPlotExtraYield ADDS a delta despite its name. Save our contribution, not the
 -- tile total, so repeated events/reloads preserve unrelated map/scenario bonuses.
-local function syncPlots()
-    local counts = {}
-    for playerID = 0, GameDefines.MAX_CIV_PLAYERS - 1 do counts[playerID] = {} end
-    for index = 0, Map.GetNumPlots() - 1 do
-        local plot = Map.GetPlotByIndex(index)
-        local owner = plot:GetOwner()
-        local player = Players[owner]
-        local bonus = 0
-        if player and player:IsAlive() and not plot:IsImprovementPillaged() then
-            local team = Teams[player:GetTeam()]
-            local imp = plot:GetImprovementType()
-            local resource = plot:GetResourceType(player:GetTeam())
-            if imp == farm and team:IsHasTech(agriculture) then
-                local neighbors = 0
-                for direction = 0, 5 do
-                    local adjacent = Map.PlotDirection(plot:GetX(), plot:GetY(), direction)
-                    if adjacent and adjacent:GetOwner() == owner and
-                       adjacent:GetImprovementType() == farm and not adjacent:IsImprovementPillaged() then
-                        neighbors = neighbors + 1
-                    end
+local tiles, contributions, plotIndices = {}, {}, {}
+local function plotKey(plot) return plot:GetX() .. ':' .. plot:GetY() end
+local function syncPlot(plot, index)
+    local owner = plot:GetOwner()
+    local player = Players[owner]
+    local bonus, counts = 0, {}
+    if player and player:IsAlive() and not plot:IsImprovementPillaged() then
+        local team = Teams[player:GetTeam()]
+        local imp = plot:GetImprovementType()
+        local resource = plot:GetResourceType(player:GetTeam())
+        if imp == farm and team:IsHasTech(agriculture) then
+            local neighbors = 0
+            for direction = 0, 5 do
+                local adjacent = Map.PlotDirection(plot:GetX(), plot:GetY(), direction)
+                if adjacent and adjacent:GetOwner() == owner and
+                   adjacent:GetImprovementType() == farm and not adjacent:IsImprovementPillaged() then
+                    neighbors = neighbors + 1
                 end
-                bonus = math.max(0, neighbors - 1)
-            elseif imp == boats and resource == fish and team:IsHasTech(refrigeration) then
-                bonus = 1
             end
-            local c = counts[owner]
-            if c then
-                if imp == mine then
-                    c.mine = (c.mine or 0) + 1
-                    if resource == iron then c.mineIron = 1 end
-                    if resource == coal then c.mineCoal = 1 end
-                    if resource == uranium then c.mineUranium = 1 end
-                elseif imp == quarry then c.quarry = 1
-                elseif imp == pasture and resource == horses then c.pastureHorse = 1 end
-            end
-        end
-        local k = 'plot.' .. index .. '.food'
-        local old = get(k) or 0
-        if old ~= bonus then
-            put(k, bonus)
-            Game.SetPlotExtraYield(plot:GetX(), plot:GetY(), food, bonus - old)
+            bonus = math.max(0, neighbors - 1)
+        elseif imp == boats and resource == fish and team:IsHasTech(refrigeration) then bonus = 1 end
+        if imp == mine then
+            counts.mine = 1
+            if resource == iron then counts.mineIron = 1 end
+            if resource == coal then counts.mineCoal = 1 end
+            if resource == uranium then counts.mineUranium = 1 end
+        elseif imp == quarry then counts.quarry = 1
+        elseif imp == pasture and resource == horses then counts.pastureHorse = 1 end
+    end
+    local previous = contributions[index]
+    if previous then
+        for name, n in pairs(previous.counts) do
+            tiles[previous.owner][name] = tiles[previous.owner][name] - n
         end
     end
-    return counts
+    tiles[owner] = tiles[owner] or {}
+    for name, n in pairs(counts) do tiles[owner][name] = (tiles[owner][name] or 0) + n end
+    contributions[index] = {owner = owner, counts = counts}
+    local k = 'plot.' .. index .. '.food'
+    local old = get(k) or 0
+    if old ~= bonus then
+        put(k, bonus)
+        Game.SetPlotExtraYield(plot:GetX(), plot:GetY(), food, bonus - old)
+    end
 end
-
-local function playerCounts(player, tileCounts)
-    local counts = tileCounts or {}
+local lastMapTurn
+local function syncPlots()
+    for index = 0, Map.GetNumPlots() - 1 do
+        local plot = Map.GetPlotByIndex(index)
+        plotIndices[plotKey(plot)] = index
+        syncPlot(plot, index)
+    end
+    lastMapTurn = Game.GetGameTurn()
+end
+local function syncRegion(x, y)
+    local plot = Map.GetPlot(x, y)
+    local affected = {}
+    if not plot then return affected end
+    local function update(p)
+        local index = p and plotIndices[plotKey(p)]
+        if index then
+            local previous = contributions[index]
+            if previous then affected[previous.owner] = true end
+            affected[p:GetOwner()] = true
+            syncPlot(p, index)
+        end
+    end
+    update(plot)
+    for direction = 0, 5 do update(Map.PlotDirection(x, y, direction)) end
+    return affected
+end
+local function buildingCounts(player)
+    local counts = {}
     for city in player:Cities() do
         local seen = {}
         for building, class in pairs(buildingClasses) do
@@ -106,22 +135,28 @@ local function playerCounts(player, tileCounts)
             end
         end
     end
+    return counts
+end
+local function unitCounts(player)
+    local counts = {}
     for unit in player:Units() do
         local class = GameInfo.Units[unit:GetUnitType()].Class
-        if class == 'UNITCLASS_WRITER' or class == 'UNITCLASS_SCIENTIST' or
-           class == 'UNITCLASS_MUSKETMAN' then
+        if class == 'UNITCLASS_WRITER' or class == 'UNITCLASS_SCIENTIST' or class == 'UNITCLASS_MUSKETMAN' then
             counts[class] = (counts[class] or 0) + 1
         end
     end
+    return counts
+end
+local function tradeCounts(player)
     local destinations = {}
     for _, route in ipairs(player:GetTradeRoutes()) do
         if route.ToID ~= route.FromID and route.ToCity then
             destinations[route.ToID .. ':' .. route.ToCity:GetID()] = true
         end
     end
-    counts.trade = 0
-    for _ in pairs(destinations) do counts.trade = counts.trade + 1 end
-    return counts
+    local count = 0
+    for _ in pairs(destinations) do count = count + 1 end
+    return {trade = count}
 end
 
 -- Player:GetResearchCost returns rounded-up whole beakers, whereas the native
@@ -153,26 +188,15 @@ local function costTimes100(player, techID, teamTechs)
 end
 
 local syncing, pending = false, false
-local function syncAll()
-    if syncing then return end
-    syncing = true
-    pending = false
-    local tiles = syncPlots()
-    for playerID = 0, GameDefines.MAX_CIV_PLAYERS - 1 do
-        local player = Players[playerID]
-        if activePlayer(player) then
-            local counts = playerCounts(player, tiles[playerID])
-            local teamID = player:GetTeam()
-            local team = Teams[teamID]
-            for _, rule in ipairs(rules) do
-                local k = key(teamID, rule.TechType)
-                if not team:IsHasTech(rule.techID) and not get(k .. '.achieved') and
-                   (counts[rule.Rule] or 0) >= rule.Threshold then
-                    put(k .. '.achieved', 1)
-                end
-            end
-        end
+local function achieve(player, counts)
+    local teamID = player:GetTeam()
+    for _, rule in ipairs(rules) do
+        local k = key(teamID, rule.TechType)
+        if not Teams[teamID]:IsHasTech(rule.techID) and not get(k .. '.achieved') and
+           (counts[rule.Rule] or 0) >= rule.Threshold then put(k .. '.achieved', 1) end
     end
+end
+local function awardTeam(targetTeam)
     -- A completed tech may unlock another pending eureka. Iterate to a fixed point
     -- so grants do not depend on row order or another UI event/turn.
     local changed = true
@@ -180,7 +204,7 @@ local function syncAll()
         changed = false
         for playerID = 0, GameDefines.MAX_CIV_PLAYERS - 1 do
             local player = Players[playerID]
-            if activePlayer(player) then
+            if activePlayer(player) and player:GetTeam() == targetTeam then
                 local teamID = player:GetTeam()
                 local team = Teams[teamID]
                 local tt = team:GetTeamTechs()
@@ -207,7 +231,7 @@ local function syncAll()
     -- This avoids two messages when the achievement and award happen together.
     for playerID = 0, GameDefines.MAX_CIV_PLAYERS - 1 do
         local player = Players[playerID]
-        if activePlayer(player) then
+        if activePlayer(player) and player:GetTeam() == targetTeam then
             local teamID = player:GetTeam()
             for _, rule in ipairs(rules) do
                 local k = key(teamID, rule.TechType)
@@ -221,45 +245,98 @@ local function syncAll()
             end
         end
     end
+end
+local function syncPlayer(playerID)
+    local player = Players[playerID]
+    if syncing or not activePlayer(player) then return end
+    syncing = true
+    -- UI plot notifications can miss changes outside human visibility. Reconcile
+    -- once per game turn, not once per player and never because a unit moved.
+    if lastMapTurn ~= Game.GetGameTurn() then syncPlots() end
+    achieve(player, tiles[playerID] or {})
+    achieve(player, buildingCounts(player))
+    achieve(player, unitCounts(player))
+    achieve(player, tradeCounts(player))
+    awardTeam(player:GetTeam())
+    syncing = false
+end
+local function syncAll()
+    if syncing then return end
+    syncing = true
+    syncPlots()
+    syncing = false
+    for playerID = 0, GameDefines.MAX_CIV_PLAYERS - 1 do syncPlayer(playerID) end
+end
+local function syncBuildings()
+    if syncing then return end
+    syncing, pending = true, false
+    for playerID = 0, GameDefines.MAX_CIV_PLAYERS - 1 do
+        local player = Players[playerID]
+        if activePlayer(player) then achieve(player, buildingCounts(player)); awardTeam(player:GetTeam()) end
+    end
     syncing = false
 end
 local function markDirty() if not syncing then pending = true end end
-
--- Native UnitSetXY fires during unit creation, including AI and Great People.
--- Scan immediately: a Great Person may be expended before the next turn.
-local function rememberGreatPerson(playerID, unitID)
+local function changedPlot(x, y)
+    if syncing then return end
+    syncing = true
+    local affected = syncRegion(x, y)
+    for playerID in pairs(affected) do
+        local player = Players[playerID]
+        if activePlayer(player) then achieve(player, tiles[playerID] or {}); awardTeam(player:GetTeam()) end
+    end
+    syncing = false
+end
+local function researched(teamID, techID, value)
+    if syncing then return end
+    if techID == agriculture or techID == refrigeration then
+        syncing = true
+        for index = 0, Map.GetNumPlots() - 1 do
+            local plot = Map.GetPlotByIndex(index)
+            local player = Players[plot:GetOwner()]
+            if player and player:GetTeam() == teamID then syncPlot(plot, index) end
+        end
+        syncing = false
+    end
+    syncing = true
+    awardTeam(teamID)
+    syncing = false
+end
+-- Creation also emits UnitSetXY. Ordinary movement does no broad work. A
+-- musket only counts its owner's units while its milestone is still pending.
+local function changedUnit(playerID, unitID)
     local player = Players[playerID]
-    if not activePlayer(player) then return end
+    if syncing or not activePlayer(player) then return end
     local unit = player:GetUnitByID(unitID)
     if not unit then return end
     local class = GameInfo.Units[unit:GetUnitType()].Class
     local target = class == 'UNITCLASS_WRITER' and 'TECH_PRINTING_PRESS' or
-                   class == 'UNITCLASS_SCIENTIST' and 'TECH_SCIENTIFIC_THEORY'
-    if target then
-        local k = key(player:GetTeam(), target) .. '.achieved'
-        if not Teams[player:GetTeam()]:IsHasTech(id(target)) and not get(k) then
-            put(k, 1)
-        end
-    end
-    markDirty()
+                   class == 'UNITCLASS_SCIENTIST' and 'TECH_SCIENTIFIC_THEORY' or
+                   class == 'UNITCLASS_MUSKETMAN' and 'TECH_RIFLING'
+    if not target then return end
+    local k = key(player:GetTeam(), target) .. '.achieved'
+    if Teams[player:GetTeam()]:IsHasTech(id(target)) or get(k) then return end
+    syncing = true
+    if class == 'UNITCLASS_MUSKETMAN' then achieve(player, unitCounts(player)) else put(k, 1) end
+    awardTeam(player:GetTeam())
+    syncing = false
 end
-GameEvents.UnitSetXY.Add(rememberGreatPerson)
-GameEvents.PlayerDoTurn.Add(syncAll)
-GameEvents.TeamSetHasTech.Add(syncAll)
-GameEvents.PlayerCityFounded.Add(markDirty)
-GameEvents.CityCaptureComplete.Add(syncAll)
-Events.SerialEventCityInfoDirty.Add(markDirty)
-Events.SerialEventUnitInfoDirty.Add(markDirty)
-Events.SerialEventImprovementCreated.Add(markDirty)
-Events.SerialEventImprovementDestroyed.Add(markDirty)
-Events.SerialEventHexCultureChanged.Add(markDirty)
-Events.SequenceGameInitComplete.Add(syncAll)
-
--- Coalesce dirty UI events; never rescan the map once for every city carrier write.
+include("RefinedEventBus")
+include("RefinedDevelopmentEvents")
+local events = RefinedEventBus.Create()
+events:Subscribe('UnitPositionChanged', changedUnit)
+events:Subscribe('PlayerTurn', syncPlayer)
+events:Subscribe('TeamTechnologyChanged', researched)
+events:Subscribe('CityFounded', syncAll)
+events:Subscribe('CityCaptured', syncAll)
+events:Subscribe('CityInfoChanged', markDirty)
+events:Subscribe('PlotChanged', changedPlot)
+events:Subscribe('GameInitialized', syncAll)
 local elapsed = 0
-ContextPtr:SetUpdate(function(delta)
+events:Subscribe('Update', function(delta)
     elapsed = elapsed + delta
-    if pending and elapsed >= 0.2 then elapsed = 0; syncAll() end
+    if pending and elapsed >= 0.2 then elapsed = 0; syncBuildings() end
 end)
-syncAll()
-print('civ5-refined v6: agriculture, fishing and 19 persistent eurekas loaded')
+events:Subscribe('Loaded', syncAll)
+RefinedDevelopmentEvents.Connect(events)
+print('civ5-refined: scoped development and persistent eurekas loaded')

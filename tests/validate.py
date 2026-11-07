@@ -349,6 +349,7 @@ def validate_package():
     target = build()
     manifest = ET.parse(next(target.glob('*.modinfo'))).getroot()
     assert manifest.attrib['version'] == VERSION
+    assert manifest.findtext('./Properties/Name') == f'civ5-refined — Prototype v{VERSION}'
     assert manifest.findtext('./Properties/MinCompatibleSaveVersion') == VERSION
     assert target.name == NAME
     declared = {}
@@ -356,6 +357,12 @@ def validate_package():
         path = target / entry.text
         assert hashlib.md5(path.read_bytes()).hexdigest() == entry.attrib['md5']
         declared[entry.text] = path
+    imported = {entry.text for entry in manifest.find('Files') if entry.attrib['import'] == '1'}
+    event_files = {'Lua/' + name + '.lua' for name in (
+        'RefinedEventBus', 'RefinedEventSources', 'RefinedCityEvents',
+        'RefinedDevelopmentEvents', 'RefinedSocietyEvents',
+        'RefinedVictoriesEvents', 'RefinedModernizationEvents')}
+    assert imported == event_files, 'event includes must be available in BNW VFS'
     for action in manifest.findall('./Actions/OnModActivated/UpdateDatabase'):
         assert action.text in declared
     assert [action.text for action in manifest.findall('./Actions/OnModActivated/UpdateDatabase')] == [

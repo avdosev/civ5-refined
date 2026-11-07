@@ -1,3 +1,4 @@
+function include(name) dofile("mod/Lua/" .. name .. ".lua") end
 -- Behavioral checks in Lua 5.1 with a small BNW API stand-in.
 -- This exercises the actual shipped script, not a translated implementation.
 local function event()
