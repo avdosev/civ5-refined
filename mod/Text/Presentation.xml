@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='utf-8'?>
+<GameData>
+  <Language_RU_RU>
+    <Row Tag="TXT_KEY_TECH_REFINED_NETWORKS_SUMMARY">
+      <Text>Улучшает обмен данными и увеличивает [ICON_GOLD] доход городов с фондовыми биржами. Позволяет оцифровывать культурное наследие.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_MICROELECTRONICS_SUMMARY">
+      <Text>Увеличивает [ICON_RESEARCH] научную отдачу дата-центров, ускоряя изучение новых технологий.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AUTOMATION_SUMMARY">
+      <Text>Повышает [ICON_PRODUCTION] производство в городах с фабриками и ускоряет выпуск техники на сталелитейных заводах.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AI_SUMMARY">
+      <Text>Повышает эффективность научных учреждений и фабрик, ускоряя [ICON_RESEARCH] исследования и [ICON_PRODUCTION] производство. Позволяет применять алгоритмы для распространения культуры.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AGRICULTURAL_MECHANIZATION_SUMMARY">
+      <Text>Увеличивает [ICON_FOOD] производство пищи в районах с соседствующими фермами, ускоряя рост городов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENTERTAINMENT_SUMMARY">
+      <Text>Позволяет строить кинотеатры, которые развивают [ICON_CULTURE] культуру и помогают появлению великих людей.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_DRONES_SUMMARY">
+      <Text>Усиливает сухопутные войска и позволяет массово внедрять беспилотники для дальнейшего укрепления армии.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_TACTICAL_AI_SUMMARY">
+      <Text>Позволяет внедрить автономное командование, повышающее боевую силу сухопутных войск, флота и авиации.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ORBITAL_SUMMARY">
+      <Text>Позволяет строить орбитальные верфи, ускоряющие сборку космического корабля, и создать транспортную систему для колонизации Марса.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AUTONOMOUS_SUMMARY">
+      <Text>Позволяет отправить автоматические аппараты на разведку Марса, подготавливая его колонизацию.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_BIOSYSTEMS_SUMMARY">
+      <Text>Позволяет создать жилой комплекс на Марсе, обеспечив будущих колонистов пригодной для жизни средой.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENGINES_SUMMARY">
+      <Text>Позволяет построить двигатель межзвёздного корабля для научной победы.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ADVANCED_COMPUTING_SUMMARY">
+      <Text>Позволяет построить национальный суперкомпьютерный центр, значительно усиливающий [ICON_RESEARCH] науку города.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_GENERAL_AI_SUMMARY">
+      <Text>Позволяет создать универсальный искусственный интеллект и применять машинное творчество для развития [ICON_CULTURE] культуры.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_RECURSIVE_SUMMARY">
+      <Text>Позволяет направить [ICON_RESEARCH] науку городов с дата-центрами на самоусовершенствование ИИ для достижения научной победы.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR_SUMMARY">
+      <Text>Позволяет построить Центр боевого управления, улучшающий обзор и боевую силу армии, флота и авиации.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_COMPUTERS_SUMMARY">
+      <Text>Позволяет строить дата-центры и повышает [ICON_RESEARCH] научную отдачу университетов и исследовательских лабораторий.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_PARTICLE_PHYSICS_SUMMARY">
+      <Text>Позволяет построить национальный Ускорительный комплекс, развивающий [ICON_RESEARCH] науку и создающий новые места для учёных.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_ACCELERATOR">
+      <Text>Ускорительный комплекс</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_ACCELERATOR_HELP">
+      <Text>+12 [ICON_RESEARCH] науки и 2 места учёных. Один на державу. Для строительства нужна исследовательская лаборатория в этом городе. Стоимость: 1000 [ICON_PRODUCTION] производства на стандартной скорости. Содержание: 12 [ICON_GOLD] золота за ход. При захвате уничтожается.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_ACCELERATOR_PEDIA">
+      <Text>Связанные ускорители и экспериментальные установки позволяют исследовать строение материи и взаимодействия элементарных частиц. Такой комплекс объединяет сложное оборудование и коллективы исследователей, требуя крупных вложений и постоянных расходов.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_ACCELERATOR_STRATEGY">
+      <Text>Выберите развитый научный город с достаточным населением для двух дополнительных учёных. Комплекс даёт фиксированную науку, которая усиливается обычными научными модификаторами города; места учёных требуют назначения жителей.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AI_SHORT_NAME">
+      <Text>Прикладной ИИ</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_GENERAL_AI_SHORT_NAME">
+      <Text>Общий ИИ</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_RECURSIVE_SHORT_NAME">
+      <Text>Самоулучшение ИИ</Text>
+    </Row>
+  </Language_RU_RU>
+  <Language_en_US>
+    <Row Tag="TXT_KEY_TECH_REFINED_NETWORKS_SUMMARY">
+      <Text>Improves data exchange and increases [ICON_GOLD] income in cities with Stock Exchanges. Enables cultural heritage digitization.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_MICROELECTRONICS_SUMMARY">
+      <Text>Increases the [ICON_RESEARCH] scientific output of Data Centers, accelerating research.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AUTOMATION_SUMMARY">
+      <Text>Increases [ICON_PRODUCTION] Production in cities with Factories and speeds up military equipment production at Steel Mills.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AI_SUMMARY">
+      <Text>Improves scientific facilities and Factories, accelerating [ICON_RESEARCH] research and [ICON_PRODUCTION] Production. Enables the use of algorithms to spread culture.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AGRICULTURAL_MECHANIZATION_SUMMARY">
+      <Text>Increases [ICON_FOOD] Food production in areas with adjoining Farms, helping cities grow.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENTERTAINMENT_SUMMARY">
+      <Text>Allows Cinemas to be built, developing [ICON_CULTURE] Culture and encouraging Great People.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_DRONES_SUMMARY">
+      <Text>Strengthens land units and enables mass drone deployment to further reinforce them.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_TACTICAL_AI_SUMMARY">
+      <Text>Enables Autonomous Command, increasing the combat strength of land, naval and air units.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ORBITAL_SUMMARY">
+      <Text>Allows Orbital Shipyards to be built, speeding up spaceship assembly, and enables a transport system for Mars colonization.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AUTONOMOUS_SUMMARY">
+      <Text>Enables automated exploration of Mars in preparation for colonization.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_BIOSYSTEMS_SUMMARY">
+      <Text>Enables a habitat on Mars, providing a livable environment for future colonists.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ENGINES_SUMMARY">
+      <Text>Allows the interstellar spaceship engine to be built for a Science Victory.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_ADVANCED_COMPUTING_SUMMARY">
+      <Text>Allows a national Supercomputer Center to be built, greatly increasing its city’s [ICON_RESEARCH] Science.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_GENERAL_AI_SUMMARY">
+      <Text>Enables universal artificial intelligence and machine creativity to develop [ICON_CULTURE] Culture.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_RECURSIVE_SUMMARY">
+      <Text>Allows cities with Data Centers to direct their [ICON_RESEARCH] Science toward AI self-improvement and a Science Victory.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_NETWORK_WAR_SUMMARY">
+      <Text>Allows the Battle Command Center to be built, improving the visibility and combat strength of land, naval and air units.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_COMPUTERS_SUMMARY">
+      <Text>Allows Data Centers to be built and increases the [ICON_RESEARCH] scientific output of Universities and Research Labs.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_PARTICLE_PHYSICS_SUMMARY">
+      <Text>Allows a national Accelerator Complex to be built, developing [ICON_RESEARCH] Science and providing more Scientist slots.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_ACCELERATOR">
+      <Text>Accelerator Complex</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_ACCELERATOR_HELP">
+      <Text>+12 [ICON_RESEARCH] Science and 2 Scientist slots. One per civilization. Requires a Research Lab in this city to build. Cost: 1000 [ICON_PRODUCTION] Production on Standard speed. Maintenance: 12 [ICON_GOLD] Gold per turn. Destroyed on capture.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_ACCELERATOR_PEDIA">
+      <Text>Linked accelerators and experimental facilities enable research into the structure of matter and the interactions of elementary particles. Such a complex brings together sophisticated equipment and research teams, requiring substantial investment and ongoing expenditure.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_BUILDING_REFINED_ACCELERATOR_STRATEGY">
+      <Text>Choose a developed scientific city with enough population to support two additional Scientists. The Complex provides flat Science, increased by the city’s normal Science modifiers; Scientist slots require assigned citizens.</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_AI_SHORT_NAME">
+      <Text>Applied AI</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_GENERAL_AI_SHORT_NAME">
+      <Text>General AI</Text>
+    </Row>
+    <Row Tag="TXT_KEY_TECH_REFINED_RECURSIVE_SHORT_NAME">
+      <Text>AI Self-improvement</Text>
+    </Row>
+  </Language_en_US>
+</GameData>

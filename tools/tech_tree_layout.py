@@ -7,7 +7,7 @@ differences of 1..4 rows. Long horizontal runs stay at the prerequisite's row.
 from collections import defaultdict
 
 
-def layout_issues(db, include_industrial=False):
+def layout_issues(db, include_industrial=False, strict_adapters=False):
     positions = {name: (x, y) for name, x, y in db.execute('SELECT Type, GridX, GridY FROM Technologies')}
     issues = []
     outgoing = defaultdict(list)
@@ -18,7 +18,10 @@ def layout_issues(db, include_industrial=False):
         px, py = positions[parent]
         cx, cy = positions[child]
         # This overhaul changes the late tree. Do not reject stock early layouts.
-        if (px < 11 or cx < 12) and not (include_industrial and parent in {
+        if strict_adapters:
+            if px < 10 or cx < 11:
+                continue
+        elif (px < 11 or cx < 12) and not (include_industrial and parent in {
             'TECH_STEAM_POWER', 'TECH_FERTILIZER', 'TECH_DYNAMITE', 'TECH_RAILROAD'}):
             continue
         outgoing[parent].append(child)
@@ -31,7 +34,10 @@ def layout_issues(db, include_industrial=False):
                 issues.append(f'line crosses card {other}: {parent} -> {child}')
     for parent, children in outgoing.items():
         columns = {positions[child][0] for child in children}
-        if len(columns) > 1:
+        # Legacy migration checks retain their old scope. The final presentation
+        # pass must also reject a *single* distant destination column with a
+        # mixed downward adapter: type 5/6/7 still bends at the source column.
+        if strict_adapters or len(columns) > 1:
             px, py = positions[parent]
             up = [c for c in children if positions[c][1] < py]
             down = [c for c in children if positions[c][1] > py]

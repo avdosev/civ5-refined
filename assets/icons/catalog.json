@@ -1,0 +1,817 @@
+{
+  "archive": "civ5_all_generated_icons_unfiltered.zip",
+  "archive_sha256": "948b9d66ada3f14c9a4c18a38e7e2a5994df40fcad17c0f111c2262e425cf231",
+  "status": "Подтверждено пользователем; изображения Универсального ИИ и Рекурсивного обучения поменяны местами по его поправке.",
+  "icons": [
+    {
+      "type": "BUILDING_REFINED_TEXTILE",
+      "label": "Текстильная мануфактура",
+      "era": "Средневековье",
+      "atlas": "BUILDINGS",
+      "index": 0,
+      "file": "building_refined_textile.png",
+      "source_number": 20,
+      "source_file": "a_stylized_civilization_v_like_game_icon_in_a_circ.png",
+      "source_sha256": "e1c51facc2ec37b7f34c9f45e911b02ae4203438c957ceda14419cc3f5feb9c4",
+      "crop": null,
+      "foreground_bbox": [
+        0,
+        2,
+        1235,
+        1248
+      ],
+      "note": ""
+    },
+    {
+      "type": "BUILDING_REFINED_ACADEMY",
+      "label": "Учёная академия",
+      "era": "Возрождение",
+      "atlas": "BUILDINGS",
+      "index": 1,
+      "file": "building_refined_academy.png",
+      "source_number": 23,
+      "source_file": "a_stylized_digital_painting_icon_in_civilization_v.png",
+      "source_sha256": "929d82c89bfd7026d8cbc226d7ce307453b17a0262e5c557a2b31b65388d6ec2",
+      "crop": null,
+      "foreground_bbox": [
+        2,
+        8,
+        1222,
+        1233
+      ],
+      "note": ""
+    },
+    {
+      "type": "BUILDING_REFINED_SALON",
+      "label": "Салон",
+      "era": "Возрождение",
+      "atlas": "BUILDINGS",
+      "index": 2,
+      "file": "building_refined_salon.png",
+      "source_number": 8,
+      "source_file": "a_clean_graphic_illustration_a_3x_grid_like_arra.png",
+      "source_sha256": "53eed0d3d5751d6c180d9f1866f3cb0056db5f08c43c1f2a787b84367a31f209",
+      "crop": [
+        625,
+        108,
+        936,
+        423
+      ],
+      "foreground_bbox": [
+        1,
+        2,
+        306,
+        314
+      ],
+      "note": "Выбран интерьер с беседой при свечах вместо фасада №24."
+    },
+    {
+      "type": "BUILDING_REFINED_STEEL_MILL",
+      "label": "Сталелитейный завод",
+      "era": "Индустриальная",
+      "atlas": "BUILDINGS",
+      "index": 3,
+      "file": "building_refined_steel_mill.png",
+      "source_number": 7,
+      "source_file": "a_civilization_v_style_game_icon_a_circular_badge.png",
+      "source_sha256": "5d6a7f8bf959fc82d7fe6fe62f91f880907543ad0f95bd6c63be3434612d7799",
+      "crop": null,
+      "foreground_bbox": [
+        11,
+        17,
+        1219,
+        1230
+      ],
+      "note": ""
+    },
+    {
+      "type": "BUILDING_REFINED_CINEMA",
+      "label": "Кинотеатр",
+      "era": "Новейшее время",
+      "atlas": "BUILDINGS",
+      "index": 4,
+      "file": "building_refined_cinema.png",
+      "source_number": 18,
+      "source_file": "a_stylized_civilization_v_like_circular_icon_a_ro.png",
+      "source_sha256": "fe0de1d4e8936a59adc1c3ef1b7f056c25667e1405fe230fbb7536f817212358",
+      "crop": null,
+      "foreground_bbox": [
+        0,
+        5,
+        1241,
+        1251
+      ],
+      "note": ""
+    },
+    {
+      "type": "BUILDING_REFINED_DATA_CENTER",
+      "label": "Дата-центр",
+      "era": "Атомная",
+      "atlas": "BUILDINGS",
+      "index": 5,
+      "file": "building_refined_data_center.png",
+      "source_number": 19,
+      "source_file": "a_stylized_civilization_v_like_game_icon_a_circul.png",
+      "source_sha256": "722745e26566eb4c44b2bfe5e84d6a7cddbeaf87c44b3e0472c33163f2e73b38",
+      "crop": null,
+      "foreground_bbox": [
+        0,
+        0,
+        1245,
+        1245
+      ],
+      "note": "Для отличия от суперкомпьютерного центра выбран внешний вид здания."
+    },
+    {
+      "type": "BUILDING_REFINED_ACCELERATOR",
+      "label": "Ускорительный комплекс",
+      "era": "Информационная",
+      "atlas": "BUILDINGS",
+      "index": 6,
+      "file": "building_refined_accelerator.png",
+      "source_number": 12,
+      "source_file": "a_new_set_of_four_updated_civilization_v_style_ico.png",
+      "source_sha256": "63ac05f6118448b3dcf8d537515f5b6a37cbb5769530dfa114a52409a497c242",
+      "crop": [
+        170,
+        0,
+        670,
+        505
+      ],
+      "foreground_bbox": [
+        8,
+        8,
+        493,
+        496
+      ],
+      "note": "Установка в тоннеле; выбран обновлённый лист №12."
+    },
+    {
+      "type": "BUILDING_REFINED_ORBITAL_YARD",
+      "label": "Орбитальная верфь",
+      "era": "Информационная",
+      "atlas": "BUILDINGS",
+      "index": 7,
+      "file": "building_refined_orbital_yard.png",
+      "source_number": 13,
+      "source_file": "a_polished_stylized_sci_fi_icon_illustration_in_ci.png",
+      "source_sha256": "d68ae679b28a78fe780be9a1b855a837f2cc21efed59d345d772551d71fc77d8",
+      "crop": null,
+      "foreground_bbox": [
+        13,
+        2,
+        1218,
+        1215
+      ],
+      "note": "Роботы и ремонт корабля отличают верфь от транспортной системы."
+    },
+    {
+      "type": "BUILDING_REFINED_BATTLE_COMMAND",
+      "label": "Центр боевого управления",
+      "era": "Информационная",
+      "atlas": "BUILDINGS",
+      "index": 8,
+      "file": "building_refined_battle_command.png",
+      "source_number": 12,
+      "source_file": "a_new_set_of_four_updated_civilization_v_style_ico.png",
+      "source_sha256": "63ac05f6118448b3dcf8d537515f5b6a37cbb5769530dfa114a52409a497c242",
+      "crop": [
+        162,
+        506,
+        667,
+        1014
+      ],
+      "foreground_bbox": [
+        7,
+        6,
+        493,
+        495
+      ],
+      "note": "Операторы перед картой мира."
+    },
+    {
+      "type": "BUILDING_REFINED_SUPERCOMPUTER",
+      "label": "Суперкомпьютерный центр",
+      "era": "Информационная",
+      "atlas": "BUILDINGS",
+      "index": 9,
+      "file": "building_refined_supercomputer.png",
+      "source_number": 12,
+      "source_file": "a_new_set_of_four_updated_civilization_v_style_ico.png",
+      "source_sha256": "63ac05f6118448b3dcf8d537515f5b6a37cbb5769530dfa114a52409a497c242",
+      "crop": [
+        850,
+        506,
+        1355,
+        1015
+      ],
+      "foreground_bbox": [
+        13,
+        6,
+        497,
+        494
+      ],
+      "note": "Серверный зал с символом атома."
+    },
+    {
+      "type": "PROJECT_REFINED_DIGITAL_HERITAGE",
+      "label": "Цифровизация культурного наследия",
+      "era": "Атомная",
+      "atlas": "PROGRAMS",
+      "index": 0,
+      "file": "project_refined_digital_heritage.png",
+      "source_number": 17,
+      "source_file": "a_stylized_civilization_v_like_circular_icon_a_mu.png",
+      "source_sha256": "f016e3215a921145ed23c3a69edd68506fae923a6797c04669d5dafc7efbc339",
+      "crop": null,
+      "foreground_bbox": [
+        6,
+        0,
+        1218,
+        1219
+      ],
+      "note": "Из четырёх вариантов бюста с цифровой копией выбран №17."
+    },
+    {
+      "type": "PROJECT_REFINED_DRONE_DEPLOYMENT",
+      "label": "Массовое внедрение БПЛА",
+      "era": "Информационная",
+      "atlas": "PROGRAMS",
+      "index": 1,
+      "file": "project_refined_drone_deployment.png",
+      "source_number": 21,
+      "source_file": "a_stylized_civilization_v_style_icon_circular_gol.png",
+      "source_sha256": "77f5ee93093acee6b885c4f9577b59172ba9bb640415892a99ccafc43b415ad9",
+      "crop": null,
+      "foreground_bbox": [
+        22,
+        9,
+        1202,
+        1201
+      ],
+      "note": ""
+    },
+    {
+      "type": "PROJECT_REFINED_MARS_RECON",
+      "label": "Автоматическая разведка Марса",
+      "era": "Информационная",
+      "atlas": "PROGRAMS",
+      "index": 2,
+      "file": "project_refined_mars_recon.png",
+      "source_number": 3,
+      "source_file": "a_circular_gold_rimmed_icon_in_civilization_v_sty.png",
+      "source_sha256": "a09f98f1ea93f0d00c72cdcb5dce3e7eabec4757d1be08f5e7254dbea261f8e3",
+      "crop": null,
+      "foreground_bbox": [
+        21,
+        9,
+        1201,
+        1200
+      ],
+      "note": ""
+    },
+    {
+      "type": "PROJECT_REFINED_MARS_TRANSPORT",
+      "label": "Орбитальная транспортная система",
+      "era": "Информационная",
+      "atlas": "PROGRAMS",
+      "index": 3,
+      "file": "project_refined_mars_transport.png",
+      "source_number": 15,
+      "source_file": "a_polished_vector_like_digital_illustration_in_a.png",
+      "source_sha256": "8094356748491791fee48f4aeb8c52fd3870ff2169c00bd9409fcff6250dc99a",
+      "crop": null,
+      "foreground_bbox": [
+        21,
+        9,
+        1201,
+        1199
+      ],
+      "note": "Орбитальная станция с прибывающими кораблями."
+    },
+    {
+      "type": "PROJECT_REFINED_MARS_HABITAT",
+      "label": "Марсианский жилой комплекс",
+      "era": "Информационная",
+      "atlas": "PROGRAMS",
+      "index": 4,
+      "file": "project_refined_mars_habitat.png",
+      "source_number": 16,
+      "source_file": "a_stylized_civilization_style_circular_icon_a_mar.png",
+      "source_sha256": "f412643475b35ea91c73445573cc0b59a96e886a5d292283902c8279452e2b8f",
+      "crop": null,
+      "foreground_bbox": [
+        22,
+        8,
+        1202,
+        1198
+      ],
+      "note": "Жилые модули и небольшой купол."
+    },
+    {
+      "type": "PROJECT_REFINED_MARS_COLONY",
+      "label": "Самодостаточная колония",
+      "era": "Информационная",
+      "atlas": "PROGRAMS",
+      "index": 5,
+      "file": "project_refined_mars_colony.png",
+      "source_number": 6,
+      "source_file": "a_civilization_v_style_circular_icon_a_more_advan.png",
+      "source_sha256": "28832abc8453b3842827749df3fb7fda4feace83a458784a3631424d8974949e",
+      "crop": null,
+      "foreground_bbox": [
+        22,
+        9,
+        1202,
+        1198
+      ],
+      "note": "Развитый комплекс с теплицами и переработкой; смысл сопоставлен агентом."
+    },
+    {
+      "type": "PROJECT_REFINED_CULTURAL_EXPANSION",
+      "label": "Алгоритмическая культурная экспансия",
+      "era": "Информационная",
+      "atlas": "PROGRAMS",
+      "index": 6,
+      "file": "project_refined_cultural_expansion.png",
+      "source_number": 2,
+      "source_file": "a_circular_emblem_style_illustration_a_glowing_s.png",
+      "source_sha256": "cc8cf664d3de4be054ad61e4c96d69e741538128d2749a70b520c74df9ae1219",
+      "crop": null,
+      "foreground_bbox": [
+        22,
+        8,
+        1201,
+        1199
+      ],
+      "note": "Глобус и распространение цифровой культуры."
+    },
+    {
+      "type": "PROJECT_REFINED_MACHINE_CREATIVITY",
+      "label": "Машинное творчество",
+      "era": "Информационная",
+      "atlas": "PROGRAMS",
+      "index": 7,
+      "file": "project_refined_machine_creativity.png",
+      "source_number": 26,
+      "source_file": "a_stylized_vector_icon_illustration_in_a_circular.png",
+      "source_sha256": "9171ecf684144b7a348f4be9da6f122a165bfe9d2dae3a84039479de67330e9f",
+      "crop": null,
+      "foreground_bbox": [
+        21,
+        8,
+        1201,
+        1198
+      ],
+      "note": ""
+    },
+    {
+      "type": "PROJECT_REFINED_UNIVERSAL_AI",
+      "label": "Универсальный ИИ",
+      "era": "Информационная",
+      "atlas": "PROGRAMS",
+      "index": 8,
+      "file": "project_refined_universal_ai.png",
+      "source_number": 27,
+      "source_file": "цикл_развития_искусственного_интеллекта.png",
+      "source_sha256": "32734056dc1efab0d75dbf66b107a574456f40e0743fc567a44a8162088e5610",
+      "crop": null,
+      "foreground_bbox": [
+        0,
+        0,
+        1235,
+        1245
+      ],
+      "note": "По поправке пользователя: схема сетей и микросхемы со стрелками; прежде ошибочно назначена рекурсивному обучению."
+    },
+    {
+      "type": "PROJECT_REFINED_AUTONOMOUS_COMMAND",
+      "label": "Автономное командование",
+      "era": "Информационная",
+      "atlas": "PROGRAMS",
+      "index": 9,
+      "file": "project_refined_autonomous_command.png",
+      "source_number": 14,
+      "source_file": "a_polished_vector_cel_shaded_icon_in_a_gold_circul.png",
+      "source_sha256": "361ac0968df64140d65dc41d21471dcc00f2334291ecb9bf37768bc87ccaf62d",
+      "crop": null,
+      "foreground_bbox": [
+        22,
+        8,
+        1201,
+        1197
+      ],
+      "note": "ИИ координирует разные рода войск."
+    },
+    {
+      "type": "PROCESS_REFINED_LEARNING",
+      "label": "Рекурсивное обучение",
+      "era": "Информационная",
+      "atlas": "PROGRAMS",
+      "index": 10,
+      "file": "process_refined_learning.png",
+      "source_number": 25,
+      "source_file": "a_stylized_vector_game_icon_illustration_a_golden.png",
+      "source_sha256": "4749c3f24a719e9bd084137d2128918b1c1c572e85bd38642b033696ab2a26b7",
+      "crop": null,
+      "foreground_bbox": [
+        21,
+        8,
+        1201,
+        1198
+      ],
+      "note": "По поправке пользователя: синтетическая голова со знаком бесконечности; прежде ошибочно назначена универсальному ИИ."
+    },
+    {
+      "type": "TECH_REFINED_AGRICULTURAL_MECHANIZATION",
+      "label": "Механизация сельского хозяйства",
+      "era": "Индустриальная",
+      "atlas": "TECHNOLOGIES",
+      "index": 0,
+      "file": "tech_refined_agricultural_mechanization.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 1,
+      "source_file": "civ5_tech_icons_final/01_agricultural_mechanization.png",
+      "source_sha256": "079cc50a2ea4c30bef12e473b0ea2aa4d3a0b5616a7786df631bf4fa80ec8697",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_ENTERTAINMENT",
+      "label": "Индустрия развлечений",
+      "era": "Новейшее время",
+      "atlas": "TECHNOLOGIES",
+      "index": 1,
+      "file": "tech_refined_entertainment.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 2,
+      "source_file": "civ5_tech_icons_final/02_entertainment_industry.png",
+      "source_sha256": "13314ee2d6766766bea6fd1abdaa9c5fe2e789df86918d732ac041c78e75b1d4",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_AUTOMATION",
+      "label": "Промышленная автоматизация",
+      "era": "Атомная",
+      "atlas": "TECHNOLOGIES",
+      "index": 2,
+      "file": "tech_refined_automation.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 3,
+      "source_file": "civ5_tech_icons_final/03_industrial_automation.png",
+      "source_sha256": "a8fbca91253b0a577d6fb6d7418aa273420372b4fbb5fda73e29e5662803549d",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_MICROELECTRONICS",
+      "label": "Микроэлектроника",
+      "era": "Атомная",
+      "atlas": "TECHNOLOGIES",
+      "index": 3,
+      "file": "tech_refined_microelectronics.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 4,
+      "source_file": "civ5_tech_icons_final/04_microelectronics.png",
+      "source_sha256": "c9073fb7cb106efec2f41359397e838f519e1e91933e5b914d5e90752f0ec637",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_NETWORKS",
+      "label": "Компьютерные сети",
+      "era": "Атомная",
+      "atlas": "TECHNOLOGIES",
+      "index": 4,
+      "file": "tech_refined_networks.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 5,
+      "source_file": "civ5_tech_icons_final/05_computer_networks.png",
+      "source_sha256": "8898ffd7a30a31f2f1c1cabaefe95ac470351c6c3e94e108467aaff8d4bbd705",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_DRONES",
+      "label": "Беспилотные системы",
+      "era": "Информационная",
+      "atlas": "TECHNOLOGIES",
+      "index": 5,
+      "file": "tech_refined_drones.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 6,
+      "source_file": "civ5_tech_icons_final/06_unmanned_systems.png",
+      "source_sha256": "2733b54310e40659d4a63c4666f1948190e7e6530c2d1111f575bcb9d58b902d",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_BIOSYSTEMS",
+      "label": "Замкнутые биосистемы",
+      "era": "Информационная",
+      "atlas": "TECHNOLOGIES",
+      "index": 6,
+      "file": "tech_refined_biosystems.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 7,
+      "source_file": "civ5_tech_icons_final/07_closed_biosystems.png",
+      "source_sha256": "6cc12aa77fcf289df0e5f6bc8ffdf8fe3839d0e72951c41bec3ee2bdaaccb60c",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_ORBITAL",
+      "label": "Орбитальная инфраструктура",
+      "era": "Информационная",
+      "atlas": "TECHNOLOGIES",
+      "index": 7,
+      "file": "tech_refined_orbital.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 8,
+      "source_file": "civ5_tech_icons_final/08_orbital_infrastructure.png",
+      "source_sha256": "d9f622a742a6767b8bfa2727dca4ab40e6c3e65c11f325691961c384509c1ab0",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_AUTONOMOUS",
+      "label": "Автономные космические системы",
+      "era": "Информационная",
+      "atlas": "TECHNOLOGIES",
+      "index": 8,
+      "file": "tech_refined_autonomous.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 9,
+      "source_file": "civ5_tech_icons_final/09_autonomous_space_systems.png",
+      "source_sha256": "01e402a9649686f8d48a718b4b980fe36ae070813cecedcc6689d1b6ab89bed7",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_AI",
+      "label": "Прикладной ИИ",
+      "era": "Информационная",
+      "atlas": "TECHNOLOGIES",
+      "index": 9,
+      "file": "tech_refined_ai.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 10,
+      "source_file": "civ5_tech_icons_final/10_applied_ai.png",
+      "source_sha256": "3aaff582f0d5f84bf3a72a11dcf41c1d8ab5208a35f0bad8e0ccda10b0c3c767",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_ENGINES",
+      "label": "Перспективные двигатели",
+      "era": "Информационная",
+      "atlas": "TECHNOLOGIES",
+      "index": 10,
+      "file": "tech_refined_engines.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 11,
+      "source_file": "civ5_tech_icons_final/11_advanced_propulsion.png",
+      "source_sha256": "a23b6fa67621476577b2940970576fef6923971b124044636a947409b5a9f53d",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_ADVANCED_COMPUTING",
+      "label": "Передовые вычислительные системы",
+      "era": "Информационная",
+      "atlas": "TECHNOLOGIES",
+      "index": 11,
+      "file": "tech_refined_advanced_computing.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 12,
+      "source_file": "civ5_tech_icons_final/12_advanced_computing.png",
+      "source_sha256": "3cccd66b2b79cb22afd4d387269ff858d686fca49a6451ff35cd5e74aff74de8",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_NETWORK_WAR",
+      "label": "Сетецентрическая война",
+      "era": "Информационная",
+      "atlas": "TECHNOLOGIES",
+      "index": 12,
+      "file": "tech_refined_network_war.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 13,
+      "source_file": "civ5_tech_icons_final/13_network_centric_warfare.png",
+      "source_sha256": "ba01c552f5be84c7feafb1e89a8d11da874b62608a80a5c60e976305e69a9109",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_GENERAL_AI",
+      "label": "Общий ИИ",
+      "era": "Информационная",
+      "atlas": "TECHNOLOGIES",
+      "index": 13,
+      "file": "tech_refined_general_ai.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 14,
+      "source_file": "civ5_tech_icons_final/14_general_ai.png",
+      "source_sha256": "63a712111d821e80e6b79ec569301de1975e953d8470ad8f9c816e59850cb14a",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_RECURSIVE",
+      "label": "Самоулучшение ИИ",
+      "era": "Информационная",
+      "atlas": "TECHNOLOGIES",
+      "index": 14,
+      "file": "tech_refined_recursive.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 15,
+      "source_file": "civ5_tech_icons_final/15_ai_self_improvement.png",
+      "source_sha256": "e760afa964fd136637f144bfc2a566159e059369874fa76ac86b3ec10ba0d146",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    },
+    {
+      "type": "TECH_REFINED_TACTICAL_AI",
+      "label": "Автономное тактическое управление",
+      "era": "Информационная",
+      "atlas": "TECHNOLOGIES",
+      "index": 15,
+      "file": "tech_refined_tactical_ai.png",
+      "source_archive": "civ5_tech_icons_final.zip",
+      "source_number": 16,
+      "source_file": "civ5_tech_icons_final/16_autonomous_tactical_command.png",
+      "source_sha256": "24a2c6ac3b15ff10d20f9bff7c2f0df6d95805fb6507964bc0bea6cd2c16efe6",
+      "crop": null,
+      "alpha_mask": {
+        "shape": "circle",
+        "bbox": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "supersampling": 4
+      },
+      "note": "Назначение по имени файла финального архива пользователя; добавлена только круглая альфа-маска."
+    }
+  ],
+  "technology_archive": {
+    "file": "civ5_tech_icons_final.zip",
+    "sha256": "3d9ac04aab0ae090b4942f71e8d871f5c5cebc90453e363c6bec7fc2e1103274",
+    "status": "Финальные иконки предоставлены пользователем; назначение по именам файлов."
+  },
+  "render_geometry": "geometry.json",
+  "render_note": "2026-11-08 user correction: remove rims from buildings/programs, add gold rims to technologies; preserve padding, masters and approved assignments."
+}

@@ -50,12 +50,12 @@ def build():
     paths = sorted(p for p in target.rglob('*') if p.is_file())
     for path in paths:
         # Shared dispatch and source adapters are loaded through BNW include().
-        imported = path.parent.name == 'Lua' and (
-            path.stem in {'RefinedEventBus', 'RefinedEventSources'} or path.stem.endswith('Events'))
+        imported = path.suffix.lower() == '.dds' or (path.parent.name == 'Lua' and (
+            path.stem in {'RefinedEventBus', 'RefinedEventSources'} or path.stem.endswith('Events')))
         ET.SubElement(files, 'File', md5=hashlib.md5(path.read_bytes()).hexdigest(),
                       attrib={'import': '1' if imported else '0'}).text = path.relative_to(target).as_posix()
     actions = ET.SubElement(ET.SubElement(root, 'Actions'), 'OnModActivated')
-    for path in ['Text/Localization.xml', 'Text/Society.xml', 'Text/Victories.xml', 'Text/Modernization.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql', 'SQL/Development.sql', 'SQL/Institutions.sql', 'SQL/Allies.sql', 'SQL/Victories.sql', 'SQL/Modernization.sql']:
+    for path in ['Text/Localization.xml', 'Text/Society.xml', 'Text/Victories.xml', 'Text/Modernization.xml', 'Text/Presentation.xml', 'SQL/Gameplay.sql', 'SQL/TechnologyRefinements.sql', 'SQL/TechTreePresentation.sql', 'SQL/UnitResources.sql', 'SQL/Development.sql', 'SQL/Institutions.sql', 'SQL/Allies.sql', 'SQL/Victories.sql', 'SQL/Modernization.sql', 'SQL/Presentation.sql', 'SQL/Icons.sql']:
         ET.SubElement(actions, 'UpdateDatabase').text = path
     entry = ET.SubElement(ET.SubElement(root, 'EntryPoints'), 'EntryPoint',
                           type='InGameUIAddin', file='Lua/Refined.lua')

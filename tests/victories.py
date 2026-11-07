@@ -164,12 +164,80 @@ def apply_modernization(db):
     print('PASS: modernization SQL, 97-node layout, national projects, cinema and tourism carriers')
 
 
+def apply_presentation(db):
+    before = {r['Type']: dict(r) for r in db.execute('SELECT * FROM Technologies')}
+    edges = {tuple(r) for r in db.execute('SELECT TechType,PrereqTech FROM Technology_PrereqTechs')}
+    unit_requirements = {tuple(r) for r in db.execute('SELECT UnitType,TechType FROM Unit_TechTypes')}
+    resources = {tuple(r) for r in db.execute('SELECT * FROM Unit_ResourceQuantityRequirements')}
+    assert 'mixed outgoing adapter lengths: TECH_ELECTRICITY' in layout_issues(
+        db, include_industrial=True, strict_adapters=True), 'must reproduce screenshot-era distant split'
+    for lang in ET.parse(ROOT / 'mod/Text/Presentation.xml').getroot():
+        db.executemany(f'INSERT INTO {lang.tag} VALUES (?,?)',
+                       [(row.attrib['Tag'], row.findtext('Text')) for row in lang])
+        # The factual snapshot deliberately omits stock localization. Supply
+        # placeholder building help so preservation/appending can be exercised.
+        for row in db.execute("""SELECT Help FROM Buildings WHERE BuildingClass IN
+            ('BUILDINGCLASS_UNIVERSITY','BUILDINGCLASS_LABORATORY','BUILDINGCLASS_FACTORY')"""):
+            if row[0]:
+                db.execute(f'INSERT OR IGNORE INTO {lang.tag} VALUES (?,?)', (row[0], 'Original building help'))
+    db.executescript((ROOT / 'mod/SQL/Presentation.sql').read_text())
+    assert not layout_issues(db, include_industrial=True, strict_adapters=True), layout_issues(db, True, True)
+    after = {r['Type']: dict(r) for r in db.execute('SELECT * FROM Technologies')}
+    assert before.keys() == after.keys()
+    for tech in before:
+        unchanged = set(before[tech]) - {'GridX','GridY','Help','Description'}
+        assert all(before[tech][k] == after[tech][k] for k in unchanged), tech
+    assert after['TECH_PARTICLE_PHYSICS']['Description'] == before['TECH_PARTICLE_PHYSICS']['Description']
+    assert after['TECH_REFINED_AGRICULTURAL_MECHANIZATION']['GridX'] == 11
+    assert after['TECH_REFINED_AGRICULTURAL_MECHANIZATION']['Era'] == 'ERA_INDUSTRIAL'
+    assert {tuple(r) for r in db.execute('SELECT TechType,PrereqTech FROM Technology_PrereqTechs')} == edges | {
+        ('TECH_MOBILE_TACTICS','TECH_COMBINED_ARMS'),
+        ('TECH_REFINED_TACTICAL_AI','TECH_REFINED_NETWORK_WAR'),
+        ('TECH_FUTURE_TECH','TECH_REFINED_TACTICAL_AI')}
+    assert len({(r['GridX'],r['GridY']) for r in after.values()}) == 97
+    assert max(r[0] for r in db.execute('SELECT COUNT(*) FROM Technologies WHERE GridX>=17 GROUP BY GridX')) <= 5
+    era_extents = list(db.execute('SELECT MIN(GridX),MAX(GridX) FROM Technologies GROUP BY Era ORDER BY MIN(GridX)'))
+    assert all(a[1] < b[0] for a,b in zip(era_extents,era_extents[1:]))
+    units = {r[0] for r in db.execute("SELECT Type FROM Units WHERE Class='UNITCLASS_MODERN_ARMOR'")}
+    assert {tuple(r) for r in db.execute('SELECT UnitType,TechType FROM Unit_TechTypes')} == unit_requirements | {
+        (u,'TECH_COMBINED_ARMS') for u in units}
+    assert all(r[0] == 'TECH_LASERS' for r in db.execute("SELECT PrereqTech FROM Units WHERE Class='UNITCLASS_MODERN_ARMOR'"))
+    assert resources == {tuple(r) for r in db.execute('SELECT * FROM Unit_ResourceQuantityRequirements')}
+    assert {tuple(r) for r in db.execute("""SELECT GridX FROM Policies WHERE Type IN
+        ('POLICY_CITIZENSHIP','POLICY_REPRESENTATION','POLICY_MERITOCRACY')""")} == {(4,)}
+    b = db.execute("SELECT * FROM Buildings WHERE Type='BUILDING_REFINED_ACCELERATOR'").fetchone()
+    assert (b['Cost'], b['GoldMaintenance'], b['PrereqTech'], b['SpecialistType'], b['SpecialistCount'],
+            b['NeverCapture'], b['ConquestProb']) == (1000,12,'TECH_PARTICLE_PHYSICS','SPECIALIST_SCIENTIST',2,1,0)
+    assert tuple(db.execute("""SELECT MaxGlobalInstances,MaxPlayerInstances FROM BuildingClasses
+        WHERE Type='BUILDINGCLASS_REFINED_ACCELERATOR'""").fetchone()) == (-1,1)
+    assert {tuple(r) for r in db.execute("""SELECT BuildingClassType FROM Building_ClassesNeededInCity
+        WHERE BuildingType='BUILDING_REFINED_ACCELERATOR'""")} == {('BUILDINGCLASS_LABORATORY',)}
+    assert {tuple(r) for r in db.execute("""SELECT YieldType,Yield FROM Building_YieldChanges
+        WHERE BuildingType='BUILDING_REFINED_ACCELERATOR'""")} == {('YIELD_SCIENCE',12)}
+    assert not db.execute("SELECT * FROM Building_YieldModifiers WHERE BuildingType='BUILDING_REFINED_ACCELERATOR'").fetchall()
+    for lang in ('Language_RU_RU','Language_en_US'):
+        for key in ('Description','Help','Civilopedia','Strategy'):
+            assert db.execute(f'SELECT Text FROM {lang} WHERE Tag=?', (b[key],)).fetchone()[0]
+        for t in after.values():
+            if t['Help'] and t['Help'].endswith('_SUMMARY'):
+                text = db.execute(f'SELECT Text FROM {lang} WHERE Tag=?', (t['Help'],)).fetchone()[0]
+                assert not any(ch.isdigit() for ch in text), (t['Type'], text)
+        for building in ('UNIVERSITY','LABORATORY','FACTORY'):
+            texts = [r[0] for r in db.execute(f"""SELECT l.Text FROM {lang} l JOIN Buildings b ON l.Tag=b.Help
+                WHERE b.BuildingClass=?""", ('BUILDINGCLASS_'+building,))]
+            assert texts and all('Original building help' in text and '[NEWLINE]' in text for text in texts)
+    print('PASS: final v12 layout, reproduced distant split, exact military gates, native accelerator and short RU/EN summaries')
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--lua', default='lua5.1')
     args = parser.parse_args()
     db = database()
     apply_modernization(db)
+    apply_presentation(db)
+    from icons import validate as validate_icons
+    validate_icons(db)
     tables = ['Technologies','Buildings','Units','Projects','Processes','GameSpeeds',
               'Refined_VictoryProjects','Refined_VictorySettings','Refined_NationalProjects',
               'Refined_TourismCarriers','UnitPromotions']

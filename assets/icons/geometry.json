@@ -1,0 +1,54 @@
+{
+  "reference": "https://forums.civfanatics.com/threads/icon-and-screen-pixel-dimension-reference.499400/",
+  "reference_note": "whoward69, post #15: measured Firaxis template portholes; 214/80 use their own dimensions, not a constant scale factor.",
+  "diameters": {
+    "256": 176,
+    "214": 144,
+    "128": 88,
+    "80": 52,
+    "64": 44,
+    "45": 31,
+    "32": 22
+  },
+  "supersampling": 4,
+  "profiles": {
+    "TECHNOLOGIES": {
+      "source_crop": [
+        8,
+        8,
+        504,
+        504
+      ],
+      "rim_fraction": 0,
+      "note": "Explicit user correction: baked gold rim on technologies only; rim surrounds the content porthole and aligns with the native 64px frame footprint.",
+      "rim_widths": {
+        "256": 16,
+        "214": 13,
+        "128": 8,
+        "80": 5,
+        "64": 4,
+        "45": 3
+      }
+    },
+    "BUILDINGS": {
+      "source_crop": [
+        36,
+        36,
+        476,
+        476
+      ],
+      "rim_fraction": 0,
+      "note": "Explicit user correction: no rim. Central crop excludes the original painted gold border; keep a transparent margin."
+    },
+    "PROGRAMS": {
+      "source_crop": [
+        36,
+        36,
+        476,
+        476
+      ],
+      "rim_fraction": 0,
+      "note": "Explicit user correction: no rim. Central crop excludes the original painted gold border; keep a transparent margin."
+    }
+  }
+}
