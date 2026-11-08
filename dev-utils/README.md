@@ -1,6 +1,6 @@
 # Дерево технологий
 
-Для проверки **игрового расположения и соединений** используйте [визуализатор штатного TechTree](../docs/development/technology-tree-visualizer.md): `python3 dev-utils/native_tech_tree.py --fetch-references`. Он исполняет внешний Lua/XML и сохраняет созданные им сегменты, включая разрывы. Результат — `dist/native-tree/index.html`; зависимости — `native-tree-requirements.txt`. С `--serve --watch` правки SQL/XML автоматически перерисовываются в браузере.
+Для проверки **игрового расположения и соединений** используйте [визуализатор TechTree](../docs/development/technology-tree-visualizer.md): `python3 dev-utils/native_tech_tree.py --fetch-references`. Он исполняет текущий игровой Lua мода со штатным XML и сохраняет созданные сегменты, включая разрывы. `--renderer stock` выбирает неизменённый внешний контроллер. В странице есть подсветка реальных путей родителей и потомков. Результат — `dist/native-tree/index.html`; зависимости — `native-tree-requirements.txt`. С `--serve --watch` правки SQL/XML/Lua автоматически перерисовываются в браузере.
 
 Описанный ниже `tech-tree.html` — прежний справочник графа, его линии схематические и для проверки игровой отрисовки не подходят.
 

@@ -53,7 +53,7 @@ def database(source=None, stage='current', loaded=False, extra_sql=()):
                                        + ') VALUES (' + ','.join('?' for _ in fields) + ')', list(values.values()))
                 else:
                     db.executescript(content.decode('utf-8-sig'))
-                if stage != 'current' and Path(name).stem.lower() == stage.lower():
+                if stage != 'current' and name.endswith('.sql') and Path(name).stem.lower() == stage.lower():
                     break
     for path in extra_sql:
         path = Path(path)
@@ -82,11 +82,14 @@ def xml_spec(node):
                 children=[xml_spec(c) for c in node])
 
 
-def capture(db, ui_dir=None, width=1920, height=1080, researched=(), language='ru', civilization='CIVILIZATION_AMERICA'):
+def capture(db, ui_dir=None, width=1920, height=1080, researched=(), language='ru', civilization='CIVILIZATION_AMERICA', renderer='mod', exercise=None):
     from lupa.lua51 import LuaRuntime
     ui_dir = Path(ui_dir or CACHE)
     required = ('TechTree.lua', 'TechTree.xml', 'TechButtonInclude.lua')
     source_bytes={n:(ui_dir/n).read_bytes() for n in required}
+    if renderer == 'mod':
+        for name in ('TechTree.lua', 'RefinedTechTreePipes.lua'):
+            source_bytes[name]=(ROOT/'mod/UI'/name).read_bytes()
     sources = {n: hashlib.sha256(b).hexdigest() for n,b in source_bytes.items()}
     lua = LuaRuntime(unpack_returned_tuples=True)
     g = lua.globals()
@@ -190,15 +193,19 @@ def capture(db, ui_dir=None, width=1920, height=1080, researched=(), language='r
     screen['size'] = {'x': width, 'y': height}
     g.XML_SCREEN = to_lua(screen);g.XML_INSTANCES = to_lua(instances)
     g.TECH_BUTTON_SOURCE = source_bytes['TechButtonInclude.lua'].decode('utf-8-sig')
+    g.REFINED_PIPE_SOURCE = source_bytes.get('RefinedTechTreePipes.lua', b'').decode('utf-8-sig')
     lua.execute((Path(__file__).parent / 'capture.lua').read_text())
     # Run the whole external source, including its actual InitialSetup() call.
     # This is deliberately not a port of its connector algorithm.
     lua.execute(source_bytes['TechTree.lua'].decode('utf-8-sig'), name='@TechTree.lua')
     g.RefreshDisplay()
+    if exercise:
+        lua.execute(exercise)
     trace = from_lua(g.exportScene())
     trace['tool_hashes']={name:hashlib.sha256((Path(__file__).parent/name).read_bytes()).hexdigest()
-                          for name in ('capture.lua','engine.py','render.py')}
+                          for name in ('capture.lua','engine.py','render.py','geometry.py','viewer.html')}
     trace.update(width=width, height=height, lua=lua.eval('_VERSION'), sources=sources,
+                 renderer=renderer,
                  language=language, civilization=civilization,
                  technologies=[dict(r) for r in db.execute('SELECT * FROM Technologies')],
                  edges=[dict(r) for r in db.execute('SELECT * FROM Technology_PrereqTechs')],

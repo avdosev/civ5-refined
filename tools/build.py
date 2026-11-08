@@ -50,7 +50,7 @@ def build():
     paths = sorted(p for p in target.rglob('*') if p.is_file())
     for path in paths:
         # Shared dispatch and source adapters are loaded through BNW include().
-        imported = path.suffix.lower() == '.dds' or (path.parent.name == 'Lua' and (
+        imported = path.suffix.lower() == '.dds' or path.parent.name == 'UI' or (path.parent.name == 'Lua' and (
             path.stem in {'RefinedEventBus', 'RefinedEventSources'} or path.stem.endswith('Events')))
         ET.SubElement(files, 'File', md5=hashlib.md5(path.read_bytes()).hexdigest(),
                       attrib={'import': '1' if imported else '0'}).text = path.relative_to(target).as_posix()

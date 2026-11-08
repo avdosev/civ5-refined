@@ -33,9 +33,10 @@ def references(fetch=False):
 
 def build(args):
     from native_tree.render import render,rect
+    from native_tree.geometry import inspect
     provenance=references(args.fetch_references) if not (args.database and args.ui_dir) else {}
     db,sql_hashes=database(args.database,args.stage,args.loaded_database,args.sql)
-    scene=capture(db,args.ui_dir,args.width,args.height,args.researched,args.language,args.civilization)
+    scene=capture(db,args.ui_dir,args.width,args.height,args.researched,args.language,args.civilization,renderer=args.renderer)
     # Preserve the source hashes and exact controls for independent inspection.
     scene['sql_hashes']=sql_hashes
     scene['input']=dict(database=str(args.database or CACHE/'Civ5DebugDatabase.db'),
@@ -44,20 +45,15 @@ def build(args):
     out=Path(args.output);out.mkdir(parents=True,exist_ok=True)
     (out/'trace.json').write_text(json.dumps(scene,ensure_ascii=False,indent=2))
     meta=render(scene,out/'scene.png',args.assets,args.font)
-    meta['pipes']=[]
-    for instance in scene['instances']:
-        if instance['template']=='TechPipeInstance':
-            c=instance['roots'][0]
-            meta['pipes'].append(dict(rect=rect(c,(0,0,meta['width'],meta['height'])),
-                                      texture=c.get('texture'),uv=c.get('textureOffset'),serial=c['serial']))
-    meta['sources']=scene['sources'];meta['sql_hashes']=sql_hashes;meta['stage']=args.stage
+    inspect(scene,meta,args.assets)
+    meta['sources']=scene['sources'];meta['sql_hashes']=sql_hashes;meta['stage']=args.stage+' / '+args.renderer
     meta['tool_hashes']=scene['tool_hashes']
     meta['civilization']=scene['civilization']
     meta['generation']=str(time.time_ns())
     meta['edge_count']=len(scene['edges'])
-    meta['source_note']='Public BNW UI mirror; pinned source hashes. Non-layout FreeTech/Duel additions remain in that mirror.'
+    meta['source_note']='Packaged mod/UI Lua controller; external native XML/TechButtonInclude.' if args.renderer=='mod' else 'Unchanged external BNW UI mirror; pinned source hashes.'
     meta['limits']=[
-        'Geometry and child visibility are emitted by external TechTree.lua / TechButtonInclude.lua under Lua 5.1.',
+        'Geometry and visibility are emitted under Lua 5.1 by '+meta['source_note'],
         'The game renderer itself is not running. Grid9 skins and unavailable original portraits use visible substitutes.',
         'Without --assets, the appearance of three stock line sprites is reconstructed; actual control rectangles and atlas offsets are unchanged.',
         'Locale font/truncation use a local fallback. Research state is explicitly simulated, not read from a save.',
@@ -89,6 +85,8 @@ def serve(args):
     print(f'Local viewer: http://127.0.0.1:{args.port}/index.html',flush=True)
     watch=[ROOT/'mod'/p for p in action_paths()]+list(args.sql)
     watch += [Path(args.ui_dir or CACHE)/n for n in ('TechTree.lua','TechTree.xml','TechButtonInclude.lua')]
+    watch += list((ROOT/'mod/UI').glob('*.lua'))
+    watch += [ROOT/'dev-utils/native_tree/viewer.html']
     def signature():
         result=[]
         for p in watch:
@@ -118,6 +116,7 @@ if __name__=='__main__':
     parser.add_argument('--database',type=Path,help='Clean BNW DB, opened read-only; copied to memory')
     parser.add_argument('--loaded-database',action='store_true',help='Use already modded DB as-is; do NOT apply migrations again')
     parser.add_argument('--ui-dir',type=Path,help='Directory containing TechTree.lua/XML and TechButtonInclude.lua from the target game')
+    parser.add_argument('--renderer',choices=['mod','stock'],default='mod',help='Execute packaged game controller (default) or unchanged external stock controller')
     parser.add_argument('--stage',default='current',choices=['stock','current']+[Path(p).stem for p in action_paths() if p.endswith('.sql')])
     parser.add_argument('--sql',action='append',default=[],type=Path,help='Additional experimental SQL on disposable DB, after selected stage')
     parser.add_argument('--assets',type=Path,help='Directory of extracted original DDS textures/atlases; never redistributed')

@@ -181,7 +181,7 @@ def apply_presentation(db):
             if row[0]:
                 db.execute(f'INSERT OR IGNORE INTO {lang.tag} VALUES (?,?)', (row[0], 'Original building help'))
     db.executescript((ROOT / 'mod/SQL/Presentation.sql').read_text())
-    assert not layout_issues(db, include_industrial=True, strict_adapters=True), layout_issues(db, True, True)
+    assert not layout_issues(db, renderer='refined'), layout_issues(db, renderer='refined')
     after = {r['Type']: dict(r) for r in db.execute('SELECT * FROM Technologies')}
     assert before.keys() == after.keys()
     for tech in before:
@@ -190,10 +190,24 @@ def apply_presentation(db):
     assert after['TECH_PARTICLE_PHYSICS']['Description'] == before['TECH_PARTICLE_PHYSICS']['Description']
     assert after['TECH_REFINED_AGRICULTURAL_MECHANIZATION']['GridX'] == 11
     assert after['TECH_REFINED_AGRICULTURAL_MECHANIZATION']['Era'] == 'ERA_INDUSTRIAL'
-    assert {tuple(r) for r in db.execute('SELECT TechType,PrereqTech FROM Technology_PrereqTechs')} == edges | {
+    replaced = {('TECH_REFINED_DRONES', 'TECH_RADAR'), ('TECH_REFINED_DRONES', 'TECH_REFINED_MICROELECTRONICS')}
+    assert {tuple(r) for r in db.execute('SELECT TechType,PrereqTech FROM Technology_PrereqTechs')} == (edges - replaced) | {
         ('TECH_MOBILE_TACTICS','TECH_COMBINED_ARMS'),
-        ('TECH_REFINED_TACTICAL_AI','TECH_REFINED_NETWORK_WAR'),
-        ('TECH_FUTURE_TECH','TECH_REFINED_TACTICAL_AI')}
+        ('TECH_REFINED_DRONES','TECH_REFINED_NETWORK_WAR'),
+        ('TECH_REFINED_TACTICAL_AI','TECH_REFINED_DRONES'),
+        ('TECH_FUTURE_TECH','TECH_REFINED_TACTICAL_AI'),
+        ('TECH_REFINED_GENERAL_AI','TECH_INTERNET')}
+    graph = {}
+    for child, parent in db.execute('SELECT TechType,PrereqTech FROM Technology_PrereqTechs'):
+        graph.setdefault(child, set()).add(parent)
+    def ancestors(tech, trail=()):
+        assert tech not in trail, ('cycle', trail + (tech,))
+        return set().union(*(ancestors(parent, trail + (tech,)) | {parent}
+                             for parent in graph.get(tech, ())))
+    for tech in after:
+        ancestors(tech)
+    assert {'TECH_RADAR', 'TECH_REFINED_MICROELECTRONICS'} <= ancestors('TECH_REFINED_DRONES')
+    assert 'TECH_REFINED_DRONES' in ancestors('TECH_FUTURE_TECH')
     assert len({(r['GridX'],r['GridY']) for r in after.values()}) == 97
     assert max(r[0] for r in db.execute('SELECT COUNT(*) FROM Technologies WHERE GridX>=17 GROUP BY GridX')) <= 5
     era_extents = list(db.execute('SELECT MIN(GridX),MAX(GridX) FROM Technologies GROUP BY Era ORDER BY MIN(GridX)'))
@@ -226,7 +240,7 @@ def apply_presentation(db):
             texts = [r[0] for r in db.execute(f"""SELECT l.Text FROM {lang} l JOIN Buildings b ON l.Tag=b.Help
                 WHERE b.BuildingClass=?""", ('BUILDINGCLASS_'+building,))]
             assert texts and all('Original building help' in text and '[NEWLINE]' in text for text in texts)
-    print('PASS: final v12 layout, reproduced distant split, exact military gates, native accelerator and short RU/EN summaries')
+    print('PASS: final v13 layout for independent connectors, reproduced stock distant split, exact military gates, native accelerator and short RU/EN summaries')
 
 
 if __name__ == '__main__':

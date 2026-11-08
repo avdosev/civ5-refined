@@ -363,7 +363,8 @@ def validate_package():
         'RefinedDevelopmentEvents', 'RefinedSocietyEvents',
         'RefinedVictoriesEvents', 'RefinedModernizationEvents')}
     art_files = {p.relative_to(target).as_posix() for p in (target / 'Art').rglob('*.dds')}
-    assert imported == event_files | art_files, 'event includes and DDS textures must be available in BNW VFS'
+    ui_files = {'UI/TechTree.lua', 'UI/RefinedTechTreePipes.lua'}
+    assert imported == event_files | art_files | ui_files, 'event/UI includes and DDS textures must be available in BNW VFS'
     for action in manifest.findall('./Actions/OnModActivated/UpdateDatabase'):
         assert action.text in declared
     assert [action.text for action in manifest.findall('./Actions/OnModActivated/UpdateDatabase')] == [

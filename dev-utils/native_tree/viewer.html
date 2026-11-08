@@ -2,27 +2,70 @@
 <html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BNW — фактические команды TechTree</title>
 <style>
-*{box-sizing:border-box}body{margin:0;height:100vh;display:flex;flex-direction:column;overflow:hidden;background:#12191b;color:#e8e7df;font:15px system-ui}header{padding:15px 22px;border-bottom:1px solid #42504e;display:flex;gap:20px;align-items:center;flex-wrap:wrap}h1{font-size:19px;margin:0}small{color:#b3bbb8}button,input,select{font:inherit;background:#233235;color:#eee;border:1px solid #62736d;border-radius:4px;padding:6px}button{cursor:pointer}input[type=range]{width:150px}main{display:grid;grid-template-columns:minmax(0,1fr) 320px;flex:1;min-height:0}#viewport{overflow:auto;position:relative;background:#080d0e}#world{position:relative;transform-origin:top left}#scene{display:block;user-select:none;pointer-events:none}#overlay{position:absolute;inset:0;pointer-events:none}aside{overflow:auto;padding:20px;background:#192326;border-left:1px solid #3a4947}h2{font-size:18px}p{line-height:1.5}code{font-size:12px;word-break:break-all}#notice{padding:10px 22px;background:#302a1b;font-size:13px;line-height:1.5;color:#e4cf9b}a{color:#c8d9a9}label{white-space:nowrap}#detail{white-space:pre-wrap}.tag{color:#e9d693}details{margin-top:24px}summary{cursor:pointer}li{margin:10px 0}#status{font-size:13px;color:#afbfba}
+*{box-sizing:border-box}body{margin:0;height:100vh;display:flex;flex-direction:column;overflow:hidden;background:#12191b;color:#e8e7df;font:15px system-ui}header{padding:15px 22px;border-bottom:1px solid #42504e;display:flex;gap:20px;align-items:center;flex-wrap:wrap}h1{font-size:19px;margin:0}small{color:#b3bbb8}button,input,select{font:inherit;background:#233235;color:#eee;border:1px solid #62736d;border-radius:4px;padding:6px}button{cursor:pointer}input[type=range]{width:150px}main{display:grid;grid-template-columns:minmax(0,1fr) 320px;flex:1;min-height:0}#viewport{overflow:auto;position:relative;background:#080d0e}#world{position:relative;transform-origin:top left}#scene{display:block;user-select:none;pointer-events:none}#overlay{position:absolute;inset:0;pointer-events:none}aside{overflow:auto;padding:20px;background:#192326;border-left:1px solid #3a4947}h2{font-size:18px}h3{font-size:15px;margin-top:22px}.tech-link{display:block;margin:7px 0;width:100%;text-align:left}p{line-height:1.5}code{font-size:12px;word-break:break-all}#notice{padding:10px 22px;background:#302a1b;font-size:13px;line-height:1.5;color:#e4cf9b}a{color:#c8d9a9}label{white-space:nowrap}#detail{white-space:pre-wrap}.tag{color:#e9d693}details{margin-top:24px}summary{cursor:pointer}li{margin:10px 0}#status{font-size:13px;color:#afbfba}
 </style>
-<header><h1>BNW · исполненный TechTree.lua</h1><span id="status"></span><input id="search" placeholder="Технология или Type" aria-label="Поиск технологии"><button id="find">Найти</button><label>Масштаб <input id="zoom" type="range" min="20" max="150" value="75"><span id="pct">75%</span></label><button id="late">Позднее дерево</button><label><input id="bounds" type="checkbox"> Границы спрайтов</label></header>
+<header><h1>BNW · исполненный TechTree.lua</h1><span id="status"></span><input id="search" placeholder="Технология или Type" aria-label="Поиск технологии"><button id="find">Найти</button><label>Масштаб <input id="zoom" type="range" min="10" max="150" value="75"><span id="pct">75%</span></label><button id="late">Позднее дерево</button><select id="direction" aria-label="Направление подсветки"><option value="parents">От родителей</option><option value="children">К потомкам</option></select><label><input id="chain" type="checkbox" checked> Вся цепочка</label><button id="fitPath">Вписать путь</button><button id="clear">Снять подсветку</button><label><input id="bounds" type="checkbox"> Границы спрайтов</label></header>
 <div id="notice">Карточки и сегменты размещены командами исходного Lua/XML. Автоматического исправления линий нет. Без оригинальных DDS внешний вид трёх спрайтов ветвей восстановлен; геометрия, размеры и смещения взяты из исполнения. Это локальный рендер UI, не запущенная Civilization V.</div>
 <main><div id="viewport"><div id="extent"><div id="world"><img id="scene" alt="Результат команд отрисовки TechTree"><svg id="overlay"></svg></div></div></div><aside><h2>Фактический результат</h2><p>Нажмите карточку: координаты, полный текст и содержимое значков берутся из записанных UI-элементов.</p><div id="detail"></div><details><summary>Источник и пределы точности</summary><div id="limits"></div></details><details><summary>Хеши исходного Lua/XML</summary><div id="hashes"></div></details></aside></main>
 <script>
 const DATA=__DATA__;
-const viewport=document.getElementById('viewport'),world=document.getElementById('world'),extent=document.getElementById('extent'),scene=document.getElementById('scene'),svg=document.getElementById('overlay'),zoom=document.getElementById('zoom'),detail=document.getElementById('detail');
-scene.src='data:image/png;base64,__PNG__';scene.width=DATA.width;scene.height=DATA.height;world.style.width=DATA.width+'px';world.style.height=DATA.height+'px';svg.setAttribute('width',DATA.width);svg.setAttribute('height',DATA.height);
-document.getElementById('status').textContent=`${DATA.cards.length} карточек · ${DATA.pipes.length} сегментов · ${DATA.edge_count} зависимостей · ${DATA.stage}`;
-function scale(){const k=Number(zoom.value)/100;world.style.transform=`scale(${k})`;extent.style.width=DATA.width*k+'px';extent.style.height=DATA.height*k+'px';document.getElementById('pct').textContent=zoom.value+'%'}
-function late(){viewport.scrollTo(14*366*Number(zoom.value)/100,0)}zoom.oninput=scale;document.getElementById('late').onclick=late;
-const ns='http://www.w3.org/2000/svg';let selected=null;
-function outline(r,color){const e=document.createElementNS(ns,'rect');['x','y','width','height'].forEach((k,i)=>e.setAttribute(k,r[i]));e.setAttribute('fill','none');e.setAttribute('stroke',color);e.setAttribute('stroke-width','1');svg.append(e)}
-function overlays(){svg.replaceChildren();if(document.getElementById('bounds').checked)for(const p of DATA.pipes)outline(p.rect,'#ff679777');if(selected)outline(selected.rect,'#74e2fc')}
-document.getElementById('bounds').onchange=overlays;
-function select(c){selected=c;const [x,y,w,h]=c.rect;detail.replaceChildren();const h2=document.createElement('h2');h2.textContent=c.name;detail.append(h2);const code=document.createElement('code');code.textContent=c.id;detail.append(code);const p=document.createElement('p');p.textContent=`Grid: ${c.grid.join(', ')}\nUI: x=${x}, y=${y}, ${w}×${h}\nПодпись: ${c.label}\n\n${c.help}`;detail.append(p);for(const i of c.icons){const p=document.createElement('p');p.textContent=i.id+': '+(i.tooltip||i.texture||'');detail.append(p)}overlays()}
-world.onclick=e=>{const k=Number(zoom.value)/100,r=world.getBoundingClientRect(),x=(e.clientX-r.left)/k,y=(e.clientY-r.top)/k;const c=DATA.cards.find(c=>x>=c.rect[0]&&x<=c.rect[0]+c.rect[2]&&y>=c.rect[1]&&y<=c.rect[1]+c.rect[3]);if(c)select(c)};
-function find(){const q=document.getElementById('search').value.trim().toLowerCase(),c=DATA.cards.find(c=>q&&(c.name+' '+c.id).toLowerCase().includes(q));if(c){select(c);viewport.scrollTo(Math.max(0,(c.rect[0]-100)*Number(zoom.value)/100),0)}}document.getElementById('find').onclick=find;document.getElementById('search').onkeydown=e=>{if(e.key==='Enter')find()};
-const ul=document.createElement('ul');for(const limit of DATA.limits){const li=document.createElement('li');li.textContent=limit;ul.append(li)}document.getElementById('limits').append(ul);
-for(const [key,value]of Object.entries(DATA.sources)){const p=document.createElement('p'),c=document.createElement('code');c.textContent=key+'\n'+value;p.append(c);document.getElementById('hashes').append(p)}
-scale();late();
-if(location.protocol==='http:'||location.protocol==='https:')setInterval(async()=>{try{const r=await fetch('build.json',{cache:'no-store'});if(!r.ok)return;const state=await r.json();if(state.error){document.getElementById('notice').textContent='Ошибка пересборки: '+state.error;return}if(state.generation&&state.generation!==DATA.generation)location.reload()}catch{}},1500);
+const $=id=>document.getElementById(id),viewport=$('viewport'),world=$('world'),extent=$('extent'),scene=$('scene'),svg=$('overlay'),zoom=$('zoom'),detail=$('detail');
+const byId=new Map(DATA.cards.map(c=>[c.id,c]));
+const edgeKey=e=>e.parent+'>'+e.child;
+scene.src='data:image/png;base64,__PNG__';scene.width=DATA.width;scene.height=DATA.height;
+world.style.width=DATA.width+'px';world.style.height=DATA.height+'px';
+svg.setAttribute('width',DATA.width);svg.setAttribute('height',DATA.height);
+$('status').textContent=`${DATA.cards.length} карточек · ${DATA.pipes.length} сегментов · ${DATA.issues.length} замечаний · ${DATA.stage}`;
+const ns='http://www.w3.org/2000/svg';let selected=null,related=new Set(),usedEdges=new Set();
+function element(tag,attrs={}){const e=document.createElementNS(ns,tag);for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);return e}
+function outline(r,color,width=1){svg.append(element('rect',{x:r[0]-2,y:r[1]-2,width:r[2]+4,height:r[3]+4,fill:'none',stroke:color,'stroke-width':width}))}
+function pathSelection(){
+ related=new Set(selected?[selected.id]:[]);usedEdges=new Set();if(!selected)return;
+ const parents=$('direction').value==='parents',queue=[selected.id],all=$('chain').checked;
+ while(queue.length){const id=queue.shift();for(const e of DATA.edges){if((parents?e.child:e.parent)!==id)continue;usedEdges.add(edgeKey(e));const next=parents?e.parent:e.child;if(!related.has(next)){related.add(next);if(all)queue.push(next)}}}
+}
+function overlays(){
+ svg.replaceChildren();pathSelection();scene.style.opacity=selected?'0.22':'1';
+ if(selected){
+  const defs=element('defs'),full=element('image',{id:'fullNativeScene',href:scene.src,x:0,y:0,width:DATA.width,height:DATA.height});defs.append(full);
+  const filter=element('filter',{id:'pathTint','color-interpolation-filters':'sRGB'});
+  filter.append(element('feFlood',{'flood-color':'#7de8ff'}));filter.append(element('feComposite',{in2:'SourceAlpha',operator:'in'}));defs.append(filter);
+  const mask=element('mask',{id:'cardOcclusion',maskUnits:'userSpaceOnUse',x:0,y:0,width:DATA.width,height:DATA.height});
+  mask.append(element('rect',{x:0,y:0,width:DATA.width,height:DATA.height,fill:'white'}));
+  for(const c of DATA.cards)mask.append(element('rect',{x:c.rect[0]-2,y:c.rect[1]-2,width:c.rect[2]+4,height:c.rect[3]+4,fill:'black'}));
+  defs.append(mask);svg.append(defs);
+  const wires=element('g',{mask:'url(#cardOcclusion)'});
+  for(const p of DATA.pipes)if(p.uses.some(k=>usedEdges.has(k)))wires.append(element('image',{x:p.rect[0],y:p.rect[1],width:p.rect[2],height:p.rect[3],href:DATA.pipe_sprites[p.sprite],filter:'url(#pathTint)'}));
+  svg.append(wires);
+  for(const id of related){const c=byId.get(id),[x,y,w,h]=c.rect;const cut=element('svg',{x:x-3,y:y-3,width:w+6,height:h+6,viewBox:`${x-3} ${y-3} ${w+6} ${h+6}`});cut.append(element('use',{href:'#fullNativeScene'}));svg.append(cut);outline(c.rect,id===selected.id?'#ffd978':'#69d3ee',id===selected.id?3:1.5)}
+ }
+ if($('bounds').checked)for(const p of DATA.pipes)outline(p.rect,'#ff679777');
+}
+function scale(){const k=Number(zoom.value)/100;world.style.transform=`scale(${k})`;extent.style.width=DATA.width*k+'px';extent.style.height=DATA.height*k+'px';$('pct').textContent=zoom.value+'%'}
+function late(){viewport.scrollTo(14*366*Number(zoom.value)/100,0)}
+function jump(c){select(c);const parents=$('direction').value==='parents',near=DATA.edges.filter(e=>(parents?e.child:e.parent)===c.id).map(e=>byId.get(parents?e.parent:e.child));const group=[c,...near],lo=Math.min(...group.map(c=>c.rect[0])),hi=Math.max(...group.map(c=>c.rect[0]+c.rect[2])),top=Math.min(...group.map(c=>c.rect[1])),bottom=Math.max(...group.map(c=>c.rect[1]+c.rect[3])),k=Number(zoom.value)/100;viewport.scrollTo(Math.max(0,((hi-lo+60)*k<=viewport.clientWidth?lo-30:c.rect[0]-100)*k),Math.max(0,((bottom-top+60)*k<=viewport.clientHeight?top-30:c.rect[1]-100)*k))}
+function fitPath(){if(!selected)return;const nodes=[...related].map(id=>byId.get(id)),lo=Math.min(...nodes.map(c=>c.rect[0])),hi=Math.max(...nodes.map(c=>c.rect[0]+c.rect[2])),top=Math.min(...nodes.map(c=>c.rect[1])),bottom=Math.max(...nodes.map(c=>c.rect[1]+c.rect[3]));zoom.value=Math.max(10,Math.min(150,Math.floor(Math.min((viewport.clientWidth-30)/(hi-lo+60),(viewport.clientHeight-30)/(bottom-top+60))*100)));scale();viewport.scrollTo(Math.max(0,(lo-30)*Number(zoom.value)/100),Math.max(0,(top-30)*Number(zoom.value)/100))}
+function text(tag,value){const e=document.createElement(tag);e.textContent=value;return e}
+function links(title,ids){detail.append(text('h3',title));if(!ids.length){detail.append(text('p','Нет'));return}for(const id of ids){const b=text('button',byId.get(id).name);b.className='tech-link';b.onclick=()=>jump(byId.get(id));detail.append(b)}}
+function select(c){
+ selected=c;overlays();detail.replaceChildren();history.replaceState(null,'','#'+c.id);
+ const [x,y,w,h]=c.rect;detail.append(text('h2',c.name),text('code',c.id));
+ detail.append(text('p',`Grid: ${c.grid.join(', ')}\nUI: x=${x}, y=${y}, ${w}×${h}\nПодпись: ${c.label}`));
+ links('Непосредственно требуется',DATA.edges.filter(e=>e.child===c.id).map(e=>e.parent));
+ links('Следующие исследования',DATA.edges.filter(e=>e.parent===c.id).map(e=>e.child));
+ detail.append(text('p',`Подсвечено: ${related.size} технологий, ${usedEdges.size} зависимостей. Голубые линии — исходные спрайты; их разрывы сохранены. ${DATA.sources['RefinedTechTreePipes.lua']?'Каждый сегмент относится к конкретной зависимости.':'Общие адаптеры могут принадлежать нескольким связям.'}`));
+ const problems=DATA.issues.filter(i=>usedEdges.has(i.edge)||(i.edges||[]).some(k=>usedEdges.has(k)));
+ if(problems.length){detail.append(text('h3','Замечания на выбранном пути'));for(const i of problems){const message=i.kind==='wire_through_card'?`Линия скрывается карточкой «${byId.get(i.card).name}»`:`Разрыв: ${byId.get(i.parent||i.edge.split('>')[0]).name} → ${byId.get(i.child||i.edge.split('>')[1]).name}`;detail.append(text('p',message))}}
+ const descriptions=document.createElement('details');descriptions.append(text('summary','Описание и значки'),text('p',c.help));for(const i of c.icons)descriptions.append(text('p',i.id+': '+(i.tooltip||i.texture||'')));detail.append(descriptions);
+}
+function clearSelection(){selected=null;detail.replaceChildren();history.replaceState(null,'',location.pathname+location.search);overlays()}
+world.onclick=e=>{const k=Number(zoom.value)/100,r=world.getBoundingClientRect(),x=(e.clientX-r.left)/k,y=(e.clientY-r.top)/k;const c=DATA.cards.find(c=>x>=c.rect[0]&&x<=c.rect[0]+c.rect[2]&&y>=c.rect[1]&&y<=c.rect[1]+c.rect[3]);if(c)select(c);else clearSelection()};
+function find(){const q=$('search').value.trim().toLowerCase(),c=DATA.cards.find(c=>q&&(c.name+' '+c.id).toLowerCase().includes(q));if(c)jump(c)}
+$('find').onclick=find;$('search').onkeydown=e=>{if(e.key==='Enter')find()};$('clear').onclick=clearSelection;$('fitPath').onclick=fitPath;
+zoom.oninput=scale;$('late').onclick=late;$('bounds').onchange=overlays;
+for(const id of ['chain','direction'])$(id).onchange=()=>{if(selected)select(selected)};
+const ul=document.createElement('ul');for(const limit of DATA.limits)ul.append(text('li',limit));$('limits').append(ul);
+for(const[k,v]of Object.entries(DATA.sources))$('hashes').append(text('code',k+'\n'+v+'\n\n'));
+scale();late();if(byId.has(location.hash.slice(1)))jump(byId.get(location.hash.slice(1)));
+if(location.protocol==='http:'||location.protocol==='https:')setInterval(async()=>{try{const r=await fetch('build.json',{cache:'no-store'});if(!r.ok)return;const state=await r.json();if(state.error){$('notice').textContent='Ошибка пересборки: '+state.error;return}if(state.generation&&state.generation!==DATA.generation)location.reload()}catch{}},1500);
 </script></html>

@@ -6,6 +6,33 @@ local function copy(t)
     local r = {}; for k,v in pairs(t or {}) do r[k]=v end; return r
 end
 local methods = {}
+local function nativeOrigin()
+    for level=3,8 do
+        local info=debug.getinfo(level,'Sl')
+        if not info then break end
+        if string.find(info.source or '', 'TechTree',1,true) then
+            local values={}
+            for index=1,100 do
+                local name,value=debug.getlocal(level,index)
+                if not name then break end
+                values[name]=value
+            end
+            local row=values.row
+            if type(row)=='table' and row.TechType and row.PrereqTech then
+                return {kind='edge',parent=row.PrereqTech,child=row.TechType,line=info.currentline}
+            end
+            local pipe=values.thisPipe
+            if type(pipe)=='table' and pipe.techType then
+                return {kind='adapter',node=pipe.techType,line=info.currentline}
+            end
+            local tech=values.tech
+            if type(tech)=='table' and tech.Type then
+                return {kind='card',node=tech.Type,line=info.currentline}
+            end
+        end
+    end
+    return {kind='other'}
+end
 function methods:SetOffsetVal(x,y) self.offset={x=x,y=y} end
 function methods:SetOffset(v) self.offset=copy(v) end
 function methods:SetSize(v) self.size=copy(v) end
@@ -85,8 +112,10 @@ function InstanceManager:new(template,rootId,parent)
     return {GetInstance=function()
         local controls={}
         local roots={}
+        local origin=nativeOrigin()
         for _,s in ipairs(XML_INSTANCES[template]) do
             roots[#roots+1]=newControl(s,parent,controls)
+            roots[#roots].origin=origin
             parent.children[#parent.children+1]=roots[#roots]
         end
         recorded.instances[#recorded.instances+1]={template=template,rootId=rootId,
@@ -167,6 +196,8 @@ end
 function include(name)
     if name=='TechButtonInclude' then
         assert(loadstring(TECH_BUTTON_SOURCE,'@TechButtonInclude.lua'))()
+    elseif name=='RefinedTechTreePipes' then
+        assert(loadstring(REFINED_PIPE_SOURCE,'@RefinedTechTreePipes.lua'))()
     elseif name~='InstanceManager' and name~='TechHelpInclude'
         and name~='IconSupport' and name~='InfoTooltipInclude' then
         error('Unsupported include: '..name)
@@ -177,7 +208,7 @@ end
 function exportControl(c)
     local r={}
     for _,k in ipairs({'serial','id','tag','attrs','offset','size','texture',
-        'textureOffset','hidden','text','tooltip','void1','void2','firstVoid1','icon','disabled'}) do
+        'textureOffset','hidden','text','tooltip','void1','void2','firstVoid1','icon','disabled','origin'}) do
         if rawget(c,k)~=nil then r[k]=c[k] end
     end
     r.children={};for _,v in ipairs(c.children) do r.children[#r.children+1]=exportControl(v) end

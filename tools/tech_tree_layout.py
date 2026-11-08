@@ -7,7 +7,7 @@ differences of 1..4 rows. Long horizontal runs stay at the prerequisite's row.
 from collections import defaultdict
 
 
-def layout_issues(db, include_industrial=False, strict_adapters=False):
+def layout_issues(db, include_industrial=False, strict_adapters=False, renderer='stock'):
     positions = {name: (x, y) for name, x, y in db.execute('SELECT Type, GridX, GridY FROM Technologies')}
     issues = []
     outgoing = defaultdict(list)
@@ -18,7 +18,9 @@ def layout_issues(db, include_industrial=False, strict_adapters=False):
         px, py = positions[parent]
         cx, cy = positions[child]
         # This overhaul changes the late tree. Do not reject stock early layouts.
-        if strict_adapters:
+        if renderer == 'refined':
+            pass  # Independent connectors support all row spans; inspect all eras.
+        elif strict_adapters:
             if px < 10 or cx < 11:
                 continue
         elif (px < 11 or cx < 12) and not (include_industrial and parent in {
@@ -27,12 +29,14 @@ def layout_issues(db, include_industrial=False, strict_adapters=False):
         outgoing[parent].append(child)
         if cx <= px:
             issues.append(f'non-forward connector: {parent} -> {child}')
-        if abs(cy - py) > 4:
+        if renderer == 'stock' and abs(cy - py) > 4:
             issues.append(f'vertical span > 4: {parent} -> {child}')
         for other, (x, y) in positions.items():
             if px < x < cx and y == py:
                 issues.append(f'line crosses card {other}: {parent} -> {child}')
     for parent, children in outgoing.items():
+        if renderer == 'refined':
+            continue
         columns = {positions[child][0] for child in children}
         # Legacy migration checks retain their old scope. The final presentation
         # pass must also reject a *single* distant destination column with a
