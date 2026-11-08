@@ -1,0 +1,22 @@
+{
+  "TechTree.lua": {
+    "url": "https://raw.githubusercontent.com/catscatsforever/Civ5-Patch/21efef205d910b6eb67905e2e9c2a9659e94e9e4/tmp/ui/TechTree.lua",
+    "sha256": "0ddf0d94c924b749e92812330e844756c4f0450b6e6452715ac77776b438a6ac",
+    "commit": "21efef205d910b6eb67905e2e9c2a9659e94e9e4"
+  },
+  "TechTree.xml": {
+    "url": "https://raw.githubusercontent.com/catscatsforever/Civ5-Patch/21efef205d910b6eb67905e2e9c2a9659e94e9e4/tmp/ui/TechTree.xml",
+    "sha256": "4718d0ebf43f5068dbd2adc82c286627e2f41ee43d92d00d0623b88f6a18c36c",
+    "commit": "21efef205d910b6eb67905e2e9c2a9659e94e9e4"
+  },
+  "TechButtonInclude.lua": {
+    "url": "https://raw.githubusercontent.com/catscatsforever/Civ5-Patch/21efef205d910b6eb67905e2e9c2a9659e94e9e4/tmp/ui/TechButtonInclude.lua",
+    "sha256": "33828241842b982ed3206b397fa3db0c6c0cbf9a8ad041a0b78ef4562717ab58",
+    "commit": "21efef205d910b6eb67905e2e9c2a9659e94e9e4"
+  },
+  "Civ5DebugDatabase.db": {
+    "url": "https://raw.githubusercontent.com/Eyefyre/civvapi/09997cb58c8f8c0d424bd31e3baa71f5b6eb0bb2/Civ5DebugDatabase.db",
+    "sha256": "6ba68a23d3bd6d42fc7061a701a42e6339fcdb60639eb3ec301d54992fe425d0",
+    "commit": "09997cb58c8f8c0d424bd31e3baa71f5b6eb0bb2"
+  }
+}

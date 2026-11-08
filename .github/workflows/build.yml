@@ -40,6 +40,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --yes lua5.1
+      - name: Install native tree preview runtime
+        run: python -m pip install -r dev-utils/native-tree-requirements.txt
       - name: Validate SQL, technology tree and build package
         run: python tests/validate.py
       - name: Validate Lua behavior
@@ -50,6 +52,16 @@ jobs:
         run: |
           python tests/victories.py --lua lua5.1
           python tests/victory_timing.py
+      - name: Render and verify native TechTree controls
+        run: |
+          python dev-utils/native_tech_tree.py --fetch-references
+          python tests/native_tree.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-tree-preview
+          path: dist/native-tree/
+          if-no-files-found: error
+          retention-days: 14
       - uses: actions/upload-artifact@v4
         with:
           name: mod-package
